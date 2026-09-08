@@ -1,4 +1,4 @@
-"""Prepare or resume a controlled five-language experiment, with a shared rate limit."""
+"""Prepare or resume a controlled multilingual experiment, with a shared rate limit."""
 import argparse
 import asyncio
 import json
@@ -12,20 +12,24 @@ from atlas.languages import PROTOCOL_ID
 from atlas.runner import Limiter, progress, run
 
 
-def prepare(target):
+def prepare(target, dataset='data/capitals-50-v2.csv', languages=('en', 'fr', 'es', 'ar', 'zh'),
+            model='gemini-3.5-flash', samples=10, budget=15, rpm=900, shared_rpm=2400, concurrency=16):
     target = Path(target)
     if target.exists():
         raise ValueError('A language group already exists; resume it instead')
+    from atlas.languages import PROMPTS
+    if not languages or len(set(languages)) != len(languages) or any(l not in PROMPTS for l in languages):
+        raise ValueError('Choose distinct supported languages')
     paths = []
-    for language in ['en', 'fr', 'es', 'ar', 'zh']:
-        directory = create_experiment('data/capitals-50-v2.csv', model='gemini-3.5-flash', language=language,
-                                      protocol=PROTOCOL_ID, max_cost=15, rpm=900, concurrency=16,
-                                      shared_rpm=2400)
+    for language in languages:
+        directory = create_experiment(dataset, model=model, language=language, samples=samples,
+                                      protocol=PROTOCOL_ID, max_cost=budget, rpm=rpm, concurrency=concurrency,
+                                      shared_rpm=shared_rpm)
         paths.append(str(directory))
         manifest = json.loads((directory/'manifest.json').read_text())
         print(language, str(directory), estimate(manifest, load_places(directory/'places.csv'),
                                                  read_csv(directory/'pairs.csv')), flush=True)
-    group = {'paths': paths, 'shared_requests_per_minute': 2400, 'protocol': PROTOCOL_ID}
+    group = {'paths': paths, 'shared_requests_per_minute': shared_rpm, 'protocol': PROTOCOL_ID}
     group['id'] = digest(group)
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(json.dumps(group, indent=2))
@@ -67,8 +71,17 @@ if __name__ == '__main__':
     parser.add_argument('action', choices=['prepare', 'run'])
     parser.add_argument('--group', default='runs/languages-50-v2.json')
     parser.add_argument('--max-jobs', type=int)
+    parser.add_argument('--dataset', default='data/capitals-50-v2.csv')
+    parser.add_argument('--languages', nargs='+', default=['en', 'fr', 'es', 'ar', 'zh'])
+    parser.add_argument('--model', default='gemini-3.5-flash')
+    parser.add_argument('--samples', type=int, default=10)
+    parser.add_argument('--budget', type=float, default=15, help='USD cap per language')
+    parser.add_argument('--rpm', type=int, default=900)
+    parser.add_argument('--shared-rpm', type=int, default=2400)
+    parser.add_argument('--concurrency', type=int, default=16)
     args = parser.parse_args()
     if args.action == 'prepare':
-        prepare(args.group)
+        prepare(args.group, args.dataset, args.languages, args.model, args.samples, args.budget,
+                args.rpm, args.shared_rpm, args.concurrency)
     else:
         asyncio.run(collect(args.group, args.max_jobs))

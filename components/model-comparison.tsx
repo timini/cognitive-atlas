@@ -1,4 +1,5 @@
 'use client';
+import {publicAsset} from '@/lib/public-assets';
 import {useEffect,useState} from 'react';
 import {ArrowUpRight} from 'lucide-react';
 import {Table,TableBody,TableCell,TableHead,TableHeader,TableRow} from '@/components/ui/table';
@@ -9,7 +10,7 @@ interface Cohort {capital_count:number;model_label?:string;models:Row[];pairwise
 interface Comparisons {cohorts:Cohort[];language_cohorts?:Cohort[]}
 export default function ModelComparison({selected,aggregation,onSelect,dimension='model'}:{selected:string;aggregation:Aggregation;onSelect:(id:string)=>void;dimension?:'model'|'language'}){
  const [data,setData]=useState<Comparisons>({cohorts:[]});
- useEffect(()=>{const c=new AbortController();fetch('/data/comparisons.json',{signal:c.signal}).then(r=>r.ok?r.json() as Promise<Comparisons>:null).then(r=>{if(r)setData(r)}).catch(()=>{});return()=>c.abort()},[]);
+ useEffect(()=>{const c=new AbortController();fetch(publicAsset('/data/comparisons.json'),{signal:c.signal}).then(r=>r.ok?r.json() as Promise<Comparisons>:null).then(r=>{if(r)setData(r)}).catch(()=>{});return()=>c.abort()},[]);
  const language=dimension==='language';
  const cohort=(language?data.language_cohorts??[]:data.cohorts).find(c=>c.models.some(m=>m.export_id===selected));
  if(!cohort||cohort.models.length<2)return null;
@@ -24,6 +25,6 @@ export default function ModelComparison({selected,aggregation,onSelect,dimension
    return <TableRow key={m.export_id} data-state={m.export_id===selected?'selected':undefined}><TableCell><button className="model-link" onClick={()=>onSelect(m.export_id)}>{m.label}<ArrowUpRight size={14}/></button></TableCell><TableCell>{fmt(s.mae_km)} km</TableCell><TableCell>{fmt(s.spearman,4)}</TableCell><TableCell>{fmt(s.triangle_violation_rate*100,2)}%</TableCell><TableCell>{fmt(s.spherical_stress,4)}</TableCell>{language&&<><TableCell>{fmt(shift)} km</TableCell><TableCell>{fmt(m.valid_samples)} / {fmt(m.expected_samples)}</TableCell></>}</TableRow>
   })}</TableBody></Table>
   <p className="small-note">{language?'City and country names stay in English; the complete instructions are translated. English was rerun with the same numeric-format rule. Map shift is the mean capital displacement after globally aligning the two spherical fits. These specific translations have not been independently validated by native speakers; differences may include translation effects. No significance tests are claimed.':'Gemini 2.5 uses a zero thinking budget; Gemini 3 and 3.5 use minimal thinking, which is not guaranteed to be zero. These are descriptive comparisons, not significance tests.'}</p>
-  <a className="comparison-download" href="/data/comparisons.json" download>Download {language?'language':'model'} correlations and map displacement</a>
+  <a className="comparison-download" href={publicAsset('/data/comparisons.json')} download>Download {language?'language':'model'} correlations and map displacement</a>
  </section>
 }

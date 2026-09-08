@@ -111,6 +111,34 @@ Tests cover analytical ground truth, numeric rejection, robust summaries, known 
 
 ## Deployment
 
+### GitHub Pages
+
+The Pages build exports the same Vinext/React app as static HTML, JavaScript,
+fonts, and the existing research files. It uses `/cognitive-atlas/` as the project
+base path; fetches, comparison links, and CSV downloads respect that prefix.
+The private source repository remains private; the Pages website is public.
+
+```sh
+npm run build:pages
+npm run verify:pages
+# Commit validated source changes, then publish the prepared artifact:
+node scripts/deploy-pages.mjs
+# Or rebuild and publish a clean, committed checkout:
+npm run deploy:pages
+```
+
+GitHub Pages must be enabled for the repository. Publishing preserves the
+`gh-pages` branch history and configures Pages to serve that branch's root.
+`.nojekyll` ensures `_next` assets are served unchanged. Only `out/pages/` is
+published, including downloadable research data; credentials, runner checkpoints,
+server intermediates, and private source files are excluded. Normal build and
+existing Sites configuration remain available. A GitHub account billing or Pages
+restriction can still prevent the provider from publishing an uploaded artifact.
+The deploy command prints a URL; verify the Pages build and HTTP response before
+considering deployment complete.
+
+### Cloudflare / Sites
+
 For a direct deployment to your Cloudflare account, run `npx wrangler login` once, then `npm run deploy:cloudflare`. This builds without the Sites authentication shell and publishes a public `workers.dev` site. No API keys or model jobs are deployed. `npm run build` retains the existing private Sites build.
 
 The Sites project is registered in `.openai/hosting.json`. It runs on Cloudflare Workers and serves the research exports as assets. The initial deployment uses owner-only access. GitHub and Sites source remotes are separate; credentials must be supplied per operation, never persisted in remote URLs. Build, package using the Sites packaging helper, save the exact committed version, then publish it. No secret needs to be configured on the hosted site.

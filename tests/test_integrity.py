@@ -75,6 +75,8 @@ def test_published_measurements_are_derived_from_raw_csv():
     from pathlib import Path
 
     from atlas.data import read_csv
+    from atlas.experiment import prompt_for
+    from atlas.parsing import parse_distance
     index = Path("public/data/experiments.json")
     if not index.exists():
         pytest.skip("No real export yet")
@@ -86,7 +88,18 @@ def test_published_measurements_are_derived_from_raw_csv():
         assert len(raw) == result["quality"]["attempts"]
         assert len({r["response_id"] for r in raw}) == len(raw)
         by_pair = defaultdict(list)
+        places = {p["id"]: p for p in result["places"]}
+        prompts = {p["id"]: prompt_for(result["experiment"], p, places) for p in result["pairs"]}
         for row in raw:
+            assert row["experiment_id"] == result["experiment"]["id"]
+            assert row["prompt"] == prompts[row["pair_id"]]
+            if row["provider_payload"] and row["finish_reason"] == "STOP":
+                parsed = parse_distance(row["raw_response"], result["experiment"].get("response_parser", "legacy"))
+                assert parsed.quality == row["quality"]
+                if parsed.value is None:
+                    assert row["parsed_distance_km"] == ""
+                else:
+                    assert parsed.value == float(row["parsed_distance_km"])
             by_pair[row["pair_id"]].append(row)
         assert sum(r["quality"] == "valid" for r in raw) == result["quality"]["valid"]
         for pair in result["pairs"]:

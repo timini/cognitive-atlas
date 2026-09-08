@@ -72,6 +72,12 @@ try {
     assert.equal(audit.status, 200);
     assert.equal((await audit.json()).complete_pairs, cohort.complete_pairs);
   }
+  for (const cohort of inference.map_cohorts ?? []) {
+    assert(cohort.export_ids.every(id => exportIds.has(id)));
+    const response = await fetch(origin + base + cohort.report_url.replace(/^\//, ''));
+    assert.equal(response.status, 200);
+    assert.equal((await response.json()).total_pairs, cohort.total_pairs);
+  }
   for (const ref of references) assert.equal((await fetch(origin + ref)).status, 200);
   console.log(`Verified ${files} static files, ${index.length} experiments, ${languages.size} languages, CSV downloads, comparison data, and project-prefixed assets.`);
 } finally {

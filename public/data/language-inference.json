@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "cohorts": [
     {
       "export_ids": [
@@ -244,6 +244,88 @@
         "zh": 165.22541969464166
       },
       "report_url": "/data/language-audits/paper-50-d3309cd9245e3cff1260c80d.json"
+    }
+  ],
+  "map_cohorts": [
+    {
+      "export_ids": [
+        "d6bebef0249ad510ccd3d650-6b21e1546415d329",
+        "c0a69444ce03b9cbe00f369b-0ef150296f812a32",
+        "8b686cab6a691abda85f293e-b6bdf10cb4dc63de"
+      ],
+      "capital_count": 50,
+      "total_pairs": 1225,
+      "permutations": 999,
+      "holm_family_size": 3,
+      "comparisons": [
+        {
+          "a": "en",
+          "b": "ar",
+          "observed_mean_capital_shift_km": 81.14843531000645,
+          "null_mean_capital_shift_km": 32.05988760797104,
+          "null_shift_95pct_interval_km": [
+            24.63336512314547,
+            40.09677257985752
+          ],
+          "map_p": 0.001,
+          "all_fits_converged": true,
+          "observed_stresses": [
+            0.02605303926478105,
+            0.03216020628355307
+          ],
+          "valid_answer_counts": {
+            "en": 12244,
+            "ar": 12249
+          },
+          "unequal_sample_count_pairs": 1,
+          "map_p_holm": 0.003
+        },
+        {
+          "a": "en",
+          "b": "zh",
+          "observed_mean_capital_shift_km": 93.46623765224007,
+          "null_mean_capital_shift_km": 31.390692036805763,
+          "null_shift_95pct_interval_km": [
+            26.236947878782797,
+            37.25408853750406
+          ],
+          "map_p": 0.001,
+          "all_fits_converged": true,
+          "observed_stresses": [
+            0.02605303926478105,
+            0.028340578628008123
+          ],
+          "valid_answer_counts": {
+            "en": 12244,
+            "zh": 12250
+          },
+          "unequal_sample_count_pairs": 1,
+          "map_p_holm": 0.003
+        },
+        {
+          "a": "ar",
+          "b": "zh",
+          "observed_mean_capital_shift_km": 88.96697811504879,
+          "null_mean_capital_shift_km": 36.91489997665199,
+          "null_shift_95pct_interval_km": [
+            30.070895007595066,
+            43.700335284628736
+          ],
+          "map_p": 0.001,
+          "all_fits_converged": true,
+          "observed_stresses": [
+            0.03216020628355307,
+            0.028340578628008123
+          ],
+          "valid_answer_counts": {
+            "ar": 12249,
+            "zh": 12250
+          },
+          "unequal_sample_count_pairs": 1,
+          "map_p_holm": 0.003
+        }
+      ],
+      "report_url": "/data/map-audits/4bb88010178cbce6cd50444d.json"
     }
   ]
 }

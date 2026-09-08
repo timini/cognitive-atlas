@@ -21,6 +21,9 @@ def export_inference(public='public/data'):
     cohorts = []
     for path, report in reports:
         sources = report['sources']
+        for source in sources.values():
+            if hashlib.sha256(Path(source['path']).read_bytes()).hexdigest() != source['sha256']:
+                raise ValueError('An inference source was modified')
         export_ids = [s.get('export_id', Path(s['path']).parent.name) for s in sources.values()]
         comparisons = [{**c, 'judgment_p_holm': c.get('judgment_p_holm', c.get('judgment_p_holm_20')),
                          'accuracy_p_holm': c.get('accuracy_p_holm', c.get('accuracy_p_holm_20'))}
@@ -30,8 +33,20 @@ def export_inference(public='public/data'):
                             'permutations': report['permutations'], 'holm_family_size': report.get('holm_family_size', 20),
                             'comparisons': comparisons, 'complete_pair_median_MAE_km': report['complete_pair_median_MAE_km'],
                             'report_url': '/data/language-audits/'+path.name})
+    map_cohorts = []
+    for path in sorted((public/'map-audits').glob('*.json')):
+        report = json.loads(path.read_text())
+        for source in report['sources'].values():
+            if hashlib.sha256(Path(source['path']).read_bytes()).hexdigest() != source['sha256']:
+                raise ValueError('A map-audit source was modified')
+        map_cohorts.append({
+            'export_ids': [s['export_id'] for s in report['sources'].values()],
+            'capital_count': report['capital_count'], 'total_pairs': report['total_pairs'],
+            'permutations': report['permutations'], 'holm_family_size': report['holm_family_size'],
+            'comparisons': [{k: v for k, v in c.items() if k != 'null_statistics_km'} for c in report['comparisons']],
+            'report_url': '/data/map-audits/'+path.name})
     target = public/'language-inference.json'
-    target.write_text(json.dumps({'schema_version': 1, 'cohorts': cohorts}, indent=2) + '\n')
+    target.write_text(json.dumps({'schema_version': 2, 'cohorts': cohorts, 'map_cohorts': map_cohorts}, indent=2) + '\n')
     return target
 
 

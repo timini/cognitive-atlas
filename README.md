@@ -67,6 +67,7 @@ uv run python scripts/run_languages.py run --group runs/languages-100-v3.json
 uv run python scripts/analyze_group.py runs/languages-100-v3.json
 # Explicitly choose the three NEW result.json paths printed by export:
 uv run python scripts/audit_language_group.py public/data/EN_EXPORT/result.json public/data/AR_EXPORT/result.json public/data/ZH_EXPORT/result.json
+uv run python scripts/audit_map_group.py public/data/EN_EXPORT/result.json public/data/AR_EXPORT/result.json public/data/ZH_EXPORT/result.json
 uv run python scripts/export_language_inference.py
 ```
 
@@ -77,6 +78,17 @@ Do not recreate a group to resume it. The 100-capital inference uses 4,999
 within-pair permutations and corrects its own six-test family (three language
 comparisons × judgment-disagreement and MAE-contrast statistics). It is a separate
 cohort from the paper's 20-test family. All historical paper inputs are pinned.
+
+A separate direct map test uses 999 within-pair permutations for the three
+English/Arabic/Mandarin comparisons (Holm correction across those three map tests).
+Each permutation independently reassigns pooled valid answers while preserving
+both languages' observed valid-answer counts, rebuilds both median matrices, and
+refits both spherical maps with the same four starts and solver seed. The statistic
+is mean capital displacement after one global orthogonal alignment. All fits must
+converge, and observed refits must reproduce published map shifts within one metre.
+All null statistics and source hashes are downloadable under `public/data/map-audits`.
+This exploratory test conditions on valid answers, the chosen capitals, translations
+and independent calls; it does not infer coastline shape or a literal neural map.
 
 ## Architecture
 
@@ -92,7 +104,8 @@ cohort from the paper's 20-test family. All historical paper inputs are pinned.
 | `atlas/deformation.py` | Delaunay deformation and triangle foldover diagnostics |
 | `atlas/analysis.py` | Versioned analysis artifacts and immutable web exports |
 | `atlas/comparison.py` | Same-dataset cohorts, distance correlations and globally aligned model-to-model map displacement |
-| `atlas/inference.py` | Reproducible conditional language tests for explicit matched export cohorts |
+| `atlas/inference.py` | Reproducible conditional distance-judgment tests for explicit matched export cohorts |
+| `atlas/map_inference.py` | Direct spherical-map permutation tests with globally aligned capital displacement |
 | `app/`, `components/atlas-map.tsx` | React/Vinext exploration UI; static GitHub Pages deployment |
 
 The website serves precomputed files. There is no API key, live query endpoint, server database, database service, or background model job in the deployed site. The Python runner operates on your computer. Static JSON exports act as the read API; individual CSVs remain downloadable evidence. New exported experiments appear in a manifest-driven selector after the next deployment.

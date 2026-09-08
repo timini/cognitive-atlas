@@ -9,6 +9,7 @@ from atlas.analysis import analyze, export
 from atlas.comparison import export_comparisons
 from atlas.data import load_places, read_csv
 from atlas.experiment import create_experiment, estimate
+from atlas.languages import LANGUAGE_LABELS, PROTOCOL_ID
 from atlas.models import MODEL_PROFILES
 from atlas.runner import progress, run
 
@@ -23,7 +24,8 @@ def main():
     new.add_argument("--rpm", type=float, default=120)
     new.add_argument("--concurrency", type=int, default=4)
     new.add_argument("--budget", type=float, default=1)
-    new.add_argument("--language", choices=["en", "fr"], default="en")
+    new.add_argument("--language", choices=list(LANGUAGE_LABELS), default="en")
+    new.add_argument("--protocol", choices=["legacy", PROTOCOL_ID], default="legacy")
     new.add_argument("--model", choices=list(MODEL_PROFILES), default="gemini-2.5-flash-lite")
     new.add_argument("--max-tokens", type=int, default=128)
     for command in ["estimate", "run", "status", "analyze", "export"]:
@@ -38,7 +40,7 @@ def main():
     if args.command == "create":
         print(create_experiment(args.dataset, samples=args.samples, max_cost=args.budget,
                                 rpm=args.rpm, concurrency=args.concurrency, language=args.language,
-                                model=args.model, max_tokens=args.max_tokens))
+                                model=args.model, max_tokens=args.max_tokens, protocol=args.protocol))
     elif args.command == "estimate":
         manifest = json.loads((args.directory / "manifest.json").read_text())
         print(json.dumps(estimate(manifest, load_places(args.directory / "places.csv"),

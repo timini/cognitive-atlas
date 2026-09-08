@@ -5,6 +5,7 @@ import subprocess
 from datetime import UTC, datetime
 from pathlib import Path
 
+from atlas import languages
 from atlas.data import digest, generate_pairs, load_places, write_csv
 from atlas.models import MODEL_PROFILES, PRICING_SOURCE, PRICING_VERIFIED_DATE
 
@@ -26,7 +27,8 @@ def prompt_for(manifest, pair, places):
 
 def create_experiment(dataset, root="runs", samples=10, model="gemini-2.5-flash-lite",
                       language="en", temperature=1.0, max_cost=1.0, rpm=120, concurrency=4,
-                      prompt_template=None, provider="google", max_attempts=4, max_tokens=128):
+                      prompt_template=None, provider="google", max_attempts=4, max_tokens=128,
+                      protocol="legacy", shared_rpm=None):
     if not 1 <= samples <= 1000 or not 0 < max_cost or rpm <= 0 or concurrency < 1 or max_attempts < 1:
         raise ValueError("Invalid experiment limits")
     places = load_places(dataset)
@@ -34,6 +36,10 @@ def create_experiment(dataset, root="runs", samples=10, model="gemini-2.5-flash-
         raise ValueError("Supply a verified model profile and pricing before enabling another model")
     if not 16 <= max_tokens <= 4096:
         raise ValueError("max_tokens must be between 16 and 4096")
+    if protocol not in ("legacy", languages.PROTOCOL_ID):
+        raise ValueError("Unknown prompt protocol")
+    if protocol != "legacy" and (language not in languages.PROMPTS or prompt_template is not None):
+        raise ValueError("Use a registered translation for the language protocol")
     profile = MODEL_PROFILES[model]
     try:
         revision = subprocess.check_output(["git", "rev-parse", "HEAD"], stderr=subprocess.DEVNULL).decode().strip()
@@ -42,7 +48,7 @@ def create_experiment(dataset, root="runs", samples=10, model="gemini-2.5-flash-
     config = {"schema_version": 2, "name": f"{len(places)}-capital distance experiment", "provider": provider,
               "model_label": profile["label"],
               "model": model, "requested_model_version": model, "language": language,
-              "prompt_template": prompt_template or PROMPTS[language], "sampling_count": samples,
+              "prompt_template": prompt_template or (languages.PROMPTS[language] if protocol != "legacy" else PROMPTS[language]), "sampling_count": samples,
               "parameters": {"temperature": temperature, "top_p": 0.95, "max_tokens": max_tokens,
                              **{k: v for k, v in profile.items() if k.startswith("thinking_")},
                              "seed": None, "system_prompt": ""},
@@ -59,6 +65,16 @@ def create_experiment(dataset, root="runs", samples=10, model="gemini-2.5-flash-
                           "output_per_million_usd": profile["output_per_million_usd"],
                           "source": PRICING_SOURCE, "verified_date": PRICING_VERIFIED_DATE,
                           "checked_at": utcnow(), "billing_note": "Token-based estimate, not an invoice"}}
+    if protocol != "legacy":
+        config.update(prompt_template=languages.PROMPTS[language], prompt_family=protocol,
+                      response_parser=languages.PARSER_ID, entity_name_policy=languages.ENTITY_NAME_POLICY,
+                      language_label=languages.LANGUAGE_LABELS[language],
+                      translation_review=languages.TRANSLATION_REVIEW)
+    if shared_rpm is not None:
+        if shared_rpm <= 0:
+            raise ValueError("Shared request rate must be positive")
+        config["execution"].update(shared_requests_per_minute=shared_rpm,
+            shared_rate_policy="Shared process limiter; on 429 pause all and halve rate at most once per minute")
     config["id"] = digest(config)[:24]
     directory = Path(root) / config["id"]
     directory.mkdir(parents=True, exist_ok=False)

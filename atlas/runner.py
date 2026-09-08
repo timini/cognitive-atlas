@@ -29,12 +29,21 @@ class Limiter:
     def __init__(self, rpm):
         self.interval, self.next = 60 / rpm, 0
         self.lock = asyncio.Lock()
+        self.last_throttle = float("-inf")
 
     async def wait(self):
         async with self.lock:
-            now = time.monotonic()
-            await asyncio.sleep(max(0, self.next - now))
+            while (delay := self.next - time.monotonic()) > 0:
+                await asyncio.sleep(delay)
             self.next = time.monotonic() + self.interval
+
+
+    def backoff(self, seconds):
+        now = time.monotonic()
+        self.next = max(self.next, now + seconds)
+        if now - self.last_throttle >= 60:
+            self.interval = min(1, self.interval * 2)
+            self.last_throttle = now
 
 
 def history(directory):
@@ -55,7 +64,7 @@ def progress(directory):
             "estimated_cost_usd": sum(float(r["estimated_cost_usd"]) for r in rows)}
 
 
-async def run(directory, provider=None, max_jobs=None):
+async def run(directory, provider=None, max_jobs=None, shared_limiter=None):
     directory = Path(directory)
     validate_inputs(directory)
     if max_jobs is not None and max_jobs < 0:
@@ -120,6 +129,8 @@ async def run(directory, provider=None, max_jobs=None):
                             break
                         reserved += reserve
                         await limiter.wait()
+                        if shared_limiter is not None:
+                            await shared_limiter.wait()
                         row = dict.fromkeys(FIELDS, "")
                         row.update(response_id=digest([manifest["id"], *key, attempt]),
                                    experiment_id=manifest["id"], pair_id=pair["id"], sample_number=sample,
@@ -128,7 +139,7 @@ async def run(directory, provider=None, max_jobs=None):
                         delay = 0
                         try:
                             reply = await provider.query(manifest["model"], prompt, manifest["parameters"])
-                            parsed = parse_distance(reply.text)
+                            parsed = parse_distance(reply.text, manifest.get("response_parser", "legacy"))
                             if reply.finish_reason != "STOP":
                                 parsed = type(parsed)(None, "refusal_or_truncated")
                             row.update(raw_response=reply.text, parsed_distance_km=parsed.value,
@@ -142,6 +153,8 @@ async def run(directory, provider=None, max_jobs=None):
                             row.update(quality=exc.code, retryable=exc.retryable,
                                        terminal=not exc.retryable or attempt == config["max_attempts"])
                             delay = min(120, max(exc.retry_after, 2 ** attempt + random.random()))
+                            if exc.code == "http_429" and shared_limiter is not None:
+                                shared_limiter.backoff(delay)
                             if not exc.retryable:
                                 stop.set()
                         if row["provider_payload"] and manifest.get("schema_version", 1) >= 2:

@@ -10,7 +10,14 @@ class ParseResult:
     quality: str
 
 
-def parse_distance(raw):
+def parse_distance(raw, protocol="legacy"):
+    if protocol == "ascii_decimal_v2":
+        text = raw.strip()
+        if not re.fullmatch(r"[0-9]+(?:\.[0-9]+)?", text):
+            return ParseResult(None, "invalid_numeric_format")
+        return parse_distance(text)
+    if protocol != "legacy":
+        raise ValueError("Unknown response parser")
     text = raw.strip()
     if re.search(r"\b(miles?|mi|metres?|meters?)\b", text, re.IGNORECASE):
         return ParseResult(None, "wrong_units")

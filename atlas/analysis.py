@@ -58,7 +58,7 @@ def analyze(directory, seed=42, bootstrap=1000):
     versions = {r["model_version"] for r in responses if r["quality"] == "valid"}
     if len(versions) > 1:
         raise ValueError("Multiple provider model versions in this run. Analyse separate version cohorts explicitly.")
-    params = {"seed": seed, "bootstrap_pair_replicates": bootstrap, "algorithm_version": 1,
+    params = {"seed": seed, "bootstrap_pair_replicates": bootstrap, "algorithm_version": 2,
               "analysis_code_sha256": digest({p.name: p.read_text() for p in Path(__file__).parent.glob("*.py")})}
     analysis_id = digest({"responses": responses, "parameters": params})[:16]
     out = directory / "analyses" / analysis_id

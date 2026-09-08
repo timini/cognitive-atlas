@@ -8,6 +8,7 @@ const SITE_CREATOR_PLACEHOLDER_DATABASE_ID =
   '00000000-0000-4000-8000-000000000000';
 
 const { d1, r2 } = hostingConfig;
+const directCloudflare = process.env.ATLAS_HOSTING_TARGET === 'cloudflare';
 
 // macOS Seatbelt blocks FSEvents, so Codex previews need polling for HMR.
 const isCodexSeatbeltSandbox = process.env.CODEX_SANDBOX === 'seatbelt';
@@ -51,10 +52,13 @@ export default defineConfig(async () => {
       : undefined,
     plugins: [
       vinext(),
-      sites(),
+      ...(directCloudflare ? [] : [sites()]),
       cloudflare({
         viteEnvironment: { name: 'rsc', childEnvironments: ['ssr'] },
-        config: localBindingConfig,
+        config: directCloudflare
+          ? { main: 'vinext/server/fetch-handler', name: 'cognitive-atlas',
+              compatibility_date: '2026-09-07', compatibility_flags: ['nodejs_compat'], workers_dev: true }
+          : localBindingConfig,
       }),
     ],
   };

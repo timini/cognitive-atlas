@@ -6,6 +6,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 from atlas.analysis import analyze, export
+from atlas.comparison import export_comparisons
 from atlas.data import load_places, read_csv
 from atlas.experiment import create_experiment, estimate
 from atlas.models import MODEL_PROFILES
@@ -32,6 +33,7 @@ def main():
             child.add_argument("--max-jobs", type=int)
         if command == "export":
             child.add_argument("analysis_directory", type=Path)
+    sub.add_parser("compare")
     args = parser.parse_args()
     if args.command == "create":
         print(create_experiment(args.dataset, samples=args.samples, max_cost=args.budget,
@@ -47,6 +49,8 @@ def main():
         print(json.dumps(progress(args.directory), indent=2))
     elif args.command == "analyze":
         print(analyze(args.directory))
+    elif args.command == "compare":
+        print(export_comparisons())
     elif args.command == "export":
         print(export(args.directory, args.analysis_directory))
 

@@ -71,6 +71,7 @@ def test_incomplete_run_not_analyzed(tmp_path):
 
 def test_published_measurements_are_derived_from_raw_csv():
     """Independent audit of the real published pilot. No provider mocks here."""
+    from collections import defaultdict
     from pathlib import Path
 
     from atlas.data import read_csv
@@ -84,12 +85,21 @@ def test_published_measurements_are_derived_from_raw_csv():
         assert all("test_fixture" not in r["provider_payload"] for r in raw)
         assert len(raw) == result["quality"]["attempts"]
         assert len({r["response_id"] for r in raw}) == len(raw)
+        by_pair = defaultdict(list)
+        for row in raw:
+            by_pair[row["pair_id"]].append(row)
+        assert sum(r["quality"] == "valid" for r in raw) == result["quality"]["valid"]
         for pair in result["pairs"]:
-            values = [float(r["parsed_distance_km"]) for r in raw if r["pair_id"] == pair["id"] and r["quality"] == "valid"]
+            attempts = by_pair[pair["id"]]
+            terminal = [r for r in attempts if r["terminal"] == "True"]
+            assert len(terminal) == result["experiment"]["sampling_count"]
+            assert len({r["sample_number"] for r in terminal}) == len(terminal)
+            values = [float(r["parsed_distance_km"]) for r in attempts if r["quality"] == "valid"]
             assert pair["mean"] == pytest.approx(np.mean(values))
             assert pair["median"] == pytest.approx(np.median(values))
             assert pair["variance"] == pytest.approx(np.var(values, ddof=1))
-            assert len(values) == result["experiment"]["sampling_count"]
+            assert len(values) + pair["missing_samples"] == result["experiment"]["sampling_count"]
+            assert pair["samples"] == values
         for name, layer in result["layers"].items():
             errors = np.array([p[name] - p["true_distance_km"] for p in result["pairs"]])
             assert layer["metrics"]["mae_km"] == pytest.approx(np.abs(errors).mean())

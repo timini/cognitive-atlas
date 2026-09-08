@@ -1,6 +1,7 @@
 import numpy as np
 from scipy.linalg import orthogonal_procrustes
 from scipy.optimize import least_squares
+from scipy.sparse import csr_matrix
 from scipy.spatial.distance import pdist, squareform
 from sklearn.manifold import MDS
 
@@ -53,6 +54,24 @@ def spherical_distances(x):
     return d
 
 
+def angular_jacobian(angles):
+    """Sparse analytic derivative: each pair depends on just its two capitals."""
+    lat, lon = np.asarray(angles).reshape(-1, 2).T
+    points = np.column_stack([np.cos(lat) * np.cos(lon), np.cos(lat) * np.sin(lon), np.sin(lat)])
+    dlat = np.column_stack([-np.sin(lat) * np.cos(lon), -np.sin(lat) * np.sin(lon), np.cos(lat)])
+    dlon = np.column_stack([-np.cos(lat) * np.sin(lon), np.cos(lat) * np.cos(lon), np.zeros_like(lat)])
+    i, j = np.triu_indices(len(lat), 1)
+    dot = np.sum(points[i] * points[j], axis=1)
+    factor = -1 / np.sqrt(np.maximum(1 - dot * dot, 1e-14))
+    values = np.column_stack([np.sum(dlat[i] * points[j], axis=1),
+                              np.sum(dlon[i] * points[j], axis=1),
+                              np.sum(points[i] * dlat[j], axis=1),
+                              np.sum(points[i] * dlon[j], axis=1)]) * factor[:, None]
+    columns = np.column_stack([2 * i, 2 * i + 1, 2 * j, 2 * j + 1])
+    return csr_matrix((values.ravel(), (np.repeat(np.arange(len(i)), 4), columns.ravel())),
+                      shape=(len(i), 2 * len(lat)))
+
+
 def spherical(d, reference_latlon, seed=42, starts=4):
     # Initial geometry comes exclusively from judgments, never geographic reference.
     eig, vectors = np.linalg.eigh(np.cos(d / RADIUS_KM))
@@ -71,7 +90,8 @@ def spherical(d, reference_latlon, seed=42, starts=4):
     best = None
     for attempt in range(starts):
         start = initial if attempt == 0 else initial + rng.normal(0, 0.3, initial.shape)
-        fit = least_squares(residual, start, max_nfev=1000, ftol=1e-9, xtol=1e-9, gtol=1e-9)
+        fit = least_squares(residual, start, jac=angular_jacobian, max_nfev=1000,
+                            ftol=1e-9, xtol=1e-9, gtol=1e-9)
         if best is None or fit.cost < best.cost:
             best = fit
     inferred = points(best.x)
@@ -83,6 +103,7 @@ def spherical(d, reference_latlon, seed=42, starts=4):
     return to_latlon(aligned), {"stress": stress(spherical_distances(inferred), d),
                               "stress_definition": "sqrt(sum((fitted-target)^2)/sum(target^2))",
                               "radius_km": RADIUS_KM, "starts": starts, "seed": seed,
+                              "solver": "scipy_least_squares_sparse_analytic_jacobian",
                               "converged": bool(best.success), "function_evaluations": int(best.nfev),
                               "rotation": rotation.tolist(), "displacement_km": displacement.tolist(),
                               "mean_displacement_km": float(displacement.mean())}

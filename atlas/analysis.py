@@ -1,5 +1,6 @@
 import json
 import shutil
+from collections import defaultdict
 from itertools import pairwise
 from pathlib import Path
 
@@ -29,8 +30,12 @@ def analyze(directory, seed=42, bootstrap=1000):
     matrices = {a: np.zeros((n, n)) for a in AGGREGATIONS}
     statistics = []
     rng = np.random.default_rng(seed)
+    accepted = defaultdict(list)
+    for response in responses:
+        if response["quality"] == "valid":
+            accepted[response["pair_id"]].append(response)
     for pair in pairs:
-        observations = [r for r in responses if r["pair_id"] == pair["id"] and r["quality"] == "valid"]
+        observations = accepted[pair["id"]]
         if len({r["sample_number"] for r in observations}) != len(observations):
             raise ValueError("Duplicate accepted sample")
         values = [float(r["parsed_distance_km"]) for r in observations]
@@ -128,7 +133,7 @@ def analyze(directory, seed=42, bootstrap=1000):
               "quality": {"attempts": len(responses), "valid": sum(r["quality"] == "valid" for r in responses),
                           "invalid_attempts": sum(r["quality"] != "valid" for r in responses),
                           "estimated_cost_usd": sum(float(r["estimated_cost_usd"]) for r in responses)},
-              "limitations": ["20 capitals are a purposive pilot, not a representative global sample.",
+              "limitations": [f"{len(places)} capitals form a purposive sample, not a representative global sample.",
                               "Behavioral judgments do not reveal a literal hidden neural representation.",
                               "Planar MDS stress includes the difficulty of flattening a spherical world.",
                               "Coastline deformation is illustrative and may fold; inspect raw capitals.",
@@ -153,6 +158,9 @@ def export(directory, analysis_dir, public="public/data"):
     index_path = public / "experiments.json"
     index = json.loads(index_path.read_text()) if index_path.exists() else []
     item = {"id": name, "model": result["experiment"]["model"], "language": result["experiment"]["language"],
+            "model_label": result["experiment"].get("model_label", result["experiment"]["model"]),
+            "capital_count": len(result["places"]), "sample_count": result["experiment"]["sampling_count"],
+            "dataset_sha256": result["experiment"]["dataset_sha256"],
             "created_at": result["experiment"]["created_at"], "url": f"/data/{name}/result.json"}
     if not any(x["id"] == name for x in index):
         index.append(item)

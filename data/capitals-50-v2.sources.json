@@ -1,0 +1,16 @@
+{
+  "dataset_version": "capitals-50-v2",
+  "capital_count": 50,
+  "selection": "Original 20 capitals plus 30 purposively selected capitals across regions; not a random or population-weighted sample.",
+  "coordinate_source": "Natural Earth 10m populated places",
+  "license": "Public domain",
+  "source_hashes": {
+    "places": "9b8e3de09048ef00dfc70357dbb9fa324493f214b5e0ae4daf1aa79a8d10116b",
+    "countries": "6866c877d39cba9c357620878839b336d569f8c662d3cfab4cb1dbe2d39c977f"
+  },
+  "decision_sources": [
+    "https://oagmis.oag.go.tz/portal/acts/52",
+    "https://www.dfat.gov.au/geo/heads-of-government/netherlands",
+    "https://www.pmo.gov.my/en/perdana-putra/"
+  ]
+}

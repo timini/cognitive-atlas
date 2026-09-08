@@ -6,6 +6,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 from atlas.data import digest, generate_pairs, load_places, write_csv
+from atlas.models import MODEL_PROFILES, PRICING_SOURCE, PRICING_VERIFIED_DATE
 
 PROMPTS = {
     "en": "Estimate the straight-line great-circle distance in kilometres between {city_a}, {country_a} and {city_b}, {country_b}. Return only your best numerical estimate in kilometres. Do not explain your reasoning.",
@@ -25,19 +26,26 @@ def prompt_for(manifest, pair, places):
 
 def create_experiment(dataset, root="runs", samples=10, model="gemini-2.5-flash-lite",
                       language="en", temperature=1.0, max_cost=1.0, rpm=120, concurrency=4,
-                      prompt_template=None, provider="google", max_attempts=4):
+                      prompt_template=None, provider="google", max_attempts=4, max_tokens=128):
     if not 1 <= samples <= 1000 or not 0 < max_cost or rpm <= 0 or concurrency < 1 or max_attempts < 1:
         raise ValueError("Invalid experiment limits")
     places = load_places(dataset)
+    if model not in MODEL_PROFILES or provider != "google":
+        raise ValueError("Supply a verified model profile and pricing before enabling another model")
+    if not 16 <= max_tokens <= 4096:
+        raise ValueError("max_tokens must be between 16 and 4096")
+    profile = MODEL_PROFILES[model]
     try:
         revision = subprocess.check_output(["git", "rev-parse", "HEAD"], stderr=subprocess.DEVNULL).decode().strip()
     except subprocess.CalledProcessError:
         revision = "uncommitted"
-    config = {"schema_version": 1, "name": "Capital distance pilot", "provider": provider,
+    config = {"schema_version": 2, "name": f"{len(places)}-capital distance experiment", "provider": provider,
+              "model_label": profile["label"],
               "model": model, "requested_model_version": model, "language": language,
               "prompt_template": prompt_template or PROMPTS[language], "sampling_count": samples,
-              "parameters": {"temperature": temperature, "top_p": 0.95, "max_tokens": 32,
-                             "thinking_budget": 0, "seed": None, "system_prompt": ""},
+              "parameters": {"temperature": temperature, "top_p": 0.95, "max_tokens": max_tokens,
+                             **{k: v for k, v in profile.items() if k.startswith("thinking_")},
+                             "seed": None, "system_prompt": ""},
               "dataset_sha256": digest(places), "dataset_file": Path(dataset).name,
               "sampling_strategy": "independent_single_turn_unordered_pairs_fixed_id_order",
               "created_at": utcnow(), "code_revision": revision,
@@ -45,12 +53,12 @@ def create_experiment(dataset, root="runs", samples=10, model="gemini-2.5-flash-
                   p: importlib.metadata.version(p) for p in ["numpy", "scipy", "scikit-learn", "geographiclib"]}},
               "execution": {"max_cost_usd": max_cost, "requests_per_minute": rpm,
                             "concurrency": concurrency, "max_attempts": max_attempts,
-                            "retry_policy": "Retry transport/408/429/5xx only; invalid content is terminal"},
-              "pricing": {"input_per_million_usd": 0.10, "output_per_million_usd": 0.40,
-                          "source": "https://ai.google.dev/gemini-api/docs/pricing",
-                          "checked_at": utcnow(), "billing_note": "Token-based estimate, not an invoice; verify rates for custom models"}}
-    if model != "gemini-2.5-flash-lite" or provider != "google":
-        raise ValueError("Supply verified pricing in a new condition before enabling another model")
+                            "retry_policy": "Retry transport/408/429/5xx only; invalid content is terminal",
+                            "budget_policy": "Reserve conservatively in flight; reconcile successful responses to reported usage; retain unknown-attempt reservations"},
+              "pricing": {"input_per_million_usd": profile["input_per_million_usd"],
+                          "output_per_million_usd": profile["output_per_million_usd"],
+                          "source": PRICING_SOURCE, "verified_date": PRICING_VERIFIED_DATE,
+                          "checked_at": utcnow(), "billing_note": "Token-based estimate, not an invoice"}}
     config["id"] = digest(config)[:24]
     directory = Path(root) / config["id"]
     directory.mkdir(parents=True, exist_ok=False)

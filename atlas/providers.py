@@ -39,8 +39,11 @@ class Gemini:
 
     async def query(self, model, prompt, parameters):
         config = {"temperature": parameters["temperature"], "topP": parameters["top_p"],
-                  "maxOutputTokens": parameters["max_tokens"],
-                  "thinkingConfig": {"thinkingBudget": parameters["thinking_budget"]}}
+                  "maxOutputTokens": parameters["max_tokens"]}
+        if "thinking_level" in parameters:
+            config["thinkingConfig"] = {"thinkingLevel": parameters["thinking_level"]}
+        elif "thinking_budget" in parameters:
+            config["thinkingConfig"] = {"thinkingBudget": parameters["thinking_budget"]}
         if parameters.get("seed") is not None:
             config["seed"] = parameters["seed"]
         body = {"contents": [{"role": "user", "parts": [{"text": prompt}]}],

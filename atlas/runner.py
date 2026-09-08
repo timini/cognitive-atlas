@@ -144,6 +144,12 @@ async def run(directory, provider=None, max_jobs=None):
                             delay = min(120, max(exc.retry_after, 2 ** attempt + random.random()))
                             if not exc.retryable:
                                 stop.set()
+                        if row["provider_payload"] and manifest.get("schema_version", 1) >= 2:
+                            # Completed usage replaces the in-flight upper reservation. Unknown
+                            # transport attempts retain their full reservation across restarts.
+                            actual_cost = float(row["estimated_cost_usd"])
+                            reserved += actual_cost - reserve
+                            row["reserved_cost_usd"] = actual_cost
                         writer.writerow(row)
                         stream.flush()
                         os.fsync(stream.fileno())

@@ -1,0 +1,328 @@
+{
+  "method": "Exploratory local-language accuracy; fixed capitals, empirical within-pair bootstrap.\n\nPrimary estimand is expected absolute error of ONE response, not error of the\nmedian of ten. This smooth estimand avoids nonregular bootstrap behavior of\nheavily tied sample medians. Gain = English error minus translated-prompt error.\nHome means at least one endpoint belongs to the explicit language-affinity group.\nInteraction = gain on home pairs minus gain on other pairs. Country groups are\nan operational proxy; they do not describe every resident's language. Only\nrepeated-call uncertainty is estimated, never uncertainty over countries/prompts.\n",
+  "seed": 20260910,
+  "replicates": 9999,
+  "groups": {
+    "fr": [
+      "CA",
+      "CD",
+      "FR",
+      "SN"
+    ],
+    "es": [
+      "AR",
+      "CL",
+      "CO",
+      "ES",
+      "MX",
+      "PE"
+    ],
+    "ar": [
+      "DZ",
+      "EG",
+      "MA",
+      "SA"
+    ],
+    "zh": [
+      "CN",
+      "SG"
+    ]
+  },
+  "sources": {
+    "en": {
+      "path": "public/data/d6bebef0249ad510ccd3d650-6b21e1546415d329/result.json",
+      "sha256": "aa80c57f8a8b3d645480b32f8d0f89005bbe5f5de1721367a389838805594934",
+      "experiment_id": "d6bebef0249ad510ccd3d650"
+    },
+    "fr": {
+      "path": "public/data/11369ef5efb4048d455b5758-e5a86d256b541c8d/result.json",
+      "sha256": "f54b1e28db5093fc328712f2c686e1ec0699cd8e8d0efae4168a4d9b74594470",
+      "experiment_id": "11369ef5efb4048d455b5758"
+    },
+    "es": {
+      "path": "public/data/c2cc0e6e7ac60dfb33665038-946564d3b9d522f9/result.json",
+      "sha256": "a43137002d44dec24e8e762089c5fec16ab36e16533aabcedf8f91458024e1d5",
+      "experiment_id": "c2cc0e6e7ac60dfb33665038"
+    },
+    "ar": {
+      "path": "public/data/c0a69444ce03b9cbe00f369b-0ef150296f812a32/result.json",
+      "sha256": "953321339fc675bc487eccbfe5ec2dc5e897093cb323abb9cb912d0d1f843a93",
+      "experiment_id": "c0a69444ce03b9cbe00f369b"
+    },
+    "zh": {
+      "path": "public/data/8b686cab6a691abda85f293e-b6bdf10cb4dc63de/result.json",
+      "sha256": "f359c60c631a2b2db64fa78733bc9b27d3642e8167cf3b46dcaeee709b5c3710",
+      "experiment_id": "8b686cab6a691abda85f293e"
+    }
+  },
+  "excluded_pair_ids": [
+    "AR--VN",
+    "KR--RU"
+  ],
+  "complete_pairs": 1223,
+  "results": [
+    {
+      "language": "fr",
+      "capital_ids": [
+        "CA",
+        "CD",
+        "FR",
+        "SN"
+      ],
+      "home_pairs": 190,
+      "other_pairs": 1033,
+      "home_english_MAE_km": 152.30254741647835,
+      "home_language_MAE_km": 157.30338935840945,
+      "other_english_MAE_km": 181.2481882342517,
+      "other_language_MAE_km": 175.22105399688508,
+      "home": {
+        "gain_km": -5.000841941931096,
+        "ci95_km": [
+          -12.433589348918696,
+          2.5451253068160966
+        ],
+        "p": 0.1966,
+        "p_holm_8": 0.4083
+      },
+      "other": {
+        "gain_km": 6.0271342373665995
+      },
+      "interaction": {
+        "gain_km": -11.027976179297692,
+        "ci95_km": [
+          -19.213243251067823,
+          -2.8372477881801537
+        ],
+        "p": 0.0099,
+        "p_holm_8": 0.0396
+      },
+      "analytic_se_km": [
+        3.8370284887641186,
+        1.5793464932865144,
+        4.149352114420262
+      ],
+      "bootstrap_se_km": [
+        3.8449658912041773,
+        1.5701897810649255,
+        4.15867004157615
+      ],
+      "median_estimate_home_gain_km": -4.062905628357694,
+      "leave_one_home_capital_out": {
+        "CA": {
+          "home_gain_km": -16.21132756117201,
+          "interaction_km": -22.238461798538594
+        },
+        "CD": {
+          "home_gain_km": -7.647617152081301,
+          "interaction_km": -13.674751389447904
+        },
+        "FR": {
+          "home_gain_km": -7.371832582578391,
+          "interaction_km": -13.39896681994498
+        },
+        "SN": {
+          "home_gain_km": 14.10765793133504,
+          "interaction_km": 8.080523693968425
+        }
+      }
+    },
+    {
+      "language": "es",
+      "capital_ids": [
+        "AR",
+        "CL",
+        "CO",
+        "ES",
+        "MX",
+        "PE"
+      ],
+      "home_pairs": 278,
+      "other_pairs": 945,
+      "home_english_MAE_km": 248.9801112043289,
+      "home_language_MAE_km": 231.6218642634968,
+      "other_english_MAE_km": 155.50305983101532,
+      "other_language_MAE_km": 162.66742464856137,
+      "home": {
+        "gain_km": 17.35824694083208,
+        "ci95_km": [
+          9.720182135637717,
+          25.13594584348811
+        ],
+        "p": 0.0001,
+        "p_holm_8": 0.0008
+      },
+      "other": {
+        "gain_km": -7.164364817546061
+      },
+      "interaction": {
+        "gain_km": 24.522611758378147,
+        "ci95_km": [
+          16.192987619426162,
+          32.78555981405337
+        ],
+        "p": 0.0001,
+        "p_holm_8": 0.0008
+      },
+      "analytic_se_km": [
+        3.9748356414303943,
+        1.5726544479435831,
+        4.274641550939924
+      ],
+      "bootstrap_se_km": [
+        3.9578517166019096,
+        1.5691646543679936,
+        4.244211064736379
+      ],
+      "median_estimate_home_gain_km": 23.934015008939788,
+      "leave_one_home_capital_out": {
+        "AR": {
+          "home_gain_km": 14.293486187354173,
+          "interaction_km": 21.457851004900256
+        },
+        "CL": {
+          "home_gain_km": 16.59335899650915,
+          "interaction_km": 23.757723814055225
+        },
+        "CO": {
+          "home_gain_km": 13.113919329509022,
+          "interaction_km": 20.278284147055075
+        },
+        "ES": {
+          "home_gain_km": 25.05501416704509,
+          "interaction_km": 32.21937898459118
+        },
+        "MX": {
+          "home_gain_km": 19.47352997524599,
+          "interaction_km": 26.637894792792068
+        },
+        "PE": {
+          "home_gain_km": 15.446470574087527,
+          "interaction_km": 22.61083539163361
+        }
+      }
+    },
+    {
+      "language": "ar",
+      "capital_ids": [
+        "DZ",
+        "EG",
+        "MA",
+        "SA"
+      ],
+      "home_pairs": 190,
+      "other_pairs": 1033,
+      "home_english_MAE_km": 157.56927691844004,
+      "home_language_MAE_km": 180.26545525001458,
+      "other_english_MAE_km": 180.27947709642717,
+      "other_language_MAE_km": 203.25625775833626,
+      "home": {
+        "gain_km": -22.696178331574533,
+        "ci95_km": [
+          -28.792998523752214,
+          -16.543018291462673
+        ],
+        "p": 0.0001,
+        "p_holm_8": 0.0008
+      },
+      "other": {
+        "gain_km": -22.97678066190908
+      },
+      "interaction": {
+        "gain_km": 0.28060233033453347,
+        "ci95_km": [
+          -6.680776191228911,
+          7.2251727544514095
+        ],
+        "p": 0.9379,
+        "p_holm_8": 0.9379
+      },
+      "analytic_se_km": [
+        3.0971716836038103,
+        1.7941512810331186,
+        3.5793087680374835
+      ],
+      "bootstrap_se_km": [
+        3.1045079887251563,
+        1.817567879540191,
+        3.5745854086052313
+      ],
+      "median_estimate_home_gain_km": -27.549351232059234,
+      "leave_one_home_capital_out": {
+        "DZ": {
+          "home_gain_km": -20.703616522213817,
+          "interaction_km": 2.273164139695258
+        },
+        "EG": {
+          "home_gain_km": -24.039800488886044,
+          "interaction_km": -1.0630198269769844
+        },
+        "MA": {
+          "home_gain_km": -23.84568575258745,
+          "interaction_km": -0.8689050906783903
+        },
+        "SA": {
+          "home_gain_km": -21.430302047720122,
+          "interaction_km": 1.5464786141889346
+        }
+      }
+    },
+    {
+      "language": "zh",
+      "capital_ids": [
+        "CN",
+        "SG"
+      ],
+      "home_pairs": 97,
+      "other_pairs": 1126,
+      "home_english_MAE_km": 126.50291771532606,
+      "home_language_MAE_km": 137.03919869396043,
+      "other_english_MAE_km": 181.07999949975692,
+      "other_language_MAE_km": 185.27374440771533,
+      "home": {
+        "gain_km": -10.53628097863439,
+        "ci95_km": [
+          -18.376690816669246,
+          -2.898716821043206
+        ],
+        "p": 0.0074,
+        "p_holm_8": 0.037000000000000005
+      },
+      "other": {
+        "gain_km": -4.1937449079584175
+      },
+      "interaction": {
+        "gain_km": -6.342536070675938,
+        "ci95_km": [
+          -14.862389531243299,
+          1.952849821534767
+        ],
+        "p": 0.1361,
+        "p_holm_8": 0.4083
+      },
+      "analytic_se_km": [
+        3.9419071330730744,
+        1.6441375607291653,
+        4.271044388012471
+      ],
+      "bootstrap_se_km": [
+        3.9606670301679925,
+        1.634784555995125,
+        4.303039662448504
+      ],
+      "median_estimate_home_gain_km": -9.703860941179329,
+      "leave_one_home_capital_out": {
+        "CN": {
+          "home_gain_km": 4.433446204798962,
+          "interaction_km": 8.62719111275739
+        },
+        "SG": {
+          "home_gain_km": -25.76301401578927,
+          "interaction_km": -21.56926910783077
+        }
+      }
+    }
+  ],
+  "bootstrap": "Resample independently within pair and language; centered deviations; sqrt(10/9) finite-sample variance correction; basic pointwise 95% intervals; two-sided Monte Carlo p; Holm across 8 tests (home gain and interaction for each of 4 languages).",
+  "classification": "Official national or co-official language, plus majority Spanish-language countries; fixed before inspecting local-language results. French operational group excludes Algeria/Morocco; bilingual Canada and Singapore included. No claim of monolingual cities.",
+  "script_sha256": "9951b0c3d5e690dc3477f4483492b901eee03085f98d7e87ccb43046eaa37b29"
+}

@@ -9,6 +9,10 @@ dependencies = [
 ]
 [dependency-groups]
 dev = ["pytest>=8,<9", "pytest-asyncio>=1,<2", "ruff>=0.12,<1"]
+paper = [
+    "matplotlib>=3.10,<4",
+    "pypdf>=6,<7",
+]
 [project.scripts]
 atlas = "atlas.cli:main"
 [build-system]

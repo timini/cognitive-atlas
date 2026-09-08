@@ -2,6 +2,14 @@
 
 A research website with a preserved 20-capital pilot, an expanded 50-capital three-model comparison, and controlled translated-prompt experiments that reconstructs the geographic geometry implied by Gemini's observable distance judgments. **CSV files, no database. No synthetic model measurements.**
 
+## Research paper
+
+The [LaTeX paper and compiled PDF](paper/README.md) report the completed experiments,
+conditional language comparisons, and exploratory local-language accuracy tests.
+All tables, figures, analysis code, and provenance are included. The paper is a
+research draft, not peer reviewed; its inference is conditional on the sampled
+capitals, prompt variants, and independent API responses.
+
 ## Run locally
 
 Requires Python 3.12, uv, and Node 22.13+ (Node 22.18+ for the built-in TypeScript tests).
@@ -86,7 +94,7 @@ Retry only HTTP 408/429/5xx and transport/timeouts, at most four attempts with e
 - Classical MDS is spectral; metric/non-metric MDS use four seeded starts. The 1–10 dimension curve reports distance-normalized residual stress. Non-metric stress uses fitted monotone disparities, so it is **not numerically interchangeable** with metric stress.
 - Spherical initialization is derived from the estimated matrix, never from true locations. Four optimization starts fit angular distances; only then is one global orthogonal transformation aligned to Earth's unit vectors. No individual geographic anchors enter fitting. Planar MDS is globally aligned to an explicitly labeled equirectangular reference, not confused with inferred latitude/longitude. A true-Earth dimensionality baseline is included in the JSON export.
 - Coastlines use a continuous piecewise-affine Delaunay field with fixed frame pins, densified boundaries and nearest longitude branches. It is illustrative interpolation, not evidence that the model believes a particular coastline. Foldovers are counted and displayed; continuity does not guarantee topology preservation. Inspect the capital-only view separately.
-- Bootstrap intervals resample observations **within a pair** (1,000 replicates, fixed analysis seed) for the mean. They are conditional on these ten observations; identical replies do not establish epistemic certainty. Positional bootstrap clouds, inferential model/language comparisons, ordinal triplet experiments and embedding-based semantic geography remain later research stages.
+- Bootstrap intervals resample observations **within a pair** (1,000 replicates, fixed analysis seed) for the mean. They are conditional on these ten observations; identical replies do not establish epistemic certainty. The paper adds conditional language inference and exploratory local-language accuracy tests. Positional bootstrap clouds, inferential model rankings, ordinal triplet experiments and embedding-based semantic geography remain later research stages.
 - Historical API behavior cannot be reproduced exactly on demand. Raw outputs and downstream computations are reproducible from saved artifacts. Every response stores Google's returned `modelVersion`; this API returned an alias rather than a more specific frozen checkpoint. Mixed returned versions are rejected for aggregate analysis.
 
 ## Validation

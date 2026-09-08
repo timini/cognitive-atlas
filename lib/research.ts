@@ -39,3 +39,11 @@ export function renderPrompt(template: string, a: Place, b: Place) {
   const values: Record<string,string> = {city_a: a.capital_name, country_a: a.country_name, city_b: b.capital_name, country_b: b.country_name};
   return template.replace(/\{(city_a|country_a|city_b|country_b)\}/g, (_, name: string) => values[name]);
 }
+
+export function experimentLabel(entry: ExperimentIndex) {
+  const model = entry.model_label ?? entry.model.replace('gemini-', 'Gemini ');
+  const language = languageNames[entry.language] ?? entry.language;
+  return entry.prompt_family
+    ? `${language} · ${model} · Language study · ${entry.capital_count ?? 20} capitals`
+    : `${model} · ${entry.capital_count ?? 20} capitals · ${language}`;
+}

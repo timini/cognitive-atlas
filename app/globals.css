@@ -161,3 +161,6 @@ html{scroll-behavior:smooth}button{cursor:pointer}button:focus-visible,a:focus-v
 .prompt-details {margin: 18px 0; padding: 14px 16px; border: 1px solid var(--border); border-radius: 10px; background: #0c1725;}
 .prompt-details summary {cursor: pointer; font-size: 13px; color: #bad99f;}
 .prompt-details p {margin: 14px 0 0; line-height: 1.8; font-size: 14px; color: #d2deed; overflow-wrap: anywhere; white-space: pre-wrap;}
+
+.choice {min-width: 0;}
+.choice [data-slot=select-value] {display: block; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}

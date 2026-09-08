@@ -1,0 +1,256 @@
+{
+  "seed": 20260909,
+  "permutations": 4999,
+  "model": "gemini-3.5-flash",
+  "sources": {
+    "en": {
+      "path": "public/data/d6bebef0249ad510ccd3d650-6b21e1546415d329/result.json",
+      "sha256": "aa80c57f8a8b3d645480b32f8d0f89005bbe5f5de1721367a389838805594934",
+      "experiment_id": "d6bebef0249ad510ccd3d650"
+    },
+    "fr": {
+      "path": "public/data/11369ef5efb4048d455b5758-e5a86d256b541c8d/result.json",
+      "sha256": "f54b1e28db5093fc328712f2c686e1ec0699cd8e8d0efae4168a4d9b74594470",
+      "experiment_id": "11369ef5efb4048d455b5758"
+    },
+    "es": {
+      "path": "public/data/c2cc0e6e7ac60dfb33665038-946564d3b9d522f9/result.json",
+      "sha256": "a43137002d44dec24e8e762089c5fec16ab36e16533aabcedf8f91458024e1d5",
+      "experiment_id": "c2cc0e6e7ac60dfb33665038"
+    },
+    "ar": {
+      "path": "public/data/c0a69444ce03b9cbe00f369b-0ef150296f812a32/result.json",
+      "sha256": "953321339fc675bc487eccbfe5ec2dc5e897093cb323abb9cb912d0d1f843a93",
+      "experiment_id": "c0a69444ce03b9cbe00f369b"
+    },
+    "zh": {
+      "path": "public/data/8b686cab6a691abda85f293e-b6bdf10cb4dc63de/result.json",
+      "sha256": "f359c60c631a2b2db64fa78733bc9b27d3642e8167cf3b46dcaeee709b5c3710",
+      "experiment_id": "8b686cab6a691abda85f293e"
+    }
+  },
+  "total_pairs": 1225,
+  "complete_pairs": 1223,
+  "excluded_pair_ids": [
+    "AR--VN",
+    "KR--RU"
+  ],
+  "method": "Conditional inference for saved language runs. No model calls or data mutations.\n\nNull: response distributions are exchangeable between languages within each fixed\ncapital pair. Sample numbers are NOT matched observations. Randomization pools\n20 observations per pair and assigns 10 to each language independently per pair.\nConditions are observational prompt variants, not randomly assigned treatments.\nInference assumes independent calls/exchangeability under the null; it does not\nsample new cities, prompts, days, or model versions. Complete-case primary analysis\nexcludes pairs lacking ten valid observations in ANY of the five languages.\nTwo statistics per comparison: absolute median-matrix disagreement (upper-tail),\nand absolute difference in median-based MAE (two-sided). Holm correct all 20 tests.\n",
+  "complete_pair_median_MAE_km": {
+    "en": 164.52547319538095,
+    "fr": 156.91616315312214,
+    "es": 166.54740730000216,
+    "ar": 185.40826029028742,
+    "zh": 165.22541969464166
+  },
+  "all_pairs_median_MAE_km": {
+    "en": 164.57572144257773,
+    "fr": 157.78299142283424,
+    "es": 167.39598047722959,
+    "ar": 186.84734636059187,
+    "zh": 165.24105578428856
+  },
+  "comparisons": [
+    {
+      "a": "en",
+      "b": "fr",
+      "mean_absolute_median_disagreement_km": 80.57237121831562,
+      "null_disagreement_mean_km": 43.63806624693704,
+      "null_disagreement_95pct_interval_km": [
+        40.43193622240393,
+        46.734436835650044
+      ],
+      "mae_difference_b_minus_a_km": -7.609310042258812,
+      "null_accuracy_difference_95pct_interval_km": [
+        -4.800047610640805,
+        4.915581552641205
+      ],
+      "judgment_p": 0.0002,
+      "accuracy_p": 0.002,
+      "all_pair_MAE_difference_b_minus_a_km": -6.7927300197434874,
+      "judgment_p_holm_20": 0.004,
+      "accuracy_p_holm_20": 0.01
+    },
+    {
+      "a": "en",
+      "b": "es",
+      "mean_absolute_median_disagreement_km": 88.99529026982829,
+      "null_disagreement_mean_km": 46.16261337958516,
+      "null_disagreement_95pct_interval_km": [
+        42.93566210139003,
+        49.49048753066231
+      ],
+      "mae_difference_b_minus_a_km": 2.0219341046212094,
+      "null_accuracy_difference_95pct_interval_km": [
+        -5.336003966755044,
+        5.122062458330461
+      ],
+      "judgment_p": 0.0002,
+      "accuracy_p": 0.4482,
+      "all_pair_MAE_difference_b_minus_a_km": 2.820259034651855,
+      "judgment_p_holm_20": 0.004,
+      "accuracy_p_holm_20": 1.0
+    },
+    {
+      "a": "en",
+      "b": "ar",
+      "mean_absolute_median_disagreement_km": 107.25572363041701,
+      "null_disagreement_mean_km": 51.36939325722871,
+      "null_disagreement_95pct_interval_km": [
+        47.112775960752245,
+        55.66572976287817
+      ],
+      "mae_difference_b_minus_a_km": 20.882787094906462,
+      "null_accuracy_difference_95pct_interval_km": [
+        -6.630175865687319,
+        6.673063489172802
+      ],
+      "judgment_p": 0.0002,
+      "accuracy_p": 0.0002,
+      "all_pair_MAE_difference_b_minus_a_km": 22.27162491801414,
+      "judgment_p_holm_20": 0.004,
+      "accuracy_p_holm_20": 0.004
+    },
+    {
+      "a": "en",
+      "b": "zh",
+      "mean_absolute_median_disagreement_km": 122.34685200327063,
+      "null_disagreement_mean_km": 55.011419934027685,
+      "null_disagreement_95pct_interval_km": [
+        51.1662551103843,
+        58.97400204415373
+      ],
+      "mae_difference_b_minus_a_km": 0.6999464992607045,
+      "null_accuracy_difference_95pct_interval_km": [
+        -6.317879770138058,
+        6.360477325346642
+      ],
+      "judgment_p": 0.0002,
+      "accuracy_p": 0.8322,
+      "all_pair_MAE_difference_b_minus_a_km": 0.6653343417108317,
+      "judgment_p_holm_20": 0.004,
+      "accuracy_p_holm_20": 1.0
+    },
+    {
+      "a": "fr",
+      "b": "es",
+      "mean_absolute_median_disagreement_km": 84.87134096484057,
+      "null_disagreement_mean_km": 43.4912527403273,
+      "null_disagreement_95pct_interval_km": [
+        40.57407849550287,
+        46.464259607522486
+      ],
+      "mae_difference_b_minus_a_km": 9.631244146880022,
+      "null_accuracy_difference_95pct_interval_km": [
+        -4.711485155529786,
+        4.939719975370162
+      ],
+      "judgment_p": 0.0002,
+      "accuracy_p": 0.0006,
+      "all_pair_MAE_difference_b_minus_a_km": 9.612989054395342,
+      "judgment_p_holm_20": 0.004,
+      "accuracy_p_holm_20": 0.004
+    },
+    {
+      "a": "fr",
+      "b": "ar",
+      "mean_absolute_median_disagreement_km": 114.70428454619787,
+      "null_disagreement_mean_km": 52.83724564536784,
+      "null_disagreement_95pct_interval_km": [
+        48.88261099754701,
+        56.78008421913328
+      ],
+      "mae_difference_b_minus_a_km": 28.492097137165274,
+      "null_accuracy_difference_95pct_interval_km": [
+        -6.459554535819757,
+        6.529498266684726
+      ],
+      "judgment_p": 0.0002,
+      "accuracy_p": 0.0002,
+      "all_pair_MAE_difference_b_minus_a_km": 29.064354937757628,
+      "judgment_p_holm_20": 0.004,
+      "accuracy_p_holm_20": 0.004
+    },
+    {
+      "a": "fr",
+      "b": "zh",
+      "mean_absolute_median_disagreement_km": 113.97273916598529,
+      "null_disagreement_mean_km": 53.99123609840529,
+      "null_disagreement_95pct_interval_km": [
+        49.799330948487324,
+        58.1044364268193
+      ],
+      "mae_difference_b_minus_a_km": 8.309256541519517,
+      "null_accuracy_difference_95pct_interval_km": [
+        -6.757127700156684,
+        6.666127047371342
+      ],
+      "judgment_p": 0.0002,
+      "accuracy_p": 0.0152,
+      "all_pair_MAE_difference_b_minus_a_km": 7.458064361454319,
+      "judgment_p_holm_20": 0.004,
+      "accuracy_p_holm_20": 0.0608
+    },
+    {
+      "a": "es",
+      "b": "ar",
+      "mean_absolute_median_disagreement_km": 111.23812755519214,
+      "null_disagreement_mean_km": 52.20735698161709,
+      "null_disagreement_95pct_interval_km": [
+        47.67602248569092,
+        56.47505846279641
+      ],
+      "mae_difference_b_minus_a_km": 18.860852990285252,
+      "null_accuracy_difference_95pct_interval_km": [
+        -6.510544055149549,
+        6.475699812375268
+      ],
+      "judgment_p": 0.0002,
+      "accuracy_p": 0.0002,
+      "all_pair_MAE_difference_b_minus_a_km": 19.451365883362286,
+      "judgment_p_holm_20": 0.004,
+      "accuracy_p_holm_20": 0.004
+    },
+    {
+      "a": "es",
+      "b": "zh",
+      "mean_absolute_median_disagreement_km": 132.86158626328702,
+      "null_disagreement_mean_km": 62.41121501896455,
+      "null_disagreement_95pct_interval_km": [
+        58.12037959934588,
+        66.75636222403924
+      ],
+      "mae_difference_b_minus_a_km": -1.3219876053605049,
+      "null_accuracy_difference_95pct_interval_km": [
+        -7.074796519708104,
+        7.318028061364767
+      ],
+      "judgment_p": 0.0002,
+      "accuracy_p": 0.7098,
+      "all_pair_MAE_difference_b_minus_a_km": -2.154924692941023,
+      "judgment_p_holm_20": 0.004,
+      "accuracy_p_holm_20": 1.0
+    },
+    {
+      "a": "ar",
+      "b": "zh",
+      "mean_absolute_median_disagreement_km": 133.5873998364677,
+      "null_disagreement_mean_km": 60.24466046766181,
+      "null_disagreement_95pct_interval_km": [
+        55.906053965658224,
+        64.56982869991825
+      ],
+      "mae_difference_b_minus_a_km": -20.182840595645757,
+      "null_accuracy_difference_95pct_interval_km": [
+        -6.589844537947231,
+        6.481907192513605
+      ],
+      "judgment_p": 0.0002,
+      "accuracy_p": 0.0002,
+      "all_pair_MAE_difference_b_minus_a_km": -21.60629057630331,
+      "judgment_p_holm_20": 0.004,
+      "accuracy_p_holm_20": 0.004
+    }
+  ],
+  "script_sha256": "ca4776aadba6ed077384fe58513a17e08e5cb383c910c3c4f9a2bd7785bfd4b0"
+}

@@ -6,6 +6,7 @@ or affiliation has been assigned; this is not a journal submission or a peer-rev
 
 The paper covers the 50-capital model comparison, the matched five-language
 Gemini 3.5 Flash study, and exploratory tests of a local-language advantage.
+Its input exports are frozen in `experiment-index.json`; later 100-capital cohorts do not alter this historical study.
 It does not claim a literal measurement of hidden model representations.
 
 ## Build the paper

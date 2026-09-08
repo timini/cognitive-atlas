@@ -9,7 +9,7 @@ from scipy.stats import pearsonr, spearmanr
 
 from atlas.data import digest
 from atlas.languages import ENTITY_NAME_POLICY, LANGUAGE_LABELS, PARSER_ID, PROMPTS, PROTOCOL_ID
-from atlas.reconstruct import RADIUS_KM, unit_vectors
+from atlas.reconstruct import RADIUS_KM, to_latlon, unit_vectors
 
 
 def compare_results(a, b, aggregation="median"):
@@ -27,6 +27,7 @@ def compare_results(a, b, aggregation="median"):
     rb = b["layers"][aggregation]["reconstructions"]["spherical"]
     xa, xb = unit_vectors(ra["inferred_latlon"]), unit_vectors(rb["inferred_latlon"])
     rotation, _ = orthogonal_procrustes(xb, xa)
+    aligned_latlon = to_latlon(xb @ rotation)
     displacement = RADIUS_KM * np.arccos(np.clip(np.sum(xa * (xb @ rotation), axis=1), -1, 1))
     return {"model_a": a["experiment"]["model"], "model_b": b["experiment"]["model"],
             "experiment_a": a["experiment"]["id"], "experiment_b": b["experiment"]["id"],
@@ -35,7 +36,11 @@ def compare_results(a, b, aggregation="median"):
             "spearman": float(spearmanr(x, y).statistic),
             "mean_absolute_distance_disagreement_km": float(np.abs(x - y).mean()),
             "mean_aligned_map_displacement_km": float(displacement.mean()),
-            "max_aligned_map_displacement_km": float(displacement.max())}
+            "max_aligned_map_displacement_km": float(displacement.max()),
+            "capital_displacements": [{"place_id": p["id"], "capital_name": p["capital_name"],
+                "true_latlon": [p["latitude"], p["longitude"]],
+                "source_inferred_latlon": ra["inferred_latlon"][i], "target_aligned_latlon": aligned_latlon[i].tolist(),
+                "displacement_km": float(displacement[i])} for i, p in enumerate(a["places"])]}
 
 
 def language_condition(result):

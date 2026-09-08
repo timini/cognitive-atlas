@@ -45,7 +45,9 @@ const origin = `http://127.0.0.1:${server.address().port}`;
 try {
   assert.equal((await fetch(origin + base)).status, 200);
   const index = await (await fetch(origin + base + 'data/experiments.json')).json();
-  assert.equal(index.length, 9);
+  const sourceIndex = JSON.parse(await readFile('public/data/experiments.json', 'utf8'));
+  assert.deepEqual(index, sourceIndex);
+  assert(index.length >= 9, 'Historical experiments must remain published');
   const languages = new Set();
   for (const entry of index) {
     const response = await fetch(origin + base + entry.url.replace(/^\//, ''));
@@ -57,9 +59,21 @@ try {
   }
   assert.deepEqual([...languages].sort(), ['ar','en','es','fr','zh']);
   const comparison = await (await fetch(origin + base + 'data/comparisons.json')).json();
-  assert.equal(comparison.language_cohorts.length, 1);
+  const sourceComparison = JSON.parse(await readFile('public/data/comparisons.json', 'utf8'));
+  assert.deepEqual(comparison, sourceComparison);
+  assert(comparison.language_cohorts.length >= 1);
+  const inferenceResponse = await fetch(origin + base + 'data/language-inference.json');
+  assert.equal(inferenceResponse.status, 200);
+  const inference = await inferenceResponse.json();
+  const exportIds = new Set(index.map(e => e.id));
+  for (const cohort of inference.cohorts) {
+    assert(cohort.export_ids.every(id => exportIds.has(id)));
+    const audit = await fetch(origin + base + cohort.report_url.replace(/^\//, ''));
+    assert.equal(audit.status, 200);
+    assert.equal((await audit.json()).complete_pairs, cohort.complete_pairs);
+  }
   for (const ref of references) assert.equal((await fetch(origin + ref)).status, 200);
-  console.log(`Verified ${files} static files, all 9 experiments, 5 languages, CSV downloads, comparison data, and project-prefixed assets.`);
+  console.log(`Verified ${files} static files, ${index.length} experiments, ${languages.size} languages, CSV downloads, comparison data, and project-prefixed assets.`);
 } finally {
   server.closeAllConnections();
   await new Promise(resolve => server.close(resolve));

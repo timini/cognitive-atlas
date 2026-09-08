@@ -43,7 +43,7 @@ assert split[:, :10].shape == split[:, 10:].shape == (3, 10)
 
 results = {}
 sources = {}
-for entry in json.loads(Path("public/data/experiments.json").read_text()):
+for entry in json.loads(Path("paper/experiment-index.json").read_text()):
     path = Path("public") / entry["url"].lstrip("/")
     content = path.read_bytes()
     r = json.loads(content)

@@ -49,7 +49,34 @@ uv run python -m scripts.analyze_group runs/languages-50-v2.json
 
 The group uses a shared limit of 2,400 requests/minute across languages, with per-run caps of 900/minute. A rate-limit response pauses shared dispatch and halves the rate at most once per minute. The recorded ceiling is $15 per language; successful attempts reconcile reservations to token usage. The output-ceiling estimate is conservative and can exceed the budget; the runner stops if its actual/reserved spending reaches that budget. These jobs run locally, not on the hosted website.
 
-Language comparison cohorts require identical datasets, model and returned version, generation settings, sampling strategy, parser, prompt family, and analysis settings. The comparison table reports descriptive errors and map displacement after one global spherical alignment. It does not claim statistical significance or isolate language from the wording of these particular translations.
+Language comparison cohorts require identical datasets, model and returned version, generation settings, sampling strategy, parser, prompt family, and analysis settings. The comparison table reports descriptive errors and map displacement after one global spherical alignment. A separate evidence panel reports conditional within-pair permutation tests on median distance judgments, with complete-case filtering and Holm correction. Those tests do not establish a change in map shape or isolate language from the wording of these particular translations.
+
+## 100-capital expansion
+
+`data/capitals-100-v3.csv` preserves the original 50 records and adds 50 reviewed
+national capitals across all inhabited continents. Capital choices, source hashes,
+and the purposive selection rule are in `data/capitals-100-v3.sources.json`.
+The expanded matched study collects English, Arabic and Mandarin Chinese using
+the same Gemini 3.5 Flash settings and prompt family: 4,950 pairs × 10 answers
+× 3 languages = **148,500 planned independent responses**. French and Spanish
+remain available in the historical 50-capital cohort.
+
+```sh
+uv run python scripts/run_languages.py prepare --group runs/languages-100-v3.json --dataset data/capitals-100-v3.csv --languages en ar zh --budget 15
+uv run python scripts/run_languages.py run --group runs/languages-100-v3.json
+uv run python scripts/analyze_group.py runs/languages-100-v3.json
+# Explicitly choose the three NEW result.json paths printed by export:
+uv run python scripts/audit_language_group.py public/data/EN_EXPORT/result.json public/data/AR_EXPORT/result.json public/data/ZH_EXPORT/result.json
+uv run python scripts/export_language_inference.py
+```
+
+The $15 cap is **per language**. At the earlier observed usage, three runs are
+expected to cost approximately $24 altogether; the conservative output-ceiling
+estimate is higher. No run may spend past its own recorded reservation ceiling.
+Do not recreate a group to resume it. The 100-capital inference uses 4,999
+within-pair permutations and corrects its own six-test family (three language
+comparisons × judgment-disagreement and MAE-contrast statistics). It is a separate
+cohort from the paper's 20-test family. All historical paper inputs are pinned.
 
 ## Architecture
 
@@ -65,7 +92,8 @@ Language comparison cohorts require identical datasets, model and returned versi
 | `atlas/deformation.py` | Delaunay deformation and triangle foldover diagnostics |
 | `atlas/analysis.py` | Versioned analysis artifacts and immutable web exports |
 | `atlas/comparison.py` | Same-dataset cohorts, distance correlations and globally aligned model-to-model map displacement |
-| `app/`, `components/atlas-map.tsx` | React/Vinext exploration UI hosted on Cloudflare through Sites |
+| `atlas/inference.py` | Reproducible conditional language tests for explicit matched export cohorts |
+| `app/`, `components/atlas-map.tsx` | React/Vinext exploration UI; static GitHub Pages deployment |
 
 The website serves precomputed files. There is no API key, live query endpoint, server database, database service, or background model job in the deployed site. The Python runner operates on your computer. Static JSON exports act as the read API; individual CSVs remain downloadable evidence. New exported experiments appear in a manifest-driven selector after the next deployment.
 

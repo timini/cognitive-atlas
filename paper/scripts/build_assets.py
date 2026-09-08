@@ -41,7 +41,7 @@ def main():
     runs = {}
     models = []
     provenance = []
-    for entry in json.loads((ROOT / "public/data/experiments.json").read_text()):
+    for entry in json.loads((PAPER / "experiment-index.json").read_text()):
         path = ROOT / "public" / entry["url"].lstrip("/")
         raw = path.read_bytes()
         r = json.loads(raw)

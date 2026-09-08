@@ -164,3 +164,15 @@ html{scroll-behavior:smooth}button{cursor:pointer}button:focus-visible,a:focus-v
 
 .choice {min-width: 0;}
 .choice [data-slot=select-value] {display: block; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+
+/* Measured language effect sizes, separate from cartographic interpolation. */
+.language-evidence{margin:24px 0;padding-top:24px;border-top:1px solid var(--border)}
+.evidence-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.evidence-heading h3{font-size:1.1rem;margin:0}.evidence-heading label{font-size:.8rem;color:#a8b4c0}
+.evidence-heading select{margin-left:8px;background:#14232e;color:#f4f7f9;border:1px solid #41515b;border-radius:6px;padding:8px}
+.evidence-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:20px 0}
+.evidence-cards>div{background:#14212b;border:1px solid #30404b;border-radius:10px;padding:18px}
+.evidence-cards span{display:block;font-size:.8rem;color:#b4c2cd}.evidence-cards strong{display:block;font-size:1.9rem;margin:8px 0;color:#d3f5b7;font-weight:500}.evidence-cards small{font-size:.8rem}.evidence-cards p{font-size:.78rem;line-height:1.6;margin:0;color:#b4c2cd}
+.capital-differences summary{cursor:pointer;color:#d3f5b7;font-size:.9rem}.capital-differences ol{list-style:none;padding:0;max-width:720px}.capital-differences li{display:grid;grid-template-columns:minmax(100px,1fr) minmax(60px,2fr) 70px;gap:14px;align-items:center;margin:12px 0;font-size:.8rem}.capital-differences meter{width:100%;height:10px;accent-color:#aaf078}.capital-differences b{text-align:right;font-weight:400}
+.language-evidence .small-note a{color:#c7eeb1;text-decoration:underline}
+@media(max-width:760px){.evidence-cards{grid-template-columns:1fr}.evidence-heading label{display:flex;align-items:center}.evidence-cards strong{font-size:1.6rem}}

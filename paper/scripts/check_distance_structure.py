@@ -9,7 +9,7 @@ from scipy.stats import rankdata, spearmanr
 
 SEED, PERMUTATIONS = 20260908, 9999
 reports = []
-for entry in json.loads(Path("public/data/experiments.json").read_text()):
+for entry in json.loads(Path("paper/experiment-index.json").read_text()):
     if entry.get("capital_count") != 50:
         continue
     result = json.loads((Path("public") / entry["url"].lstrip("/")).read_text())

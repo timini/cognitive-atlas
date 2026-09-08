@@ -41,3 +41,16 @@ def test_analytic_jacobian_matches_independent_finite_difference():
         step[k] = 1e-6
         numeric.append((residual(angles + step) - residual(angles - step)) / 2e-6)
     assert np.allclose(angular_jacobian(angles).toarray(), np.array(numeric).T, atol=1e-8)
+
+
+def test_map_comparison_removes_arbitrary_global_rotation():
+    from atlas.reconstruct import to_latlon
+    a = pilot()
+    b = copy.deepcopy(a)
+    original = b['layers']['median']['reconstructions']['spherical']['inferred_latlon']
+    rotation = np.array([[0., -1., 0.], [1., 0., 0.], [0., 0., 1.]])
+    b['layers']['median']['reconstructions']['spherical']['inferred_latlon'] = to_latlon(unit_vectors(original) @ rotation).tolist()
+    result = compare_results(a, b)
+    assert result['max_aligned_map_displacement_km'] < .001
+    assert len(result['capital_displacements']) == len(a['places'])
+    assert all(c['displacement_km'] < .001 for c in result['capital_displacements'])

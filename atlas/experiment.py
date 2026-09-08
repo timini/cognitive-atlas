@@ -1,0 +1,74 @@
+import importlib.metadata
+import json
+import platform
+import subprocess
+from datetime import datetime, timezone
+from pathlib import Path
+
+from atlas.data import digest, generate_pairs, load_places, write_csv
+
+PROMPTS = {
+    "en": "Estimate the straight-line great-circle distance in kilometres between {city_a}, {country_a} and {city_b}, {country_b}. Return only your best numerical estimate in kilometres. Do not explain your reasoning.",
+    "fr": "Estimez la distance à vol d’oiseau, suivant un grand cercle, en kilomètres entre {city_a}, {country_a} et {city_b}, {country_b}. Répondez uniquement par votre meilleure estimation numérique en kilomètres, sans expliquer votre raisonnement.",
+}
+
+
+def utcnow():
+    return datetime.now(timezone.utc).isoformat()
+
+
+def prompt_for(manifest, pair, places):
+    a, b = places[pair["place_a_id"]], places[pair["place_b_id"]]
+    return manifest["prompt_template"].format(city_a=a["capital_name"], country_a=a["country_name"],
+                                               city_b=b["capital_name"], country_b=b["country_name"])
+
+
+def create_experiment(dataset, root="runs", samples=10, model="gemini-2.5-flash-lite",
+                      language="en", temperature=1.0, max_cost=1.0, rpm=120, concurrency=4,
+                      prompt_template=None, provider="google", max_attempts=4):
+    if not 1 <= samples <= 1000 or not 0 < max_cost or rpm <= 0 or concurrency < 1 or max_attempts < 1:
+        raise ValueError("Invalid experiment limits")
+    places = load_places(dataset)
+    try:
+        revision = subprocess.check_output(["git", "rev-parse", "HEAD"], stderr=subprocess.DEVNULL).decode().strip()
+    except subprocess.CalledProcessError:
+        revision = "uncommitted"
+    config = {"schema_version": 1, "name": "Capital distance pilot", "provider": provider,
+              "model": model, "requested_model_version": model, "language": language,
+              "prompt_template": prompt_template or PROMPTS[language], "sampling_count": samples,
+              "parameters": {"temperature": temperature, "top_p": 0.95, "max_tokens": 32,
+                             "thinking_budget": 0, "seed": None, "system_prompt": ""},
+              "dataset_sha256": digest(places), "dataset_file": Path(dataset).name,
+              "sampling_strategy": "independent_single_turn_unordered_pairs_fixed_id_order",
+              "created_at": utcnow(), "code_revision": revision,
+              "software": {"python": platform.python_version(), **{
+                  p: importlib.metadata.version(p) for p in ["numpy", "scipy", "scikit-learn", "geographiclib"]}},
+              "execution": {"max_cost_usd": max_cost, "requests_per_minute": rpm,
+                            "concurrency": concurrency, "max_attempts": max_attempts,
+                            "retry_policy": "Retry transport/408/429/5xx only; invalid content is terminal"},
+              "pricing": {"input_per_million_usd": 0.10, "output_per_million_usd": 0.40,
+                          "source": "https://ai.google.dev/gemini-api/docs/pricing",
+                          "checked_at": utcnow(), "billing_note": "Token-based estimate, not an invoice; verify rates for custom models"}}
+    if model != "gemini-2.5-flash-lite" or provider != "google":
+        raise ValueError("Supply verified pricing in a new condition before enabling another model")
+    config["id"] = digest(config)[:24]
+    directory = Path(root) / config["id"]
+    directory.mkdir(parents=True, exist_ok=False)
+    with (directory / "manifest.json").open("x") as f:
+        json.dump(config, f, indent=2, ensure_ascii=False)
+    write_csv(directory / "places.csv", places)
+    write_csv(directory / "pairs.csv", generate_pairs(places))
+    return directory
+
+
+def estimate(manifest, places, pairs):
+    prompts = [prompt_for(manifest, p, {v["id"]: v for v in places}) for p in pairs]
+    calls = len(pairs) * manifest["sampling_count"]
+    # Estimate at four characters/token; ceiling conservatively uses UTF-8 bytes/token.
+    tokens = sum(len(p.encode()) / 4 for p in prompts) * manifest["sampling_count"]
+    output = calls * manifest["parameters"]["max_tokens"]
+    pricing = manifest["pricing"]
+    cost = (tokens * pricing["input_per_million_usd"] + output * pricing["output_per_million_usd"]) / 1e6
+    return {"capitals": len(places), "pairs": len(pairs), "calls": calls,
+            "estimated_input_tokens": round(tokens), "maximum_output_tokens": output,
+            "estimated_cost_usd": cost, "budget_usd": manifest["execution"]["max_cost_usd"]}

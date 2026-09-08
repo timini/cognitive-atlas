@@ -1,0 +1,23 @@
+[project]
+name = "cognitive-atlas"
+version = "0.1.0"
+description = "Reproducible, file-based experiments in elicited geographic geometry"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+  "numpy>=2.2,<3", "scipy>=1.15,<2", "scikit-learn>=1.6,<1.8",
+  "geographiclib>=2.0,<3", "httpx>=0.28,<1", "python-dotenv>=1.1,<2",
+]
+[dependency-groups]
+dev = ["pytest>=8,<9", "pytest-asyncio>=1,<2", "ruff>=0.12,<1"]
+[project.scripts]
+atlas = "atlas.cli:main"
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+[tool.ruff]
+line-length = 110
+[tool.hatch.build.targets.wheel]
+packages = ["atlas"]

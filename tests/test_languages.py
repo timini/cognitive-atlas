@@ -1,4 +1,5 @@
 import json
+from pathlib import Path
 from string import Formatter
 
 import pytest
@@ -55,3 +56,24 @@ async def test_runner_uses_recorded_parser(tmp_path):
             return Reply('1,234', {'fixture': True}, 20, 2, 'test', 1, 'STOP')
     await run(directory, Provider())
     assert history(directory)[0]['quality'] == 'invalid_numeric_format'
+
+
+def test_language_cohort_excludes_original_english_and_changed_settings():
+    import copy
+
+    from atlas.comparison import language_condition
+    from atlas.data import digest
+
+    entry = next(e for e in json.loads(Path('public/data/experiments.json').read_text())
+                 if e['model'] == 'gemini-3.5-flash' and not e.get('prompt_family'))
+    result = json.loads((Path('public') / entry['url'].lstrip('/')).read_text())
+    assert language_condition(result) is None
+    result['experiment'].update(prompt_family=PROTOCOL_ID, response_parser=PARSER_ID,
+                                entity_name_policy=ENTITY_NAME_POLICY, language='en', prompt_template=PROMPTS['en'])
+    translated = copy.deepcopy(result)
+    translated['experiment'].update(language='ar', prompt_template=PROMPTS['ar'])
+    assert language_condition(translated) == language_condition(result)
+    translated['experiment']['parameters']['temperature'] = .5
+    assert digest(language_condition(translated)) != digest(language_condition(result))
+    translated['experiment']['prompt_template'] += ' extra instruction'
+    assert language_condition(translated) is None

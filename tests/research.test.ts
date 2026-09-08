@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import {test} from 'node:test';
-import {histogram, interpolate, pathFor, formatNumber} from '../lib/research.ts';
+import {histogram, interpolate, pathFor, formatNumber, renderPrompt, type Place} from '../lib/research.ts';
 
 test('histogram preserves every sample including the upper boundary',()=>{
   const bins=histogram([100,100,200,300,400,500]);
@@ -21,4 +21,11 @@ test('missing statistics do not render as zero',()=>{
   assert.equal(formatNumber(null),'—');
   assert.equal(formatNumber(Number.NaN),'—');
   assert.equal(formatNumber(0),'0');
+});
+
+test('translated prompt inspection preserves canonical names and pair order',()=>{
+  const a={capital_name:'Brasília', country_name:'Brazil'} as Place;
+  const b={capital_name:'Tokyo', country_name:'Japan'} as Place;
+  const template='بين {city_a}، {country_a} و{city_b}، {country_b}. استخدم الأرقام 0–9.';
+  assert.equal(renderPrompt(template,a,b),'بين Brasília، Brazil وTokyo، Japan. استخدم الأرقام 0–9.');
 });

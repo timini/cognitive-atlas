@@ -157,3 +157,7 @@ html{scroll-behavior:smooth}button{cursor:pointer}button:focus-visible,a:focus-v
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 
 .model-comparison{margin:28px 36px}.model-comparison>p{font-size:14px}.model-comparison [data-slot=table]{margin:20px 0;font-size:14px}.model-comparison [data-slot=table-cell],.model-comparison [data-slot=table-head]{padding:15px 12px}.model-link{display:flex;align-items:center;gap:10px;color:#c6f4a5;background:none;border:0;text-align:left}.comparison-download{font-size:13px;color:#aaf078}.model-comparison [data-slot=table-row][data-state=selected]{background:#1c302b}@media(max-width:700px){.model-comparison{margin:18px 12px}}
+
+.prompt-details {margin: 18px 0; padding: 14px 16px; border: 1px solid var(--border); border-radius: 10px; background: #0c1725;}
+.prompt-details summary {cursor: pointer; font-size: 13px; color: #bad99f;}
+.prompt-details p {margin: 14px 0 0; line-height: 1.8; font-size: 14px; color: #d2deed; overflow-wrap: anywhere; white-space: pre-wrap;}

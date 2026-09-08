@@ -139,6 +139,12 @@ def analyze(directory, seed=42, bootstrap=1000):
                               "Coastline deformation is illustrative and may fold; inspect raw capitals.",
                               "Identical answers at this sampling condition do not establish epistemic certainty.",
                               "Pair bootstrap intervals condition on observed samples; no positional confidence ellipses are claimed."]}
+    if manifest.get("prompt_family"):
+        result["limitations"].extend([
+            "Instruction language changes while canonical English entity names remain fixed.",
+            "Translations are assistant-authored; independent native-speaker validation has not been performed.",
+            "The language study uses a shared numeric-format rule and a fresh matched English baseline.",
+            "Language comparisons are descriptive and can reflect translation effects; no causal or significance claim."])
     (out / "result.json").write_text(json.dumps(result, ensure_ascii=False, allow_nan=False, separators=(",", ":")))
     return out
 
@@ -160,6 +166,8 @@ def export(directory, analysis_dir, public="public/data"):
     item = {"id": name, "model": result["experiment"]["model"], "language": result["experiment"]["language"],
             "model_label": result["experiment"].get("model_label", result["experiment"]["model"]),
             "capital_count": len(result["places"]), "sample_count": result["experiment"]["sampling_count"],
+            "language_label": result["experiment"].get("language_label", result["experiment"]["language"]),
+            "prompt_family": result["experiment"].get("prompt_family"),
             "dataset_sha256": result["experiment"]["dataset_sha256"],
             "created_at": result["experiment"]["created_at"], "url": f"/data/{name}/result.json"}
     if not any(x["id"] == name for x in index):

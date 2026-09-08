@@ -1,6 +1,6 @@
 # Cognitive Atlas
 
-A research website with a preserved 20-capital pilot and an expanded 50-capital, three-model comparison that reconstructs the geographic geometry implied by Gemini's observable distance judgments. **CSV files, no database. No synthetic model measurements.**
+A research website with a preserved 20-capital pilot, an expanded 50-capital three-model comparison, and controlled translated-prompt experiments that reconstructs the geographic geometry implied by Gemini's observable distance judgments. **CSV files, no database. No synthetic model measurements.**
 
 ## Run locally
 
@@ -24,6 +24,23 @@ npm run dev
 ```
 
 The second `run` resumes the same immutable condition. It does not repeat completed samples. Use a new experiment for another model condition, language, prompt, or date. A dataset CSV with more reviewed capitals uses exactly the same runner; 195 capitals × 10 samples produces 189,150 calls. Do not run that global condition until its input dataset and budget are reviewed.
+
+## Controlled language comparison
+
+The language study uses **Gemini 3.5 Flash**, 50 capitals, all 1,225 unordered pairs, and ten independent responses per pair. French, Spanish, Arabic and Mandarin Chinese instructions are compared with a newly collected English baseline: 61,250 planned samples. Canonical city/country names remain unchanged. This tests instruction language, not localized entity names.
+
+All five prompts use `great-circle-formatted-number-v2`: the original great-circle question plus a translated instruction to use digits 0–9, a period for decimals, and no grouping separators or units. The `ascii_decimal_v2` parser enforces that rule identically in every language, preserving violations as invalid observations instead of silently changing their magnitude. Earlier English runs remain separate because they did not include this format instruction. Exact translations are in `atlas/languages.py`, each immutable manifest, and the website's pair explorer. They are assistant-authored; independent native-speaker validation has not been performed.
+
+```sh
+uv run python -m scripts.run_languages prepare
+uv run python -m scripts.run_languages run --max-jobs 4
+uv run python -m scripts.run_languages run
+# Repeating run resumes existing CSV checkpoints; do not prepare a second group.
+```
+
+The group uses a shared limit of 2,400 requests/minute across languages, with per-run caps of 900/minute. A rate-limit response pauses shared dispatch and halves the rate at most once per minute. The recorded ceiling is $15 per language; successful attempts reconcile reservations to token usage. The output-ceiling estimate is conservative and can exceed the budget; the runner stops if its actual/reserved spending reaches that budget. These jobs run locally, not on the hosted website.
+
+Language comparison cohorts require identical datasets, model and returned version, generation settings, sampling strategy, parser, prompt family, and analysis settings. The comparison table reports descriptive errors and map displacement after one global spherical alignment. It does not claim statistical significance or isolate language from the wording of these particular translations.
 
 ## Architecture
 

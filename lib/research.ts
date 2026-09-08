@@ -15,12 +15,12 @@ export interface Layer {
   mesh: {foldovers: number; source: XY[]; target: XY[]; triangles: number[][]};
 }
 export interface Research {
-  experiment: {id: string; model: string; model_label?: string; provider: string; created_at: string; language: string; sampling_count: number; prompt_template: string; parameters: {temperature: number; top_p: number; max_tokens: number; thinking_budget?: number; thinking_level?: string}; dataset_sha256: string; code_revision: string; sampling_strategy: string};
+  experiment: {id: string; model: string; model_label?: string; provider: string; created_at: string; language: string; language_label?: string; prompt_family?: string; sampling_count: number; prompt_template: string; parameters: {temperature: number; top_p: number; max_tokens: number; thinking_budget?: number; thinking_level?: string}; dataset_sha256: string; code_revision: string; sampling_strategy: string};
   analysis_id: string; places: Place[]; pairs: Pair[]; layers: Record<Aggregation, Layer>;
   quality: {attempts: number; valid: number; invalid_attempts: number; estimated_cost_usd: number};
   limitations: string[];
 }
-export interface ExperimentIndex {id: string; model: string; model_label?: string; capital_count?: number; language: string; created_at: string; url: string}
+export interface ExperimentIndex {id: string; model: string; model_label?: string; capital_count?: number; language: string; language_label?: string; prompt_family?: string; created_at: string; url: string}
 export const formatNumber = (n: number | null | undefined, digits = 0) => n == null || !Number.isFinite(n) ? '—' : new Intl.NumberFormat('en-GB', {maximumFractionDigits: digits}).format(n);
 export const interpolate = (a: XY, b: XY, t: number): XY => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t];
 export const pathFor = (ring: XY[], target: XY[], t: number) => 'M' + ring.map((p,i) => interpolate(p, target[i], t).map(v => v.toFixed(3)).join(',')).join('L') + 'Z';
@@ -32,4 +32,10 @@ export function histogram(samples: number[], count = 5) {
   const bins = Array.from({length: count}, (_,i) => ({low: min + i * width, high: min + (i+1) * width, count: 0}));
   for (const x of samples) bins[Math.min(count - 1, Math.floor((x - min) / width))].count++;
   return bins;
+}
+
+export const languageNames: Record<string, string> = {en: 'English', fr: 'French', es: 'Spanish', ar: 'Arabic', zh: 'Mandarin Chinese'};
+export function renderPrompt(template: string, a: Place, b: Place) {
+  const values: Record<string,string> = {city_a: a.capital_name, country_a: a.country_name, city_b: b.capital_name, country_b: b.country_name};
+  return template.replace(/\{(city_a|country_a|city_b|country_b)\}/g, (_, name: string) => values[name]);
 }

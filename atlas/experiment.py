@@ -40,6 +40,8 @@ def create_experiment(dataset, root="runs", samples=10, model="gemini-2.5-flash-
         raise ValueError("Unknown prompt protocol")
     if protocol != "legacy" and (language not in languages.PROMPTS or prompt_template is not None):
         raise ValueError("Use a registered translation for the language protocol")
+    if protocol == "legacy" and prompt_template is None and language not in PROMPTS:
+        raise ValueError("Choose the translated prompt protocol for this language")
     profile = MODEL_PROFILES[model]
     try:
         revision = subprocess.check_output(["git", "rev-parse", "HEAD"], stderr=subprocess.DEVNULL).decode().strip()

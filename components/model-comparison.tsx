@@ -16,7 +16,7 @@ export default function ModelComparison({selected,aggregation,onSelect,dimension
  const baseline=cohort.models.find(m=>m.language==='en');
  return <section className="panel model-comparison">
   <div className="panel-heading"><div><span className="kicker">{language?'Same model. Different prompt languages.':'Same capitals. Different models.'}</span><h2>{language?'Does language change the map?':'Compare the reconstructed worlds'}</h2></div><span className="pill">{cohort.capital_count} capitals each</span></div>
-  <p>{language?`${cohort.model_label}. Same model version, settings, capitals and sampling depth. Click a language to explore its map.`:'Same prompt, language, sample count and entity set. Click a model to explore its map.'}</p>
+  <p>{language?`${cohort.model_label}. Same reported model version, settings, capitals and sampling depth. Click a language to explore its map.`:'Same prompt, language, sample count and entity set. Click a model to explore its map.'}</p>
   <Table><TableHeader><TableRow><TableHead>{language?'Prompt language':'Model'}</TableHead><TableHead>Mean error</TableHead><TableHead>Rank correlation</TableHead><TableHead>Triangle violations</TableHead><TableHead>Spherical stress</TableHead>{language&&<><TableHead>Map shift vs English</TableHead><TableHead>Valid responses</TableHead></>}</TableRow></TableHeader><TableBody>{cohort.models.map(m=>{
    const s=m.aggregations[aggregation];
    const comparison=cohort.pairwise.find(p=>p.aggregation===aggregation&&[p.experiment_a,p.experiment_b].includes(m.experiment_id)&&[p.experiment_a,p.experiment_b].includes(baseline?.experiment_id??''));

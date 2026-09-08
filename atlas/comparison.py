@@ -97,7 +97,7 @@ def export_comparisons(public="public/data"):
     result = {"schema_version": 2, "cohorts": list(cohorts.values()),
               "language_cohorts": list(language_cohorts.values()),
               "note": "Descriptive comparisons. Gemini 2.5 thinking budget 0 and Gemini 3 minimal thinking are different controls; minimal does not guarantee zero thinking.",
-              "language_note": "Same model version, generation settings, entities, parser and prompt family. Only instruction language changes. Translations were assistant-authored, without independent native-speaker validation. English is a freshly collected matched-format baseline, separate from earlier experiments. Differences include possible translation effects; no significance claim."}
+              "language_note": "Same reported model version, generation settings, entities, parser and prompt family. Only instruction language changes. Translations were assistant-authored, without independent native-speaker validation. English is a freshly collected matched-format baseline, separate from earlier experiments. Differences include possible translation effects; no significance claim."}
     target = public / "comparisons.json"
     tmp = target.with_suffix(".tmp")
     tmp.write_text(json.dumps(result, indent=2, allow_nan=False))

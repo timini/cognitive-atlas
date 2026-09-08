@@ -12,11 +12,11 @@ class ParseResult:
 
 def parse_distance(raw):
     text = raw.strip()
-    if re.search(r"\b(miles?|mi|metres?|meters?)\b", text, re.I):
+    if re.search(r"\b(miles?|mi|metres?|meters?)\b", text, re.IGNORECASE):
         return ParseResult(None, "wrong_units")
     # English thousands separators only. Decimal commas need a separate protocol.
     pattern = r"[+\-]?(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?(?:[eE][+\-]?\d+)?"
-    match = re.fullmatch(pattern + r"\s*(?:km|kilometres|kilometers)?", text, re.I)
+    match = re.fullmatch(pattern + r"\s*(?:km|kilometres|kilometers)?", text, re.IGNORECASE)
     if not match:
         count = len(re.findall(r"\d+(?:\.\d+)?", text))
         return ParseResult(None, "multiple_numbers" if count > 1 else "non_numeric")

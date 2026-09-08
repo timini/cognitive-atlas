@@ -17,6 +17,7 @@ from atlas.data import digest, read_csv
 from atlas.experiment import prompt_for, utcnow
 from atlas.parsing import parse_distance
 from atlas.providers import PROVIDERS, ProviderError
+from atlas.validation import validate_inputs
 
 FIELDS = ["response_id", "experiment_id", "pair_id", "sample_number", "attempt", "timestamp",
           "prompt", "raw_response", "parsed_distance_km", "quality", "terminal", "retryable",
@@ -56,6 +57,9 @@ def progress(directory):
 
 async def run(directory, provider=None, max_jobs=None):
     directory = Path(directory)
+    validate_inputs(directory)
+    if max_jobs is not None and max_jobs < 0:
+        raise ValueError("max_jobs must be nonnegative")
     manifest = json.loads((directory / "manifest.json").read_text())
     places_list = read_csv(directory / "places.csv")
     places = {p["id"]: p for p in places_list}

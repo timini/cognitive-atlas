@@ -1,5 +1,6 @@
 import json
 import shutil
+from itertools import pairwise
 from pathlib import Path
 
 import numpy as np
@@ -10,12 +11,14 @@ from atlas.deformation import mesh, projected, warp_points
 from atlas.reconstruct import align_planar, classical, dimensionality, planar, spherical, stress
 from atlas.runner import history
 from atlas.statistics import aggregate, bootstrap_interval, metrics
+from atlas.validation import validate_inputs
 
 AGGREGATIONS = ["mean", "median", "trimmed_mean", "robust"]
 
 
 def analyze(directory, seed=42, bootstrap=1000):
     directory = Path(directory)
+    validate_inputs(directory)
     manifest = json.loads((directory / "manifest.json").read_text())
     places, pairs, responses = load_places(directory / "places.csv"), read_csv(directory / "pairs.csv"), history(directory)
     if len([r for r in responses if r["terminal"] == "True"]) != len(pairs) * manifest["sampling_count"]:
@@ -47,7 +50,11 @@ def analyze(directory, seed=42, bootstrap=1000):
                            "signed_error_km": summary["mean"] - true,
                            "relative_error": (summary["mean"] - true) / true,
                            "log_ratio_error": float(np.log(summary["mean"] / true))})
-    params = {"seed": seed, "bootstrap_pair_replicates": bootstrap, "algorithm_version": 1}
+    versions = {r["model_version"] for r in responses if r["quality"] == "valid"}
+    if len(versions) > 1:
+        raise ValueError("Multiple provider model versions in this run. Analyse separate version cohorts explicitly.")
+    params = {"seed": seed, "bootstrap_pair_replicates": bootstrap, "algorithm_version": 1,
+              "analysis_code_sha256": digest({p.name: p.read_text() for p in Path(__file__).parent.glob("*.py")})}
     analysis_id = digest({"responses": responses, "parameters": params})[:16]
     out = directory / "analyses" / analysis_id
     if (out / "result.json").exists():
@@ -57,6 +64,7 @@ def analyze(directory, seed=42, bootstrap=1000):
     latlon = np.array([[p["latitude"], p["longitude"]] for p in places])
     reference = projected(latlon)
     layers = {}
+    truth_dimensions = dimensionality(truth, seed=seed)
     coords_rows = []
     world = json.loads(Path("public/data/world.json").read_text())
     for name, d in matrices.items():
@@ -74,7 +82,7 @@ def analyze(directory, seed=42, bootstrap=1000):
             for poly in polys:
                 for ring in poly:
                     dense = []
-                    for a, b in zip(ring[:-1], ring[1:]):
+                    for a, b in pairwise(ring):
                         a, b = np.array(a), np.array(b)
                         steps = max(1, int(np.ceil(np.linalg.norm(b - a) / 1.5)))
                         dense.extend(a + (b - a) * t / steps for t in range(steps))
@@ -114,6 +122,8 @@ def analyze(directory, seed=42, bootstrap=1000):
                         "mesh": control_mesh, "countries": countries}
     write_csv(out / "coordinates.csv", coords_rows)
     result = {"experiment": manifest, "analysis_id": analysis_id, "analysis_parameters": params,
+              "true_earth_dimensionality": truth_dimensions,
+              "resolved_model_versions": sorted(versions),
               "places": places, "pairs": statistics, "layers": layers,
               "quality": {"attempts": len(responses), "valid": sum(r["quality"] == "valid" for r in responses),
                           "invalid_attempts": sum(r["quality"] != "valid" for r in responses),

@@ -2,7 +2,7 @@ import importlib.metadata
 import json
 import platform
 import subprocess
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 from atlas.data import digest, generate_pairs, load_places, write_csv
@@ -14,7 +14,7 @@ PROMPTS = {
 
 
 def utcnow():
-    return datetime.now(timezone.utc).isoformat()
+    return datetime.now(UTC).isoformat()
 
 
 def prompt_for(manifest, pair, places):

@@ -5,5 +5,38 @@
     "language": "en",
     "created_at": "2026-09-08T11:46:27.596542+00:00",
     "url": "/data/6a6a0f85241a9173bec8dbb2-f63b7b64aaaea385/result.json"
+  },
+  {
+    "id": "b4124c92cef370d164666db2-1deffe3eda43d971",
+    "model": "gemini-2.5-flash-lite",
+    "language": "en",
+    "model_label": "Gemini 2.5 Flash-Lite",
+    "capital_count": 50,
+    "sample_count": 10,
+    "dataset_sha256": "835b87cc327926b228c86d1e17cfe797c903497661a1603843d7f7662f62ef9e",
+    "created_at": "2026-09-08T16:23:48.152888+00:00",
+    "url": "/data/b4124c92cef370d164666db2-1deffe3eda43d971/result.json"
+  },
+  {
+    "id": "14b2fe286b29979cbd535b01-e8d5e7083c80c6a4",
+    "model": "gemini-3-flash-preview",
+    "language": "en",
+    "model_label": "Gemini 3 Flash Preview",
+    "capital_count": 50,
+    "sample_count": 10,
+    "dataset_sha256": "835b87cc327926b228c86d1e17cfe797c903497661a1603843d7f7662f62ef9e",
+    "created_at": "2026-09-08T16:23:48.877842+00:00",
+    "url": "/data/14b2fe286b29979cbd535b01-e8d5e7083c80c6a4/result.json"
+  },
+  {
+    "id": "b3af559d2572ec18386cc012-9dc4fb6444c8a5c1",
+    "model": "gemini-3.5-flash",
+    "language": "en",
+    "model_label": "Gemini 3.5 Flash",
+    "capital_count": 50,
+    "sample_count": 10,
+    "dataset_sha256": "835b87cc327926b228c86d1e17cfe797c903497661a1603843d7f7662f62ef9e",
+    "created_at": "2026-09-08T16:23:49.280135+00:00",
+    "url": "/data/b3af559d2572ec18386cc012-9dc4fb6444c8a5c1/result.json"
   }
 ]

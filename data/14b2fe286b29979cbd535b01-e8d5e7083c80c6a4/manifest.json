@@ -1,0 +1,48 @@
+{
+  "schema_version": 2,
+  "name": "50-capital distance experiment",
+  "provider": "google",
+  "model_label": "Gemini 3 Flash Preview",
+  "model": "gemini-3-flash-preview",
+  "requested_model_version": "gemini-3-flash-preview",
+  "language": "en",
+  "prompt_template": "Estimate the straight-line great-circle distance in kilometres between {city_a}, {country_a} and {city_b}, {country_b}. Return only your best numerical estimate in kilometres. Do not explain your reasoning.",
+  "sampling_count": 10,
+  "parameters": {
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "max_tokens": 128,
+    "thinking_level": "minimal",
+    "seed": null,
+    "system_prompt": ""
+  },
+  "dataset_sha256": "835b87cc327926b228c86d1e17cfe797c903497661a1603843d7f7662f62ef9e",
+  "dataset_file": "capitals-50-v2.csv",
+  "sampling_strategy": "independent_single_turn_unordered_pairs_fixed_id_order",
+  "created_at": "2026-09-08T16:23:48.877842+00:00",
+  "code_revision": "1985f094bbd87092c7ac498ef10f64acc9c4694b",
+  "software": {
+    "python": "3.12.14",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.7.2",
+    "geographiclib": "2.1"
+  },
+  "execution": {
+    "max_cost_usd": 5,
+    "requests_per_minute": 900,
+    "concurrency": 16,
+    "max_attempts": 4,
+    "retry_policy": "Retry transport/408/429/5xx only; invalid content is terminal",
+    "budget_policy": "Reserve conservatively in flight; reconcile successful responses to reported usage; retain unknown-attempt reservations"
+  },
+  "pricing": {
+    "input_per_million_usd": 0.5,
+    "output_per_million_usd": 3.0,
+    "source": "https://ai.google.dev/gemini-api/docs/pricing",
+    "verified_date": "2026-09-08",
+    "checked_at": "2026-09-08T16:23:48.908867+00:00",
+    "billing_note": "Token-based estimate, not an invoice"
+  },
+  "id": "14b2fe286b29979cbd535b01"
+}

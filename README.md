@@ -36,6 +36,7 @@ uv run python -m scripts.run_languages prepare
 uv run python -m scripts.run_languages run --max-jobs 4
 uv run python -m scripts.run_languages run
 # Repeating run resumes existing CSV checkpoints; do not prepare a second group.
+uv run python -m scripts.analyze_group runs/languages-50-v2.json
 ```
 
 The group uses a shared limit of 2,400 requests/minute across languages, with per-run caps of 900/minute. A rate-limit response pauses shared dispatch and halves the rate at most once per minute. The recorded ceiling is $15 per language; successful attempts reconcile reservations to token usage. The output-ceiling estimate is conservative and can exceed the budget; the runner stops if its actual/reserved spending reaches that budget. These jobs run locally, not on the hosted website.

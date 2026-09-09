@@ -41,3 +41,5 @@ This collection used whole-response numeric validation, not a provider-enforced 
 To view the site locally, run `npm ci` followed by `npm run dev`. For collection, analysis, tests, and deployment, see the [development guide](docs/development.md). Geographic source hashes and capital-selection decisions accompany the [100-capital dataset](data/capitals-100-v3.sources.json).
 
 The [submission dossier](publication/README.md) compares 18 journals, records their submission criteria and style requirements, and contains five AI-assisted assessments of the paper's publication readiness.
+
+The [publication revision](paper/PUBLICATION-RESPONSE.md) adds an absolute-error-preserving control and narrows the conclusions in response to five publication reviews.

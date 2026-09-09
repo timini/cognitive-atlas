@@ -60,3 +60,7 @@ python publication/validate.py
 ```
 
 This verifies the [input contract](review-inputs.json), the 18 guides, the five reviewer identities, the 252 unique assessments per reviewer, and report checksums. The [criterion definitions](CRITERIA.md) and [manuscript inventory](manuscript-inventory.json) explain the assessment scope and measurable preparation facts.
+
+## Subsequent manuscript revision
+
+The reviews above remain assessments of their original source snapshot. The [publication-review response](../paper/PUBLICATION-RESPONSE.md) records the subsequent manuscript changes and unresolved author, archive and venue requirements. Validation checks the original manuscript bytes from Git history; it does not relabel old reviews as assessments of a new draft.

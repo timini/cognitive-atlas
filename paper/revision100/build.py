@@ -44,6 +44,7 @@ def main():
     audit=json.loads(DISTANCE_AUDIT.read_text()); maps=json.loads(MAP_AUDIT.read_text())
     local=json.loads((PAPER/'revision100/local.json').read_text()); geo=json.loads((PAPER/'revision100/geometry.json').read_text())
     qc=json.loads((PAPER/'revision100/qc.json').read_text())
+    control=json.loads((PAPER/'revision100/error_control.json').read_text())
     for name in ['generated','figures','results']:(PAPER/name).mkdir(exist_ok=True)
     # The lock is checked before any outputs are written; expected hashes are never refreshed here.
     (PAPER/'results/exact-language-prompts.json').write_text(json.dumps({l:r['experiment']['prompt_template'] for l,r in runs.items()},indent=2,ensure_ascii=False)+'\n')
@@ -57,7 +58,8 @@ def main():
     rows('geometry-table.tex',grows)
     rows('pairwise-table.tex',[[LABELS[c['a']]+' / '+LABELS[c['b']],f"{c['mean_absolute_median_disagreement_km']:.1f}",f"{c['mae_difference_b_minus_a_km']:+.1f}",f"{c['judgment_p_holm']:.4f}",f"{c['accuracy_p_holm']:.4f}"] for c in audit['comparisons']])
     rows('map-table.tex',[[LABELS[c['a']]+' / '+LABELS[c['b']],f"{c['observed_mean_capital_shift_km']:.1f}",f"{c['null_mean_capital_shift_km']:.1f}",f"{c['null_shift_95pct_interval_km'][0]:.1f}--{c['null_shift_95pct_interval_km'][1]:.1f}",f"{c['map_p_holm']:.3f}"] for c in maps['comparisons']])
-    rows('local-table.tex',[[LABELS[c['language']],str(c['home_pairs']),f"{c['home_english_MAE_km']:.1f}",f"{c['home_language_MAE_km']:.1f}",f"{c['home']['gain_km']:+.1f}",f"{c['home']['p_holm_4']:.4f}",f"{c['interaction']['gain_km']:+.1f}",f"{c['interaction']['p_holm_4']:.4f}"] for c in local['results']])
+    rows('local-table.tex',[[LABELS[c['language']],str(c['home_pairs']),f"{c['home_english_MAE_km']:.1f}",f"{c['home_language_MAE_km']:.1f}",f"{c['home']['gain_km']:+.1f}",f"{c['interaction']['gain_km']:+.1f}"] for c in local['results']])
+    rows('error-control-table.tex', [[LABELS[l], f"{100*c['observed']['violation_rate']:.2f}", f"{100*c['summary']['violation_rate']['mean']:.2f}", f"{100*c['summary']['violation_rate']['central_95pct_range'][0]:.2f}--{100*c['summary']['violation_rate']['central_95pct_range'][1]:.2f}"] for l,c in control['conditions'].items()])
     rows('balance-table.tex',[[LABELS[c['language']],str(c['one_endpoint']),str(c['both_endpoints']),f"{c['home_truth_median_km']:.0f}",f"{c['other_truth_median_km']:.0f}",f"{c['distance_balance']['standardized_home_gain_km']:+.1f}",f"{c['distance_balance']['standardized_interaction_km']:+.1f}"] for c in local['results']])
     rows('sensitivity-table.tex',[[LABELS[l],*[f"{qc['conditions'][l]['accuracy'][key]['pair_median_mae_km']:.2f}" for key in ['all_pairs_accepted','common_complete_case_accepted','all_pairs_numeric_range_retained']]] for l in runs])
     rows('dispersion-table.tex',[[LABELS[l],f"{qc['conditions'][l]['dispersion']['sample_sd_km']['mean']:.1f}",f"{100*qc['conditions'][l]['dispersion']['coefficient_of_variation']['mean']:.2f}",str(qc['conditions'][l]['dispersion']['ten_valid_pairs_all_ten_identical'])] for l in runs])
@@ -72,7 +74,7 @@ def main():
         rec=r['layers']['median']['reconstructions']
         arows.append([LABELS[l],f"{stress(squareform(pdist(np.array(rec['classical']['raw_coordinates']))),d):.4f}",f"{stress(squareform(pdist(np.array(rec['metric']['raw_coordinates']))),d):.4f}",f"{rec['spherical']['stress']:.4f}",f"{rec['nonmetric']['stress']:.4f}"])
     rows('algorithms-table.tex',arows)
-    provenance={'release':'100-capital-2026-09-09','input_lock_sha256':sha(PAPER/'input-lock.json'),'release_lock_sha256':sha(PAPER/'release-lock.json'),'source_exports':EXPORTS,'valid':sum(r['quality']['valid'] for r in runs.values()),'attempts':sum(r['quality']['attempts'] for r in runs.values()),'complete_pairs':audit['complete_pairs'],'estimated_cost_usd':sum(r['quality']['estimated_cost_usd'] for r in runs.values())}
+    provenance={'release':'100-capital-publication-revision-2026-09-09','input_lock_sha256':sha(PAPER/'input-lock.json'),'release_lock_sha256':sha(PAPER/'release-lock.json'),'source_exports':EXPORTS,'valid':sum(r['quality']['valid'] for r in runs.values()),'attempts':sum(r['quality']['attempts'] for r in runs.values()),'complete_pairs':audit['complete_pairs'],'estimated_cost_usd':sum(r['quality']['estimated_cost_usd'] for r in runs.values())}
     (PAPER/'results/provenance.json').write_text(json.dumps(provenance,indent=2)+'\n')
     # Three full maps; capital positions and coastlines both shown at actual displacement.
     fig,axes=plt.subplots(3,1,figsize=(7.05,8.0),layout='constrained')

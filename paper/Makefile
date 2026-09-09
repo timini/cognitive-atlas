@@ -14,6 +14,7 @@ assets:
 verify:
 	cd .. && $(PYTHON:../%=%) -m paper.revision100.verify
 analyze:
+	cd .. && $(PYTHON:../%=%) -m paper.revision100.error_control
 	cd .. && $(PYTHON:../%=%) -m paper.revision100.local
 	cd .. && $(PYTHON:../%=%) paper/revision100/qc.py
 	cd .. && $(PYTHON:../%=%) paper/revision100/geometry.py

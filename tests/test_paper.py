@@ -7,6 +7,7 @@ import pytest
 
 from paper.revision100 import common
 from paper.revision100.build import verify_release
+from paper.revision100.error_control import sign_control, triangle_summary
 from paper.revision100.local import bootstrap_deviations, contrast_weights, distance_balance, summary
 from paper.revision100.verify import main as verify_paper
 
@@ -70,3 +71,25 @@ def test_manuscript_is_not_about_superseded_studies():
     assert 'not provider-enforced output schemas' in text
     assert 'population median maps' in text
     assert 'coverage collapsed' in text
+
+
+def test_error_sign_controls_preserve_pairwise_accuracy_and_admissible_domain():
+    truth = np.array([1., 19000., 100., 200.])
+    observed = np.array([3., 17000., 90., 200.])
+    rng = np.random.default_rng(42)
+    signs = []
+    for _ in range(50):
+        artificial, forced = sign_control(truth, observed, rng)
+        assert forced == 2
+        assert np.array_equal(np.abs(artificial - truth), np.abs(observed - truth))
+        assert np.all((artificial > 0) & (artificial <= 20040))
+        assert artificial[0] == 3 and artificial[1] == 17000 and artificial[3] == 200
+        signs.append(artificial[2])
+    assert set(signs) == {90, 110}
+    for invalid in ([0., 1.], [-1., 1.], [1., np.nan], [1., 20041.]):
+        with pytest.raises(ValueError):
+            sign_control(np.array([100., 200.]), np.array(invalid), rng)
+    edges = np.array([[0, 1, 2]])
+    assert triangle_summary(np.array([3., 4., 5.]), edges)['violation_rate'] == 0
+    result = triangle_summary(np.array([3., 4., 8.]), edges)
+    assert result['violation_rate'] == 1 and result['mean_excess_all_triples_km'] == 1

@@ -1,0 +1,15 @@
+{
+  "status": "awaiting actual author information; no attestations made",
+  "authors": null,
+  "corresponding_author_email": null,
+  "orcid": null,
+  "contributions": null,
+  "funding": null,
+  "competing_interests": null,
+  "human_scientific_validation": null,
+  "code_license_approval": null,
+  "data_license_approval": null,
+  "archive_doi": null,
+  "exclusive_submission_approval": null,
+  "note": "Null means not supplied, not none or no conflicts. Requested from the user during this revision."
+}

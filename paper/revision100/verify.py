@@ -35,6 +35,19 @@ def main():
     assert all(c['input_triangle_checks']['triples']==161700 for c in geo['conditions'].values())
     assert geo['conditions']['truth']['input_triangle_checks']['violated_triples']==0
     for l in runs:assert geo['conditions'][l]['archived_four_start_verification']['pass']
+    control=json.loads((PAPER/'revision100/error_control.json').read_text())
+    assert control['script_sha256']==sha(PAPER/'revision100/error_control.py')
+    assert control['replicates_per_condition']==999
+    for l,c in control['conditions'].items():
+        assert len(c['controls'])==999 and c['pairs']==4950 and c['triples']==161700
+        assert c['reference']['violation_rate']==0
+        assert c['maximum_absolute_error_preservation_drift_km']<1e-8
+        assert np.isclose(c['observed']['violation_rate'],geo['conditions'][l]['input_triangle_checks']['violation_rate'])
+        assert np.isclose(c['pair_median_mae_km'],audit['all_pairs_median_MAE_km'][l])
+        for key,summary in c['summary'].items():
+            values=[row[key] for row in c['controls']]
+            assert np.isclose(np.mean(values),summary['mean'])
+            assert np.allclose(np.quantile(values,[.025,.975]),summary['central_95pct_range'])
     # All exact prompts and all 100 capital rows must be present in generated artifacts.
     prompts=json.loads((PAPER/'results/exact-language-prompts.json').read_text())
     assert prompts=={l:r['experiment']['prompt_template'] for l,r in runs.items()}

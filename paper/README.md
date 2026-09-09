@@ -1,8 +1,10 @@
 # The 100-capital paper
 
-The revised [paper](cognitive-atlas-paper.pdf) examines **Gemini 3.5 Flash across 100 capitals**, with ten distance estimates per pair under English, Arabic, and written Chinese instructions. It contains 148,500 completed answers. The main conclusions distinguish observed geometry, metric consistency, and response-distribution differences.
+The [paper](cognitive-atlas-paper.pdf) examines **Gemini 3.5 Flash across 100 capitals**, with ten distance estimates per pair under English, Arabic, and written Chinese instructions. It contains 148,500 completed responses and 148,491 accepted numerical values. The main conclusions distinguish observed geometry, metric consistency, and response-distribution differences.
 
-The [response to reviews](REVIEW-RESPONSE.md) tracks all 45 numbered findings and four publication-readiness requirements. The revised paper incorporates new quality-control sensitivities, geometric reference fits, optimizer diagnostics, regional distance balancing, and bootstrap calibration. Independent human scientific and language review remain outstanding; this is a completed manuscript revision, not a peer-reviewed publication. No author identity or affiliation has been assigned.
+The earlier [response to academic reviews](REVIEW-RESPONSE.md) tracks all 45 numbered findings and four publication-readiness requirements. The revised paper incorporates new quality-control sensitivities, geometric reference fits, optimizer diagnostics, regional distance balancing, and bootstrap calibration. Independent human scientific and language review remain outstanding; this is a completed manuscript revision, not a peer-reviewed publication. No author identity or affiliation has been assigned.
+
+The [response to five publication reviews](PUBLICATION-RESPONSE.md) records the current revision and all 1,260 criterion dispositions. It adds a control preserving each pair's absolute error, updates recent related work, reduces regional inference claims, and prepares the [Transactions in GIS package](submission/transactions-in-gis/README.md). Human author declarations, license approval and permanent archiving remain outstanding.
 
 ## Read and explore
 
@@ -11,7 +13,7 @@ The [response to reviews](REVIEW-RESPONSE.md) tracks all 45 numbered findings an
 - [Complete public reproduction package](https://timini.github.io/cognitive-atlas/paper/reproduction.zip)
 - [LaTeX source](main.tex) and [bibliography](references.bib)
 
-The source GitHub repository is private. The public website serves the paper, supporting reports, and downloadable experiment data. No archival DOI is assigned. The paper concerns this single model and its three instruction conditions; schema-constrained integration checks are not research observations in this study.
+The source GitHub repository is public. The public website serves the paper, supporting reports, and downloadable experiment data. No archival DOI is assigned. The paper concerns this single model and its three instruction conditions; schema-constrained integration checks are not research observations in this study.
 
 ## Build and verify
 
@@ -47,9 +49,10 @@ No paper build or analysis makes model calls or requires an API key. Synthetic v
 | WGS84 control, 12-start fits, spectra and neighbors | `revision100/geometry.py`, `revision100/geometry.json` |
 | Regional contrasts, distance balance, capital omissions | `revision100/local.py`, `revision100/local.json` |
 | Range-retained geometry sensitivity | `revision100/range_geometry.py`, `revision100/range_geometry.json` |
+| Absolute-error-preserving sign controls | `revision100/error_control.py`, `revision100/error_control.json` |
 | Bootstrap coverage and failure diagnostics | `revision100/calibration.py`, `revision100/calibration.json` |
 | Primary references and operational group definitions | `revision100/reference-notes.md`, `revision100/groups.json` |
 | Exact prompt strings and release provenance | `results/` |
 | Tables and vector figures | `generated/`, `figures/` |
 
-Distance and map randomization use a strong response-distribution exchangeability null. Rejection does not establish unequal population medians or isolate a language effect. Regional summaries evaluate individual-response error, rather than error of pair medians. Associated pairs usually have only one endpoint in the operational group. The regional bootstrap is an empirical approximation: calibration works reasonably in regular scenarios but fails severely for unseen rare tails. Its intervals do not quantify uncertainty over new capitals, prompts, dates, or model releases.
+Distance and map randomization use a strong response-distribution exchangeability null. Rejection does not establish unequal population medians or isolate a language effect. Regional summaries evaluate individual-response error, rather than error of pair medians. Associated pairs usually have only one endpoint in the operational group. The regional bootstrap is an empirical approximation: calibration works reasonably in regular scenarios but fails severely for unseen rare tails. Its intervals do not quantify uncertainty over new capitals, prompts, dates, or model releases, and are no longer used for the paper’s regional conclusions. The error-sign control uses artificial distances solely as a labeled methodological comparator; it does not add model observations or assume normally distributed answers.

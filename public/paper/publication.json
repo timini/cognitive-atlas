@@ -2,9 +2,35 @@
   "study": "100 capitals; English, Arabic, written Chinese; Gemini 3.5 Flash",
   "completed_answers": 148500,
   "valid_answers": 148491,
-  "pdf_sha256": "70032fc564431a245928d4f54bc464593164c639ad6e62a6699440f3cf825ceb",
-  "reproduction_zip_sha256": "bdbba8fd68facc1a8a45b47183d220ab97ddb0c0ea00397dc86bddc1762aedb7",
-  "files": 121,
+  "pdf_sha256": "8aee4933d2b73f839d284eef0250bdda41d4252616832ca7bf5c1a0b62aadac0",
+  "reproduction_zip_sha256": "381e4b57083d2de58b3cb58fdb7ad9057f9e45d73014ec9f61299071f7f54a25",
+  "files": 140,
   "input_lock_sha256": "d45cab6e82d90d6e916296ee4c23463acfb1167592d55abcb887b4f4308bf411",
-  "release_lock_sha256": "38058c1f4bb4f321624629f881bd3f3ab93e45f4e4b6521f970bc6fa29ff1d71"
+  "release_lock_sha256": "9a67f4abf56271840ccba7a30eacac45e1b7ad0cc4ebfd24ad0c3d0fde481279",
+  "supplements": [
+    {
+      "file": "supplements/analysis.zip",
+      "bytes": 10813162,
+      "sha256": "9225a28347001fc5c2120d6dccf087deac57486769b94ad51d75c99a3e14acfc",
+      "files": 137
+    },
+    {
+      "file": "supplements/responses-en.zip",
+      "bytes": 10337788,
+      "sha256": "5ac4be605b3254b60a7909896427b03a590c907fde15223886d516e356094560",
+      "files": 1
+    },
+    {
+      "file": "supplements/responses-ar.zip",
+      "bytes": 10432299,
+      "sha256": "32ff74b695505c893782b361d8b6453ec4bd397f40652b9c4ee56bcf1d6d1e80",
+      "files": 1
+    },
+    {
+      "file": "supplements/responses-zh.zip",
+      "bytes": 10474458,
+      "sha256": "a27a6391daf8ec477ca9c201bb3e897919249a90feaf3ef26bd4381b7183a7cf",
+      "files": 1
+    }
+  ]
 }

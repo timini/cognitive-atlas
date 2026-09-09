@@ -1,0 +1,24 @@
+{
+  "journal_id": "C09",
+  "name": "Spatial Cognition & Computation",
+  "guide": "journals/C09-spatial-cognition-and-computation.md",
+  "official_sources": [
+    {
+      "url": "https://www.tandfonline.com/journals/hscc20/about-this-journal",
+      "label": "Official journal scope; indexed official text readable, direct open failed",
+      "checked": "2026-09-09"
+    },
+    {
+      "url": "https://www.tandfonline.com/action/authorSubmission?journalCode=hscc20&page=instructions",
+      "label": "Author instructions; HTTP 403, requirements unresolved",
+      "checked": "2026-09-09"
+    },
+    {
+      "url": "https://authorservices.taylorandfrancis.com/editorial-policies/using-ai-in-your-research-and-manuscript-preparations/",
+      "label": "Current publisher AI guidance; read",
+      "checked": "2026-09-09"
+    }
+  ],
+  "fit_summary": "Excellent topical match for behavioral spatial representation, with substantial theory and validation revision needed; AI drafting eligibility unresolved.",
+  "policy_summary": "Taylor & Francis expressly prohibits generative AI first drafts or sections; current project cannot assume eligibility after rewriting."
+}

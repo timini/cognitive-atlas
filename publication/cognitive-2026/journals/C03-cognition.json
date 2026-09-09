@@ -1,0 +1,24 @@
+{
+  "journal_id": "C03",
+  "name": "Cognition",
+  "guide": "journals/C03-cognition.md",
+  "official_sources": [
+    {
+      "url": "https://shop.elsevier.com/journals/cognition/0010-0277",
+      "label": "Official publisher scope; accessed",
+      "checked": "2026-09-09"
+    },
+    {
+      "url": "https://www.sciencedirect.com/journal/cognition/publish/guide-for-authors",
+      "label": "Official detailed guide; access failed",
+      "checked": "2026-09-09"
+    },
+    {
+      "url": "https://www.elsevier.com/about/policies-and-standards/generative-ai-policies-for-journals",
+      "label": "Current Elsevier journal AI policy; accessed",
+      "checked": "2026-09-09"
+    }
+  ],
+  "fit_summary": "Stretch target requiring clear cognitive theoretical advance and converging evidence; current descriptive benchmark insufficient.",
+  "policy_summary": "Official scope excludes purely methodological work. Detailed journal submission limits, formats, references, anonymity and fees unverified due access failures. Elsevier permits disclosed AI support with human intellectual contribution and accountability."
+}

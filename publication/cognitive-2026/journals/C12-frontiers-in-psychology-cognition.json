@@ -1,0 +1,44 @@
+{
+  "journal_id": "C12",
+  "name": "Frontiers in Psychology — Cognition",
+  "guide": "journals/C12-frontiers-in-psychology-cognition.md",
+  "official_sources": [
+    {
+      "url": "https://www.frontiersin.org/journals/psychology/sections/cognition/about",
+      "label": "Official Cognition section scope; read",
+      "checked": "2026-09-09"
+    },
+    {
+      "url": "https://www.frontiersin.org/journals/psychology/about",
+      "label": "Journal scope, anonymity and rights; read",
+      "checked": "2026-09-09"
+    },
+    {
+      "url": "https://www.frontiersin.org/journals/psychology/for-authors/article-types",
+      "label": "Article types and limits; read",
+      "checked": "2026-09-09"
+    },
+    {
+      "url": "https://www.frontiersin.org/journals/psychology/for-authors/author-guidelines",
+      "label": "Author style and AI guide; read",
+      "checked": "2026-09-09"
+    },
+    {
+      "url": "https://www.frontiersin.org/guidelines/policies-and-publication-ethics",
+      "label": "Ethics and data requirements; read",
+      "checked": "2026-09-09"
+    },
+    {
+      "url": "https://www.frontiersin.org/journals/psychology/for-authors/publishing-fees",
+      "label": "Current journal APC table; read",
+      "checked": "2026-09-09"
+    },
+    {
+      "url": "https://helpcenter.frontiersin.org/s/article/What-reference-style-does-each-journal-use",
+      "label": "Journal-specific reference mapping; page shell only",
+      "checked": "2026-09-09"
+    }
+  ],
+  "fit_summary": "Conditional: Cognition explicitly requires a contribution to human cognition, so artificial spatial judgments need a substantive theoretical bridge.",
+  "policy_summary": "AI-created/edited content permitted with factual verification and named/versioned disclosure; responsible humans required. Scope and format are current obstacles."
+}

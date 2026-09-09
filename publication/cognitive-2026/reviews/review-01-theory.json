@@ -1,0 +1,1808 @@
+{
+  "reviewer_id": "R01",
+  "role": "Cognitive theory and editorial contribution",
+  "manuscript_commit": "56fa5700fd65d7c0b911af1cce47debdbce62232",
+  "summary": "There is an interesting behavioral observation and a useful research instrument, but the frozen paper is not yet a strong cognitive-theory contribution. Additional model families would test generality; they would not alone distinguish accounts of how spatial judgments are generated. Cognitive Processing and CRPI are plausible after revision and targeted validation; stronger theory venues need a diagnostic experiment.",
+  "assessments": [
+    {
+      "journal_id": "C01",
+      "criterion_id": "K01",
+      "status": "Partial",
+      "reason": "The project fits multidisciplinary cognitive science in intention, but the current paper makes its geographic evaluation context more explicit than the cognitive issue.",
+      "evidence": [
+        "paper/main.tex: Introduction",
+        "journals/C01-cognitive-science.md"
+      ]
+    },
+    {
+      "journal_id": "C01",
+      "criterion_id": "K02",
+      "status": "Partial",
+      "reason": "A regular article is plausible in format. The result currently refines an established elicitation/reconstruction approach without a strong multidisciplinary theoretical payoff.",
+      "evidence": [
+        "paper/main.tex: Introduction; Relationship to previous measurement approaches",
+        "journals/C01-cognitive-science.md"
+      ]
+    },
+    {
+      "journal_id": "C01",
+      "criterion_id": "K03",
+      "status": "Fail",
+      "reason": "The approximately 129-word abstract is below the guide's 150-word minimum. A separate main-text count is still needed; thirty pages alone cannot establish the regular-article word limit.",
+      "evidence": [
+        "manuscript-inventory.json",
+        "journals/C01-cognitive-science.md"
+      ]
+    },
+    {
+      "journal_id": "C01",
+      "criterion_id": "K04",
+      "status": "Partial",
+      "reason": "The source has a readable abstract, six keywords and conventional empirical sections, but the author field is empty and the opening does not establish a psychological or artificial-cognition problem.",
+      "evidence": [
+        "paper/main.tex: title block; Introduction",
+        "journals/C01-cognitive-science.md"
+      ]
+    },
+    {
+      "journal_id": "C01",
+      "criterion_id": "K05",
+      "status": "Pass",
+      "reason": "Editable LaTeX and a compiled PDF are available, consistent with the guide's initial free-format route. This does not certify the separate anonymity or declaration requirements.",
+      "evidence": [
+        "paper/main.tex; public/paper/publication.json",
+        "journals/C01-cognitive-science.md"
+      ]
+    },
+    {
+      "journal_id": "C01",
+      "criterion_id": "K06",
+      "status": "Partial",
+      "reason": "The current numeric references are not a free-format initial blocker, but need APA conversion for the eventual package; theory coverage still needs cognitive rather than merely geographic antecedents.",
+      "evidence": [
+        "paper/main.tex: Introduction; bibliography; paper/references.bib",
+        "journals/C01-cognitive-science.md"
+      ]
+    },
+    {
+      "journal_id": "C01",
+      "criterion_id": "K07",
+      "status": "Partial",
+      "reason": "The eight main displays describe accuracy, geometry and conditions with careful captions. For a cognition article, a theory-bearing diagram or prediction plot should replace some metric inventory; extensive appendices should be packaged for the selected venue.",
+      "evidence": [
+        "paper/main.tex: Results; Appendices; manuscript-inventory.json",
+        "journals/C01-cognitive-science.md"
+      ]
+    },
+    {
+      "journal_id": "C01",
+      "criterion_id": "K08",
+      "status": "Partial",
+      "reason": "Raw outputs, exact prompts, controls and analysis are public and versioned, which supports reanalysis. Missing historical collector state, an archival DOI and explicit reuse licenses remain acknowledged limitations.",
+      "evidence": [
+        "paper/main.tex: Data availability and research provenance",
+        "journals/C01-cognitive-science.md"
+      ]
+    },
+    {
+      "journal_id": "C01",
+      "criterion_id": "K09",
+      "status": "Partial",
+      "reason": "Descriptive controls and limited permutation nulls are now stated correctly. Clustered requests, one wording per language and no independent blocks still limit inferential claims; no held-out cognitive prediction is tested.",
+      "evidence": [
+        "paper/main.tex: Analysis; Discussion; paper/revision100/error_control.json",
+        "journals/C01-cognitive-science.md"
+      ]
+    },
+    {
+      "journal_id": "C01",
+      "criterion_id": "K10",
+      "status": "Unknown",
+      "reason": "The source explicitly says human author identities, contributions, funding and conflicts have not been supplied. No human-participant data were collected; that fact does not authorize inventing final declarations.",
+      "evidence": [
+        "paper/main.tex: AI assistance; Study materials",
+        "journals/C01-cognitive-science.md"
+      ]
+    },
+    {
+      "journal_id": "C01",
+      "criterion_id": "K11",
+      "status": "Unknown",
+      "reason": "Substantial AI drafting, analysis, translation and review are disclosed. Human scientific verification and intellectual responsibility have not been supplied, so policy compliance cannot be certified.",
+      "evidence": [
+        "paper/main.tex: AI assistance",
+        "journals/C01-cognitive-science.md"
+      ]
+    },
+    {
+      "journal_id": "C01",
+      "criterion_id": "K12",
+      "status": "Fail",
+      "reason": "The current document directly links an identified public GitHub account and does not provide the required anonymous materials package. Existing public posting itself is not treated as prohibited.",
+      "evidence": [
+        "paper/main.tex: Data availability and research provenance",
+        "journals/C01-cognitive-science.md"
+      ]
+    },
+    {
+      "journal_id": "C01",
+      "criterion_id": "K13",
+      "status": "Unknown",
+      "reason": "No actual author funding or licensing decision is recorded. Public files do not establish reuse permission or a publication-license agreement.",
+      "evidence": [
+        "paper/main.tex: Data availability and research provenance; manuscript-inventory.json",
+        "journals/C01-cognitive-science.md"
+      ]
+    },
+    {
+      "journal_id": "C01",
+      "criterion_id": "K14",
+      "status": "Partial",
+      "reason": "The existing draft submission materials target Transactions in GIS. This venue needs its own fit argument, prior-posting account and genuine author approvals; none is established by the current paper.",
+      "evidence": [
+        "paper/submission/transactions-in-gis/cover-letter.md; paper/main.tex: AI assistance",
+        "journals/C01-cognitive-science.md"
+      ]
+    },
+    {
+      "journal_id": "C01",
+      "criterion_id": "K15",
+      "status": "Fail",
+      "reason": "The introduction identifies empirical additions without building a prediction-bearing account of relational knowledge. Its multidisciplinary cognitive implications remain asserted rather than demonstrated.",
+      "evidence": [
+        "paper/main.tex: Introduction, paragraphs 4\u20136; Discussion; Conclusion",
+        "journals/C01-cognitive-science.md"
+      ]
+    },
+    {
+      "journal_id": "C02",
+      "criterion_id": "K01",
+      "status": "Partial",
+      "reason": "Behavioral machine cognition could fit an accepted topic, but the present report is not integrated into a multidisciplinary collection or debate.",
+      "evidence": [
+        "paper/main.tex: Introduction",
+        "journals/C02-topics-in-cognitive-science.md"
+      ]
+    },
+    {
+      "journal_id": "C02",
+      "criterion_id": "K02",
+      "status": "Fail",
+      "reason": "The current unsolicited standalone empirical paper has no eligible route in the checked topic-based journal policy; no accepted topic or invitation is recorded.",
+      "evidence": [
+        "paper/main.tex: Introduction; Relationship to previous measurement approaches",
+        "journals/C02-topics-in-cognitive-science.md"
+      ]
+    },
+    {
+      "journal_id": "C02",
+      "criterion_id": "K03",
+      "status": "Unknown",
+      "reason": "No accepted-topic word budget exists. Applying the limits for letters or commentaries to this empirical article would be inappropriate.",
+      "evidence": [
+        "manuscript-inventory.json",
+        "journals/C02-topics-in-cognitive-science.md"
+      ]
+    },
+    {
+      "journal_id": "C02",
+      "criterion_id": "K04",
+      "status": "Unknown",
+      "reason": "The current empirical structure is readable, but topic-specific instructions and required contribution format have not been obtained.",
+      "evidence": [
+        "paper/main.tex: title block; Introduction",
+        "journals/C02-topics-in-cognitive-science.md"
+      ]
+    },
+    {
+      "journal_id": "C02",
+      "criterion_id": "K05",
+      "status": "Unknown",
+      "reason": "LaTeX source and a reproduction package exist; compatibility with this venue's current upload requirements has not been established. Do not infer acceptance from another publisher's template.",
+      "evidence": [
+        "paper/main.tex; public/paper/publication.json",
+        "journals/C02-topics-in-cognitive-science.md"
+      ]
+    },
+    {
+      "journal_id": "C02",
+      "criterion_id": "K06",
+      "status": "Unknown",
+      "reason": "An accepted-topic reference format is not verified. The paper does cite direct prior work, but an integrative contribution would need a wider cognitive argument.",
+      "evidence": [
+        "paper/main.tex: Introduction; bibliography; paper/references.bib",
+        "journals/C02-topics-in-cognitive-science.md"
+      ]
+    },
+    {
+      "journal_id": "C02",
+      "criterion_id": "K07",
+      "status": "Unknown",
+      "reason": "No accepted-topic display or supplement instructions apply yet. Existing maps and audit tables cannot be declared compliant with an unspecified collection format.",
+      "evidence": [
+        "paper/main.tex: Results; Appendices; manuscript-inventory.json",
+        "journals/C02-topics-in-cognitive-science.md"
+      ]
+    },
+    {
+      "journal_id": "C02",
+      "criterion_id": "K08",
+      "status": "Partial",
+      "reason": "Raw outputs, exact prompts, controls and analysis are public and versioned, which supports reanalysis. Missing historical collector state, an archival DOI and explicit reuse licenses remain acknowledged limitations.",
+      "evidence": [
+        "paper/main.tex: Data availability and research provenance",
+        "journals/C02-topics-in-cognitive-science.md"
+      ]
+    },
+    {
+      "journal_id": "C02",
+      "criterion_id": "K09",
+      "status": "Partial",
+      "reason": "Descriptive controls and limited permutation nulls are now stated correctly. Clustered requests, one wording per language and no independent blocks still limit inferential claims; no held-out cognitive prediction is tested.",
+      "evidence": [
+        "paper/main.tex: Analysis; Discussion; paper/revision100/error_control.json",
+        "journals/C02-topics-in-cognitive-science.md"
+      ]
+    },
+    {
+      "journal_id": "C02",
+      "criterion_id": "K10",
+      "status": "Unknown",
+      "reason": "The source explicitly says human author identities, contributions, funding and conflicts have not been supplied. No human-participant data were collected; that fact does not authorize inventing final declarations.",
+      "evidence": [
+        "paper/main.tex: AI assistance; Study materials",
+        "journals/C02-topics-in-cognitive-science.md"
+      ]
+    },
+    {
+      "journal_id": "C02",
+      "criterion_id": "K11",
+      "status": "Unknown",
+      "reason": "Substantial AI drafting, analysis, translation and review are disclosed. Human scientific verification and intellectual responsibility have not been supplied, so policy compliance cannot be certified.",
+      "evidence": [
+        "paper/main.tex: AI assistance",
+        "journals/C02-topics-in-cognitive-science.md"
+      ]
+    },
+    {
+      "journal_id": "C02",
+      "criterion_id": "K12",
+      "status": "Unknown",
+      "reason": "The review/anonymity arrangements for a hypothetical accepted topic are not established; the identified public repository cannot be assessed as a final review package.",
+      "evidence": [
+        "paper/main.tex: Data availability and research provenance",
+        "journals/C02-topics-in-cognitive-science.md"
+      ]
+    },
+    {
+      "journal_id": "C02",
+      "criterion_id": "K13",
+      "status": "Unknown",
+      "reason": "No actual author funding or licensing decision is recorded. Public files do not establish reuse permission or a publication-license agreement.",
+      "evidence": [
+        "paper/main.tex: Data availability and research provenance; manuscript-inventory.json",
+        "journals/C02-topics-in-cognitive-science.md"
+      ]
+    },
+    {
+      "journal_id": "C02",
+      "criterion_id": "K14",
+      "status": "Fail",
+      "reason": "There is no accepted topic, contributor invitation or approved proposal. A conventional cover letter cannot cure the current standalone submission restriction.",
+      "evidence": [
+        "paper/submission/transactions-in-gis/cover-letter.md; paper/main.tex: AI assistance",
+        "journals/C02-topics-in-cognitive-science.md"
+      ]
+    },
+    {
+      "journal_id": "C02",
+      "criterion_id": "K15",
+      "status": "Fail",
+      "reason": "A themed contribution would need to explain what this bounded case contributes to competing approaches to machine cognition. The benchmark narrative does not yet perform that integrative role.",
+      "evidence": [
+        "paper/main.tex: Introduction, paragraphs 4\u20136; Discussion; Conclusion",
+        "journals/C02-topics-in-cognitive-science.md"
+      ]
+    },
+    {
+      "journal_id": "C03",
+      "criterion_id": "K01",
+      "status": "Partial",
+      "reason": "Observable spatial judgments could inform inquiry into cognition, but the source presently presents a geographic measurement result without a clear general cognitive implication.",
+      "evidence": [
+        "paper/main.tex: Introduction",
+        "journals/C03-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C03",
+      "criterion_id": "K02",
+      "status": "Fail",
+      "reason": "The current study does not meet the checked scope's theoretical-advance bar: it leaves fact retrieval, numerical heuristics and coherent spatial computation simultaneously compatible.",
+      "evidence": [
+        "paper/main.tex: Introduction; Relationship to previous measurement approaches",
+        "journals/C03-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C03",
+      "criterion_id": "K03",
+      "status": "Unknown",
+      "reason": "The inventory gives 129 abstract tokens and 30 PDF pages, not a certified count under this venue's rules. Exact applicable limits remain unverified or require a journal-specific count.",
+      "evidence": [
+        "manuscript-inventory.json",
+        "journals/C03-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C03",
+      "criterion_id": "K04",
+      "status": "Partial",
+      "reason": "The source has a readable abstract, six keywords and conventional empirical sections, but the author field is empty and the opening does not establish a psychological or artificial-cognition problem.",
+      "evidence": [
+        "paper/main.tex: title block; Introduction",
+        "journals/C03-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C03",
+      "criterion_id": "K05",
+      "status": "Unknown",
+      "reason": "LaTeX source and a reproduction package exist; compatibility with this venue's current upload requirements has not been established. Do not infer acceptance from another publisher's template.",
+      "evidence": [
+        "paper/main.tex; public/paper/publication.json",
+        "journals/C03-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C03",
+      "criterion_id": "K06",
+      "status": "Unknown",
+      "reason": "The detailed author guide was inaccessible, so exact reference style is unverified. Independently of style, the paper's theoretical citation base needs expansion.",
+      "evidence": [
+        "paper/main.tex: Introduction; bibliography; paper/references.bib",
+        "journals/C03-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C03",
+      "criterion_id": "K07",
+      "status": "Unknown",
+      "reason": "Current captioned displays are interpretable from the source, but exact journal display and supplementary requirements were inaccessible; no formal compliance is asserted.",
+      "evidence": [
+        "paper/main.tex: Results; Appendices; manuscript-inventory.json",
+        "journals/C03-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C03",
+      "criterion_id": "K08",
+      "status": "Partial",
+      "reason": "Raw outputs, exact prompts, controls and analysis are public and versioned, which supports reanalysis. Missing historical collector state, an archival DOI and explicit reuse licenses remain acknowledged limitations.",
+      "evidence": [
+        "paper/main.tex: Data availability and research provenance",
+        "journals/C03-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C03",
+      "criterion_id": "K09",
+      "status": "Partial",
+      "reason": "Descriptive controls and limited permutation nulls are now stated correctly. Clustered requests, one wording per language and no independent blocks still limit inferential claims; no held-out cognitive prediction is tested.",
+      "evidence": [
+        "paper/main.tex: Analysis; Discussion; paper/revision100/error_control.json",
+        "journals/C03-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C03",
+      "criterion_id": "K10",
+      "status": "Unknown",
+      "reason": "The source explicitly says human author identities, contributions, funding and conflicts have not been supplied. No human-participant data were collected; that fact does not authorize inventing final declarations.",
+      "evidence": [
+        "paper/main.tex: AI assistance; Study materials",
+        "journals/C03-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C03",
+      "criterion_id": "K11",
+      "status": "Unknown",
+      "reason": "Substantial AI drafting, analysis, translation and review are disclosed. Human scientific verification and intellectual responsibility have not been supplied, so policy compliance cannot be certified.",
+      "evidence": [
+        "paper/main.tex: AI assistance",
+        "journals/C03-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C03",
+      "criterion_id": "K12",
+      "status": "Unknown",
+      "reason": "The manuscript and identified GitHub materials are public. The checked venue guide does not establish enough of its review and identity requirements to certify the package.",
+      "evidence": [
+        "paper/main.tex: Data availability and research provenance",
+        "journals/C03-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C03",
+      "criterion_id": "K13",
+      "status": "Unknown",
+      "reason": "No actual author funding or licensing decision is recorded. Public files do not establish reuse permission or a publication-license agreement.",
+      "evidence": [
+        "paper/main.tex: Data availability and research provenance; manuscript-inventory.json",
+        "journals/C03-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C03",
+      "criterion_id": "K14",
+      "status": "Partial",
+      "reason": "The existing draft submission materials target Transactions in GIS. This venue needs its own fit argument, prior-posting account and genuine author approvals; none is established by the current paper.",
+      "evidence": [
+        "paper/submission/transactions-in-gis/cover-letter.md; paper/main.tex: AI assistance",
+        "journals/C03-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C03",
+      "criterion_id": "K15",
+      "status": "Fail",
+      "reason": "The abstract closes on a benchmark contribution. The discussion describes error and sampling constraints without resolving a theoretically motivated question about the mind.",
+      "evidence": [
+        "paper/main.tex: Introduction, paragraphs 4\u20136; Discussion; Conclusion",
+        "journals/C03-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C04",
+      "criterion_id": "K01",
+      "status": "Partial",
+      "reason": "The intended relational-representation question is relevant, but the existing report does not develop an integrative account of cognition.",
+      "evidence": [
+        "paper/main.tex: Introduction",
+        "journals/C04-cognitive-psychology.md"
+      ]
+    },
+    {
+      "journal_id": "C04",
+      "criterion_id": "K02",
+      "status": "Fail",
+      "reason": "Established reconstruction tools and one descriptive model collection do not yet supply the substantial theoretical contribution sought by this venue.",
+      "evidence": [
+        "paper/main.tex: Introduction; Relationship to previous measurement approaches",
+        "journals/C04-cognitive-psychology.md"
+      ]
+    },
+    {
+      "journal_id": "C04",
+      "criterion_id": "K03",
+      "status": "Unknown",
+      "reason": "The inventory gives 129 abstract tokens and 30 PDF pages, not a certified count under this venue's rules. Exact applicable limits remain unverified or require a journal-specific count.",
+      "evidence": [
+        "manuscript-inventory.json",
+        "journals/C04-cognitive-psychology.md"
+      ]
+    },
+    {
+      "journal_id": "C04",
+      "criterion_id": "K04",
+      "status": "Partial",
+      "reason": "The source has a readable abstract, six keywords and conventional empirical sections, but the author field is empty and the opening does not establish a psychological or artificial-cognition problem.",
+      "evidence": [
+        "paper/main.tex: title block; Introduction",
+        "journals/C04-cognitive-psychology.md"
+      ]
+    },
+    {
+      "journal_id": "C04",
+      "criterion_id": "K05",
+      "status": "Unknown",
+      "reason": "LaTeX source and a reproduction package exist; compatibility with this venue's current upload requirements has not been established. Do not infer acceptance from another publisher's template.",
+      "evidence": [
+        "paper/main.tex; public/paper/publication.json",
+        "journals/C04-cognitive-psychology.md"
+      ]
+    },
+    {
+      "journal_id": "C04",
+      "criterion_id": "K06",
+      "status": "Unknown",
+      "reason": "Current detailed reference instructions were inaccessible; numeric style cannot be certified. More substantive cognitive-model engagement is also needed.",
+      "evidence": [
+        "paper/main.tex: Introduction; bibliography; paper/references.bib",
+        "journals/C04-cognitive-psychology.md"
+      ]
+    },
+    {
+      "journal_id": "C04",
+      "criterion_id": "K07",
+      "status": "Unknown",
+      "reason": "No verified current display limits or supplement rules were available. The extensive technical audit is not itself evidence of the venue's integrative theoretical depth.",
+      "evidence": [
+        "paper/main.tex: Results; Appendices; manuscript-inventory.json",
+        "journals/C04-cognitive-psychology.md"
+      ]
+    },
+    {
+      "journal_id": "C04",
+      "criterion_id": "K08",
+      "status": "Partial",
+      "reason": "Raw outputs, exact prompts, controls and analysis are public and versioned, which supports reanalysis. Missing historical collector state, an archival DOI and explicit reuse licenses remain acknowledged limitations.",
+      "evidence": [
+        "paper/main.tex: Data availability and research provenance",
+        "journals/C04-cognitive-psychology.md"
+      ]
+    },
+    {
+      "journal_id": "C04",
+      "criterion_id": "K09",
+      "status": "Partial",
+      "reason": "Descriptive controls and limited permutation nulls are now stated correctly. Clustered requests, one wording per language and no independent blocks still limit inferential claims; no held-out cognitive prediction is tested.",
+      "evidence": [
+        "paper/main.tex: Analysis; Discussion; paper/revision100/error_control.json",
+        "journals/C04-cognitive-psychology.md"
+      ]
+    },
+    {
+      "journal_id": "C04",
+      "criterion_id": "K10",
+      "status": "Unknown",
+      "reason": "The source explicitly says human author identities, contributions, funding and conflicts have not been supplied. No human-participant data were collected; that fact does not authorize inventing final declarations.",
+      "evidence": [
+        "paper/main.tex: AI assistance; Study materials",
+        "journals/C04-cognitive-psychology.md"
+      ]
+    },
+    {
+      "journal_id": "C04",
+      "criterion_id": "K11",
+      "status": "Unknown",
+      "reason": "Substantial AI drafting, analysis, translation and review are disclosed. Human scientific verification and intellectual responsibility have not been supplied, so policy compliance cannot be certified.",
+      "evidence": [
+        "paper/main.tex: AI assistance",
+        "journals/C04-cognitive-psychology.md"
+      ]
+    },
+    {
+      "journal_id": "C04",
+      "criterion_id": "K12",
+      "status": "Unknown",
+      "reason": "The manuscript and identified GitHub materials are public. The checked venue guide does not establish enough of its review and identity requirements to certify the package.",
+      "evidence": [
+        "paper/main.tex: Data availability and research provenance",
+        "journals/C04-cognitive-psychology.md"
+      ]
+    },
+    {
+      "journal_id": "C04",
+      "criterion_id": "K13",
+      "status": "Unknown",
+      "reason": "No actual author funding or licensing decision is recorded. Public files do not establish reuse permission or a publication-license agreement.",
+      "evidence": [
+        "paper/main.tex: Data availability and research provenance; manuscript-inventory.json",
+        "journals/C04-cognitive-psychology.md"
+      ]
+    },
+    {
+      "journal_id": "C04",
+      "criterion_id": "K14",
+      "status": "Partial",
+      "reason": "The existing draft submission materials target Transactions in GIS. This venue needs its own fit argument, prior-posting account and genuine author approvals; none is established by the current paper.",
+      "evidence": [
+        "paper/submission/transactions-in-gis/cover-letter.md; paper/main.tex: AI assistance",
+        "journals/C04-cognitive-psychology.md"
+      ]
+    },
+    {
+      "journal_id": "C04",
+      "criterion_id": "K15",
+      "status": "Fail",
+      "reason": "There is no formal comparison among generative accounts of the judgments. A longer discussion or additional model names would not convert the current benchmark into an integrative theory paper.",
+      "evidence": [
+        "paper/main.tex: Introduction, paragraphs 4\u20136; Discussion; Conclusion",
+        "journals/C04-cognitive-psychology.md"
+      ]
+    },
+    {
+      "journal_id": "C05",
+      "criterion_id": "K01",
+      "status": "Partial",
+      "reason": "The use-inspired route is plausible through language systems as sources of spatial knowledge. The actual paper does not clearly explain that practical problem or the cognitive principle it motivates.",
+      "evidence": [
+        "paper/main.tex: Introduction",
+        "journals/C05-cognitive-research-principles-and-implications.md"
+      ]
+    },
+    {
+      "journal_id": "C05",
+      "criterion_id": "K02",
+      "status": "Partial",
+      "reason": "Original Article is a plausible route and several experiments are typical rather than mandatory. The current single protocol lacks the coherent theoretical account linking a stronger series of tests.",
+      "evidence": [
+        "paper/main.tex: Introduction; Relationship to previous measurement approaches",
+        "journals/C05-cognitive-research-principles-and-implications.md"
+      ]
+    },
+    {
+      "journal_id": "C05",
+      "criterion_id": "K03",
+      "status": "Pass",
+      "reason": "The 129-word abstract and six keywords fall within verified article-type limits. No universal body-word ceiling was found; this pass concerns verified numerical caps only.",
+      "evidence": [
+        "manuscript-inventory.json",
+        "journals/C05-cognitive-research-principles-and-implications.md"
+      ]
+    },
+    {
+      "journal_id": "C05",
+      "criterion_id": "K04",
+      "status": "Fail",
+      "reason": "The required separate Significance Statement is absent, and human title-page information remains blank. The current introduction cannot substitute for the missing statement.",
+      "evidence": [
+        "paper/main.tex: title block; Introduction",
+        "journals/C05-cognitive-research-principles-and-implications.md"
+      ]
+    },
+    {
+      "journal_id": "C05",
+      "criterion_id": "K05",
+      "status": "Pass",
+      "reason": "The editable LaTeX manuscript and compiled PDF are available; the guide explicitly supports LaTeX. Submission must include its dependencies, already represented in the reproduction materials.",
+      "evidence": [
+        "paper/main.tex; public/paper/publication.json",
+        "journals/C05-cognitive-research-principles-and-implications.md"
+      ]
+    },
+    {
+      "journal_id": "C05",
+      "criterion_id": "K06",
+      "status": "Fail",
+      "reason": "The article-specific APA 7 requirement is not met by the current numeric plain bibliography. Follow the specific article instructions rather than generic numerical-reference boilerplate.",
+      "evidence": [
+        "paper/main.tex: Introduction; bibliography; paper/references.bib",
+        "journals/C05-cognitive-research-principles-and-implications.md"
+      ]
+    },
+    {
+      "journal_id": "C05",
+      "criterion_id": "K07",
+      "status": "Partial",
+      "reason": "Split reproduction archives address small-file submission constraints, but figures and tables need an itemized check against the separate title/legend conventions. A principal figure should express the cognitive contrast.",
+      "evidence": [
+        "paper/main.tex: Results; Appendices; manuscript-inventory.json",
+        "journals/C05-cognitive-research-principles-and-implications.md"
+      ]
+    },
+    {
+      "journal_id": "C05",
+      "criterion_id": "K08",
+      "status": "Partial",
+      "reason": "Raw outputs, exact prompts, controls and analysis are public and versioned, which supports reanalysis. Missing historical collector state, an archival DOI and explicit reuse licenses remain acknowledged limitations.",
+      "evidence": [
+        "paper/main.tex: Data availability and research provenance",
+        "journals/C05-cognitive-research-principles-and-implications.md"
+      ]
+    },
+    {
+      "journal_id": "C05",
+      "criterion_id": "K09",
+      "status": "Partial",
+      "reason": "Descriptive controls and limited permutation nulls are now stated correctly. Clustered requests, one wording per language and no independent blocks still limit inferential claims; no held-out cognitive prediction is tested.",
+      "evidence": [
+        "paper/main.tex: Analysis; Discussion; paper/revision100/error_control.json",
+        "journals/C05-cognitive-research-principles-and-implications.md"
+      ]
+    },
+    {
+      "journal_id": "C05",
+      "criterion_id": "K10",
+      "status": "Unknown",
+      "reason": "The source explicitly says human author identities, contributions, funding and conflicts have not been supplied. No human-participant data were collected; that fact does not authorize inventing final declarations.",
+      "evidence": [
+        "paper/main.tex: AI assistance; Study materials",
+        "journals/C05-cognitive-research-principles-and-implications.md"
+      ]
+    },
+    {
+      "journal_id": "C05",
+      "criterion_id": "K11",
+      "status": "Unknown",
+      "reason": "Substantial AI drafting, analysis, translation and review are disclosed. Human scientific verification and intellectual responsibility have not been supplied, so policy compliance cannot be certified.",
+      "evidence": [
+        "paper/main.tex: AI assistance",
+        "journals/C05-cognitive-research-principles-and-implications.md"
+      ]
+    },
+    {
+      "journal_id": "C05",
+      "criterion_id": "K12",
+      "status": "Pass",
+      "reason": "The verified single-anonymous review model does not require hiding the public project from referees. Actual author metadata is assessed separately and is still missing.",
+      "evidence": [
+        "paper/main.tex: Data availability and research provenance",
+        "journals/C05-cognitive-research-principles-and-implications.md"
+      ]
+    },
+    {
+      "journal_id": "C05",
+      "criterion_id": "K13",
+      "status": "Unknown",
+      "reason": "This is a fully open-access route with a verified displayed APC, but eligibility for funding and the authors' acceptance of publication terms have not been supplied.",
+      "evidence": [
+        "paper/main.tex: Data availability and research provenance; manuscript-inventory.json",
+        "journals/C05-cognitive-research-principles-and-implications.md"
+      ]
+    },
+    {
+      "journal_id": "C05",
+      "criterion_id": "K14",
+      "status": "Partial",
+      "reason": "The existing draft submission materials target Transactions in GIS. This venue needs its own fit argument, prior-posting account and genuine author approvals; none is established by the current paper.",
+      "evidence": [
+        "paper/submission/transactions-in-gis/cover-letter.md; paper/main.tex: AI assistance",
+        "journals/C05-cognitive-research-principles-and-implications.md"
+      ]
+    },
+    {
+      "journal_id": "C05",
+      "criterion_id": "K15",
+      "status": "Fail",
+      "reason": "The use-inspired cognitive rationale and a significance statement are missing. The careful definition of an operational map does not yet show what basic cognitive understanding advances.",
+      "evidence": [
+        "paper/main.tex: Introduction, paragraphs 4\u20136; Discussion; Conclusion",
+        "journals/C05-cognitive-research-principles-and-implications.md"
+      ]
+    },
+    {
+      "journal_id": "C06",
+      "criterion_id": "K01",
+      "status": "Partial",
+      "reason": "Spatial relational judgments are relevant in principle, but the manuscript does not establish why this model-only case matters to the venue's broad human-cognition audience.",
+      "evidence": [
+        "paper/main.tex: Introduction",
+        "journals/C06-psychonomic-bulletin-and-review.md"
+      ]
+    },
+    {
+      "journal_id": "C06",
+      "criterion_id": "K02",
+      "status": "Fail",
+      "reason": "The empirical study would need the Brief Report route and a substantial theoretical contribution. Its present benchmark-level advance is insufficient for this high bar.",
+      "evidence": [
+        "paper/main.tex: Introduction; Relationship to previous measurement approaches",
+        "journals/C06-psychonomic-bulletin-and-review.md"
+      ]
+    },
+    {
+      "journal_id": "C06",
+      "criterion_id": "K03",
+      "status": "Partial",
+      "reason": "The abstract is within the 250-word cap. The journal's specific 3,000-word Introduction+Results+Discussion count has not been certified; Methods and references must not be counted as if included.",
+      "evidence": [
+        "manuscript-inventory.json",
+        "journals/C06-psychonomic-bulletin-and-review.md"
+      ]
+    },
+    {
+      "journal_id": "C06",
+      "criterion_id": "K04",
+      "status": "Partial",
+      "reason": "The source has a readable abstract, six keywords and conventional empirical sections, but the author field is empty and the opening does not establish a psychological or artificial-cognition problem.",
+      "evidence": [
+        "paper/main.tex: title block; Introduction",
+        "journals/C06-psychonomic-bulletin-and-review.md"
+      ]
+    },
+    {
+      "journal_id": "C06",
+      "criterion_id": "K05",
+      "status": "Unknown",
+      "reason": "LaTeX source and a reproduction package exist; compatibility with this venue's current upload requirements has not been established. Do not infer acceptance from another publisher's template.",
+      "evidence": [
+        "paper/main.tex; public/paper/publication.json",
+        "journals/C06-psychonomic-bulletin-and-review.md"
+      ]
+    },
+    {
+      "journal_id": "C06",
+      "criterion_id": "K06",
+      "status": "Fail",
+      "reason": "The numeric plain bibliography does not meet the verified APA 7 citation/reference requirement; the manuscript also needs deeper cognitive-theory engagement.",
+      "evidence": [
+        "paper/main.tex: Introduction; bibliography; paper/references.bib",
+        "journals/C06-psychonomic-bulletin-and-review.md"
+      ]
+    },
+    {
+      "journal_id": "C06",
+      "criterion_id": "K07",
+      "status": "Partial",
+      "reason": "The eight main displays describe accuracy, geometry and conditions with careful captions. For a cognition article, a theory-bearing diagram or prediction plot should replace some metric inventory; extensive appendices should be packaged for the selected venue.",
+      "evidence": [
+        "paper/main.tex: Results; Appendices; manuscript-inventory.json",
+        "journals/C06-psychonomic-bulletin-and-review.md"
+      ]
+    },
+    {
+      "journal_id": "C06",
+      "criterion_id": "K08",
+      "status": "Partial",
+      "reason": "Raw outputs, exact prompts, controls and analysis are public and versioned, which supports reanalysis. Missing historical collector state, an archival DOI and explicit reuse licenses remain acknowledged limitations.",
+      "evidence": [
+        "paper/main.tex: Data availability and research provenance",
+        "journals/C06-psychonomic-bulletin-and-review.md"
+      ]
+    },
+    {
+      "journal_id": "C06",
+      "criterion_id": "K09",
+      "status": "Partial",
+      "reason": "Descriptive controls and limited permutation nulls are now stated correctly. Clustered requests, one wording per language and no independent blocks still limit inferential claims; no held-out cognitive prediction is tested.",
+      "evidence": [
+        "paper/main.tex: Analysis; Discussion; paper/revision100/error_control.json",
+        "journals/C06-psychonomic-bulletin-and-review.md"
+      ]
+    },
+    {
+      "journal_id": "C06",
+      "criterion_id": "K10",
+      "status": "Unknown",
+      "reason": "The source explicitly says human author identities, contributions, funding and conflicts have not been supplied. No human-participant data were collected; that fact does not authorize inventing final declarations.",
+      "evidence": [
+        "paper/main.tex: AI assistance; Study materials",
+        "journals/C06-psychonomic-bulletin-and-review.md"
+      ]
+    },
+    {
+      "journal_id": "C06",
+      "criterion_id": "K11",
+      "status": "Unknown",
+      "reason": "Substantial AI drafting, analysis, translation and review are disclosed. Human scientific verification and intellectual responsibility have not been supplied, so policy compliance cannot be certified.",
+      "evidence": [
+        "paper/main.tex: AI assistance",
+        "journals/C06-psychonomic-bulletin-and-review.md"
+      ]
+    },
+    {
+      "journal_id": "C06",
+      "criterion_id": "K12",
+      "status": "Fail",
+      "reason": "The current public repository links and document do not constitute the required double-anonymous package. Preprinting is not automatically disqualifying, but anonymous review materials are still needed.",
+      "evidence": [
+        "paper/main.tex: Data availability and research provenance",
+        "journals/C06-psychonomic-bulletin-and-review.md"
+      ]
+    },
+    {
+      "journal_id": "C06",
+      "criterion_id": "K13",
+      "status": "Unknown",
+      "reason": "No actual author funding or licensing decision is recorded. Public files do not establish reuse permission or a publication-license agreement.",
+      "evidence": [
+        "paper/main.tex: Data availability and research provenance; manuscript-inventory.json",
+        "journals/C06-psychonomic-bulletin-and-review.md"
+      ]
+    },
+    {
+      "journal_id": "C06",
+      "criterion_id": "K14",
+      "status": "Partial",
+      "reason": "The existing draft submission materials target Transactions in GIS. This venue needs its own fit argument, prior-posting account and genuine author approvals; none is established by the current paper.",
+      "evidence": [
+        "paper/submission/transactions-in-gis/cover-letter.md; paper/main.tex: AI assistance",
+        "journals/C06-psychonomic-bulletin-and-review.md"
+      ]
+    },
+    {
+      "journal_id": "C06",
+      "criterion_id": "K15",
+      "status": "Fail",
+      "reason": "The central argument supplies no substantial advance in a theory of cognition. The current result is informative measurement, but a concise format alone would not make it an outstanding theoretical finding.",
+      "evidence": [
+        "paper/main.tex: Introduction, paragraphs 4\u20136; Discussion; Conclusion",
+        "journals/C06-psychonomic-bulletin-and-review.md"
+      ]
+    },
+    {
+      "journal_id": "C07",
+      "criterion_id": "K01",
+      "status": "Partial",
+      "reason": "The venue includes computational work relevant to human cognition, but the paper does not substantiate a connection to memory, conceptual organization or human spatial judgment.",
+      "evidence": [
+        "paper/main.tex: Introduction",
+        "journals/C07-memory-and-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C07",
+      "criterion_id": "K02",
+      "status": "Partial",
+      "reason": "An Empirical Paper is a possible route. The case needs a psychologically meaningful contrast, rather than an inferred equivalence between model responses and a human process.",
+      "evidence": [
+        "paper/main.tex: Introduction; Relationship to previous measurement approaches",
+        "journals/C07-memory-and-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C07",
+      "criterion_id": "K03",
+      "status": "Pass",
+      "reason": "The abstract satisfies the verified 250-word maximum. No body limit was established, so this pass applies only to the known numerical cap.",
+      "evidence": [
+        "manuscript-inventory.json",
+        "journals/C07-memory-and-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C07",
+      "criterion_id": "K04",
+      "status": "Partial",
+      "reason": "The source has a readable abstract, six keywords and conventional empirical sections, but the author field is empty and the opening does not establish a psychological or artificial-cognition problem.",
+      "evidence": [
+        "paper/main.tex: title block; Introduction",
+        "journals/C07-memory-and-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C07",
+      "criterion_id": "K05",
+      "status": "Unknown",
+      "reason": "LaTeX source and a reproduction package exist; compatibility with this venue's current upload requirements has not been established. Do not infer acceptance from another publisher's template.",
+      "evidence": [
+        "paper/main.tex; public/paper/publication.json",
+        "journals/C07-memory-and-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C07",
+      "criterion_id": "K06",
+      "status": "Fail",
+      "reason": "The verified APA 7 format is not met by numeric plain references. Prior work on cognitive representations is also underdeveloped relative to the venue's audience.",
+      "evidence": [
+        "paper/main.tex: Introduction; bibliography; paper/references.bib",
+        "journals/C07-memory-and-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C07",
+      "criterion_id": "K07",
+      "status": "Partial",
+      "reason": "The eight main displays describe accuracy, geometry and conditions with careful captions. For a cognition article, a theory-bearing diagram or prediction plot should replace some metric inventory; extensive appendices should be packaged for the selected venue.",
+      "evidence": [
+        "paper/main.tex: Results; Appendices; manuscript-inventory.json",
+        "journals/C07-memory-and-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C07",
+      "criterion_id": "K08",
+      "status": "Partial",
+      "reason": "Raw outputs, exact prompts, controls and analysis are public and versioned, which supports reanalysis. Missing historical collector state, an archival DOI and explicit reuse licenses remain acknowledged limitations.",
+      "evidence": [
+        "paper/main.tex: Data availability and research provenance",
+        "journals/C07-memory-and-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C07",
+      "criterion_id": "K09",
+      "status": "Partial",
+      "reason": "Descriptive controls and limited permutation nulls are now stated correctly. Clustered requests, one wording per language and no independent blocks still limit inferential claims; no held-out cognitive prediction is tested.",
+      "evidence": [
+        "paper/main.tex: Analysis; Discussion; paper/revision100/error_control.json",
+        "journals/C07-memory-and-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C07",
+      "criterion_id": "K10",
+      "status": "Unknown",
+      "reason": "The source explicitly says human author identities, contributions, funding and conflicts have not been supplied. No human-participant data were collected; that fact does not authorize inventing final declarations.",
+      "evidence": [
+        "paper/main.tex: AI assistance; Study materials",
+        "journals/C07-memory-and-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C07",
+      "criterion_id": "K11",
+      "status": "Unknown",
+      "reason": "Substantial AI drafting, analysis, translation and review are disclosed. Human scientific verification and intellectual responsibility have not been supplied, so policy compliance cannot be certified.",
+      "evidence": [
+        "paper/main.tex: AI assistance",
+        "journals/C07-memory-and-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C07",
+      "criterion_id": "K12",
+      "status": "Unknown",
+      "reason": "The manuscript and identified GitHub materials are public. The checked venue guide does not establish enough of its review and identity requirements to certify the package.",
+      "evidence": [
+        "paper/main.tex: Data availability and research provenance",
+        "journals/C07-memory-and-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C07",
+      "criterion_id": "K13",
+      "status": "Unknown",
+      "reason": "No actual author funding or licensing decision is recorded. Public files do not establish reuse permission or a publication-license agreement.",
+      "evidence": [
+        "paper/main.tex: Data availability and research provenance; manuscript-inventory.json",
+        "journals/C07-memory-and-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C07",
+      "criterion_id": "K14",
+      "status": "Partial",
+      "reason": "The existing draft submission materials target Transactions in GIS. This venue needs its own fit argument, prior-posting account and genuine author approvals; none is established by the current paper.",
+      "evidence": [
+        "paper/submission/transactions-in-gis/cover-letter.md; paper/main.tex: AI assistance",
+        "journals/C07-memory-and-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C07",
+      "criterion_id": "K15",
+      "status": "Fail",
+      "reason": "The paper measures retrieval outputs but makes no discriminating prediction about retrieval or relational organization. Its cautious disclaimer cannot by itself establish human-cognition relevance.",
+      "evidence": [
+        "paper/main.tex: Introduction, paragraphs 4\u20136; Discussion; Conclusion",
+        "journals/C07-memory-and-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C08",
+      "criterion_id": "K01",
+      "status": "Partial",
+      "reason": "The repeat-and-reconstruct procedure could support experimental cognitive research, but the paper currently reads as an application benchmark rather than a measurement-method contribution.",
+      "evidence": [
+        "paper/main.tex: Introduction",
+        "journals/C08-behavior-research-methods.md"
+      ]
+    },
+    {
+      "journal_id": "C08",
+      "criterion_id": "K02",
+      "status": "Partial",
+      "reason": "Original research or a genuine tutorial could fit. The current method assembles established tools and lacks sufficient comparative recovery/calibration validation for a general methodological claim.",
+      "evidence": [
+        "paper/main.tex: Introduction; Relationship to previous measurement approaches",
+        "journals/C08-behavior-research-methods.md"
+      ]
+    },
+    {
+      "journal_id": "C08",
+      "criterion_id": "K03",
+      "status": "Pass",
+      "reason": "The 129-word abstract is below the verified 250-word ceiling. No total-text ceiling was found; the pass is limited to the established cap.",
+      "evidence": [
+        "manuscript-inventory.json",
+        "journals/C08-behavior-research-methods.md"
+      ]
+    },
+    {
+      "journal_id": "C08",
+      "criterion_id": "K04",
+      "status": "Partial",
+      "reason": "The source has a readable abstract, six keywords and conventional empirical sections, but the author field is empty and the opening does not establish a psychological or artificial-cognition problem.",
+      "evidence": [
+        "paper/main.tex: title block; Introduction",
+        "journals/C08-behavior-research-methods.md"
+      ]
+    },
+    {
+      "journal_id": "C08",
+      "criterion_id": "K05",
+      "status": "Unknown",
+      "reason": "LaTeX source and a reproduction package exist; compatibility with this venue's current upload requirements has not been established. Do not infer acceptance from another publisher's template.",
+      "evidence": [
+        "paper/main.tex; public/paper/publication.json",
+        "journals/C08-behavior-research-methods.md"
+      ]
+    },
+    {
+      "journal_id": "C08",
+      "criterion_id": "K06",
+      "status": "Fail",
+      "reason": "The current numeric plain references do not follow the verified APA 7 convention. Dataset citation also needs a settled persistent archive and clear reuse terms.",
+      "evidence": [
+        "paper/main.tex: Introduction; bibliography; paper/references.bib",
+        "journals/C08-behavior-research-methods.md"
+      ]
+    },
+    {
+      "journal_id": "C08",
+      "criterion_id": "K07",
+      "status": "Partial",
+      "reason": "The eight main displays describe accuracy, geometry and conditions with careful captions. For a cognition article, a theory-bearing diagram or prediction plot should replace some metric inventory; extensive appendices should be packaged for the selected venue.",
+      "evidence": [
+        "paper/main.tex: Results; Appendices; manuscript-inventory.json",
+        "journals/C08-behavior-research-methods.md"
+      ]
+    },
+    {
+      "journal_id": "C08",
+      "criterion_id": "K08",
+      "status": "Partial",
+      "reason": "Raw outputs, exact prompts, controls and analysis are public and versioned, which supports reanalysis. Missing historical collector state, an archival DOI and explicit reuse licenses remain acknowledged limitations.",
+      "evidence": [
+        "paper/main.tex: Data availability and research provenance",
+        "journals/C08-behavior-research-methods.md"
+      ]
+    },
+    {
+      "journal_id": "C08",
+      "criterion_id": "K09",
+      "status": "Partial",
+      "reason": "The error-sign and bootstrap controls identify valuable measurement limitations. Broader estimator comparison, recovery tests and calibrated uncertainty across prespecified scenarios are still needed for a methods contribution.",
+      "evidence": [
+        "paper/main.tex: Analysis; Discussion; paper/revision100/error_control.json",
+        "journals/C08-behavior-research-methods.md"
+      ]
+    },
+    {
+      "journal_id": "C08",
+      "criterion_id": "K10",
+      "status": "Unknown",
+      "reason": "The source explicitly says human author identities, contributions, funding and conflicts have not been supplied. No human-participant data were collected; that fact does not authorize inventing final declarations.",
+      "evidence": [
+        "paper/main.tex: AI assistance; Study materials",
+        "journals/C08-behavior-research-methods.md"
+      ]
+    },
+    {
+      "journal_id": "C08",
+      "criterion_id": "K11",
+      "status": "Unknown",
+      "reason": "Substantial AI drafting, analysis, translation and review are disclosed. Human scientific verification and intellectual responsibility have not been supplied, so policy compliance cannot be certified.",
+      "evidence": [
+        "paper/main.tex: AI assistance",
+        "journals/C08-behavior-research-methods.md"
+      ]
+    },
+    {
+      "journal_id": "C08",
+      "criterion_id": "K12",
+      "status": "Unknown",
+      "reason": "The manuscript and identified GitHub materials are public. The checked venue guide does not establish enough of its review and identity requirements to certify the package.",
+      "evidence": [
+        "paper/main.tex: Data availability and research provenance",
+        "journals/C08-behavior-research-methods.md"
+      ]
+    },
+    {
+      "journal_id": "C08",
+      "criterion_id": "K13",
+      "status": "Unknown",
+      "reason": "No actual author funding or licensing decision is recorded. Public files do not establish reuse permission or a publication-license agreement.",
+      "evidence": [
+        "paper/main.tex: Data availability and research provenance; manuscript-inventory.json",
+        "journals/C08-behavior-research-methods.md"
+      ]
+    },
+    {
+      "journal_id": "C08",
+      "criterion_id": "K14",
+      "status": "Partial",
+      "reason": "The existing draft submission materials target Transactions in GIS. This venue needs its own fit argument, prior-posting account and genuine author approvals; none is established by the current paper.",
+      "evidence": [
+        "paper/submission/transactions-in-gis/cover-letter.md; paper/main.tex: AI assistance",
+        "journals/C08-behavior-research-methods.md"
+      ]
+    },
+    {
+      "journal_id": "C08",
+      "criterion_id": "K15",
+      "status": "Fail",
+      "reason": "The source does not state a general measurement problem and show how this procedure improves cognitive research. Extensive audit detail is useful evidence but not an explanatory or methodological thesis.",
+      "evidence": [
+        "paper/main.tex: Introduction, paragraphs 4\u20136; Discussion; Conclusion",
+        "journals/C08-behavior-research-methods.md"
+      ]
+    },
+    {
+      "journal_id": "C09",
+      "criterion_id": "K01",
+      "status": "Pass",
+      "reason": "The intended intersection of spatial cognition and computation directly matches the verified scope. This is a subject-fit judgment, not a finding that current theory or policy eligibility is adequate.",
+      "evidence": [
+        "paper/main.tex: Introduction",
+        "journals/C09-spatial-cognition-and-computation.md"
+      ]
+    },
+    {
+      "journal_id": "C09",
+      "criterion_id": "K02",
+      "status": "Partial",
+      "reason": "A spatial-computation research article seems plausible, but the exact current type is unverified and the paper needs a claim about relational organization beyond geographic accuracy.",
+      "evidence": [
+        "paper/main.tex: Introduction; Relationship to previous measurement approaches",
+        "journals/C09-spatial-cognition-and-computation.md"
+      ]
+    },
+    {
+      "journal_id": "C09",
+      "criterion_id": "K03",
+      "status": "Unknown",
+      "reason": "The inventory gives 129 abstract tokens and 30 PDF pages, not a certified count under this venue's rules. Exact applicable limits remain unverified or require a journal-specific count.",
+      "evidence": [
+        "manuscript-inventory.json",
+        "journals/C09-spatial-cognition-and-computation.md"
+      ]
+    },
+    {
+      "journal_id": "C09",
+      "criterion_id": "K04",
+      "status": "Partial",
+      "reason": "The source has a readable abstract, six keywords and conventional empirical sections, but the author field is empty and the opening does not establish a psychological or artificial-cognition problem.",
+      "evidence": [
+        "paper/main.tex: title block; Introduction",
+        "journals/C09-spatial-cognition-and-computation.md"
+      ]
+    },
+    {
+      "journal_id": "C09",
+      "criterion_id": "K05",
+      "status": "Unknown",
+      "reason": "LaTeX source and a reproduction package exist; compatibility with this venue's current upload requirements has not been established. Do not infer acceptance from another publisher's template.",
+      "evidence": [
+        "paper/main.tex; public/paper/publication.json",
+        "journals/C09-spatial-cognition-and-computation.md"
+      ]
+    },
+    {
+      "journal_id": "C09",
+      "criterion_id": "K06",
+      "status": "Unknown",
+      "reason": "The detailed guide was inaccessible; exact reference style is unverified. The current source documents reconstruction precedent but provides little cognitive-theory development.",
+      "evidence": [
+        "paper/main.tex: Introduction; bibliography; paper/references.bib",
+        "journals/C09-spatial-cognition-and-computation.md"
+      ]
+    },
+    {
+      "journal_id": "C09",
+      "criterion_id": "K07",
+      "status": "Unknown",
+      "reason": "No exact current artwork, display or supplement rules were accessible. The existing measured-capital versus illustrative-coastline distinction is useful but does not certify format.",
+      "evidence": [
+        "paper/main.tex: Results; Appendices; manuscript-inventory.json",
+        "journals/C09-spatial-cognition-and-computation.md"
+      ]
+    },
+    {
+      "journal_id": "C09",
+      "criterion_id": "K08",
+      "status": "Partial",
+      "reason": "Raw outputs, exact prompts, controls and analysis are public and versioned, which supports reanalysis. Missing historical collector state, an archival DOI and explicit reuse licenses remain acknowledged limitations.",
+      "evidence": [
+        "paper/main.tex: Data availability and research provenance",
+        "journals/C09-spatial-cognition-and-computation.md"
+      ]
+    },
+    {
+      "journal_id": "C09",
+      "criterion_id": "K09",
+      "status": "Partial",
+      "reason": "Descriptive controls and limited permutation nulls are now stated correctly. Clustered requests, one wording per language and no independent blocks still limit inferential claims; no held-out cognitive prediction is tested.",
+      "evidence": [
+        "paper/main.tex: Analysis; Discussion; paper/revision100/error_control.json",
+        "journals/C09-spatial-cognition-and-computation.md"
+      ]
+    },
+    {
+      "journal_id": "C09",
+      "criterion_id": "K10",
+      "status": "Unknown",
+      "reason": "The source explicitly says human author identities, contributions, funding and conflicts have not been supplied. No human-participant data were collected; that fact does not authorize inventing final declarations.",
+      "evidence": [
+        "paper/main.tex: AI assistance; Study materials",
+        "journals/C09-spatial-cognition-and-computation.md"
+      ]
+    },
+    {
+      "journal_id": "C09",
+      "criterion_id": "K11",
+      "status": "Fail",
+      "reason": "The recorded history includes AI-generated manuscript drafting and sections, in conflict with the checked publisher restriction. Treat eligibility as blocked pending explicit editorial clarification; later rewriting cannot silently erase the history.",
+      "evidence": [
+        "paper/main.tex: AI assistance",
+        "journals/C09-spatial-cognition-and-computation.md"
+      ]
+    },
+    {
+      "journal_id": "C09",
+      "criterion_id": "K12",
+      "status": "Unknown",
+      "reason": "The manuscript and identified GitHub materials are public. The checked venue guide does not establish enough of its review and identity requirements to certify the package.",
+      "evidence": [
+        "paper/main.tex: Data availability and research provenance",
+        "journals/C09-spatial-cognition-and-computation.md"
+      ]
+    },
+    {
+      "journal_id": "C09",
+      "criterion_id": "K13",
+      "status": "Unknown",
+      "reason": "No actual author funding or licensing decision is recorded. Public files do not establish reuse permission or a publication-license agreement.",
+      "evidence": [
+        "paper/main.tex: Data availability and research provenance; manuscript-inventory.json",
+        "journals/C09-spatial-cognition-and-computation.md"
+      ]
+    },
+    {
+      "journal_id": "C09",
+      "criterion_id": "K14",
+      "status": "Partial",
+      "reason": "The existing draft submission materials target Transactions in GIS. This venue needs its own fit argument, prior-posting account and genuine author approvals; none is established by the current paper.",
+      "evidence": [
+        "paper/submission/transactions-in-gis/cover-letter.md; paper/main.tex: AI assistance",
+        "journals/C09-spatial-cognition-and-computation.md"
+      ]
+    },
+    {
+      "journal_id": "C09",
+      "criterion_id": "K15",
+      "status": "Fail",
+      "reason": "Despite the direct subject match, the source frames empirical geospatial extensions more clearly than a transferable relational representation. The needed cognitive argument has not yet been written or tested.",
+      "evidence": [
+        "paper/main.tex: Introduction, paragraphs 4\u20136; Discussion; Conclusion",
+        "journals/C09-spatial-cognition-and-computation.md"
+      ]
+    },
+    {
+      "journal_id": "C10",
+      "criterion_id": "K01",
+      "status": "Pass",
+      "reason": "The venue explicitly includes sciences of the artificial, making the intended behavioral study a direct intellectual fit without assuming new human participants are mandatory.",
+      "evidence": [
+        "paper/main.tex: Introduction",
+        "journals/C10-cognitive-processing.md"
+      ]
+    },
+    {
+      "journal_id": "C10",
+      "criterion_id": "K02",
+      "status": "Partial",
+      "reason": "A Research Article is plausible. The dataset is an interesting bounded case, but stronger cognitive framing and an independent validation contrast are needed for its theoretical contribution.",
+      "evidence": [
+        "paper/main.tex: Introduction; Relationship to previous measurement approaches",
+        "journals/C10-cognitive-processing.md"
+      ]
+    },
+    {
+      "journal_id": "C10",
+      "criterion_id": "K03",
+      "status": "Fail",
+      "reason": "The approximately 129-word abstract is below the verified 150-word minimum; six keywords are within range. No overall body ceiling was located.",
+      "evidence": [
+        "manuscript-inventory.json",
+        "journals/C10-cognitive-processing.md"
+      ]
+    },
+    {
+      "journal_id": "C10",
+      "criterion_id": "K04",
+      "status": "Partial",
+      "reason": "The source has a readable abstract, six keywords and conventional empirical sections, but the author field is empty and the opening does not establish a psychological or artificial-cognition problem.",
+      "evidence": [
+        "paper/main.tex: title block; Introduction",
+        "journals/C10-cognitive-processing.md"
+      ]
+    },
+    {
+      "journal_id": "C10",
+      "criterion_id": "K05",
+      "status": "Pass",
+      "reason": "The mathematical paper has editable LaTeX and compiled output, a supported route. Identity and declaration placement must follow the new portal notice and are assessed separately.",
+      "evidence": [
+        "paper/main.tex; public/paper/publication.json",
+        "journals/C10-cognitive-processing.md"
+      ]
+    },
+    {
+      "journal_id": "C10",
+      "criterion_id": "K06",
+      "status": "Fail",
+      "reason": "The required author\u2013year citations and alphabetical reference list are not provided by the current numeric plain style.",
+      "evidence": [
+        "paper/main.tex: Introduction; bibliography; paper/references.bib",
+        "journals/C10-cognitive-processing.md"
+      ]
+    },
+    {
+      "journal_id": "C10",
+      "criterion_id": "K07",
+      "status": "Partial",
+      "reason": "The eight main displays describe accuracy, geometry and conditions with careful captions. For a cognition article, a theory-bearing diagram or prediction plot should replace some metric inventory; extensive appendices should be packaged for the selected venue.",
+      "evidence": [
+        "paper/main.tex: Results; Appendices; manuscript-inventory.json",
+        "journals/C10-cognitive-processing.md"
+      ]
+    },
+    {
+      "journal_id": "C10",
+      "criterion_id": "K08",
+      "status": "Partial",
+      "reason": "Raw outputs, exact prompts, controls and analysis are public and versioned, which supports reanalysis. Missing historical collector state, an archival DOI and explicit reuse licenses remain acknowledged limitations.",
+      "evidence": [
+        "paper/main.tex: Data availability and research provenance",
+        "journals/C10-cognitive-processing.md"
+      ]
+    },
+    {
+      "journal_id": "C10",
+      "criterion_id": "K09",
+      "status": "Partial",
+      "reason": "Descriptive controls and limited permutation nulls are now stated correctly. Clustered requests, one wording per language and no independent blocks still limit inferential claims; no held-out cognitive prediction is tested.",
+      "evidence": [
+        "paper/main.tex: Analysis; Discussion; paper/revision100/error_control.json",
+        "journals/C10-cognitive-processing.md"
+      ]
+    },
+    {
+      "journal_id": "C10",
+      "criterion_id": "K10",
+      "status": "Unknown",
+      "reason": "The source explicitly says human author identities, contributions, funding and conflicts have not been supplied. No human-participant data were collected; that fact does not authorize inventing final declarations.",
+      "evidence": [
+        "paper/main.tex: AI assistance; Study materials",
+        "journals/C10-cognitive-processing.md"
+      ]
+    },
+    {
+      "journal_id": "C10",
+      "criterion_id": "K11",
+      "status": "Unknown",
+      "reason": "Substantial AI drafting, analysis, translation and review are disclosed. Human scientific verification and intellectual responsibility have not been supplied, so policy compliance cannot be certified.",
+      "evidence": [
+        "paper/main.tex: AI assistance",
+        "journals/C10-cognitive-processing.md"
+      ]
+    },
+    {
+      "journal_id": "C10",
+      "criterion_id": "K12",
+      "status": "Fail",
+      "reason": "The identified public GitHub links and current document have not been converted into a double-anonymous review package. Public prior posting should be disclosed rather than denied.",
+      "evidence": [
+        "paper/main.tex: Data availability and research provenance",
+        "journals/C10-cognitive-processing.md"
+      ]
+    },
+    {
+      "journal_id": "C10",
+      "criterion_id": "K13",
+      "status": "Unknown",
+      "reason": "No actual author funding or licensing decision is recorded. Public files do not establish reuse permission or a publication-license agreement.",
+      "evidence": [
+        "paper/main.tex: Data availability and research provenance; manuscript-inventory.json",
+        "journals/C10-cognitive-processing.md"
+      ]
+    },
+    {
+      "journal_id": "C10",
+      "criterion_id": "K14",
+      "status": "Partial",
+      "reason": "The existing draft submission materials target Transactions in GIS. This venue needs its own fit argument, prior-posting account and genuine author approvals; none is established by the current paper.",
+      "evidence": [
+        "paper/submission/transactions-in-gis/cover-letter.md; paper/main.tex: AI assistance",
+        "journals/C10-cognitive-processing.md"
+      ]
+    },
+    {
+      "journal_id": "C10",
+      "criterion_id": "K15",
+      "status": "Fail",
+      "reason": "The actual contribution paragraph still calls this a benchmark. Artificial-cognition scope makes a behavioral interpretation possible, but a positive theoretical argument and discriminating prediction are absent.",
+      "evidence": [
+        "paper/main.tex: Introduction, paragraphs 4\u20136; Discussion; Conclusion",
+        "journals/C10-cognitive-processing.md"
+      ]
+    },
+    {
+      "journal_id": "C11",
+      "criterion_id": "K01",
+      "status": "Fail",
+      "reason": "The current observations concern an API system's distances and do not establish a psychological process in reciprocal human\u2013environment relations.",
+      "evidence": [
+        "paper/main.tex: Introduction",
+        "journals/C11-journal-of-environmental-psychology.md"
+      ]
+    },
+    {
+      "journal_id": "C11",
+      "criterion_id": "K02",
+      "status": "Fail",
+      "reason": "Empirical articles are supported, but the current model benchmark lacks the required human\u2013environment contribution. This is a fit deficiency, not a blanket human-participant rule.",
+      "evidence": [
+        "paper/main.tex: Introduction; Relationship to previous measurement approaches",
+        "journals/C11-journal-of-environmental-psychology.md"
+      ]
+    },
+    {
+      "journal_id": "C11",
+      "criterion_id": "K03",
+      "status": "Unknown",
+      "reason": "The inventory gives 129 abstract tokens and 30 PDF pages, not a certified count under this venue's rules. Exact applicable limits remain unverified or require a journal-specific count.",
+      "evidence": [
+        "manuscript-inventory.json",
+        "journals/C11-journal-of-environmental-psychology.md"
+      ]
+    },
+    {
+      "journal_id": "C11",
+      "criterion_id": "K04",
+      "status": "Partial",
+      "reason": "The source has a readable abstract, six keywords and conventional empirical sections, but the author field is empty and the opening does not establish a psychological or artificial-cognition problem.",
+      "evidence": [
+        "paper/main.tex: title block; Introduction",
+        "journals/C11-journal-of-environmental-psychology.md"
+      ]
+    },
+    {
+      "journal_id": "C11",
+      "criterion_id": "K05",
+      "status": "Unknown",
+      "reason": "LaTeX source and a reproduction package exist; compatibility with this venue's current upload requirements has not been established. Do not infer acceptance from another publisher's template.",
+      "evidence": [
+        "paper/main.tex; public/paper/publication.json",
+        "journals/C11-journal-of-environmental-psychology.md"
+      ]
+    },
+    {
+      "journal_id": "C11",
+      "criterion_id": "K06",
+      "status": "Unknown",
+      "reason": "The author guide was inaccessible, leaving exact reference style unverified. The present literature does not build an environmental-psychology argument.",
+      "evidence": [
+        "paper/main.tex: Introduction; bibliography; paper/references.bib",
+        "journals/C11-journal-of-environmental-psychology.md"
+      ]
+    },
+    {
+      "journal_id": "C11",
+      "criterion_id": "K07",
+      "status": "Unknown",
+      "reason": "Current venue-specific display and supplement limits are unverified. Warped coastlines cannot by themselves serve as a measure of environmental experience.",
+      "evidence": [
+        "paper/main.tex: Results; Appendices; manuscript-inventory.json",
+        "journals/C11-journal-of-environmental-psychology.md"
+      ]
+    },
+    {
+      "journal_id": "C11",
+      "criterion_id": "K08",
+      "status": "Partial",
+      "reason": "Raw outputs, exact prompts, controls and analysis are public and versioned, which supports reanalysis. Missing historical collector state, an archival DOI and explicit reuse licenses remain acknowledged limitations.",
+      "evidence": [
+        "paper/main.tex: Data availability and research provenance",
+        "journals/C11-journal-of-environmental-psychology.md"
+      ]
+    },
+    {
+      "journal_id": "C11",
+      "criterion_id": "K09",
+      "status": "Partial",
+      "reason": "Descriptive controls and limited permutation nulls are now stated correctly. Clustered requests, one wording per language and no independent blocks still limit inferential claims; no held-out cognitive prediction is tested.",
+      "evidence": [
+        "paper/main.tex: Analysis; Discussion; paper/revision100/error_control.json",
+        "journals/C11-journal-of-environmental-psychology.md"
+      ]
+    },
+    {
+      "journal_id": "C11",
+      "criterion_id": "K10",
+      "status": "Unknown",
+      "reason": "The source explicitly says human author identities, contributions, funding and conflicts have not been supplied. No human-participant data were collected; that fact does not authorize inventing final declarations.",
+      "evidence": [
+        "paper/main.tex: AI assistance; Study materials",
+        "journals/C11-journal-of-environmental-psychology.md"
+      ]
+    },
+    {
+      "journal_id": "C11",
+      "criterion_id": "K11",
+      "status": "Unknown",
+      "reason": "Substantial AI drafting, analysis, translation and review are disclosed. Human scientific verification and intellectual responsibility have not been supplied, so policy compliance cannot be certified.",
+      "evidence": [
+        "paper/main.tex: AI assistance",
+        "journals/C11-journal-of-environmental-psychology.md"
+      ]
+    },
+    {
+      "journal_id": "C11",
+      "criterion_id": "K12",
+      "status": "Unknown",
+      "reason": "The manuscript and identified GitHub materials are public. The checked venue guide does not establish enough of its review and identity requirements to certify the package.",
+      "evidence": [
+        "paper/main.tex: Data availability and research provenance",
+        "journals/C11-journal-of-environmental-psychology.md"
+      ]
+    },
+    {
+      "journal_id": "C11",
+      "criterion_id": "K13",
+      "status": "Unknown",
+      "reason": "No actual author funding or licensing decision is recorded. Public files do not establish reuse permission or a publication-license agreement.",
+      "evidence": [
+        "paper/main.tex: Data availability and research provenance; manuscript-inventory.json",
+        "journals/C11-journal-of-environmental-psychology.md"
+      ]
+    },
+    {
+      "journal_id": "C11",
+      "criterion_id": "K14",
+      "status": "Partial",
+      "reason": "The existing draft submission materials target Transactions in GIS. This venue needs its own fit argument, prior-posting account and genuine author approvals; none is established by the current paper.",
+      "evidence": [
+        "paper/submission/transactions-in-gis/cover-letter.md; paper/main.tex: AI assistance",
+        "journals/C11-journal-of-environmental-psychology.md"
+      ]
+    },
+    {
+      "journal_id": "C11",
+      "criterion_id": "K15",
+      "status": "Fail",
+      "reason": "The dataset contains no observations of affect, experience, place attachment or environmental behavior. Calling the visualization psychogeography would not establish those constructs or repair the missing psychological bridge.",
+      "evidence": [
+        "paper/main.tex: Introduction, paragraphs 4\u20136; Discussion; Conclusion",
+        "journals/C11-journal-of-environmental-psychology.md"
+      ]
+    },
+    {
+      "journal_id": "C12",
+      "criterion_id": "K01",
+      "status": "Partial",
+      "reason": "The section accepts AI approaches with a human-cognition foundation. The current geographic benchmark does not yet make that foundation explicit enough.",
+      "evidence": [
+        "paper/main.tex: Introduction",
+        "journals/C12-frontiers-in-psychology-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C12",
+      "criterion_id": "K02",
+      "status": "Partial",
+      "reason": "Original Research is the plausible route; eight main displays make the short-report route inappropriate without reduction. The psychological contribution still needs more than technological evaluation.",
+      "evidence": [
+        "paper/main.tex: Introduction; Relationship to previous measurement approaches",
+        "journals/C12-frontiers-in-psychology-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C12",
+      "criterion_id": "K03",
+      "status": "Partial",
+      "reason": "A 12,000-word Original Research route is verified, but the inventory is not a certified body count and no exact abstract ceiling was established. Do not infer compliance from page count.",
+      "evidence": [
+        "manuscript-inventory.json",
+        "journals/C12-frontiers-in-psychology-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C12",
+      "criterion_id": "K04",
+      "status": "Fail",
+      "reason": "The current double-spaced source lacks the requested line numbering, first-page counts and completed title page, while the journal calls for single spacing and a separate scope statement.",
+      "evidence": [
+        "paper/main.tex: title block; Introduction",
+        "journals/C12-frontiers-in-psychology-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C12",
+      "criterion_id": "K05",
+      "status": "Pass",
+      "reason": "Word and LaTeX are supported and editable LaTeX is present. The existing PDF is not by itself the final package; separate figures and supporting files remain preparation tasks.",
+      "evidence": [
+        "paper/main.tex; public/paper/publication.json",
+        "journals/C12-frontiers-in-psychology-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C12",
+      "criterion_id": "K06",
+      "status": "Unknown",
+      "reason": "The checked guide did not resolve the journal-specific reference-style mapping. Neither Harvard nor Vancouver should be assigned by guess; conceptual literature still needs strengthening.",
+      "evidence": [
+        "paper/main.tex: Introduction; bibliography; paper/references.bib",
+        "journals/C12-frontiers-in-psychology-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C12",
+      "criterion_id": "K07",
+      "status": "Partial",
+      "reason": "The Original Research route can accommodate the current display count, but the multi-page appendices must move to supplements and figures need separate accessible descriptions.",
+      "evidence": [
+        "paper/main.tex: Results; Appendices; manuscript-inventory.json",
+        "journals/C12-frontiers-in-psychology-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C12",
+      "criterion_id": "K08",
+      "status": "Partial",
+      "reason": "Raw outputs, exact prompts, controls and analysis are public and versioned, which supports reanalysis. Missing historical collector state, an archival DOI and explicit reuse licenses remain acknowledged limitations.",
+      "evidence": [
+        "paper/main.tex: Data availability and research provenance",
+        "journals/C12-frontiers-in-psychology-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C12",
+      "criterion_id": "K09",
+      "status": "Partial",
+      "reason": "Descriptive controls and limited permutation nulls are now stated correctly. Clustered requests, one wording per language and no independent blocks still limit inferential claims; no held-out cognitive prediction is tested.",
+      "evidence": [
+        "paper/main.tex: Analysis; Discussion; paper/revision100/error_control.json",
+        "journals/C12-frontiers-in-psychology-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C12",
+      "criterion_id": "K10",
+      "status": "Unknown",
+      "reason": "The source explicitly says human author identities, contributions, funding and conflicts have not been supplied. No human-participant data were collected; that fact does not authorize inventing final declarations.",
+      "evidence": [
+        "paper/main.tex: AI assistance; Study materials",
+        "journals/C12-frontiers-in-psychology-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C12",
+      "criterion_id": "K11",
+      "status": "Unknown",
+      "reason": "Substantial AI drafting, analysis, translation and review are disclosed. Human scientific verification and intellectual responsibility have not been supplied, so policy compliance cannot be certified.",
+      "evidence": [
+        "paper/main.tex: AI assistance",
+        "journals/C12-frontiers-in-psychology-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C12",
+      "criterion_id": "K12",
+      "status": "Pass",
+      "reason": "Verified single-anonymous review is compatible with identified public materials. Missing author information is a separate declaration issue, not grounds to invent an anonymity problem.",
+      "evidence": [
+        "paper/main.tex: Data availability and research provenance",
+        "journals/C12-frontiers-in-psychology-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C12",
+      "criterion_id": "K13",
+      "status": "Unknown",
+      "reason": "The guide gives current APCs and CC-BY publication, but no actual funding or rights decision is supplied. Do not equate a posted price with authorization to incur it.",
+      "evidence": [
+        "paper/main.tex: Data availability and research provenance; manuscript-inventory.json",
+        "journals/C12-frontiers-in-psychology-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C12",
+      "criterion_id": "K14",
+      "status": "Partial",
+      "reason": "A genuine 200-word section-fit statement is missing, along with this venue's author approvals and final declarations. The existing GIS cover letter is not suitable.",
+      "evidence": [
+        "paper/submission/transactions-in-gis/cover-letter.md; paper/main.tex: AI assistance",
+        "journals/C12-frontiers-in-psychology-cognition.md"
+      ]
+    },
+    {
+      "journal_id": "C12",
+      "criterion_id": "K15",
+      "status": "Fail",
+      "reason": "The required psychological theoretical foundation is not supplied by an operational map alone. The introduction should ask which cognitive claim is evaluated, and the results need evidence that bears on that claim.",
+      "evidence": [
+        "paper/main.tex: Introduction, paragraphs 4\u20136; Discussion; Conclusion",
+        "journals/C12-frontiers-in-psychology-cognition.md"
+      ]
+    }
+  ]
+}

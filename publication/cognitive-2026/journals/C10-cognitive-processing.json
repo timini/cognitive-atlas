@@ -1,0 +1,19 @@
+{
+  "journal_id": "C10",
+  "name": "Cognitive Processing",
+  "guide": "journals/C10-cognitive-processing.md",
+  "official_sources": [
+    {
+      "url": "https://link.springer.com/journal/10339/aims-and-scope",
+      "label": "Official aims and scope; read",
+      "checked": "2026-09-09"
+    },
+    {
+      "url": "https://link.springer.com/journal/10339/submission-guidelines",
+      "label": "Official author instructions; read",
+      "checked": "2026-09-09"
+    }
+  ],
+  "fit_summary": "Credible cognitive-science target after a substantive theory-led revision; artificial cognition expressly in scope.",
+  "policy_summary": "Substantive AI use documented in Methods; no AI authors; human accountability mandatory. No blanket first-draft prohibition found in inspected instructions."
+}

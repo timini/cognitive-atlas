@@ -1,0 +1,19 @@
+{
+  "journal_id": "C01",
+  "name": "Cognitive Science",
+  "guide": "journals/C01-cognitive-science.md",
+  "official_sources": [
+    {
+      "url": "https://onlinelibrary.wiley.com/page/journal/15516709/homepage/forauthors.html",
+      "label": "Detailed official author guide; accessed",
+      "checked": "2026-09-09"
+    },
+    {
+      "url": "https://onlinelibrary.wiley.com/page/journal/15516709/author-guidelines",
+      "label": "Alternate official guide labeled Under Review; accessed, conflicts noted",
+      "checked": "2026-09-09"
+    }
+  ],
+  "fit_summary": "Strong intellectual fit after substantive theoretical reframing and discriminating evidence; ambitious for current exploratory single-model report.",
+  "policy_summary": "Double anonymized and anonymous open materials; detailed guide regular12k/extended18k/brief4k approximate words excluding references; abstract150–250. Free-format initial references. AI disclosure and human responsibility. Conflicting alternate page requires pre-submission verification."
+}

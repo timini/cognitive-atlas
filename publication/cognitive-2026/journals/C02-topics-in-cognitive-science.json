@@ -1,0 +1,19 @@
+{
+  "journal_id": "C02",
+  "name": "Topics in Cognitive Science",
+  "guide": "journals/C02-topics-in-cognitive-science.md",
+  "official_sources": [
+    {
+      "url": "https://onlinelibrary.wiley.com/page/journal/17568765/homepage/forauthors.html",
+      "label": "Official topic proposal and author guide; accessed",
+      "checked": "2026-09-09"
+    },
+    {
+      "url": "https://authors.wiley.com/ethics-guidelines/index.html",
+      "label": "Wiley research-integrity and AI policy; accessed",
+      "checked": "2026-09-09"
+    }
+  ],
+  "fit_summary": "Conditional thematic-collection contribution; no unsolicited standalone original-research route. Broader cognitive synthesis required.",
+  "policy_summary": "Accepted topic route or qualifying letter/commentary; lengths negotiated. Topic-specific files, references, anonymity and fees unverified. Submitting author ORCID; Wiley human accountability, AI disclosure, rights and data-availability obligations."
+}

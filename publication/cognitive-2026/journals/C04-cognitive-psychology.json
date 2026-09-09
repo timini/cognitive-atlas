@@ -1,0 +1,24 @@
+{
+  "journal_id": "C04",
+  "name": "Cognitive Psychology",
+  "guide": "journals/C04-cognitive-psychology.md",
+  "official_sources": [
+    {
+      "url": "https://shop.elsevier.com/journals/cognitive-psychology/0010-0285",
+      "label": "Official publisher scope; accessed",
+      "checked": "2026-09-09"
+    },
+    {
+      "url": "https://www.sciencedirect.com/journal/cognitive-psychology/publish/guide-for-authors",
+      "label": "Official detailed guide; access failed",
+      "checked": "2026-09-09"
+    },
+    {
+      "url": "https://www.elsevier.com/about/policies-and-standards/generative-ai-policies-for-journals",
+      "label": "Current Elsevier journal AI policy; accessed",
+      "checked": "2026-09-09"
+    }
+  ],
+  "fit_summary": "Future stretch target for integrative cognitive theory and discriminating process-model tests; present exploratory report not competitive on theory.",
+  "policy_summary": "Official scope emphasizes theoretical contribution and open science. Detailed numeric/style/anonymity/fee criteria unverified. AI disclosure and human accountability apply; no universal human-participant mandate established."
+}

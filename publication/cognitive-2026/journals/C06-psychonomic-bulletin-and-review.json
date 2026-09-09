@@ -1,0 +1,24 @@
+{
+  "journal_id": "C06",
+  "name": "Psychonomic Bulletin & Review",
+  "guide": "journals/C06-psychonomic-bulletin-and-review.md",
+  "official_sources": [
+    {
+      "url": "https://link.springer.com/journal/13423/submission-guidelines",
+      "label": "Submission instructions",
+      "checked": "2026-09-09"
+    },
+    {
+      "url": "https://link.springer.com/journal/13423/aims-and-scope",
+      "label": "Aims and scope",
+      "checked": "2026-09-09"
+    },
+    {
+      "url": "https://link.springer.com/brands/springer/journal-policies",
+      "label": "Springer journal AI and editorial policies",
+      "checked": "2026-09-09"
+    }
+  ],
+  "fit_summary": "High theoretical bar; current descriptive single-model study needs a diagnostic cognitive experiment.",
+  "policy_summary": "See guide and shared source notes; human verification and disclosure remain required."
+}

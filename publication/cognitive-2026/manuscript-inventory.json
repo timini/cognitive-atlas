@@ -1,0 +1,27 @@
+{
+  "manuscript_commit": "56fa5700fd65d7c0b911af1cce47debdbce62232",
+  "date": "2026-09-09",
+  "scope": "100 capitals; one Gemini 3.5 Flash alias; English, Arabic and written Chinese; 10 completed slots per pair/condition",
+  "completed_slots": 148500,
+  "attempts": 148504,
+  "valid_values": 148491,
+  "pdf_pages": 30,
+  "abstract_whitespace_tokens": 129,
+  "main_figures": 3,
+  "main_tables": 5,
+  "blank_author": true,
+  "bibliography_style": "plain",
+  "human_validation": "Not supplied",
+  "root_license_files": [],
+  "input_sha256": {
+    "paper/main.tex": "03ea45d5d867d33650d27c5cfbcb511a3efa9b4714f4099cd4dc24df416ae37a",
+    "paper/cognitive-atlas-paper.pdf": "8aee4933d2b73f839d284eef0250bdda41d4252616832ca7bf5c1a0b62aadac0",
+    "paper/references.bib": "807abf03f838abba7dce72b5bf397d5eed009296dbcabc76813500d1f4f69c1a",
+    "paper/input-lock.json": "d45cab6e82d90d6e916296ee4c23463acfb1167592d55abcb887b4f4308bf411",
+    "paper/release-lock.json": "9a67f4abf56271840ccba7a30eacac45e1b7ad0cc4ebfd24ad0c3d0fde481279",
+    "paper/revision100/error_control.json": "25fd99635b26065f0f4850a043de9188f0cff22e57b0139ee772fd6125a35f1b",
+    "public/paper/publication.json": "920312473ab73f7dd4e448e2eba459ebf58603343e867acc291eb6d7b409185f",
+    "paper/PUBLICATION-RESPONSE.md": "48262c7ab5520511c8f336230798798c1e4bd2233fcf33b528e3642bbb7eaa9b"
+  },
+  "note": "Counts are descriptive, not a journal-certified word count. Paper is unchanged for this review round."
+}

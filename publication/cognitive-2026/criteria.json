@@ -1,0 +1,62 @@
+[
+  {
+    "id": "K01",
+    "description": "Scope and intended cognitive-science audience"
+  },
+  {
+    "id": "K02",
+    "description": "Contribution threshold and suitable article type"
+  },
+  {
+    "id": "K03",
+    "description": "Title, abstract, text and page limits; counting rules"
+  },
+  {
+    "id": "K04",
+    "description": "Structure, keywords, readability and title-page content"
+  },
+  {
+    "id": "K05",
+    "description": "Initial submission files, LaTeX/template and final production"
+  },
+  {
+    "id": "K06",
+    "description": "References, citation system and data citation"
+  },
+  {
+    "id": "K07",
+    "description": "Figures, tables, accessibility and supplements"
+  },
+  {
+    "id": "K08",
+    "description": "Data, code, reproducibility, archives and reuse rights"
+  },
+  {
+    "id": "K09",
+    "description": "Methods, estimands, controls and justified conclusions"
+  },
+  {
+    "id": "K10",
+    "description": "Human authorship, contributions, ethics, funding and conflicts"
+  },
+  {
+    "id": "K11",
+    "description": "AI assistance eligibility, disclosure and human accountability"
+  },
+  {
+    "id": "K12",
+    "description": "Peer review, anonymity and existing public project"
+  },
+  {
+    "id": "K13",
+    "description": "Access model, charges, licenses and author funding decision"
+  },
+  {
+    "id": "K14",
+    "description": "Cover letter, prior posting, submission declarations and approvals"
+  },
+  {
+    "id": "K15",
+    "description": "Cognitive theory, rhetorical tone and explanatory value"
+  }
+]

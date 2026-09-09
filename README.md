@@ -40,6 +40,6 @@ This collection used whole-response numeric validation, not a provider-enforced 
 
 To view the site locally, run `npm ci` followed by `npm run dev`. For collection, analysis, tests, and deployment, see the [development guide](docs/development.md). Geographic source hashes and capital-selection decisions accompany the [100-capital dataset](data/capitals-100-v3.sources.json).
 
-The [submission dossier](publication/README.md) compares 18 journals, records their submission criteria and style requirements, and contains five AI-assisted assessments of the paper's publication readiness.
+The [cognitive-science submission dossier](publication/cognitive-2026/README.md) assesses 12 journals, with individual style guides and five new reviews of the 100-capital paper. It prioritizes spatial cognition and the geometry of elicited judgments. The [research assessment](publication/cognitive-2026/RESEARCH-ASSESSMENT.md) distinguishes current findings from the experiments needed to test their broader meaning.
 
 The [publication revision](paper/PUBLICATION-RESPONSE.md) adds an absolute-error-preserving control and narrows the conclusions in response to five publication reviews.

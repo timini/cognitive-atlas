@@ -1,4 +1,6 @@
-# Where to submit Cognitive Atlas
+# Earlier geography-led publication assessment
+
+**Current strategy:** use the [new cognitive-science journal dossier](cognitive-2026/README.md), which supersedes the journal priorities below. This page preserves the earlier review round and its original source snapshot.
 
 This dossier compares **18 journals** for the current **100-capital study** and contains five independently prepared AI-assisted submission-readiness reviews. Each reviewer assesses all 14 criteria for every journal, covering scientific fit, methods, presentation, data, authorship, AI-use policy and the submission package.
 

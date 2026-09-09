@@ -1,0 +1,24 @@
+{
+  "journal_id": "C11",
+  "name": "Journal of Environmental Psychology",
+  "guide": "journals/C11-journal-of-environmental-psychology.md",
+  "official_sources": [
+    {
+      "url": "https://shop.elsevier.com/journals/journal-of-environmental-psychology/0272-4944",
+      "label": "Official Elsevier journal description; read",
+      "checked": "2026-09-09"
+    },
+    {
+      "url": "https://www.sciencedirect.com/journal/journal-of-environmental-psychology/publish/guide-for-authors",
+      "label": "Author guide; HTTP 403, requirements unresolved",
+      "checked": "2026-09-09"
+    },
+    {
+      "url": "https://www.elsevier.com/about/policies-and-standards/generative-ai-policies-for-journals",
+      "label": "Current Elsevier AI policy; read",
+      "checked": "2026-09-09"
+    }
+  ],
+  "fit_summary": "Conditional future target; present numeric model judgments do not yet make a clear human–environment psychology contribution.",
+  "policy_summary": "Elsevier permits supportive declared AI use with human intellectual contribution and verification; journal-specific author rules unavailable."
+}

@@ -1,0 +1,81 @@
+{
+  "manuscript_commit": "56fa5700fd65d7c0b911af1cce47debdbce62232",
+  "journals": 12,
+  "criteria": 15,
+  "reviewers": 5,
+  "total_assessments": 900,
+  "input_lock_sha256": "7610acf29fb2fb528eb18dd21add6637b882ee1a36ff967472845f9cb8132807",
+  "note": "Checks completeness and frozen inputs, not policy truth, acceptance likelihood or independent human agreement.",
+  "reviews": [
+    {
+      "reviewer_id": "R01",
+      "role": "Cognitive theory and editorial contribution",
+      "assessments": 180,
+      "statuses": {
+        "Partial": 70,
+        "Fail": 32,
+        "Pass": 11,
+        "Unknown": 67
+      },
+      "report": "reviews/review-01-theory.md",
+      "markdown_sha256": "94e7b41809cb67c8e8aec4f5fd3dccd21931b407a3a2428eb1c5185231615eb1",
+      "json_sha256": "32001b29a0629f16756e57f548937079fd4d0acdc3dc0895edafef9f8d4ca1e2"
+    },
+    {
+      "reviewer_id": "R02",
+      "role": "Statistical methods and construct validity",
+      "assessments": 180,
+      "statuses": {
+        "Partial": 94,
+        "Fail": 28,
+        "Pass": 3,
+        "Unknown": 55
+      },
+      "report": "reviews/review-02-methods.md",
+      "markdown_sha256": "19ca9a7b8962cf20dcdf9f0d55a690339393f544a5d92ff4835eaa4104e34b25",
+      "json_sha256": "a6da1e1864c66cadef0e742fc7acd2d388bae92010ff6985adb5a36bfad2c361"
+    },
+    {
+      "reviewer_id": "R03",
+      "role": "Writing, tone and psychogeographic framing",
+      "assessments": 180,
+      "statuses": {
+        "Partial": 96,
+        "Fail": 32,
+        "Pass": 6,
+        "Unknown": 46
+      },
+      "report": "reviews/review-03-tone.md",
+      "markdown_sha256": "f0f8780636a5e1acc331dbc616122b963f1a8cd59a38df6620b0ed9e2c209e0f",
+      "json_sha256": "4221068063095f1a81ab0f20e8b5f486a4520eabec9ded5b049847dbd129e9e7"
+    },
+    {
+      "reviewer_id": "R04",
+      "role": "Reproducibility and submission integrity",
+      "assessments": 180,
+      "statuses": {
+        "Partial": 99,
+        "Fail": 15,
+        "Pass": 6,
+        "Unknown": 60
+      },
+      "report": "reviews/review-04-reproducibility.md",
+      "markdown_sha256": "3e268941dc0648e9344beb5b58cd4936b075d03e796002f026202155904466cb",
+      "json_sha256": "ba415af34ace0171acd5a14e0750fc6cbe8d871bb624a467d33507110f1be2c1"
+    },
+    {
+      "reviewer_id": "R05",
+      "role": "Research value and next-experiment priorities",
+      "assessments": 180,
+      "statuses": {
+        "Partial": 91,
+        "Fail": 14,
+        "Unknown": 70,
+        "Pass": 5
+      },
+      "report": "reviews/review-05-research.md",
+      "markdown_sha256": "dd7632b05e50f4ca75cc17ec79762988079ca96ba5204728fa1878268db376ee",
+      "json_sha256": "13c09c921633a1a7457cd55a46264e9d5d4e278a1e75b76fce4c83a24211deb6"
+    }
+  ]
+}

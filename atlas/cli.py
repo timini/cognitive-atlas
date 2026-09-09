@@ -11,12 +11,13 @@ from atlas.data import load_places, read_csv
 from atlas.experiment import create_experiment, estimate
 from atlas.languages import LANGUAGE_LABELS, PROTOCOL_ID
 from atlas.models import MODEL_PROFILES
+from atlas.response_schema import PROTOCOL_ID as JSON_PROTOCOL_ID
 from atlas.runner import progress, run
 
 
 def main():
     load_dotenv()
-    parser = argparse.ArgumentParser(description="CSV-based reproducible geographic experiments")
+    parser = argparse.ArgumentParser(description="Reconstruct geography from model distance judgments")
     sub = parser.add_subparsers(dest="command", required=True)
     new = sub.add_parser("create")
     new.add_argument("--dataset", default="data/capitals-v1.csv")
@@ -25,7 +26,7 @@ def main():
     new.add_argument("--concurrency", type=int, default=4)
     new.add_argument("--budget", type=float, default=1)
     new.add_argument("--language", choices=list(LANGUAGE_LABELS), default="en")
-    new.add_argument("--protocol", choices=["legacy", PROTOCOL_ID], default="legacy")
+    new.add_argument("--protocol", choices=["legacy", PROTOCOL_ID, JSON_PROTOCOL_ID], default=JSON_PROTOCOL_ID)
     new.add_argument("--model", choices=list(MODEL_PROFILES), default="gemini-2.5-flash-lite")
     new.add_argument("--max-tokens", type=int, default=128)
     for command in ["estimate", "run", "status", "analyze", "export"]:

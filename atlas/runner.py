@@ -120,7 +120,9 @@ async def run(directory, provider=None, max_jobs=None, shared_limiter=None):
                 while (job := await queue.get()) is not None:
                     pair, sample = job
                     prompt = prompt_for(manifest, pair, places)
-                    reserve = ((len(prompt.encode()) + 256) * pricing["input_per_million_usd"] +
+                    schema = manifest["parameters"].get("response_json_schema")
+                    schema_bytes = len(json.dumps(schema).encode()) if schema else 0
+                    reserve = ((len(prompt.encode()) + schema_bytes + 256) * pricing["input_per_million_usd"] +
                                manifest["parameters"]["max_tokens"] * pricing["output_per_million_usd"]) / 1e6
                     key = (pair["id"], sample)
                     for attempt in range(attempts[key] + 1, config["max_attempts"] + 1):

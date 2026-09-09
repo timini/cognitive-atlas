@@ -244,6 +244,83 @@
         "zh": 165.22541969464166
       },
       "report_url": "/data/language-audits/paper-50-d3309cd9245e3cff1260c80d.json"
+    },
+    {
+      "export_ids": [
+        "3b382690950b9511f5806ebc-114bbc2e2e5a9331",
+        "b2e583773ba8111b0607ae88-3ef8ee3db9b488b1",
+        "2ee0bcb921b94263ac26e635-bae2d55a858255c4"
+      ],
+      "capital_count": 100,
+      "complete_pairs": 4948,
+      "total_pairs": 4950,
+      "permutations": 4999,
+      "holm_family_size": 6,
+      "comparisons": [
+        {
+          "a": "en",
+          "b": "ar",
+          "mean_absolute_median_disagreement_km": 141.2860074777688,
+          "null_disagreement_mean_km": 68.09720070408585,
+          "null_disagreement_95pct_interval_km": [
+            65.96332240299111,
+            70.26307220088925
+          ],
+          "mae_difference_b_minus_a_km": 18.068103698812564,
+          "null_accuracy_difference_95pct_interval_km": [
+            -3.317093308600458,
+            3.4209528822141584
+          ],
+          "judgment_p": 0.0002,
+          "accuracy_p": 0.0002,
+          "judgment_p_holm": 0.0012000000000000001,
+          "accuracy_p_holm": 0.0012000000000000001
+        },
+        {
+          "a": "en",
+          "b": "zh",
+          "mean_absolute_median_disagreement_km": 157.6922918350849,
+          "null_disagreement_mean_km": 71.17634239398404,
+          "null_disagreement_95pct_interval_km": [
+            69.18010120250607,
+            73.26499550323362
+          ],
+          "mae_difference_b_minus_a_km": 6.272815071002867,
+          "null_accuracy_difference_95pct_interval_km": [
+            -3.151168547571993,
+            3.3035041691612412
+          ],
+          "judgment_p": 0.0002,
+          "accuracy_p": 0.0002,
+          "judgment_p_holm": 0.0012000000000000001,
+          "accuracy_p_holm": 0.0012000000000000001
+        },
+        {
+          "a": "ar",
+          "b": "zh",
+          "mean_absolute_median_disagreement_km": 165.18355396119645,
+          "null_disagreement_mean_km": 76.84013397525909,
+          "null_disagreement_95pct_interval_km": [
+            74.5371593573161,
+            79.18365283953112
+          ],
+          "mae_difference_b_minus_a_km": -11.795288627809697,
+          "null_accuracy_difference_95pct_interval_km": [
+            -3.6182172454937045,
+            3.6689054433730237
+          ],
+          "judgment_p": 0.0002,
+          "accuracy_p": 0.0002,
+          "judgment_p_holm": 0.0012000000000000001,
+          "accuracy_p_holm": 0.0012000000000000001
+        }
+      ],
+      "complete_pair_median_MAE_km": {
+        "en": 215.77377574539386,
+        "ar": 233.84187944420643,
+        "zh": 222.04659081639673
+      },
+      "report_url": "/data/language-audits/5e0afd2e6550db2d77fd0561.json"
     }
   ],
   "map_cohorts": [
@@ -326,6 +403,86 @@
         }
       ],
       "report_url": "/data/map-audits/4bb88010178cbce6cd50444d.json"
+    },
+    {
+      "export_ids": [
+        "3b382690950b9511f5806ebc-114bbc2e2e5a9331",
+        "b2e583773ba8111b0607ae88-3ef8ee3db9b488b1",
+        "2ee0bcb921b94263ac26e635-bae2d55a858255c4"
+      ],
+      "capital_count": 100,
+      "total_pairs": 4950,
+      "permutations": 999,
+      "holm_family_size": 3,
+      "comparisons": [
+        {
+          "a": "en",
+          "b": "ar",
+          "observed_mean_capital_shift_km": 81.01516912186203,
+          "null_mean_capital_shift_km": 25.30123999631677,
+          "null_shift_95pct_interval_km": [
+            22.079334650421835,
+            28.759991577643795
+          ],
+          "map_p": 0.001,
+          "all_fits_converged": true,
+          "observed_stresses": [
+            0.029915428770334554,
+            0.035034755085672546
+          ],
+          "valid_answer_counts": {
+            "en": 49496,
+            "ar": 49499
+          },
+          "unequal_sample_count_pairs": 1,
+          "map_p_holm": 0.003
+        },
+        {
+          "a": "en",
+          "b": "zh",
+          "observed_mean_capital_shift_km": 88.39443283844041,
+          "null_mean_capital_shift_km": 23.855625642696456,
+          "null_shift_95pct_interval_km": [
+            21.287599002607077,
+            26.799454249546052
+          ],
+          "map_p": 0.001,
+          "all_fits_converged": true,
+          "observed_stresses": [
+            0.029915428770334554,
+            0.03205941755883506
+          ],
+          "valid_answer_counts": {
+            "en": 49496,
+            "zh": 49496
+          },
+          "unequal_sample_count_pairs": 2,
+          "map_p_holm": 0.003
+        },
+        {
+          "a": "ar",
+          "b": "zh",
+          "observed_mean_capital_shift_km": 78.51651164489245,
+          "null_mean_capital_shift_km": 27.01460717914248,
+          "null_shift_95pct_interval_km": [
+            23.843135286588247,
+            30.242672033284723
+          ],
+          "map_p": 0.001,
+          "all_fits_converged": true,
+          "observed_stresses": [
+            0.035034755085672546,
+            0.03205941755883506
+          ],
+          "valid_answer_counts": {
+            "ar": 49499,
+            "zh": 49496
+          },
+          "unequal_sample_count_pairs": 2,
+          "map_p_holm": 0.003
+        }
+      ],
+      "report_url": "/data/map-audits/68143748b8b5f8ea4f732ca5.json"
     }
   ]
 }

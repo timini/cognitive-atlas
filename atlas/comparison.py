@@ -7,6 +7,7 @@ import numpy as np
 from scipy.linalg import orthogonal_procrustes
 from scipy.stats import pearsonr, spearmanr
 
+from atlas import response_schema
 from atlas.data import digest
 from atlas.languages import ENTITY_NAME_POLICY, LANGUAGE_LABELS, PARSER_ID, PROMPTS, PROTOCOL_ID
 from atlas.reconstruct import RADIUS_KM, to_latlon, unit_vectors
@@ -46,15 +47,21 @@ def compare_results(a, b, aggregation="median"):
 def language_condition(result):
     """Only registered equivalent prompt conditions may enter a language cohort."""
     e = result["experiment"]
-    if (e.get("prompt_family") != PROTOCOL_ID or
-        e.get("response_parser") != PARSER_ID or
+    protocol, parser, prompts = PROTOCOL_ID, PARSER_ID, PROMPTS
+    if e.get("prompt_family") == response_schema.PROTOCOL_ID:
+        protocol, parser, prompts = response_schema.PROTOCOL_ID, response_schema.PARSER_ID, response_schema.PROMPTS
+        if (e["parameters"].get("response_mime_type") != "application/json" or
+            e["parameters"].get("response_json_schema") != response_schema.SCHEMA):
+            return None
+    if (e.get("prompt_family") != protocol or
+        e.get("response_parser") != parser or
         e.get("entity_name_policy") != ENTITY_NAME_POLICY or
-        e["prompt_template"] != PROMPTS.get(e["language"])):
+        e["prompt_template"] != prompts.get(e["language"])):
         return None
     return {"dataset": e["dataset_sha256"], "model": e["model"], "provider": e["provider"],
             "resolved_versions": result["resolved_model_versions"], "parameters": e["parameters"],
             "samples": e["sampling_count"], "sampling_strategy": e["sampling_strategy"],
-            "prompt_family": PROTOCOL_ID, "response_parser": PARSER_ID,
+            "prompt_family": protocol, "response_parser": parser,
             "entity_names": ENTITY_NAME_POLICY, "analysis_parameters": result["analysis_parameters"]}
 
 

@@ -1,0 +1,55 @@
+{
+  "schema_version": 2,
+  "name": "100-capital distance experiment",
+  "provider": "google",
+  "model_label": "Gemini 3.5 Flash",
+  "model": "gemini-3.5-flash",
+  "requested_model_version": "gemini-3.5-flash",
+  "language": "ar",
+  "prompt_template": "قدّر أقصر مسافة على سطح الأرض على طول دائرة عظمى، بالكيلومترات، بين {city_a}، {country_a} و{city_b}، {country_b}. أعد أفضل تقدير عددي فقط بالكيلومترات. لا تشرح طريقة استدلالك. استخدم الأرقام 0–9 فقط، مع نقطة إذا احتجت إلى فاصل عشري. لا تُضمّن فواصل الآلاف أو وحدات القياس.",
+  "sampling_count": 10,
+  "parameters": {
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "max_tokens": 128,
+    "thinking_level": "minimal",
+    "seed": null,
+    "system_prompt": ""
+  },
+  "dataset_sha256": "087c6e422985dddcaaf72b9c1f85ce8d08e43bb2e5fb26eff19f0759ad2dd4c4",
+  "dataset_file": "capitals-100-v3.csv",
+  "sampling_strategy": "independent_single_turn_unordered_pairs_fixed_id_order",
+  "created_at": "2026-09-08T20:55:24.243116+00:00",
+  "code_revision": "4e6b8734b9e4afbfa4f643e6e916e65ff3987e61",
+  "software": {
+    "python": "3.12.14",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.7.2",
+    "geographiclib": "2.1"
+  },
+  "execution": {
+    "max_cost_usd": 15.0,
+    "requests_per_minute": 900,
+    "concurrency": 16,
+    "max_attempts": 4,
+    "retry_policy": "Retry transport/408/429/5xx only; invalid content is terminal",
+    "budget_policy": "Reserve conservatively in flight; reconcile successful responses to reported usage; retain unknown-attempt reservations",
+    "shared_requests_per_minute": 2400,
+    "shared_rate_policy": "Shared process limiter; on 429 pause all and halve rate at most once per minute"
+  },
+  "pricing": {
+    "input_per_million_usd": 1.5,
+    "output_per_million_usd": 9.0,
+    "source": "https://ai.google.dev/gemini-api/docs/pricing",
+    "verified_date": "2026-09-08",
+    "checked_at": "2026-09-08T20:55:24.266035+00:00",
+    "billing_note": "Token-based estimate, not an invoice"
+  },
+  "prompt_family": "great-circle-formatted-number-v2",
+  "response_parser": "ascii_decimal_v2",
+  "entity_name_policy": "canonical_English_city_and_country_names_unchanged",
+  "language_label": "Arabic",
+  "translation_review": "Assistant-authored translations; no independent native-speaker validation claimed",
+  "id": "b2e583773ba8111b0607ae88"
+}

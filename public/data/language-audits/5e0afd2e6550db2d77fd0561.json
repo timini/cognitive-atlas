@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "method": "Conditional language tests for a specified, immutable matched export cohort.\n\nNull: response distributions are exchangeable between instruction languages within\nEACH fixed capital pair. Independently pool and reassign the two sets of n answers;\nsample-number labels are not paired observations. Tests condition on independent\nAPI calls, fixed capitals, one prompt translation per language and collection period.\nThey do not establish a causal language effect, generalize to new capitals, or test\nreconstructed map shape. The MAE-contrast permutation tests this strong distributional\nnull, not the weaker hypothesis of equal MAE with different response distributions.\n",
+  "seed": 20260911,
+  "permutations": 4999,
+  "condition": {
+    "dataset": "087c6e422985dddcaaf72b9c1f85ce8d08e43bb2e5fb26eff19f0759ad2dd4c4",
+    "model": "gemini-3.5-flash",
+    "provider": "google",
+    "resolved_versions": [
+      "gemini-3.5-flash"
+    ],
+    "parameters": {
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "max_tokens": 128,
+      "thinking_level": "minimal",
+      "seed": null,
+      "system_prompt": ""
+    },
+    "samples": 10,
+    "sampling_strategy": "independent_single_turn_unordered_pairs_fixed_id_order",
+    "prompt_family": "great-circle-formatted-number-v2",
+    "response_parser": "ascii_decimal_v2",
+    "entity_names": "canonical_English_city_and_country_names_unchanged",
+    "analysis_parameters": {
+      "seed": 42,
+      "bootstrap_pair_replicates": 1000,
+      "algorithm_version": 2,
+      "analysis_code_sha256": "d3a4970856d09f7c6f42ce84117bb1ed12d0f2342bdfc2cebfae249b51b4aa91"
+    }
+  },
+  "sources": {
+    "en": {
+      "path": "public/data/3b382690950b9511f5806ebc-114bbc2e2e5a9331/result.json",
+      "sha256": "aa364512aeb2ee3f5d4711de9294804305b45f4a4182dac50c5e5c139c17ae16",
+      "experiment_id": "3b382690950b9511f5806ebc",
+      "export_id": "3b382690950b9511f5806ebc-114bbc2e2e5a9331"
+    },
+    "ar": {
+      "path": "public/data/b2e583773ba8111b0607ae88-3ef8ee3db9b488b1/result.json",
+      "sha256": "35043bd00466784bfa1f11f13446691066613d80a14f8b2cee268e7dccf32997",
+      "experiment_id": "b2e583773ba8111b0607ae88",
+      "export_id": "b2e583773ba8111b0607ae88-3ef8ee3db9b488b1"
+    },
+    "zh": {
+      "path": "public/data/2ee0bcb921b94263ac26e635-bae2d55a858255c4/result.json",
+      "sha256": "3dbbd0fcee5f5954a656e9d32c11e7c8738134fa8c015de32e4f276d403b0a8e",
+      "experiment_id": "2ee0bcb921b94263ac26e635",
+      "export_id": "2ee0bcb921b94263ac26e635-bae2d55a858255c4"
+    }
+  },
+  "languages": [
+    "en",
+    "ar",
+    "zh"
+  ],
+  "capital_count": 100,
+  "total_pairs": 4950,
+  "complete_pairs": 4948,
+  "excluded_pair_ids": [
+    "AR--VN",
+    "BE--FR"
+  ],
+  "samples_per_pair": 10,
+  "complete_pair_median_MAE_km": {
+    "en": 215.77377574539386,
+    "ar": 233.84187944420643,
+    "zh": 222.04659081639673
+  },
+  "all_pairs_median_MAE_km": {
+    "en": 215.86483240339416,
+    "ar": 233.97775707040924,
+    "zh": 222.02246817386398
+  },
+  "comparisons": [
+    {
+      "a": "en",
+      "b": "ar",
+      "mean_absolute_median_disagreement_km": 141.2860074777688,
+      "null_disagreement_mean_km": 68.09720070408585,
+      "null_disagreement_95pct_interval_km": [
+        65.96332240299111,
+        70.26307220088925
+      ],
+      "mae_difference_b_minus_a_km": 18.068103698812564,
+      "null_accuracy_difference_95pct_interval_km": [
+        -3.317093308600458,
+        3.4209528822141584
+      ],
+      "judgment_p": 0.0002,
+      "accuracy_p": 0.0002,
+      "judgment_p_holm": 0.0012000000000000001,
+      "accuracy_p_holm": 0.0012000000000000001
+    },
+    {
+      "a": "en",
+      "b": "zh",
+      "mean_absolute_median_disagreement_km": 157.6922918350849,
+      "null_disagreement_mean_km": 71.17634239398404,
+      "null_disagreement_95pct_interval_km": [
+        69.18010120250607,
+        73.26499550323362
+      ],
+      "mae_difference_b_minus_a_km": 6.272815071002867,
+      "null_accuracy_difference_95pct_interval_km": [
+        -3.151168547571993,
+        3.3035041691612412
+      ],
+      "judgment_p": 0.0002,
+      "accuracy_p": 0.0002,
+      "judgment_p_holm": 0.0012000000000000001,
+      "accuracy_p_holm": 0.0012000000000000001
+    },
+    {
+      "a": "ar",
+      "b": "zh",
+      "mean_absolute_median_disagreement_km": 165.18355396119645,
+      "null_disagreement_mean_km": 76.84013397525909,
+      "null_disagreement_95pct_interval_km": [
+        74.5371593573161,
+        79.18365283953112
+      ],
+      "mae_difference_b_minus_a_km": -11.795288627809697,
+      "null_accuracy_difference_95pct_interval_km": [
+        -3.6182172454937045,
+        3.6689054433730237
+      ],
+      "judgment_p": 0.0002,
+      "accuracy_p": 0.0002,
+      "judgment_p_holm": 0.0012000000000000001,
+      "accuracy_p_holm": 0.0012000000000000001
+    }
+  ],
+  "code_sha256": "9cd138ce3c93677f109863d37fc96d99de039d5db3b45b14ea6af0a653c63810",
+  "holm_family_size": 6,
+  "id": "5e0afd2e6550db2d77fd0561"
+}

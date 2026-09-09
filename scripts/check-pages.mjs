@@ -38,7 +38,11 @@ const server = createServer(async (req, res) => {
   const suffix = pathname.slice(base.length) || 'index.html';
   const file = path.resolve(root, suffix);
   if (!file.startsWith(root + path.sep)) { res.writeHead(404).end(); return; }
-  try { res.writeHead(200).end(await readFile(file)); } catch { res.writeHead(404).end(); }
+  try {
+    if (req.method === 'HEAD') {
+      res.writeHead(200, {'Content-Length': (await stat(file)).size}).end();
+    } else res.writeHead(200).end(await readFile(file));
+  } catch { res.writeHead(404).end(); }
 });
 await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
 const origin = `http://127.0.0.1:${server.address().port}`;
@@ -47,7 +51,9 @@ try {
   const index = await (await fetch(origin + base + 'data/experiments.json')).json();
   const sourceIndex = JSON.parse(await readFile('public/data/experiments.json', 'utf8'));
   assert.deepEqual(index, sourceIndex);
-  assert(index.length >= 9, 'Historical experiments must remain published');
+  const historicalIndex = JSON.parse(await readFile('paper/experiment-index.json', 'utf8'));
+  const publishedIds = new Set(index.map(e => e.id));
+  assert(historicalIndex.every(e => publishedIds.has(e.id)), 'Historical experiments must remain selectable');
   const languages = new Set();
   for (const entry of index) {
     const response = await fetch(origin + base + entry.url.replace(/^\//, ''));
@@ -55,7 +61,9 @@ try {
     const data = await response.json();
     if (data.experiment.prompt_family) languages.add(data.experiment.language);
     const folder = entry.url.replace('/result.json', '');
-    assert.equal((await fetch(origin + base + folder.replace(/^\//, '') + '/responses.csv')).status, 200);
+    const csvResponse = await fetch(origin + base + folder.replace(/^\//, '') + '/responses.csv', {method: 'HEAD'});
+    assert.equal(csvResponse.status, 200);
+    assert.equal(Number(csvResponse.headers.get('content-length')), (await stat(path.join(root, folder.replace(/^\//, ''), 'responses.csv'))).size);
   }
   assert.deepEqual([...languages].sort(), ['ar','en','es','fr','zh']);
   const comparison = await (await fetch(origin + base + 'data/comparisons.json')).json();

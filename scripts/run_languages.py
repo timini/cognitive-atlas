@@ -9,11 +9,12 @@ from dotenv import load_dotenv
 from atlas.data import digest, load_places, read_csv
 from atlas.experiment import create_experiment, estimate
 from atlas.languages import PROTOCOL_ID
+from atlas.response_schema import PROTOCOL_ID as JSON_PROTOCOL_ID
 from atlas.runner import Limiter, progress, run
 
 
 def prepare(target, dataset='data/capitals-50-v2.csv', languages=('en', 'fr', 'es', 'ar', 'zh'),
-            model='gemini-3.5-flash', samples=10, budget=15, rpm=900, shared_rpm=2400, concurrency=16):
+            model='gemini-3.5-flash', samples=10, budget=15, rpm=900, shared_rpm=2400, concurrency=16, protocol=PROTOCOL_ID):
     target = Path(target)
     if target.exists():
         raise ValueError('A language group already exists; resume it instead')
@@ -23,13 +24,13 @@ def prepare(target, dataset='data/capitals-50-v2.csv', languages=('en', 'fr', 'e
     paths = []
     for language in languages:
         directory = create_experiment(dataset, model=model, language=language, samples=samples,
-                                      protocol=PROTOCOL_ID, max_cost=budget, rpm=rpm, concurrency=concurrency,
+                                      protocol=protocol, max_cost=budget, rpm=rpm, concurrency=concurrency,
                                       shared_rpm=shared_rpm)
         paths.append(str(directory))
         manifest = json.loads((directory/'manifest.json').read_text())
         print(language, str(directory), estimate(manifest, load_places(directory/'places.csv'),
                                                  read_csv(directory/'pairs.csv')), flush=True)
-    group = {'paths': paths, 'shared_requests_per_minute': shared_rpm, 'protocol': PROTOCOL_ID}
+    group = {'paths': paths, 'shared_requests_per_minute': shared_rpm, 'protocol': protocol}
     group['id'] = digest(group)
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(json.dumps(group, indent=2))
@@ -71,6 +72,7 @@ if __name__ == '__main__':
     parser.add_argument('action', choices=['prepare', 'run'])
     parser.add_argument('--group', default='runs/languages-50-v2.json')
     parser.add_argument('--max-jobs', type=int)
+    parser.add_argument('--protocol', choices=[PROTOCOL_ID, JSON_PROTOCOL_ID], default=JSON_PROTOCOL_ID)
     parser.add_argument('--dataset', default='data/capitals-50-v2.csv')
     parser.add_argument('--languages', nargs='+', default=['en', 'fr', 'es', 'ar', 'zh'])
     parser.add_argument('--model', default='gemini-3.5-flash')
@@ -82,6 +84,6 @@ if __name__ == '__main__':
     args = parser.parse_args()
     if args.action == 'prepare':
         prepare(args.group, args.dataset, args.languages, args.model, args.samples, args.budget,
-                args.rpm, args.shared_rpm, args.concurrency)
+                args.rpm, args.shared_rpm, args.concurrency, args.protocol)
     else:
         asyncio.run(collect(args.group, args.max_jobs))

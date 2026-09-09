@@ -5,7 +5,7 @@ import subprocess
 from datetime import UTC, datetime
 from pathlib import Path
 
-from atlas import languages
+from atlas import languages, response_schema
 from atlas.data import digest, generate_pairs, load_places, write_csv
 from atlas.models import MODEL_PROFILES, PRICING_SOURCE, PRICING_VERIFIED_DATE
 
@@ -36,12 +36,13 @@ def create_experiment(dataset, root="runs", samples=10, model="gemini-2.5-flash-
         raise ValueError("Supply a verified model profile and pricing before enabling another model")
     if not 16 <= max_tokens <= 4096:
         raise ValueError("max_tokens must be between 16 and 4096")
-    if protocol not in ("legacy", languages.PROTOCOL_ID):
+    if protocol not in ("legacy", languages.PROTOCOL_ID, response_schema.PROTOCOL_ID):
         raise ValueError("Unknown prompt protocol")
     if protocol != "legacy" and (language not in languages.PROMPTS or prompt_template is not None):
         raise ValueError("Use a registered translation for the language protocol")
     if protocol == "legacy" and prompt_template is None and language not in PROMPTS:
         raise ValueError("Choose the translated prompt protocol for this language")
+    templates = response_schema.PROMPTS if protocol == response_schema.PROTOCOL_ID else languages.PROMPTS
     profile = MODEL_PROFILES[model]
     try:
         revision = subprocess.check_output(["git", "rev-parse", "HEAD"], stderr=subprocess.DEVNULL).decode().strip()
@@ -50,7 +51,7 @@ def create_experiment(dataset, root="runs", samples=10, model="gemini-2.5-flash-
     config = {"schema_version": 2, "name": f"{len(places)}-capital distance experiment", "provider": provider,
               "model_label": profile["label"],
               "model": model, "requested_model_version": model, "language": language,
-              "prompt_template": prompt_template or (languages.PROMPTS[language] if protocol != "legacy" else PROMPTS[language]), "sampling_count": samples,
+              "prompt_template": prompt_template or (templates[language] if protocol != "legacy" else PROMPTS[language]), "sampling_count": samples,
               "parameters": {"temperature": temperature, "top_p": 0.95, "max_tokens": max_tokens,
                              **{k: v for k, v in profile.items() if k.startswith("thinking_")},
                              "seed": None, "system_prompt": ""},
@@ -68,10 +69,13 @@ def create_experiment(dataset, root="runs", samples=10, model="gemini-2.5-flash-
                           "source": PRICING_SOURCE, "verified_date": PRICING_VERIFIED_DATE,
                           "checked_at": utcnow(), "billing_note": "Token-based estimate, not an invoice"}}
     if protocol != "legacy":
-        config.update(prompt_template=languages.PROMPTS[language], prompt_family=protocol,
-                      response_parser=languages.PARSER_ID, entity_name_policy=languages.ENTITY_NAME_POLICY,
+        config.update(prompt_template=templates[language], prompt_family=protocol,
+                      response_parser=response_schema.PARSER_ID if protocol == response_schema.PROTOCOL_ID else languages.PARSER_ID, entity_name_policy=languages.ENTITY_NAME_POLICY,
                       language_label=languages.LANGUAGE_LABELS[language],
                       translation_review=languages.TRANSLATION_REVIEW)
+    if protocol == response_schema.PROTOCOL_ID:
+        config['parameters'].update(response_mime_type='application/json', response_json_schema=response_schema.SCHEMA)
+        config['output_format_policy'] = 'Provider-enforced JSON schema; strict JSON validation without coercion or regex extraction; geographic QC applied separately'
     if shared_rpm is not None:
         if shared_rpm <= 0:
             raise ValueError("Shared request rate must be positive")
@@ -91,7 +95,9 @@ def estimate(manifest, places, pairs):
     prompts = [prompt_for(manifest, p, {v["id"]: v for v in places}) for p in pairs]
     calls = len(pairs) * manifest["sampling_count"]
     # Estimate at four characters/token; ceiling conservatively uses UTF-8 bytes/token.
-    tokens = sum(len(p.encode()) / 4 for p in prompts) * manifest["sampling_count"]
+    schema = manifest["parameters"].get("response_json_schema")
+    schema_bytes = len(json.dumps(schema).encode()) if schema else 0
+    tokens = sum((len(p.encode()) + schema_bytes) / 4 for p in prompts) * manifest["sampling_count"]
     output = calls * manifest["parameters"]["max_tokens"]
     pricing = manifest["pricing"]
     cost = (tokens * pricing["input_per_million_usd"] + output * pricing["output_per_million_usd"]) / 1e6

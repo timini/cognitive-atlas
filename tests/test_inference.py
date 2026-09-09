@@ -26,3 +26,25 @@ def test_holm_and_shape_guards():
         holm([float('nan')])
     with pytest.raises(ValueError):
         permutation_comparison(np.ones((3, 10)), np.ones((2, 10)), np.ones(3))
+
+
+def test_published_distance_audits_have_verifiable_sources_and_correction():
+    import hashlib
+    import json
+    from pathlib import Path
+
+    code = hashlib.sha256(Path('atlas/inference.py').read_bytes()).hexdigest()
+    for path in Path('public/data/language-audits').glob('*.json'):
+        if path.name.startswith('paper-50-'):
+            continue  # The historical paper has its own code/provenance tests.
+        report = json.loads(path.read_text())
+        assert report['code_sha256'] == code
+        assert report['complete_pairs'] + len(report['excluded_pair_ids']) == report['total_pairs']
+        assert report['total_pairs'] == report['capital_count']*(report['capital_count']-1)//2
+        comparisons = report['comparisons']
+        raw = [c[k] for c in comparisons for k in ['judgment_p', 'accuracy_p']]
+        adjusted = [c[k] for c in comparisons for k in ['judgment_p_holm', 'accuracy_p_holm']]
+        assert np.array_equal(holm(raw), adjusted)
+        assert report['holm_family_size'] == len(raw)
+        for source in report['sources'].values():
+            assert hashlib.sha256(Path(source['path']).read_bytes()).hexdigest() == source['sha256']

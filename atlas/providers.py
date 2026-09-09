@@ -40,6 +40,11 @@ class Gemini:
     async def query(self, model, prompt, parameters):
         config = {"temperature": parameters["temperature"], "topP": parameters["top_p"],
                   "maxOutputTokens": parameters["max_tokens"]}
+        if 'response_json_schema' in parameters:
+            if parameters.get('response_mime_type') != 'application/json':
+                raise ValueError('A JSON response schema requires application/json')
+            config['responseMimeType'] = 'application/json'
+            config['responseJsonSchema'] = parameters['response_json_schema']
         if "thinking_level" in parameters:
             config["thinkingConfig"] = {"thinkingLevel": parameters["thinking_level"]}
         elif "thinking_budget" in parameters:

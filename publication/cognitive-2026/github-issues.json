@@ -1,0 +1,51 @@
+{
+  "review_commit": "ae9a232b3bd41f541012c4bfb2a0eb80a698e3c5",
+  "manuscript_commit": "56fa5700fd65d7c0b911af1cce47debdbce62232",
+  "reviews": [
+    {
+      "reviewer_id": "R01",
+      "title": "Cognitive-science review 01: cognitive theory and editorial contribution across 12 journals",
+      "url": "https://github.com/timini/cognitive-atlas/issues/16",
+      "number": 16,
+      "review_path": "publication/cognitive-2026/reviews/review-01-theory.md",
+      "report_sha256": "94e7b41809cb67c8e8aec4f5fd3dccd21931b407a3a2428eb1c5185231615eb1",
+      "body_sha256": "d195eda2f6ec6b5618e9e0a5c0f425dbe220172b780b6a2261ad7e236951aac8"
+    },
+    {
+      "reviewer_id": "R02",
+      "title": "Cognitive-science review 02: statistical methods and construct validity across 12 journals",
+      "url": "https://github.com/timini/cognitive-atlas/issues/17",
+      "number": 17,
+      "review_path": "publication/cognitive-2026/reviews/review-02-methods.md",
+      "report_sha256": "19ca9a7b8962cf20dcdf9f0d55a690339393f544a5d92ff4835eaa4104e34b25",
+      "body_sha256": "4012dc6d7a5e8784b7b8c6d2bffa925873dc6da53ba8297ae64a04e3a76599ac"
+    },
+    {
+      "reviewer_id": "R03",
+      "title": "Cognitive-science review 03: writing, tone and psychogeographic framing across 12 journals",
+      "url": "https://github.com/timini/cognitive-atlas/issues/18",
+      "number": 18,
+      "review_path": "publication/cognitive-2026/reviews/review-03-tone.md",
+      "report_sha256": "f0f8780636a5e1acc331dbc616122b963f1a8cd59a38df6620b0ed9e2c209e0f",
+      "body_sha256": "2de347a475b854d1d936ad8fe8e0d3678649602328439c56fb35b3c04dd66d5b"
+    },
+    {
+      "reviewer_id": "R04",
+      "title": "Cognitive-science review 04: reproducibility and submission integrity across 12 journals",
+      "url": "https://github.com/timini/cognitive-atlas/issues/19",
+      "number": 19,
+      "review_path": "publication/cognitive-2026/reviews/review-04-reproducibility.md",
+      "report_sha256": "3e268941dc0648e9344beb5b58cd4936b075d03e796002f026202155904466cb",
+      "body_sha256": "a9c0b26e81e8ea9c4af1ab0016d4cccd8aa09bdc66aefef0f5ec3e120afae981"
+    },
+    {
+      "reviewer_id": "R05",
+      "title": "Cognitive-science review 05: research value and next-experiment priorities across 12 journals",
+      "url": "https://github.com/timini/cognitive-atlas/issues/20",
+      "number": 20,
+      "review_path": "publication/cognitive-2026/reviews/review-05-research.md",
+      "report_sha256": "dd7632b05e50f4ca75cc17ec79762988079ca96ba5204728fa1878268db376ee",
+      "body_sha256": "4b5c6bdac4b94587479002116e1b5ed53e3cd1b9904effabfa3cb934d6bdeb45"
+    }
+  ]
+}

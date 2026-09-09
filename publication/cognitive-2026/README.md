@@ -31,11 +31,11 @@ Each guide distinguishes verified requirements, publisher policy, editorial advi
 
 Each reviewer assessed all **12 journals × 15 criteria**, including a dedicated cognitive-theory and tone criterion. The roles emphasize different questions while sharing the full coverage requirement.
 
-1. [Cognitive theory and editorial contribution](reviews/review-01-theory.md)
-2. [Statistical methods and construct validity](reviews/review-02-methods.md)
-3. [Writing, tone and psychogeographic framing](reviews/review-03-tone.md)
-4. [Reproducibility and submission integrity](reviews/review-04-reproducibility.md)
-5. [Research value and next-experiment priorities](reviews/review-05-research.md)
+1. [Cognitive theory and editorial contribution](reviews/review-01-theory.md) — [GitHub issue #16](https://github.com/timini/cognitive-atlas/issues/16)
+2. [Statistical methods and construct validity](reviews/review-02-methods.md) — [GitHub issue #17](https://github.com/timini/cognitive-atlas/issues/17)
+3. [Writing, tone and psychogeographic framing](reviews/review-03-tone.md) — [GitHub issue #18](https://github.com/timini/cognitive-atlas/issues/18)
+4. [Reproducibility and submission integrity](reviews/review-04-reproducibility.md) — [GitHub issue #19](https://github.com/timini/cognitive-atlas/issues/19)
+5. [Research value and next-experiment priorities](reviews/review-05-research.md) — [GitHub issue #20](https://github.com/timini/cognitive-atlas/issues/20)
 
 The [review synthesis](RECOMMENDATIONS.md) separates manuscript changes from new evidence and unresolved author facts. The [research assessment and proposed experiments](RESEARCH-ASSESSMENT.md) explain the strongest present observations, why additional model families help, and why an independent comparative-judgment task would add more explanatory value than another map alone. The [GitHub issue index](github-issues.json) links each posted report.
 

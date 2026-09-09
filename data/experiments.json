@@ -103,5 +103,44 @@
     "dataset_sha256": "835b87cc327926b228c86d1e17cfe797c903497661a1603843d7f7662f62ef9e",
     "created_at": "2026-09-08T16:56:24.897973+00:00",
     "url": "/data/8b686cab6a691abda85f293e-b6bdf10cb4dc63de/result.json"
+  },
+  {
+    "id": "3b382690950b9511f5806ebc-114bbc2e2e5a9331",
+    "model": "gemini-3.5-flash",
+    "language": "en",
+    "model_label": "Gemini 3.5 Flash",
+    "capital_count": 100,
+    "sample_count": 10,
+    "language_label": "English",
+    "prompt_family": "great-circle-formatted-number-v2",
+    "dataset_sha256": "087c6e422985dddcaaf72b9c1f85ce8d08e43bb2e5fb26eff19f0759ad2dd4c4",
+    "created_at": "2026-09-08T20:55:22.955875+00:00",
+    "url": "/data/3b382690950b9511f5806ebc-114bbc2e2e5a9331/result.json"
+  },
+  {
+    "id": "b2e583773ba8111b0607ae88-3ef8ee3db9b488b1",
+    "model": "gemini-3.5-flash",
+    "language": "ar",
+    "model_label": "Gemini 3.5 Flash",
+    "capital_count": 100,
+    "sample_count": 10,
+    "language_label": "Arabic",
+    "prompt_family": "great-circle-formatted-number-v2",
+    "dataset_sha256": "087c6e422985dddcaaf72b9c1f85ce8d08e43bb2e5fb26eff19f0759ad2dd4c4",
+    "created_at": "2026-09-08T20:55:24.243116+00:00",
+    "url": "/data/b2e583773ba8111b0607ae88-3ef8ee3db9b488b1/result.json"
+  },
+  {
+    "id": "2ee0bcb921b94263ac26e635-bae2d55a858255c4",
+    "model": "gemini-3.5-flash",
+    "language": "zh",
+    "model_label": "Gemini 3.5 Flash",
+    "capital_count": 100,
+    "sample_count": 10,
+    "language_label": "Mandarin Chinese",
+    "prompt_family": "great-circle-formatted-number-v2",
+    "dataset_sha256": "087c6e422985dddcaaf72b9c1f85ce8d08e43bb2e5fb26eff19f0759ad2dd4c4",
+    "created_at": "2026-09-08T20:55:25.059787+00:00",
+    "url": "/data/2ee0bcb921b94263ac26e635-bae2d55a858255c4/result.json"
   }
 ]

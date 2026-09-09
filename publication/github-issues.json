@@ -1,0 +1,58 @@
+{
+  "manuscript_commit": "5f9bdaa3641f684708ad914a721eecc25835ab64",
+  "review_commit": "90fc1aa471507f464e08676121413cd5b412a434",
+  "posted_at": "2026-09-09T17:04:55.456502+00:00",
+  "scope": "100-capital manuscript; five author-requested AI-assisted publication-readiness reviews; 18 journals and 14 criteria per review",
+  "reviews": [
+    {
+      "reviewer": "01",
+      "number": 11,
+      "url": "https://github.com/timini/cognitive-atlas/issues/11",
+      "title": "Publication review 01: editorial readiness across 18 journals",
+      "report": "publication/reviews/review-01-editorial.md",
+      "report_sha256": "ccc6b4cec6dd5d14b5c59614b9c6671fc34adee016e6a344098e9d36e6203fdd",
+      "body_sha256": "afed68afea7504437f25ee0a9bb529a644fe631f75ad0ce86ddd26ad0da6c523",
+      "body_characters": 60232
+    },
+    {
+      "reviewer": "02",
+      "number": 12,
+      "url": "https://github.com/timini/cognitive-atlas/issues/12",
+      "title": "Publication review 02: methods and statistical inference across 18 journals",
+      "report": "publication/reviews/review-02-methods.md",
+      "report_sha256": "86480d06bcd609d1e15ec6d343024f9759a7e41c569e79be2f45ffcccb7457d7",
+      "body_sha256": "64908f514d71b7d16eba4361a889230b0ecdcf379c640a3431b8849a7af9fb2a",
+      "body_characters": 61854
+    },
+    {
+      "reviewer": "03",
+      "number": 13,
+      "url": "https://github.com/timini/cognitive-atlas/issues/13",
+      "title": "Publication review 03: contribution and audience fit across 18 journals",
+      "report": "publication/reviews/review-03-contribution.md",
+      "report_sha256": "083e21bed60389ce78a7df822e757d6b4aeccb266effabe0b913d9304ab6bfe8",
+      "body_sha256": "75092ca3bc9b06d786b002faf2cee92784f163d2580122d3232c984015fbe133",
+      "body_characters": 62413
+    },
+    {
+      "reviewer": "04",
+      "number": 14,
+      "url": "https://github.com/timini/cognitive-atlas/issues/14",
+      "title": "Publication review 04: reproducibility and research integrity across 18 journals",
+      "report": "publication/reviews/review-04-reproducibility.md",
+      "report_sha256": "7f155d864c8aeffd052e35ccc09ecfcef4ca41ecd16c771381782ddef9597b51",
+      "body_sha256": "1f267634aa92e49eeb8bb444b48b30ed741f6fb6ec3863acbcabd7cf42e8ea43",
+      "body_characters": 46447
+    },
+    {
+      "reviewer": "05",
+      "number": 15,
+      "url": "https://github.com/timini/cognitive-atlas/issues/15",
+      "title": "Publication review 05: writing, style and submission policy across 18 journals",
+      "report": "publication/reviews/review-05-style-policy.md",
+      "report_sha256": "3f559ea3e106e4cc16ee98bc7e424c390eb99706197c614a8d055ba6a4300ee1",
+      "body_sha256": "4bca1679a3a025d5457947f6a441c95adc2f2e86e7068e84d6cf015b068eb60f",
+      "body_characters": 56098
+    }
+  ]
+}

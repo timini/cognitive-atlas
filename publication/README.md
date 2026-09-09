@@ -33,11 +33,11 @@ Each guide separates **verified requirements**, **publisher advice**, **our reco
 
 ## Five publication-readiness reviews
 
-1. [Editorial structure and readiness](reviews/review-01-editorial.md)
-2. [Methods, statistical inference and claims](reviews/review-02-methods.md)
-3. [Contribution, geographic interpretation and audience](reviews/review-03-contribution.md)
-4. [Reproducibility, data and research integrity](reviews/review-04-reproducibility.md)
-5. [Writing, style and submission-policy compliance](reviews/review-05-style-policy.md)
+1. [Editorial structure and readiness](reviews/review-01-editorial.md) — [GitHub issue #11](https://github.com/timini/cognitive-atlas/issues/11)
+2. [Methods, statistical inference and claims](reviews/review-02-methods.md) — [GitHub issue #12](https://github.com/timini/cognitive-atlas/issues/12)
+3. [Contribution, geographic interpretation and audience](reviews/review-03-contribution.md) — [GitHub issue #13](https://github.com/timini/cognitive-atlas/issues/13)
+4. [Reproducibility, data and research integrity](reviews/review-04-reproducibility.md) — [GitHub issue #14](https://github.com/timini/cognitive-atlas/issues/14)
+5. [Writing, style and submission-policy compliance](reviews/review-05-style-policy.md) — [GitHub issue #15](https://github.com/timini/cognitive-atlas/issues/15)
 
 These roles provide different emphases; **each report still covers all 18 journals and all 14 criteria**. Companion JSON files give the reason for every assessment. [Coverage verification](coverage.json) checks all 1,260 cells. It is not an acceptance score, a vote among independent human experts, or proof that every policy interpretation is correct.
 

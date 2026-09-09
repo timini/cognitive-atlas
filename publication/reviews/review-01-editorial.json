@@ -1,0 +1,1519 @@
+{
+  "reviewer": "01",
+  "manuscript_commit": "5f9bdaa3641f684708ad914a721eecc25835ab64",
+  "manuscript_sha256": "7fc248a6d19bb09ae2070e734295bb8ded6a8854ed79694122649e47f75cdd26",
+  "assessments": [
+    {
+      "journal": "J01",
+      "criterion": "C01",
+      "status": "Pass",
+      "reason": "Geographic representation and metric uncertainty directly fit GIScience (E2\u2013E4); fit is editorial judgment."
+    },
+    {
+      "journal": "J01",
+      "criterion": "C02",
+      "status": "Partial",
+      "reason": "Repeated global sampling and spherical controls are useful, but the general methodological advance beyond prior MDS needs sharper articulation; portal article category unresolved (E2)."
+    },
+    {
+      "journal": "J01",
+      "criterion": "C03",
+      "status": "Unknown",
+      "reason": "Current word/page/abstract caps were not verified; the 194-token abstract and 15 generic pages do not establish compliance (E1)."
+    },
+    {
+      "journal": "J01",
+      "criterion": "C04",
+      "status": "Unknown",
+      "reason": "Readable research structure exists, but keyword count and mandatory heading rules remain unverified; no keywords supplied (E10)."
+    },
+    {
+      "journal": "J01",
+      "criterion": "C05",
+      "status": "Unknown",
+      "reason": "Journal-specific LaTeX and format-free eligibility remain unresolved despite working TeX/PDF sources (E10)."
+    },
+    {
+      "journal": "J01",
+      "criterion": "C06",
+      "status": "Unknown",
+      "reason": "Exact reference style unverified; consistent plain bibliography and original methods references exist (E2/E10)."
+    },
+    {
+      "journal": "J01",
+      "criterion": "C07",
+      "status": "Unknown",
+      "reason": "Measured versus interpolated geometry is clearly captioned, but journal artwork/file requirements and final-size accessibility have not been verified (E4/E6)."
+    },
+    {
+      "journal": "J01",
+      "criterion": "C08",
+      "status": "Partial",
+      "reason": "Data/code statement and public ZIP exist; durable licensed deposit and anonymous reviewer route still need preparation (E8)."
+    },
+    {
+      "journal": "J01",
+      "criterion": "C09",
+      "status": "Partial",
+      "reason": "Descriptive geometry is supported; local inference remains conditional on unverified independence and finite empirical tails (E3/E5/E9)."
+    },
+    {
+      "journal": "J01",
+      "criterion": "C10",
+      "status": "Fail",
+      "reason": "No accountable author list or actual contributions/declarations supplied; funding, conflicts and rights facts remain unknown (E1/E10)."
+    },
+    {
+      "journal": "J01",
+      "criterion": "C11",
+      "status": "Fail",
+      "reason": "Recorded assistant drafting conflicts with the verified T&F first-draft restriction; eligibility requires an honest editorial ruling, not a rewritten disclosure (E8/E10)."
+    },
+    {
+      "journal": "J01",
+      "criterion": "C12",
+      "status": "Fail",
+      "reason": "Double-anonymous review is incompatible with the current identifying project URLs and non-anonymous bundle (E8)."
+    },
+    {
+      "journal": "J01",
+      "criterion": "C13",
+      "status": "Unknown",
+      "reason": "Exact charges, publication-license options, author rights and funding coverage remain unresolved (E8/E10)."
+    },
+    {
+      "journal": "J01",
+      "criterion": "C14",
+      "status": "Unknown",
+      "reason": "Existing public account-linked manuscript triggers the cited online-identity concern; exclusivity/history/author approvals and editorial eligibility are unestablished (E8)."
+    },
+    {
+      "journal": "J02",
+      "criterion": "C01",
+      "status": "Pass",
+      "reason": "Spatial representation, uncertainty and geographic computation closely match the measured contribution (E2\u2013E4)."
+    },
+    {
+      "journal": "J02",
+      "criterion": "C02",
+      "status": "Pass",
+      "reason": "Original research is appropriate for a bounded repeated-judgment benchmark; spherical reference control supplies substantive analysis beyond the website (E2/E4)."
+    },
+    {
+      "journal": "J02",
+      "criterion": "C03",
+      "status": "Fail",
+      "reason": "The 194-token abstract exceeds the verified 150-word maximum; main-text cap remains unresolved (E1)."
+    },
+    {
+      "journal": "J02",
+      "criterion": "C04",
+      "status": "Fail",
+      "reason": "Five to six keywords and a running title under 40 characters are absent; preferred spacing/font can be adapted without altering evidence (E10)."
+    },
+    {
+      "journal": "J02",
+      "criterion": "C05",
+      "status": "Unknown",
+      "reason": "Free-format LaTeX is supported and sources exist, but conflicting instructions leave initial source-upload timing unresolved (E10)."
+    },
+    {
+      "journal": "J02",
+      "criterion": "C06",
+      "status": "Pass",
+      "reason": "Consistent plain bibliography satisfies initial free-format references; production styling remains later work (E2/E10)."
+    },
+    {
+      "journal": "J02",
+      "criterion": "C07",
+      "status": "Partial",
+      "reason": "Legends/vector plots exist; prepare separately designated figure/table and supporting files for revision and test accessible encodings (E6)."
+    },
+    {
+      "journal": "J02",
+      "criterion": "C08",
+      "status": "Partial",
+      "reason": "Public observations/code and availability statement exist, but expected public archiving and a formal shared-data citation need a durable release (E8)."
+    },
+    {
+      "journal": "J02",
+      "criterion": "C09",
+      "status": "Partial",
+      "reason": "Methods are evaluable and nulls explicit; reported local p-values need demotion or stronger justification given calibration failure (E5/E9)."
+    },
+    {
+      "journal": "J02",
+      "criterion": "C10",
+      "status": "Fail",
+      "reason": "Actual author details, disclosures and submitting-author ORCID are absent; underlying funding/conflict information is unknown (E1/E10)."
+    },
+    {
+      "journal": "J02",
+      "criterion": "C11",
+      "status": "Fail",
+      "reason": "Wiley substantive-assistance disclosure and human verification record are missing; AI reviews/translation notes do not cover drafting, code and analysis (E8/E10)."
+    },
+    {
+      "journal": "J02",
+      "criterion": "C12",
+      "status": "Fail",
+      "reason": "Single-anonymous review requires genuine author information, which the empty title-page field does not provide (E1)."
+    },
+    {
+      "journal": "J02",
+      "criterion": "C13",
+      "status": "Unknown",
+      "reason": "Optional OA route exists, but exact APC, author rights/funder requirements and institutional coverage are unresolved (E10)."
+    },
+    {
+      "journal": "J02",
+      "criterion": "C14",
+      "status": "Unknown",
+      "reason": "No author-approved exclusive submission or verified prior-posting eligibility record exists; use the current Wiley portal after resolving these facts (E8/E10)."
+    },
+    {
+      "journal": "J03",
+      "criterion": "C01",
+      "status": "Partial",
+      "reason": "AI/geocomputation fits, but no urban or environmental system is evaluated merely because capitals are cities (E2/E3)."
+    },
+    {
+      "journal": "J03",
+      "criterion": "C02",
+      "status": "Partial",
+      "reason": "Original research could fit only after a substantive application argument; article taxonomy and applied evidence remain unresolved (E2/E7)."
+    },
+    {
+      "journal": "J03",
+      "criterion": "C03",
+      "status": "Unknown",
+      "reason": "Blocked guide leaves length and abstract limits unverified; do not import another Elsevier journal's limits (E1)."
+    },
+    {
+      "journal": "J03",
+      "criterion": "C04",
+      "status": "Unknown",
+      "reason": "Keyword, highlights and graphical-abstract requirements unverified; current research sections are readable (E10)."
+    },
+    {
+      "journal": "J03",
+      "criterion": "C05",
+      "status": "Unknown",
+      "reason": "Current class and upload rules unverified; editable TeX/PDF alone does not establish journal compliance (E10)."
+    },
+    {
+      "journal": "J03",
+      "criterion": "C06",
+      "status": "Unknown",
+      "reason": "Journal reference style and initial flexibility unresolved, although citations are internally consistent (E10)."
+    },
+    {
+      "journal": "J03",
+      "criterion": "C07",
+      "status": "Unknown",
+      "reason": "Current figures distinguish fitted points and interpolation, but production dimensions and supplement-size rules were inaccessible (E4/E6)."
+    },
+    {
+      "journal": "J03",
+      "criterion": "C08",
+      "status": "Unknown",
+      "reason": "Journal data-policy tier unresolved; public ZIP and availability statement are real, while archive DOI and licence are missing (E8)."
+    },
+    {
+      "journal": "J03",
+      "criterion": "C09",
+      "status": "Partial",
+      "reason": "Current estimates support spatial judgment analysis, not practical routing or urban decision reliability; inference limitations remain (E5/E7)."
+    },
+    {
+      "journal": "J03",
+      "criterion": "C10",
+      "status": "Fail",
+      "reason": "Required responsible human authorship and declarations have not been supplied; financial/rights facts remain unknown (E1/E10)."
+    },
+    {
+      "journal": "J03",
+      "criterion": "C11",
+      "status": "Fail",
+      "reason": "Elsevier requires substantive preparation/research assistance disclosure; the manuscript documents measured Gemini, translation and reviews but not its full preparation history (E8/E10)."
+    },
+    {
+      "journal": "J03",
+      "criterion": "C12",
+      "status": "Unknown",
+      "reason": "CEUS author-anonymity model was not verified; current identifying URLs cannot be judged compliant without that rule (E8)."
+    },
+    {
+      "journal": "J03",
+      "criterion": "C13",
+      "status": "Unknown",
+      "reason": "Subscription/OA options exist, but current APC, licences and author funding route are unverified (E10)."
+    },
+    {
+      "journal": "J03",
+      "criterion": "C14",
+      "status": "Unknown",
+      "reason": "Publisher preprint exception is relevant, but live package fields, exclusivity and all-author approval remain unverified (E8/E10)."
+    },
+    {
+      "journal": "J04",
+      "criterion": "C01",
+      "status": "Pass",
+      "reason": "Mathematical cartography and measured-versus-displayed geography fit the audience (E2/E4)."
+    },
+    {
+      "journal": "J04",
+      "criterion": "C02",
+      "status": "Partial",
+      "reason": "Original research is plausible, but contribution should explain consequences of reconstruction/deformation choices; no usability evaluation exists (E4/E7)."
+    },
+    {
+      "journal": "J04",
+      "criterion": "C03",
+      "status": "Unknown",
+      "reason": "Current article and abstract caps were not retrievable; generic pagination is not evidence of compliance (E1)."
+    },
+    {
+      "journal": "J04",
+      "criterion": "C04",
+      "status": "Unknown",
+      "reason": "Title is appropriately behavioral; exact keywords, abstract and heading requirements remain unresolved (E1/E10)."
+    },
+    {
+      "journal": "J04",
+      "criterion": "C05",
+      "status": "Unknown",
+      "reason": "LaTeX/template and format-free eligibility are journal-specific and unverified (E10)."
+    },
+    {
+      "journal": "J04",
+      "criterion": "C06",
+      "status": "Unknown",
+      "reason": "Exact bibliography style is unresolved; original geodesic, alignment and elicitation references are present (E2/E4)."
+    },
+    {
+      "journal": "J04",
+      "criterion": "C07",
+      "status": "Partial",
+      "reason": "Static/reference figures and interactive atlas fit supported displays; rights clearance and accessible final-size encodings still need author review (E6/E8)."
+    },
+    {
+      "journal": "J04",
+      "criterion": "C08",
+      "status": "Unknown",
+      "reason": "Journal data-sharing tier remains unverified; public ZIP is accessible but needs durable/licensed and anonymous review arrangements (E8)."
+    },
+    {
+      "journal": "J04",
+      "criterion": "C09",
+      "status": "Partial",
+      "reason": "Coastlines are correctly illustrative and no topology-preservation claim is made; local uncertainty and visualization-choice sensitivity remain limitations (E4/E9)."
+    },
+    {
+      "journal": "J04",
+      "criterion": "C10",
+      "status": "Fail",
+      "reason": "Genuine authors and contribution/declaration records absent; source-figure rights and financial facts need author confirmation (E1/E10)."
+    },
+    {
+      "journal": "J04",
+      "criterion": "C11",
+      "status": "Fail",
+      "reason": "Assistant manuscript drafting conflicts with T&F first-draft policy; seek editorial eligibility clarification before formatting (E8/E10)."
+    },
+    {
+      "journal": "J04",
+      "criterion": "C12",
+      "status": "Fail",
+      "reason": "Double-anonymous manuscript and supplements are not prepared: identifying project URLs remain (E8)."
+    },
+    {
+      "journal": "J04",
+      "criterion": "C13",
+      "status": "Unknown",
+      "reason": "Open Select exists but exact APC, funder licence compatibility and author rights are unconfirmed (E10)."
+    },
+    {
+      "journal": "J04",
+      "criterion": "C14",
+      "status": "Unknown",
+      "reason": "ScholarOne route is known, but preprint exceptions, full package fields, exclusivity and approvals remain unestablished (E8/E10)."
+    },
+    {
+      "journal": "J05",
+      "criterion": "C01",
+      "status": "Pass",
+      "reason": "Behavioral spatial geometry and crosslinguistic elicitation are excellent conceptual fits (E2/E3)."
+    },
+    {
+      "journal": "J05",
+      "criterion": "C02",
+      "status": "Partial",
+      "reason": "Empirical research type fits, but theoretical relevance beyond descriptive reconstruction needs development without asserting internal maps (E2/E7)."
+    },
+    {
+      "journal": "J05",
+      "criterion": "C03",
+      "status": "Unknown",
+      "reason": "Word, page and abstract ceilings unverified; current counts cannot certify compliance (E1)."
+    },
+    {
+      "journal": "J05",
+      "criterion": "C04",
+      "status": "Unknown",
+      "reason": "Operational cognitive-map definition and exploratory status are clear; journal structure and keyword count remain unverified (E2/E10)."
+    },
+    {
+      "journal": "J05",
+      "criterion": "C05",
+      "status": "Unknown",
+      "reason": "Current LaTeX acceptance/template unresolved; existing editable sources are only preparation assets (E10)."
+    },
+    {
+      "journal": "J05",
+      "criterion": "C06",
+      "status": "Unknown",
+      "reason": "Exact citation style unverified; conceptual precedents are present but behavioral-spatial discussion could be stronger (E2/E10)."
+    },
+    {
+      "journal": "J05",
+      "criterion": "C07",
+      "status": "Unknown",
+      "reason": "Geometric controls and residuals exist, but artwork requirements and supplement limits remain unverified (E6)."
+    },
+    {
+      "journal": "J05",
+      "criterion": "C08",
+      "status": "Unknown",
+      "reason": "Data-policy tier unverified; public raw outputs/prompts/code exist without archival identifier or established reuse licence (E8)."
+    },
+    {
+      "journal": "J05",
+      "criterion": "C09",
+      "status": "Partial",
+      "reason": "Strong-null and wording caveats are appropriate; no human comparison, navigation transfer or independent language replication supports stronger cognitive claims (E3/E5/E7)."
+    },
+    {
+      "journal": "J05",
+      "criterion": "C10",
+      "status": "Fail",
+      "reason": "No responsible human authors or declarations supplied; human-participant ethics applicability must be determined rather than invented (E1/E10)."
+    },
+    {
+      "journal": "J05",
+      "criterion": "C11",
+      "status": "Fail",
+      "reason": "T&F first-draft restriction conflicts with assistant drafting history; disclosure alone is not established as a cure (E8/E10)."
+    },
+    {
+      "journal": "J05",
+      "criterion": "C12",
+      "status": "Unknown",
+      "reason": "Anonymous referees do not establish whether author identities must be hidden; exact review model is unresolved (E1/E8)."
+    },
+    {
+      "journal": "J05",
+      "criterion": "C13",
+      "status": "Unknown",
+      "reason": "Open Select option known, but APC, licence/incidental charges and author funding details unverified (E10)."
+    },
+    {
+      "journal": "J05",
+      "criterion": "C14",
+      "status": "Unknown",
+      "reason": "ScholarOne route known; prior-posting exceptions, package metadata, exclusivity and author consent not established (E8/E10)."
+    },
+    {
+      "journal": "J06",
+      "criterion": "C01",
+      "status": "Fail",
+      "reason": "No tested policy or applied decision question supports this journal's defining focus; this is editorial scope judgment (E2/E7)."
+    },
+    {
+      "journal": "J06",
+      "criterion": "C02",
+      "status": "Partial",
+      "reason": "Research-paper type exists, but current benchmark does not establish an applied contribution; prose alone cannot supply one (E7)."
+    },
+    {
+      "journal": "J06",
+      "criterion": "C03",
+      "status": "Unknown",
+      "reason": "Abstract falls within 150\u2013250 words, but the 8,000-word count convention is unresolved, preventing whole-criterion certification (E1)."
+    },
+    {
+      "journal": "J06",
+      "criterion": "C04",
+      "status": "Fail",
+      "reason": "Required four to six keywords absent; current heading depth is within three levels (E10)."
+    },
+    {
+      "journal": "J06",
+      "criterion": "C05",
+      "status": "Pass",
+      "reason": "Mathematical LaTeX accepted and complete editable sources exist; recommended Springer conversion is not an initial mandatory template rule (E10)."
+    },
+    {
+      "journal": "J06",
+      "criterion": "C06",
+      "status": "Fail",
+      "reason": "Required author\u2013year citations are not the current numeric plain style; alphabetization alone does not satisfy citation format (E10)."
+    },
+    {
+      "journal": "J06",
+      "criterion": "C07",
+      "status": "Partial",
+      "reason": "Figures/tables are numbered, cited and captioned; separate captioned supplement package and accessibility review remain (E6)."
+    },
+    {
+      "journal": "J06",
+      "criterion": "C08",
+      "status": "Partial",
+      "reason": "Availability statement and public package satisfy core access evidence; durable anonymous review deposit and licensing need work (E8)."
+    },
+    {
+      "journal": "J06",
+      "criterion": "C09",
+      "status": "Partial",
+      "reason": "Conditional inferences are carefully bounded; no measured decision consequence supports a policy conclusion (E5/E7)."
+    },
+    {
+      "journal": "J06",
+      "criterion": "C10",
+      "status": "Fail",
+      "reason": "Portal contributions, competing interests and responsible human author facts have not been supplied (E1/E10)."
+    },
+    {
+      "journal": "J06",
+      "criterion": "C11",
+      "status": "Fail",
+      "reason": "Substantive AI writing/code/analysis assistance is not documented in Methods as required; copyediting exemption is inapplicable (E8/E10)."
+    },
+    {
+      "journal": "J06",
+      "criterion": "C12",
+      "status": "Fail",
+      "reason": "Current identifying URLs and supplements conflict with double-anonymous preparation (E8)."
+    },
+    {
+      "journal": "J06",
+      "criterion": "C13",
+      "status": "Unknown",
+      "reason": "Subscription no-APC route and quoted optional OA costs are known; actual author licence/funding choice and rights are unconfirmed (E10)."
+    },
+    {
+      "journal": "J06",
+      "criterion": "C14",
+      "status": "Unknown",
+      "reason": "Exclusive submission, author approvals and manuscript-specific dissemination eligibility are unestablished (E8/E10)."
+    },
+    {
+      "journal": "J07",
+      "criterion": "C01",
+      "status": "Pass",
+      "reason": "Reproducible multilingual model evaluation fits NLP, conditional on emphasizing linguistic elicitation rather than website engineering (E2/E3)."
+    },
+    {
+      "journal": "J07",
+      "criterion": "C02",
+      "status": "Partial",
+      "reason": "Completed empirical article is appropriate, but significance beyond prior city-MDS and the single-wording design needs a sharper case (E2/E3)."
+    },
+    {
+      "journal": "J07",
+      "criterion": "C03",
+      "status": "Unknown",
+      "reason": "Ten-page main-content and appendix allowances require actual TACL reflow; abstract ceiling unverified (E1/E10)."
+    },
+    {
+      "journal": "J07",
+      "criterion": "C04",
+      "status": "Partial",
+      "reason": "Literal title and main-text inferential caveats are present; front matter and optional five-to-ten editorial keywords need submission preparation (E1/E5)."
+    },
+    {
+      "journal": "J07",
+      "criterion": "C05",
+      "status": "Fail",
+      "reason": "Mandatory TACL format is not the generic article class; source must be rebuilt in current official files (E10)."
+    },
+    {
+      "journal": "J07",
+      "criterion": "C06",
+      "status": "Partial",
+      "reason": "References are accurate and consistent but need supplied ACL style; primary novelty comparison should remain explicit (E2/E10)."
+    },
+    {
+      "journal": "J07",
+      "criterion": "C07",
+      "status": "Unknown",
+      "reason": "Appendix rules are known, but older external-link prohibition conflicts with newer replication-URL allowance; reviewer-access route needs clarification (E8)."
+    },
+    {
+      "journal": "J07",
+      "criterion": "C08",
+      "status": "Partial",
+      "reason": "Promised artifacts already exist publicly; prepare permitted anonymous access and durable licensed citation (E8)."
+    },
+    {
+      "journal": "J07",
+      "criterion": "C09",
+      "status": "Partial",
+      "reason": "Nulls and failed calibration are explicit; the linguistic inference remains wording-confounded and temporally unreplicated (E3/E5/E9)."
+    },
+    {
+      "journal": "J07",
+      "criterion": "C10",
+      "status": "Fail",
+      "reason": "Required coauthor profiles and human responsibility record absent; private author/conflict fields must be completed truthfully (E1/E10)."
+    },
+    {
+      "journal": "J07",
+      "criterion": "C11",
+      "status": "Fail",
+      "reason": "ACL acknowledgement disclosure of generative content assistance missing; current review disclosure does not identify writing/code/analysis roles (E8/E10)."
+    },
+    {
+      "journal": "J07",
+      "criterion": "C12",
+      "status": "Fail",
+      "reason": "Mandatory anonymity fails because project URLs and bundle metadata identify the public release; absence of author text is insufficient (E8)."
+    },
+    {
+      "journal": "J07",
+      "criterion": "C13",
+      "status": "Unknown",
+      "reason": "No publication charges verified, but current agreement, artifact rights and actual author consent to terms remain unresolved (E10)."
+    },
+    {
+      "journal": "J07",
+      "criterion": "C14",
+      "status": "Unknown",
+      "reason": "No evidence establishes eligibility against ACL-family nine-month/TACL twelve-month exclusions, prior history or exclusive author approval (E10)."
+    },
+    {
+      "journal": "J08",
+      "criterion": "C01",
+      "status": "Pass",
+      "reason": "Contemporary model evaluation and interdisciplinary language questions fit the stated audience (E2/E3)."
+    },
+    {
+      "journal": "J08",
+      "criterion": "C02",
+      "status": "Partial",
+      "reason": "Short Paper is defensible, but independent language/date replication and a sharper linguistic insight would strengthen the editorial case (E2/E7)."
+    },
+    {
+      "journal": "J08",
+      "criterion": "C03",
+      "status": "Unknown",
+      "reason": "Typical Short Paper limits require reflow in CL class; exact abstract ceiling was not verified (E1/E10)."
+    },
+    {
+      "journal": "J08",
+      "criterion": "C04",
+      "status": "Fail",
+      "reason": "Separate required author/title/abstract metadata and five-to-ten editorial keywords are absent; English prose itself is suitable (E1/E10)."
+    },
+    {
+      "journal": "J08",
+      "criterion": "C05",
+      "status": "Fail",
+      "reason": "Mandatory clv2025 class/LaTeX submission format not used; working generic source must be converted (E10)."
+    },
+    {
+      "journal": "J08",
+      "criterion": "C06",
+      "status": "Fail",
+      "reason": "Supplied CL citation files are required and current plain style does not use them (E10)."
+    },
+    {
+      "journal": "J08",
+      "criterion": "C07",
+      "status": "Unknown",
+      "reason": "Figures are readable with units/captions, but supplement-size ceilings and the specific package route remain unverified (E6)."
+    },
+    {
+      "journal": "J08",
+      "criterion": "C08",
+      "status": "Partial",
+      "reason": "Promised observations/code already publicly available; persistent citation and reuse rights remain incomplete (E8)."
+    },
+    {
+      "journal": "J08",
+      "criterion": "C09",
+      "status": "Partial",
+      "reason": "Conditional nulls are explicit; one translation/date and failed rare-tail bootstrap constrain linguistic interpretation (E3/E5/E9)."
+    },
+    {
+      "journal": "J08",
+      "criterion": "C10",
+      "status": "Fail",
+      "reason": "Mandatory names, affiliations and emails absent; contribution/funding/conflict facts remain unknown (E1/E10)."
+    },
+    {
+      "journal": "J08",
+      "criterion": "C11",
+      "status": "Fail",
+      "reason": "ACL acknowledgement disclosure of substantive generative assistance missing; human scientific responsibility not documented (E8/E10)."
+    },
+    {
+      "journal": "J08",
+      "criterion": "C12",
+      "status": "Fail",
+      "reason": "Single-blind review requires author names/affiliations on page one, which are absent (E1)."
+    },
+    {
+      "journal": "J08",
+      "criterion": "C13",
+      "status": "Unknown",
+      "reason": "Open access/copyright assignment request known; exact current fee/license statement and authors' ability to grant rights unverified (E10)."
+    },
+    {
+      "journal": "J08",
+      "criterion": "C14",
+      "status": "Unknown",
+      "reason": "Originality/concurrent archival review/history and author approval cannot be certified from the manuscript; portal record needed (E8/E10)."
+    },
+    {
+      "journal": "J09",
+      "criterion": "C01",
+      "status": "Pass",
+      "reason": "Accuracy versus structural consistency is relevant to AI evaluation and representation (E2/E4)."
+    },
+    {
+      "journal": "J09",
+      "criterion": "C02",
+      "status": "Partial",
+      "reason": "Full Article suits the analyses, but general AI significance beyond one alias and established reconstruction tools needs strengthening (E2/E7)."
+    },
+    {
+      "journal": "J09",
+      "criterion": "C03",
+      "status": "Unknown",
+      "reason": "No strict article or abstract ceiling verified; concision advice is not proof that any length is acceptable (E1)."
+    },
+    {
+      "journal": "J09",
+      "criterion": "C04",
+      "status": "Partial",
+      "reason": "Unstructured abstract is permissible; structured alternative and final heading/section introductions would improve JAIR fit (E1/E10)."
+    },
+    {
+      "journal": "J09",
+      "criterion": "C05",
+      "status": "Fail",
+      "reason": "JAIR-formatted PDF required at submission; generic article class is not compliant (E10)."
+    },
+    {
+      "journal": "J09",
+      "criterion": "C06",
+      "status": "Partial",
+      "reason": "Initial bibliography is coherent; final JAIR styling and preference for published antecedents require production review (E2/E10)."
+    },
+    {
+      "journal": "J09",
+      "criterion": "C07",
+      "status": "Partial",
+      "reason": "Figures include geometric controls; monochrome readability and critical-diagnostic placement need checking, and later code appendix release form is absent (E6/E9)."
+    },
+    {
+      "journal": "J09",
+      "criterion": "C08",
+      "status": "Fail",
+      "reason": "Mandatory reproducibility checklist is not appended to review PDF, despite substantial public artifact evidence (E8)."
+    },
+    {
+      "journal": "J09",
+      "criterion": "C09",
+      "status": "Partial",
+      "reason": "Evidence supports bounded description; general claims still limited by dependence, one alias and empirical-tail uncertainty (E3/E5/E9)."
+    },
+    {
+      "journal": "J09",
+      "criterion": "C10",
+      "status": "Fail",
+      "reason": "No human author/contributor record supplied; exact journal declaration template is unverified and actual conflicts/funding unknown (E1/E10)."
+    },
+    {
+      "journal": "J09",
+      "criterion": "C11",
+      "status": "Unknown",
+      "reason": "Core-contribution human ownership cannot be established from this preparation history; detailed assistance/accountability statement needed before eligibility judgment (E8/E10)."
+    },
+    {
+      "journal": "J09",
+      "criterion": "C12",
+      "status": "Unknown",
+      "reason": "Reviewer confidentiality is verified but explicit author-anonymity rule is not; current blank author field is not a completed named submission (E1)."
+    },
+    {
+      "journal": "J09",
+      "criterion": "C13",
+      "status": "Unknown",
+      "reason": "No fees and final CC BY verified; human agreement and underlying artifact rights remain unconfirmed (E10)."
+    },
+    {
+      "journal": "J09",
+      "criterion": "C14",
+      "status": "Unknown",
+      "reason": "Three mandatory editorial answers and final author-approved exclusivity/history record absent; the underlying history must be supplied (E10)."
+    },
+    {
+      "journal": "J10",
+      "criterion": "C01",
+      "status": "Pass",
+      "reason": "Analysis and visualization of learned-system behavior directly fit TMLR scope (E2/E4)."
+    },
+    {
+      "journal": "J10",
+      "criterion": "C02",
+      "status": "Pass",
+      "reason": "The accurate-rank/inconsistent-metric result is intelligible and of potential ML interest; acceptance remains an editor's judgment (E2/E6)."
+    },
+    {
+      "journal": "J10",
+      "criterion": "C03",
+      "status": "Unknown",
+      "reason": "Variable length permitted, but abstract ceiling unverified and current pages must be reflowed in mandatory template (E1/E10)."
+    },
+    {
+      "journal": "J10",
+      "criterion": "C04",
+      "status": "Unknown",
+      "reason": "Main argument/caveats are clear; separate mandatory keyword rule unverified and template front matter not prepared (E5/E10)."
+    },
+    {
+      "journal": "J10",
+      "criterion": "C05",
+      "status": "Fail",
+      "reason": "Mandatory unaltered TMLR template not used; generic formatting is an initial-submission problem (E10)."
+    },
+    {
+      "journal": "J10",
+      "criterion": "C06",
+      "status": "Partial",
+      "reason": "References are substantively relevant but template bibliography conversion remains; no separate reference-count ceiling verified (E2/E10)."
+    },
+    {
+      "journal": "J10",
+      "criterion": "C07",
+      "status": "Partial",
+      "reason": "41.8-MB public ZIP fits 100-MB cap, but must be anonymized; appendix follows references and key evidence should remain reviewed (E6/E8)."
+    },
+    {
+      "journal": "J10",
+      "criterion": "C08",
+      "status": "Partial",
+      "reason": "Public code/raw observations and verification commands exist; independently test an anonymized version and resolve reuse licence (E8)."
+    },
+    {
+      "journal": "J10",
+      "criterion": "C09",
+      "status": "Partial",
+      "reason": "Claims mostly match evidence; empirical bootstrap and unverified independence still require demoting regional inferential emphasis (E5/E9)."
+    },
+    {
+      "journal": "J10",
+      "criterion": "C10",
+      "status": "Fail",
+      "reason": "Active author profiles, fixed real author set, funding/conflicts and applicable ethics fields are absent (E1/E10)."
+    },
+    {
+      "journal": "J10",
+      "criterion": "C11",
+      "status": "Unknown",
+      "reason": "Missing first-page AI disclosure is clear; tension between assistive-use permission and human-sourced ideas/results language requires clarification of actual extensive assistance (E8/E10)."
+    },
+    {
+      "journal": "J10",
+      "criterion": "C12",
+      "status": "Fail",
+      "reason": "Double-blind package not prepared; public preprint permission does not allow identifying links in anonymous submission (E8)."
+    },
+    {
+      "journal": "J10",
+      "criterion": "C13",
+      "status": "Unknown",
+      "reason": "No fee is verified, but irrevocable CC BY from submission and rights/public-review consequences require actual author agreement (E10)."
+    },
+    {
+      "journal": "J10",
+      "criterion": "C14",
+      "status": "Unknown",
+      "reason": "All-author remaining quota, profiles, archival overlap and exclusive submission facts unestablished; public preprint alone is not disqualifying (E8/E10)."
+    },
+    {
+      "journal": "J11",
+      "criterion": "C01",
+      "status": "Pass",
+      "reason": "Reasoning/representation and language-model evaluation fit broad AI scope (E2/E4)."
+    },
+    {
+      "journal": "J11",
+      "criterion": "C02",
+      "status": "Partial",
+      "reason": "Regular Article type fits, but mature general AI insight beyond descriptive established-method application remains limited (E2/E7)."
+    },
+    {
+      "journal": "J11",
+      "criterion": "C03",
+      "status": "Unknown",
+      "reason": "Advisory 20\u201330 pages is not a minimum; current publisher abstract limit remains unverified (E1)."
+    },
+    {
+      "journal": "J11",
+      "criterion": "C04",
+      "status": "Unknown",
+      "reason": "English abstract/references exist, but current keywords/highlights requirements unavailable (E1/E10)."
+    },
+    {
+      "journal": "J11",
+      "criterion": "C05",
+      "status": "Partial",
+      "reason": "Single-column A4 PDF is suitable in principle; 10-point is below preferred at-least-11-point guidance, and elsarticle is recommended (E10)."
+    },
+    {
+      "journal": "J11",
+      "criterion": "C06",
+      "status": "Unknown",
+      "reason": "Current publisher bibliography requirement unavailable; do not import another Elsevier journal's rule (E10)."
+    },
+    {
+      "journal": "J11",
+      "criterion": "C07",
+      "status": "Unknown",
+      "reason": "Vector plots are promising, but current artwork/supplement ceilings and final production compliance unverified (E6)."
+    },
+    {
+      "journal": "J11",
+      "criterion": "C08",
+      "status": "Unknown",
+      "reason": "Current data-policy tier inaccessible; public code/data statement exists, while archiving/licensing remain incomplete (E8)."
+    },
+    {
+      "journal": "J11",
+      "criterion": "C09",
+      "status": "Partial",
+      "reason": "Spherical controls and precise nulls strengthen completeness; conditional/local inference and generality remain limited (E3/E5/E9)."
+    },
+    {
+      "journal": "J11",
+      "criterion": "C10",
+      "status": "Fail",
+      "reason": "Elsevier human authorship and authentic contribution/funding/conflict declarations have not been supplied (E1/E10)."
+    },
+    {
+      "journal": "J11",
+      "criterion": "C11",
+      "status": "Fail",
+      "reason": "Preparation declaration before references and research/code assistance in Methods are missing despite documented substantive assistance (E8/E10)."
+    },
+    {
+      "journal": "J11",
+      "criterion": "C12",
+      "status": "Unknown",
+      "reason": "Current AIJ author-anonymity model not directly verified; prepare separable identity fields but do not assume double anonymity (E8/E10)."
+    },
+    {
+      "journal": "J11",
+      "criterion": "C13",
+      "status": "Unknown",
+      "reason": "Current charges, publishing options and licences were not verified; author funding/rights also unknown (E10)."
+    },
+    {
+      "journal": "J11",
+      "criterion": "C14",
+      "status": "Unknown",
+      "reason": "Editorial Manager route known, but mandatory live files and all-author originality/exclusivity declarations not established (E10)."
+    },
+    {
+      "journal": "J12",
+      "criterion": "C01",
+      "status": "Fail",
+      "reason": "No measured societal/cultural/philosophical argument supports this journal's defining focus; this is editorial scope judgment (E2/E7)."
+    },
+    {
+      "journal": "J12",
+      "criterion": "C02",
+      "status": "Partial",
+      "reason": "Research Article exists, but a substantive social argument needs evidence, not speculative reframing of regional estimates (E7)."
+    },
+    {
+      "journal": "J12",
+      "criterion": "C03",
+      "status": "Pass",
+      "reason": "194-token abstract satisfies ordinary 150\u2013250 range; current manuscript need not expand toward normal 10,000-word length (E1)."
+    },
+    {
+      "journal": "J12",
+      "criterion": "C04",
+      "status": "Fail",
+      "reason": "Four to six keywords absent; current readable numbered heading depth is within three levels (E10)."
+    },
+    {
+      "journal": "J12",
+      "criterion": "C05",
+      "status": "Fail",
+      "reason": "Explicit Word-only rule is unmet by the current LaTeX/PDF package (E10)."
+    },
+    {
+      "journal": "J12",
+      "criterion": "C06",
+      "status": "Fail",
+      "reason": "Required author\u2013year references differ from current numeric plain citations (E10)."
+    },
+    {
+      "journal": "J12",
+      "criterion": "C07",
+      "status": "Partial",
+      "reason": "Numbered static figures/tables exist; Online Resources captions and editable Word-compatible artwork package remain (E6)."
+    },
+    {
+      "journal": "J12",
+      "criterion": "C08",
+      "status": "Partial",
+      "reason": "Data Availability content and public ZIP exist, but durable anonymous/licensed deposit needs preparation (E8)."
+    },
+    {
+      "journal": "J12",
+      "criterion": "C09",
+      "status": "Partial",
+      "reason": "Descriptive findings are bounded; no valid inference to social groups follows from operational city pairs, and bootstrap weakness remains (E5/E7/E9)."
+    },
+    {
+      "journal": "J12",
+      "criterion": "C10",
+      "status": "Fail",
+      "reason": "Actual author/contribution/competing-interest portal records missing; ethics/funding applicability facts need human confirmation (E1/E10)."
+    },
+    {
+      "journal": "J12",
+      "criterion": "C11",
+      "status": "Unknown",
+      "reason": "Strong discouragement of LLM use beyond grammar/translation creates an eligibility concern; substantive Methods disclosure is also missing (E8/E10)."
+    },
+    {
+      "journal": "J12",
+      "criterion": "C12",
+      "status": "Fail",
+      "reason": "Double-blind materials are not anonymized and identifying project links remain (E8)."
+    },
+    {
+      "journal": "J12",
+      "criterion": "C13",
+      "status": "Unknown",
+      "reason": "Subscription no-APC route and optional prices known; author licence/funder choice, rights and acceptance-date charge unknown (E10)."
+    },
+    {
+      "journal": "J12",
+      "criterion": "C14",
+      "status": "Unknown",
+      "reason": "Public posting must be acknowledged, but eligibility, Word package and all-author exclusive approval are incomplete (E8/E10)."
+    },
+    {
+      "journal": "J13",
+      "criterion": "C01",
+      "status": "Pass",
+      "reason": "Bounded empirical science with objective geographic reference fits broad scope (E2\u2013E4)."
+    },
+    {
+      "journal": "J13",
+      "criterion": "C02",
+      "status": "Pass",
+      "reason": "Research Article is appropriate; technical validity rather than speculative high impact suits the core descriptive result (E2/E6)."
+    },
+    {
+      "journal": "J13",
+      "criterion": "C03",
+      "status": "Partial",
+      "reason": "194-token abstract and full title fit stated caps; required short-title metadata has not been supplied (E1/E10)."
+    },
+    {
+      "journal": "J13",
+      "criterion": "C04",
+      "status": "Partial",
+      "reason": "Scientific structure is readable; title page, continuous line numbering and house spacing need later/portal adaptation without treating format-free style as initial rejection (E1/E10)."
+    },
+    {
+      "journal": "J13",
+      "criterion": "C05",
+      "status": "Unknown",
+      "reason": "Generic format-free guidance conflicts with LaTeX-specific template/figure instructions; current embedded-figure PDF needs portal clarification and a combined TeX source (E10)."
+    },
+    {
+      "journal": "J13",
+      "criterion": "C06",
+      "status": "Partial",
+      "reason": "Current references are consistent initially; final Vancouver order must replace alphabetic plain numbering (E10)."
+    },
+    {
+      "journal": "J13",
+      "criterion": "C07",
+      "status": "Partial",
+      "reason": "Vector source plots exist, but separate TIFF/EPS figures at 300\u2013600 dpi and at most 10 MB need conversion/font checks; LaTeX guidance requests separate figures initially (E6)."
+    },
+    {
+      "journal": "J13",
+      "criterion": "C08",
+      "status": "Partial",
+      "reason": "Data availability and essential code are publicly downloadable; reuse rights/licence and durable citation remain unresolved (E8)."
+    },
+    {
+      "journal": "J13",
+      "criterion": "C09",
+      "status": "Partial",
+      "reason": "Main descriptive claims are supported, but main-text regional p-values are too prominent given severe diagnosed calibration failure and unverified independence (E5/E9)."
+    },
+    {
+      "journal": "J13",
+      "criterion": "C10",
+      "status": "Fail",
+      "reason": "Actual authors/affiliations/correspondence/ORCID/CRediT and financial/conflict form records missing (E1/E10)."
+    },
+    {
+      "journal": "J13",
+      "criterion": "C11",
+      "status": "Fail",
+      "reason": "Methods lacks complete tools/purposes/validation/affected-content disclosure for AI-assisted manuscript and analysis preparation (E8/E10)."
+    },
+    {
+      "journal": "J13",
+      "criterion": "C12",
+      "status": "Fail",
+      "reason": "Required author identities absent; choice about publishing actual journal review history has not been made (E1/E10)."
+    },
+    {
+      "journal": "J13",
+      "criterion": "C13",
+      "status": "Unknown",
+      "reason": "Listed APC and CC BY are verified, but rights, funding assistance/coverage and actual author agreement are unknown (E10)."
+    },
+    {
+      "journal": "J13",
+      "criterion": "C14",
+      "status": "Unknown",
+      "reason": "One-page cover letter, author-approved exclusivity and prior-PDF disclosure package absent; no adverse submission history can be inferred (E8/E10)."
+    },
+    {
+      "journal": "J14",
+      "criterion": "C01",
+      "status": "Pass",
+      "reason": "Known-reference empirical analysis fits broad science; computing/geoscience handling category needs author selection (E2/E4)."
+    },
+    {
+      "journal": "J14",
+      "criterion": "C02",
+      "status": "Pass",
+      "reason": "Article is suitable for already-collected exploratory results; no retrospective Registered Report claim is made (E2/E3)."
+    },
+    {
+      "journal": "J14",
+      "criterion": "C03",
+      "status": "Partial",
+      "reason": "194-token abstract and literal title satisfy observed hard limits; 11-typeset-page/4,500-main-word guidance requires venue-specific count excluding stated sections (E1)."
+    },
+    {
+      "journal": "J14",
+      "criterion": "C04",
+      "status": "Partial",
+      "reason": "Unstructured abstract and logical headings fit; title-page details and any chosen keywords require completion (E1/E10)."
+    },
+    {
+      "journal": "J14",
+      "criterion": "C05",
+      "status": "Pass",
+      "reason": "1,108,680-byte PDF fits combined first-submission 3-MB cap; TeX sources exist for revision (E10)."
+    },
+    {
+      "journal": "J14",
+      "criterion": "C06",
+      "status": "Partial",
+      "reason": "References need Nature numbering in citation order; 18 cited items are below advisory 60 (E10)."
+    },
+    {
+      "journal": "J14",
+      "criterion": "C07",
+      "status": "Fail",
+      "reason": "Current main text has four figures plus six tables, exceeding eight display items; move/recombine at least two and split long appendix material (E6)."
+    },
+    {
+      "journal": "J14",
+      "criterion": "C08",
+      "status": "Partial",
+      "reason": "Public evaluation data/code and availability statement exist; persistent/licensed deposit and portfolio code-access checks remain (E8)."
+    },
+    {
+      "journal": "J14",
+      "criterion": "C09",
+      "status": "Partial",
+      "reason": "Transparent methods and modest conclusions are strengths, but small-cell bootstrap and nonreplicated conditions limit inferential certainty (E3/E5/E9)."
+    },
+    {
+      "journal": "J14",
+      "criterion": "C10",
+      "status": "Fail",
+      "reason": "Required human author, contribution, explicit competing-interest, funding and applicable ethics statements absent (E1/E10)."
+    },
+    {
+      "journal": "J14",
+      "criterion": "C11",
+      "status": "Fail",
+      "reason": "Required substantive LLM-use Methods disclosure incomplete; detailed policy exceptions are unresolved and cannot waive the observed omission (E8/E10)."
+    },
+    {
+      "journal": "J14",
+      "criterion": "C12",
+      "status": "Fail",
+      "reason": "Required identified-author title page absent; detailed review-option settings remain unverified (E1)."
+    },
+    {
+      "journal": "J14",
+      "criterion": "C13",
+      "status": "Unknown",
+      "reason": "Fully OA route known, but exact journal/currency/tax quote, licence terms, coverage and author agreement unconfirmed (E10)."
+    },
+    {
+      "journal": "J14",
+      "criterion": "C14",
+      "status": "Unknown",
+      "reason": "Cover letter, reviewer suggestions/exclusions, related-editor disclosure and exclusive all-author approval unprepared (E10)."
+    },
+    {
+      "journal": "J15",
+      "criterion": "C01",
+      "status": "Pass",
+      "reason": "Science/mathematics scope includes geographic measurement and model evaluation (E2/E4)."
+    },
+    {
+      "journal": "J15",
+      "criterion": "C02",
+      "status": "Pass",
+      "reason": "Research Article and soundness/null-result orientation fit the bounded descriptive findings (E2/E6)."
+    },
+    {
+      "journal": "J15",
+      "criterion": "C03",
+      "status": "Pass",
+      "reason": "No overall length cap verified in catalogue; 194-token abstract is below 200 words, subject to final recount (E1)."
+    },
+    {
+      "journal": "J15",
+      "criterion": "C04",
+      "status": "Fail",
+      "reason": "Full title page and three-to-ten keywords absent; British-English consistency also needs copyediting (E1/E10)."
+    },
+    {
+      "journal": "J15",
+      "criterion": "C05",
+      "status": "Pass",
+      "reason": "Format-free initial LaTeX PDF supported; flatten file inclusions and supply source at the later production stage (E10)."
+    },
+    {
+      "journal": "J15",
+      "criterion": "C06",
+      "status": "Partial",
+      "reason": "Consistent references usable initially; final Vancouver citation order and formal data/code citations need conversion (E10)."
+    },
+    {
+      "journal": "J15",
+      "criterion": "C07",
+      "status": "Partial",
+      "reason": "41.8-MB ZIP below 350-MB file cap; separate source files and CC BY rights for supporting material still require confirmation (E6/E8)."
+    },
+    {
+      "journal": "J15",
+      "criterion": "C08",
+      "status": "Fail",
+      "reason": "Open code/data exist, but required CC0/CC BY reuse licensing has not been supplied; availability is not permission (E8)."
+    },
+    {
+      "journal": "J15",
+      "criterion": "C09",
+      "status": "Partial",
+      "reason": "Objective accuracy/consistency results are supported; conditional inferential assumptions and failed tail calibration constrain claims (E5/E9)."
+    },
+    {
+      "journal": "J15",
+      "criterion": "C10",
+      "status": "Fail",
+      "reason": "Submitting-author ORCID and genuine author/contribution/funding/conflict declarations absent (E1/E10)."
+    },
+    {
+      "journal": "J15",
+      "criterion": "C11",
+      "status": "Fail",
+      "reason": "Substantive assistant drafting/analysis conflicts with the restrictive writing/interpretation policy; eligibility needs direct editorial clarification (E8/E10)."
+    },
+    {
+      "journal": "J15",
+      "criterion": "C12",
+      "status": "Fail",
+      "reason": "Single-anonymous author metadata absent; mandatory eventual public journal-review history is distinct from these AI reports (E1/E10)."
+    },
+    {
+      "journal": "J15",
+      "criterion": "C13",
+      "status": "Unknown",
+      "reason": "Quoted RSOS APC and CC BY verified; institutional coverage/waiver, rights and actual author acceptance unknown (E10)."
+    },
+    {
+      "journal": "J15",
+      "criterion": "C14",
+      "status": "Unknown",
+      "reason": "Preprint deposition allowed, but approved author declarations and exclusive submission package absent (E8/E10)."
+    },
+    {
+      "journal": "J16",
+      "criterion": "C01",
+      "status": "Pass",
+      "reason": "Computer-science empirical evaluation fits when measured model behavior, not website features, is foregrounded (E2/E4)."
+    },
+    {
+      "journal": "J16",
+      "criterion": "C02",
+      "status": "Pass",
+      "reason": "Research Article is a reasonable original, reproducible benchmark route subject to substantive human ownership (E2/E8)."
+    },
+    {
+      "journal": "J16",
+      "criterion": "C03",
+      "status": "Unknown",
+      "reason": "Abstract/title appear within verified caps, but whole-paper ceiling was not verified; final character count should accompany submission (E1)."
+    },
+    {
+      "journal": "J16",
+      "criterion": "C04",
+      "status": "Fail",
+      "reason": "Required author cover page, US Letter/12-point format and line numbering are not current A4/10-point article (E1/E10)."
+    },
+    {
+      "journal": "J16",
+      "criterion": "C05",
+      "status": "Partial",
+      "reason": "LaTeX supported and sources complete, but official template/file package requires adaptation (E10)."
+    },
+    {
+      "journal": "J16",
+      "criterion": "C06",
+      "status": "Fail",
+      "reason": "Required author\u2013year references are not current numeric plain style (E10)."
+    },
+    {
+      "journal": "J16",
+      "criterion": "C07",
+      "status": "Fail",
+      "reason": "41,789,224-byte reproduction ZIP exceeds 30-MB individual supplement cap, although below 50-MB total; split or archive and cite (E8)."
+    },
+    {
+      "journal": "J16",
+      "criterion": "C08",
+      "status": "Fail",
+      "reason": "Code/data available but no required archived DOI for software hosted on a social platform; alternative supplement route must be confirmed (E8)."
+    },
+    {
+      "journal": "J16",
+      "criterion": "C09",
+      "status": "Partial",
+      "reason": "Reproducible descriptives are strong; conditional bootstrap cannot support robust population claims without further justification (E5/E9)."
+    },
+    {
+      "journal": "J16",
+      "criterion": "C10",
+      "status": "Fail",
+      "reason": "Qualifying human authors, coauthor confirmation and actual declarations absent (E1/E10)."
+    },
+    {
+      "journal": "J16",
+      "criterion": "C11",
+      "status": "Fail",
+      "reason": "Substantive drafting creates conflict with adopted T&F restriction, and detailed tool/version/how/why disclosure is missing (E8/E10)."
+    },
+    {
+      "journal": "J16",
+      "criterion": "C12",
+      "status": "Fail",
+      "reason": "Identified-author cover page absent; optional journal review-history publication remains an author decision (E1)."
+    },
+    {
+      "journal": "J16",
+      "criterion": "C13",
+      "status": "Unknown",
+      "reason": "CC BY known; current APC/membership pricing inaccessible and actual author funding/rights unconfirmed (E10)."
+    },
+    {
+      "journal": "J16",
+      "criterion": "C14",
+      "status": "Unknown",
+      "reason": "No cover letter normally needed, but genuine submitting/coauthor confirmations, exclusive submission and prior-posting declarations are absent (E8/E10)."
+    },
+    {
+      "journal": "J17",
+      "criterion": "C01",
+      "status": "Partial",
+      "reason": "Generative models are in scope, but the current benchmark offers limited evidence about human/social or techno-social systems (E2/E7)."
+    },
+    {
+      "journal": "J17",
+      "criterion": "C02",
+      "status": "Fail",
+      "reason": "Current descriptive standard-method study does not yet demonstrate the required substantive human/social-system insight; editorial contribution judgment (E2/E7)."
+    },
+    {
+      "journal": "J17",
+      "criterion": "C03",
+      "status": "Unknown",
+      "reason": "194-token abstract is within 150\u2013250, but Regular Article main-text ceiling unverified (E1)."
+    },
+    {
+      "journal": "J17",
+      "criterion": "C04",
+      "status": "Fail",
+      "reason": "Required full title page, three-to-ten keywords, abbreviation list and Declarations headings absent (E1/E10)."
+    },
+    {
+      "journal": "J17",
+      "criterion": "C05",
+      "status": "Partial",
+      "reason": "LaTeX supported with editable sources; double spacing and line numbers still need preparation (E10)."
+    },
+    {
+      "journal": "J17",
+      "criterion": "C06",
+      "status": "Unknown",
+      "reason": "Exact template/editor reference style unresolved; formal URL/data identifier citations need adding (E8/E10)."
+    },
+    {
+      "journal": "J17",
+      "criterion": "C07",
+      "status": "Fail",
+      "reason": "41.8-MB ZIP exceeds 20-MB per-supplement limit; split/cite resources and verify 10-MB figures/300-word legends (E6/E8)."
+    },
+    {
+      "journal": "J17",
+      "criterion": "C08",
+      "status": "Fail",
+      "reason": "Personal-site-only release lacks required recognized repository/supplement arrangement, archive identifier and explicit software licence (E8)."
+    },
+    {
+      "journal": "J17",
+      "criterion": "C09",
+      "status": "Partial",
+      "reason": "Robust descriptive geometry exists, but inferential fragility and absent social-system mechanism limit significance claims (E5/E7/E9)."
+    },
+    {
+      "journal": "J17",
+      "criterion": "C10",
+      "status": "Fail",
+      "reason": "Required Declarations and human authors/correspondence missing; actual funding/conflicts are unknown (E1/E10)."
+    },
+    {
+      "journal": "J17",
+      "criterion": "C11",
+      "status": "Fail",
+      "reason": "Substantive AI research/writing use is not fully documented in Methods with human responsibility (E8/E10)."
+    },
+    {
+      "journal": "J17",
+      "criterion": "C12",
+      "status": "Fail",
+      "reason": "Single-anonymous review expects visible author identities, currently absent (E1)."
+    },
+    {
+      "journal": "J17",
+      "criterion": "C13",
+      "status": "Unknown",
+      "reason": "Quoted APC/options known; actual acceptance-date charge, tax, funder compatibility and rights agreement unknown (E10)."
+    },
+    {
+      "journal": "J17",
+      "criterion": "C14",
+      "status": "Unknown",
+      "reason": "Required author-submitted cover letter/approval/exclusivity/related-work record absent; public PDF must be disclosed (E8/E10)."
+    },
+    {
+      "journal": "J18",
+      "criterion": "C01",
+      "status": "Partial",
+      "reason": "Auditable benchmark data and provenance fit research-data use/reuse, but current emphasis is geographic inference (E2/E8)."
+    },
+    {
+      "journal": "J18",
+      "criterion": "C02",
+      "status": "Partial",
+      "reason": "Research Paper is plausible after demonstrating a transferable measurement/data-methodology lesson rather than only a map result (E2/E8)."
+    },
+    {
+      "journal": "J18",
+      "criterion": "C03",
+      "status": "Partial",
+      "reason": "Abstract fits 250-word cap; exact 8,000-word count including references remains to be completed under venue convention (E1/E10)."
+    },
+    {
+      "journal": "J18",
+      "criterion": "C04",
+      "status": "Partial",
+      "reason": "Logical sections fit and up-to-six keywords are optional; full author title page and final house style need completion (E1/E10)."
+    },
+    {
+      "journal": "J18",
+      "criterion": "C05",
+      "status": "Pass",
+      "reason": "Initial PDF accepted and editable TeX can accompany; final editable-format route must be confirmed if accepted (E10)."
+    },
+    {
+      "journal": "J18",
+      "criterion": "C06",
+      "status": "Partial",
+      "reason": "Initial flexibility exists, but final Harvard author\u2013year/DOI references differ from current plain numbering (E10)."
+    },
+    {
+      "journal": "J18",
+      "criterion": "C07",
+      "status": "Partial",
+      "reason": "Vector figures exist; supply separate compliant files and use 300+ dpi/EPS route to satisfy conflicting resolution statements (E6)."
+    },
+    {
+      "journal": "J18",
+      "criterion": "C08",
+      "status": "Fail",
+      "reason": "Explicit dataset/source-code DOI requirement unmet; public Pages ZIP alone does not provide archival identification (E8)."
+    },
+    {
+      "journal": "J18",
+      "criterion": "C09",
+      "status": "Partial",
+      "reason": "Evidence is reproducible and conclusions largely justified; local uncertainty and fixed-design inferential scope remain limited (E5/E9)."
+    },
+    {
+      "journal": "J18",
+      "criterion": "C10",
+      "status": "Fail",
+      "reason": "Human author/contribution and competing-interest statements absent; ethics/funding facts require actual author confirmation (E1/E10)."
+    },
+    {
+      "journal": "J18",
+      "criterion": "C11",
+      "status": "Unknown",
+      "reason": "Current AI endpoint inaccessible and indexed broad data-creation restriction needs clarification for genuine observed LLM outputs; full assistance disclosure also needed (E8/E10)."
+    },
+    {
+      "journal": "J18",
+      "criterion": "C12",
+      "status": "Fail",
+      "reason": "Single-blind submission needs real author identity; these author-side AI reports must not be passed off as journal expert reports (E1/E8)."
+    },
+    {
+      "journal": "J18",
+      "criterion": "C13",
+      "status": "Unknown",
+      "reason": "Official fee page conflicts between \u00a3770 and \u00a3790; obtain written quote and confirm CC BY rights/funding agreement (E10)."
+    },
+    {
+      "journal": "J18",
+      "criterion": "C14",
+      "status": "Unknown",
+      "reason": "Preprints allowed with cover-letter link, but author/rights-holder approval, exclusivity and full submission record absent (E8/E10)."
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "manuscript_commit": "5f9bdaa3641f684708ad914a721eecc25835ab64",
+  "date": "2026-09-09",
+  "abstract_whitespace_tokens": 194,
+  "abstract_token_count_note": "Whitespace-delimited LaTeX abstract, not a journal-certified count; hyphens and numbers may be counted differently.",
+  "author_field_empty": true,
+  "pdf_pages": 15,
+  "figure_environments": 4,
+  "floating_table_environments": 10,
+  "longtable_environments": 1,
+  "documentclass": "\\documentclass[10pt,a4paper]{article}",
+  "bibliography_style": "plain",
+  "root_license_files": [],
+  "public_reproduction_zip_bytes": 41789224,
+  "source_pdf_sha256": "70032fc564431a245928d4f54bc464593164c639ad6e62a6699440f3cf825ceb",
+  "figures": [
+    {
+      "path": "paper/figures/reconstructed-worlds.pdf",
+      "bytes": 622047
+    },
+    {
+      "path": "paper/figures/distance-accuracy.pdf",
+      "bytes": 27660
+    },
+    {
+      "path": "paper/figures/local-language-effects.pdf",
+      "bytes": 15947
+    },
+    {
+      "path": "paper/figures/structure-and-language.pdf",
+      "bytes": 19714
+    }
+  ],
+  "main_text_figures_before_references": 4,
+  "main_text_tables_before_references": 6,
+  "main_text_display_items_before_references": 10
+}

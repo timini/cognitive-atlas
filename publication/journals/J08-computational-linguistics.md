@@ -1,0 +1,30 @@
+# J08 — Computational Linguistics
+
+Checked 9 September 2026. **Fit judgment: credible specialist alternative, with a substantial insight threshold.** A Short Paper is the most defensible starting category: this is a focused empirical study rather than a comprehensive theory of multilingual spatial representation. Stronger translations and independent temporal replication would improve the scientific case. These are our recommendations, not fabricated submission prerequisites. Current evidence concerns one model and three written prompt conditions on 100 capitals.
+
+**Labels:** V = verified requirement; G = journal guidance; R = our recommendation; U = unresolved. Distinguish initial submission from publication production.
+
+| Criterion | Submission criterion and practical style guidance |
+|---|---|
+| C01 Scope | **G:** The journal explicitly welcomes contemporary language-model research and interdisciplinary foundations [S1]. **R:** Make the relevance to linguistic elicitation and model evaluation visible in the first two paragraphs. Geography supplies a benchmark, not evidence about human language processing. |
+| C02 Contribution/article type | **G:** Short Papers can report focused findings and well-analyzed negative results [S1]. **R:** Select that category and center the coexistence of high rank accuracy, metric inconsistency and condition-specific response differences. Do not inflate scope to fit a Long Paper. |
+| C03 Word/page/abstract limits | **G:** Short initial submissions typically reach 20 pages; final versions may reach 25. Long Papers typically permit 40 main-text pages [S1]. **U:** Abstract word maximum not verified. **R:** Recount using CL's class; current generic-article pagination does not establish compliance. |
+| C04 Structure/title/keywords | **V:** English manuscript, abstract and separate title/author/abstract text metadata [S1]; five to ten keywords in editorial comments [S2]. **R:** Avoid a promotional subtitle. Keep clear sections for design, estimands, results and limitations. |
+| C05 Files/LaTeX/template | **V:** LaTeX is required; use current `clv2025.cls` and submit PDF [S3]. **R:** Compile the existing source in the unmodified class, resolve Arabic/Chinese prompt rendering, and check that mathematical notation remains legible at the journal's dimensions. |
+| C06 Citations/references | **V:** Use the supplied citation/reference files [S3]. **R:** Adopt the journal's output rather than hand-edited numbered references. Audit published-versus-preprint versions and retain the most closely related geographical elicitation work in the main introduction. |
+| C07 Figures/tables/supplement | **U:** Journal-specific supplement-size ceilings were not verified. **R:** Supply editable source figures and captions explaining alignment, units and denominators. Make the article understandable without opening the website, and ask the office about permissible supplementary files rather than presuming a ZIP limit. |
+| C08 Data/code/reproducibility | **V:** ACL requires delivery of artifacts promised for publication [S4]. **R:** Provide the frozen 100-capital responses, exact prompts and analysis lock with a persistent repository citation. Verify that code and output licenses permit reuse; public repository access does not itself establish permanent archiving or reuse rights. |
+| C09 Methods/statistical reporting | **R:** Retain exact randomization nulls and distinguish conditional resampling from generalization over capitals, languages or API dates. The failed rare-tail bootstrap diagnostic should remain visible. Add native-speaker validation if collecting a future replication; never retrofit such validation into this dataset's provenance. |
+| C10 Human authorship/ethics/funding/conflicts | **V:** Full names, affiliations and emails are mandatory [S2]. **R:** Complete genuine authorship, contribution, funding and conflict disclosures before submission. Explain why capital choices and region labels are operational definitions, not judgments about national or cultural legitimacy. |
+| C11 Generative-AI policy/disclosure | **V:** Applicable ACL policy requires disclosure of generative content assistance in acknowledgements and excludes AI authorship [S4]. **R:** Include a precise account of assistant-written code, text, translations and analytic support. Human authors must verify content and develop the scientific argument. |
+| C12 Peer review/anonymity | **V:** Single-blind: author names and affiliations belong on the manuscript's first page [S2]. **R:** The currently blank author field must be completed, not treated as anonymous-review compliance. Keep these AI-generated preparatory reviews distinct from journal-appointed human peer review. |
+| C13 Fees/license/access | **V:** Articles are immediately open access [S5]; the checklist requests ability to assign copyright to ACL [S2]. **U:** A current explicit zero-fee and exact license statement was not verified here. **R:** Obtain the current agreement before making a cost or license commitment. |
+| C14 Submission package/exclusivity/prior publication | **V:** Original-submission declarations exclude concurrent refereed archival review; substantial conference extensions need notification; no nondisclosure restrictions on review [S2]. **R:** Enter the true publication/preprint history and describe the deposited release in the cover note. Do not call the current paper a journal publication before acceptance. |
+
+Sources, retrieved 2026-09-09:
+
+- [S1 — Current submission categories and limits](https://submissions.cljournal.org/index.php/cljournal/about/submissions).
+- [S2 — Original submission checklist](https://submissions.cljournal.org/index.php/cljournal/OriginalSubmissionChecklist).
+- [S3 — Style files and guidelines](https://submissions.cljournal.org/index.php/cljournal/StyleGuide).
+- [S4 — ACL publication ethics](https://www.aclweb.org/adminwiki/index.php/ACL_Policy_on_Publication_Ethics).
+- [S5 — Journal homepage](https://www.cljournal.org/).

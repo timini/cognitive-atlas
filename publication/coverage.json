@@ -1,0 +1,76 @@
+{
+  "manuscript_commit": "5f9bdaa3641f684708ad914a721eecc25835ab64",
+  "journals": 18,
+  "criteria_per_journal": 14,
+  "reviewers": 5,
+  "total_assessments": 1260,
+  "input_lock_sha256": "d8cef93816476a3dcc5b4adb65e2953d369c02b3ff1bfcac6c6e690eafa6d462",
+  "note": "Coverage is a completeness check, not an acceptance score or scientific validation.",
+  "reviews": [
+    {
+      "reviewer": "01",
+      "assessments": 252,
+      "statuses": {
+        "Pass": 26,
+        "Partial": 68,
+        "Unknown": 84,
+        "Fail": 74
+      },
+      "report": "publication/reviews/review-01-editorial.md",
+      "report_sha256": "ccc6b4cec6dd5d14b5c59614b9c6671fc34adee016e6a344098e9d36e6203fdd",
+      "assessment_sha256": "58c295a515dc0e0245d0bb0fd1e8b79c940ee40cd50705dee8ec2c2381683e84"
+    },
+    {
+      "reviewer": "02",
+      "assessments": 252,
+      "statuses": {
+        "Pass": 20,
+        "Partial": 120,
+        "Unknown": 37,
+        "Fail": 75
+      },
+      "report": "publication/reviews/review-02-methods.md",
+      "report_sha256": "86480d06bcd609d1e15ec6d343024f9759a7e41c569e79be2f45ffcccb7457d7",
+      "assessment_sha256": "70e7e0b438ded9c8f11ddbc4aabb9b0b6f6a25071b07584cc9ff9333baf83c41"
+    },
+    {
+      "reviewer": "03",
+      "assessments": 252,
+      "statuses": {
+        "Pass": 20,
+        "Partial": 124,
+        "Unknown": 37,
+        "Fail": 71
+      },
+      "report": "publication/reviews/review-03-contribution.md",
+      "report_sha256": "083e21bed60389ce78a7df822e757d6b4aeccb266effabe0b913d9304ab6bfe8",
+      "assessment_sha256": "06769678891df687853ead45c6874a2dd5bb10eb98b1f2ac6b4f65ddf8b6d307"
+    },
+    {
+      "reviewer": "04",
+      "assessments": 252,
+      "statuses": {
+        "Pass": 19,
+        "Partial": 99,
+        "Unknown": 54,
+        "Fail": 80
+      },
+      "report": "publication/reviews/review-04-reproducibility.md",
+      "report_sha256": "7f155d864c8aeffd052e35ccc09ecfcef4ca41ecd16c771381782ddef9597b51",
+      "assessment_sha256": "4c169e6d14ab721e7ca23e511ef145f6123431d230de2748ae6a4569eacfe915"
+    },
+    {
+      "reviewer": "05",
+      "assessments": 252,
+      "statuses": {
+        "Pass": 19,
+        "Partial": 106,
+        "Unknown": 40,
+        "Fail": 87
+      },
+      "report": "publication/reviews/review-05-style-policy.md",
+      "report_sha256": "3f559ea3e106e4cc16ee98bc7e424c390eb99706197c614a8d055ba6a4300ee1",
+      "assessment_sha256": "40680f553ecd769a8ad40770c15222dca6c2ea44b17bde83f5794a22a96079d8"
+    }
+  ]
+}

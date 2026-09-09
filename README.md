@@ -39,3 +39,5 @@ The capital sample is purposive. There is one assistant-authored translation per
 This collection used whole-response numeric validation, not a provider-enforced output schema. Raw invalid responses are retained. New collection commands use a separate schema-constrained JSON condition. Ten observations per pair can miss rare answers; the paper’s method-calibration study demonstrates how unseen tails can undermine bootstrap uncertainty estimates.
 
 To view the site locally, run `npm ci` followed by `npm run dev`. For collection, analysis, tests, and deployment, see the [development guide](docs/development.md). Geographic source hashes and capital-selection decisions accompany the [100-capital dataset](data/capitals-100-v3.sources.json).
+
+The [submission dossier](publication/README.md) compares 18 journals, records their submission criteria and style requirements, and contains five AI-assisted assessments of the paper's publication readiness.

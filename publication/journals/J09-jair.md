@@ -1,0 +1,29 @@
+# J09 — Journal of Artificial Intelligence Research
+
+Checked 9 September 2026. **Fit judgment: ambitious AI target; likely requires a stronger general lesson.** Repeated spatial judgment and spherical consistency belong to AI evaluation, but this paper must show more than applying established MDS to a new place list. Recommend a full original Article, not a Survey or a Research Note artificially compressed from a substantial study. The one-model, one-date, three-prompt design should remain explicit. A larger record count is not by itself conceptual novelty.
+
+**Labels:** V = verified requirement; G = journal guidance; R = our recommendation; U = unresolved. Production obligations are labeled separately from first submission.
+
+| Criterion | Submission criterion and practical style guidance |
+|---|---|
+| C01 Scope | **G:** All AI areas; importance to AI or an established subcommunity matters [S1]. **R:** Frame this as a diagnostic of factual calibration versus structural consistency, with geography as a known-reference domain. |
+| C02 Contribution/article type | **G:** Full Articles and brief Research Notes are available [S1]. **R:** Select Article. Explain the reusable scientific lesson from repeated measurement and reference-controlled geometry; avoid claiming that the software stack is the research contribution. |
+| C03 Word/page/abstract limits | **G:** Concision encouraged [S1]. **U:** A strict article/abstract length ceiling was not verified. **R:** Keep the main argument compact and move the full capital inventory into an appendix. Do not infer an unlimited acceptable length from an absent numeric ceiling. |
+| C04 Structure/title/keywords | **G:** Structured abstracts are encouraged, not mandatory [S1]. **R:** Use objective, methods, results and conclusions to distinguish numerical findings from interpretation. **Final G:** Capitalize headings and Figure/Table references; introduce sections before subsections [S2]. |
+| C05 Files/LaTeX/template | **V:** JAIR-formatted PDF at submission [S1]. **Final V:** Source archive and PDF required [S2]. **R:** Download the current LaTeX template, including its checklist; the generic article class is not compliant merely because it compiles. |
+| C06 Citations/references | **Final G:** Prefer published articles over technical reports [S2]. **R:** Regenerate references with the current JAIR style. Explicitly compare the numerical-judgment/MDS antecedent and explain the distinct contribution of global spherical controls and repeated samples. |
+| C07 Figures/tables/supplement | **G:** Monochrome-readable figures; online appendices are outside review [S1]. **Final V:** Code in an online appendix needs the journal release form [S2]. **R:** Keep critical diagnostics in the reviewed PDF. Re-render all maps in grayscale to test whether condition and reference curves remain distinguishable. |
+| C08 Data/code/reproducibility | **V:** Completed reproducibility checklist appended to the submission PDF; omission triggers desk rejection [S1]. **R:** Answer each item honestly using frozen observations, hashes and commands. Distinguish computational reproduction from re-eliciting an unstable provider alias. |
+| C09 Methods/statistical reporting | **G:** Empirical/theoretical support and reproducible experiments expected [S1]. **R:** Include valid counts, distributional nulls, multiplicity, temporal dependence and the bootstrap failure case. Ten samples cannot support a claim that response tails or population map differences are fully characterized. |
+| C10 Human authorship/ethics/funding/conflicts | **R:** Supply genuine authors and contributions, affiliations, funding and conflicts. Document the actual human scientific responsibility before submission; existing automated checks and reviewer agents do not demonstrate independent human verification. **U:** A journal-specific mandatory funding/conflict template was not verified. |
+| C11 Generative-AI policy/disclosure | **V:** AI cannot author the paper; core contributions must come from accountable human authors [S1]. **R:** Add an explicit detailed assistance statement covering research code, analysis, text and translations, even though the page does not specify a universal disclosure location. Do not misdescribe substantial automated work as proofreading. |
+| C12 Peer review/anonymity | **V:** Reviewer identities remain confidential [S1]. **R:** Prepare a named submission using JAIR's author fields; do not import TACL's anonymization rules. **U:** No explicit double-anonymous requirement was verified. The five commissioned AI reports are preparation aids, not JAIR peer reviews. |
+| C13 Fees/license/access | **V:** No submission/publication fees; open access [S1]. **Final V:** CC BY copyright footer and publication agreement [S2]. **R:** Ensure rights in figures, underlying observations and code are independently clear; an article license does not automatically license every artifact. |
+| C14 Submission package/exclusivity/prior publication | **V:** Exclusive review; three mandatory editorial questions address importance, closest JAIR work and prior publication [S1]. **R:** Draft specific answers, not a generic cover letter. **Final G:** Final preparation normally due within two months [S2]. Substantial conference extensions are possible but must be disclosed. |
+
+Sources, retrieved 2026-09-09:
+
+- [S1 — JAIR current submissions, AI policy and reproducibility requirements](https://www.jair.org/index.php/jair/about/submissions).
+- [S2 — Instructions for final preparation and template links](https://www.jair.org/index.php/jair/authorinstrs).
+
+Preparation priority: complete the journal checklist and human contribution audit first, then strengthen the significance argument. Submission prose should say what was learned; it should not recount a project-building conversation. No new model observations are implied by this guide.

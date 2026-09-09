@@ -1,0 +1,793 @@
+{
+  "common_exclusions": {
+    "complete_case_excluded_pair_ids": [
+      "AR--VN",
+      "BE--FR"
+    ],
+    "complete_case_observations_all_languages": 148440,
+    "complete_case_pairs": 4948,
+    "numeric_range_retained_complete_case_excluded_pair_ids": [
+      "BE--FR"
+    ],
+    "numeric_range_retained_complete_case_observations_all_languages": 148470,
+    "numeric_range_retained_complete_case_pairs": 4949,
+    "valid_observations_omitted_by_complete_case_rule": 51
+  },
+  "conditions": {
+    "ar": {
+      "accuracy": {
+        "all_pairs_accepted": {
+          "observations": 49499,
+          "pair_median_mae_km": 233.97775707040924,
+          "pair_median_rmse_km": 372.1673193677766,
+          "pair_median_signed_error_km": -37.3486903752708,
+          "pairs": 4950,
+          "single_response_mae_equal_pair_weight_km": 252.5893265195841,
+          "single_response_mae_pooled_observation_weight_km": 252.57088003690527
+        },
+        "all_pairs_numeric_range_retained": {
+          "observations": 49500,
+          "pair_median_mae_km": 233.99290858556074,
+          "pair_median_rmse_km": 372.21517461013826,
+          "pair_median_signed_error_km": -37.33353886011928,
+          "pairs": 4950,
+          "single_response_mae_equal_pair_weight_km": 252.61200074546508,
+          "single_response_mae_pooled_observation_weight_km": 252.61200074546505
+        },
+        "common_complete_case_accepted": {
+          "observations": 49480,
+          "pair_median_mae_km": 233.84187944420643,
+          "pair_median_rmse_km": 371.8907720232477,
+          "pair_median_signed_error_km": -37.594239160505865,
+          "pairs": 4948,
+          "single_response_mae_equal_pair_weight_km": 252.45538852959953,
+          "single_response_mae_pooled_observation_weight_km": 252.45538852959947
+        },
+        "common_complete_case_numeric_range_retained": {
+          "observations": 49490,
+          "pair_median_mae_km": 234.03973842062672,
+          "pair_median_rmse_km": 372.25277644792374,
+          "pair_median_signed_error_km": -37.341533524436166,
+          "pairs": 4949,
+          "single_response_mae_equal_pair_weight_km": 252.66259277332955,
+          "single_response_mae_pooled_observation_weight_km": 252.66259277332955
+        }
+      },
+      "additional_nonterminal_attempts": 4,
+      "attempts": 49504,
+      "completed_unique_sample_slots": 49500,
+      "dataset_sha256": "087c6e422985dddcaaf72b9c1f85ce8d08e43bb2e5fb26eff19f0759ad2dd4c4",
+      "dispersion": {
+        "all_valid_pairs_unique_value_count_frequency": {
+          "1": 123,
+          "2": 150,
+          "3": 144,
+          "4": 156,
+          "5": 182,
+          "6": 201,
+          "7": 265,
+          "8": 402,
+          "9": 1081,
+          "10": 2246
+        },
+        "coefficient_of_variation": {
+          "count": 4950,
+          "maximum": 0.1541491618197371,
+          "mean": 0.01633882487229324,
+          "median": 0.01362497443319493,
+          "minimum": 0.0,
+          "percentiles_5_25_75_95": [
+            0.000326771335761436,
+            0.004307550557529665,
+            0.023168039922207964,
+            0.042229375239297956
+          ]
+        },
+        "sample_sd_km": {
+          "count": 4950,
+          "maximum": 1221.449116600624,
+          "mean": 125.23935976578491,
+          "median": 101.38287266500674,
+          "minimum": 0.0,
+          "percentiles_5_25_75_95": [
+            0.9486832980505138,
+            24.129085942696122,
+            178.82878176637234,
+            351.61449299220976
+          ]
+        },
+        "ten_valid_pairs_all_ten_identical": 123,
+        "ten_valid_pairs_unique_value_count_frequency": {
+          "1": 123,
+          "2": 150,
+          "3": 144,
+          "4": 156,
+          "5": 182,
+          "6": 200,
+          "7": 265,
+          "8": 402,
+          "9": 1081,
+          "10": 2246
+        },
+        "ten_valid_pairs_with_any_tie": 2703
+      },
+      "experiment_id": "b2e583773ba8111b0607ae88",
+      "export_id": "b2e583773ba8111b0607ae88-3ef8ee3db9b488b1",
+      "model": "gemini-3.5-flash",
+      "pairs_with_invalid_observations": {
+        "AR--VN": {
+          "invalid": 1,
+          "quality": {
+            "beyond_earth_diameter_arc": 1
+          },
+          "true_distance_km": 17861.954046251605,
+          "valid": 9
+        }
+      },
+      "parameters": {
+        "max_tokens": 128,
+        "seed": null,
+        "system_prompt": "",
+        "temperature": 1.0,
+        "thinking_level": "minimal",
+        "top_p": 0.95
+      },
+      "parse_replay_mismatches": [],
+      "provider_model_versions": {
+        "gemini-3.5-flash": 49500
+      },
+      "published_median_mae_replay_absolute_difference_km": 0.0,
+      "quality_counts_all_attempts": {
+        "beyond_earth_diameter_arc": 1,
+        "transport_error": 4,
+        "valid": 49499
+      },
+      "retry_slots": [
+        {
+          "attempts": 2,
+          "pair_id": "FI--LA",
+          "sample_number": 9
+        },
+        {
+          "attempts": 2,
+          "pair_id": "KH--TH",
+          "sample_number": 4
+        },
+        {
+          "attempts": 2,
+          "pair_id": "KR--US",
+          "sample_number": 8
+        },
+        {
+          "attempts": 2,
+          "pair_id": "KR--US",
+          "sample_number": 9
+        }
+      ],
+      "terminal_invalid_observations": 1,
+      "terminal_invalid_records": [
+        {
+          "attempt": "1",
+          "finish_reason": "STOP",
+          "pair_id": "AR--VN",
+          "quality": "beyond_earth_diameter_arc",
+          "raw_response": "20150",
+          "response_id": "13d6b9e8370eae3a89a080041e16ac9013b305abcdd30886b6ec05a26beb3029",
+          "sample_number": "6",
+          "timestamp": "2026-09-08T21:00:49.208963+00:00"
+        }
+      ],
+      "timing": {
+        "canonical_pair_order_adjacent_first_dispatch_gap_seconds": {
+          "count": 4949,
+          "maximum": 19.581514835357666,
+          "mean": 1.272876304336258,
+          "median": 0.9810988903045654,
+          "minimum": 0.532689094543457,
+          "percentiles_5_25_75_95": [
+            0.7126380443572998,
+            0.8065659999847412,
+            1.2742948532104492,
+            1.9146246433258036
+          ]
+        },
+        "canonical_pair_order_adjacent_first_dispatch_reversals": 0,
+        "dispatch_window_seconds": 6300.698203086853,
+        "first_attempt_timestamp": "2026-09-08T20:55:28.957027+00:00",
+        "first_attempt_within_pair_span_seconds": {
+          "count": 4950,
+          "maximum": 19.482069969177246,
+          "mean": 1.1519843755587182,
+          "median": 0.8770819902420044,
+          "minimum": 0.4797980785369873,
+          "percentiles_5_25_75_95": [
+            0.6314877867698669,
+            0.718453049659729,
+            1.143508493900299,
+            1.7366270065307619
+          ]
+        },
+        "last_attempt_timestamp": "2026-09-08T22:40:29.655230+00:00",
+        "manifest_sampling_strategy": "independent_single_turn_unordered_pairs_fixed_id_order",
+        "terminal_attempt_within_pair_span_seconds": {
+          "count": 4950,
+          "maximum": 19.482069969177246,
+          "mean": 1.1579222092965638,
+          "median": 0.8770819902420044,
+          "minimum": 0.4797980785369873,
+          "percentiles_5_25_75_95": [
+            0.6314877867698669,
+            0.718453049659729,
+            1.1438056230545044,
+            1.7439357042312629
+          ]
+        }
+      },
+      "usage_estimated_cost_usd": 9.065877,
+      "valid_count_per_pair_frequency": {
+        "9": 1,
+        "10": 4949
+      },
+      "valid_observations": 49499
+    },
+    "en": {
+      "accuracy": {
+        "all_pairs_accepted": {
+          "observations": 49496,
+          "pair_median_mae_km": 215.86483240339416,
+          "pair_median_rmse_km": 341.31178352551984,
+          "pair_median_signed_error_km": -73.38272370860413,
+          "pairs": 4950,
+          "single_response_mae_equal_pair_weight_km": 234.23232559935067,
+          "single_response_mae_pooled_observation_weight_km": 234.14829717892073
+        },
+        "all_pairs_numeric_range_retained": {
+          "observations": 49500,
+          "pair_median_mae_km": 216.12291321147498,
+          "pair_median_rmse_km": 342.4582861422363,
+          "pair_median_signed_error_km": -73.12464290052333,
+          "pairs": 4950,
+          "single_response_mae_equal_pair_weight_km": 234.3122889087445,
+          "single_response_mae_pooled_observation_weight_km": 234.31228890874448
+        },
+        "common_complete_case_accepted": {
+          "observations": 49480,
+          "pair_median_mae_km": 215.77377574539386,
+          "pair_median_rmse_km": 341.15142640884005,
+          "pair_median_signed_error_km": -73.59069530440239,
+          "pairs": 4948,
+          "single_response_mae_equal_pair_weight_km": 234.06907430516205,
+          "single_response_mae_pooled_observation_weight_km": 234.069074305162
+        },
+        "common_complete_case_numeric_range_retained": {
+          "observations": 49490,
+          "pair_median_mae_km": 216.16613221700487,
+          "pair_median_rmse_km": 342.4928816607283,
+          "pair_median_signed_error_km": -73.13986955191648,
+          "pairs": 4949,
+          "single_response_mae_equal_pair_weight_km": 234.35918327812513,
+          "single_response_mae_pooled_observation_weight_km": 234.35918327812507
+        }
+      },
+      "additional_nonterminal_attempts": 0,
+      "attempts": 49500,
+      "completed_unique_sample_slots": 49500,
+      "dataset_sha256": "087c6e422985dddcaaf72b9c1f85ce8d08e43bb2e5fb26eff19f0759ad2dd4c4",
+      "dispersion": {
+        "all_valid_pairs_unique_value_count_frequency": {
+          "1": 139,
+          "2": 136,
+          "3": 149,
+          "4": 193,
+          "5": 177,
+          "6": 225,
+          "7": 317,
+          "8": 469,
+          "9": 1138,
+          "10": 2007
+        },
+        "coefficient_of_variation": {
+          "count": 4950,
+          "maximum": 0.14959267234752954,
+          "mean": 0.015044489976427275,
+          "median": 0.013354715961314208,
+          "minimum": 0.0,
+          "percentiles_5_25_75_95": [
+            0.0002729446952955785,
+            0.00415519849388505,
+            0.02215564786698845,
+            0.03649443312407663
+          ]
+        },
+        "sample_sd_km": {
+          "count": 4950,
+          "maximum": 1395.688599461451,
+          "mean": 116.35465906026222,
+          "median": 98.51191033310522,
+          "minimum": 0.0,
+          "percentiles_5_25_75_95": [
+            0.8012693121781157,
+            25.77272460050224,
+            167.58058733182827,
+            318.27132926543936
+          ]
+        },
+        "ten_valid_pairs_all_ten_identical": 139,
+        "ten_valid_pairs_unique_value_count_frequency": {
+          "1": 139,
+          "2": 136,
+          "3": 149,
+          "4": 193,
+          "5": 177,
+          "6": 224,
+          "7": 317,
+          "8": 469,
+          "9": 1138,
+          "10": 2007
+        },
+        "ten_valid_pairs_with_any_tie": 2942
+      },
+      "experiment_id": "3b382690950b9511f5806ebc",
+      "export_id": "3b382690950b9511f5806ebc-114bbc2e2e5a9331",
+      "model": "gemini-3.5-flash",
+      "pairs_with_invalid_observations": {
+        "AR--VN": {
+          "invalid": 4,
+          "quality": {
+            "beyond_earth_diameter_arc": 4
+          },
+          "true_distance_km": 17861.954046251605,
+          "valid": 6
+        }
+      },
+      "parameters": {
+        "max_tokens": 128,
+        "seed": null,
+        "system_prompt": "",
+        "temperature": 1.0,
+        "thinking_level": "minimal",
+        "top_p": 0.95
+      },
+      "parse_replay_mismatches": [],
+      "provider_model_versions": {
+        "gemini-3.5-flash": 49500
+      },
+      "published_median_mae_replay_absolute_difference_km": 0.0,
+      "quality_counts_all_attempts": {
+        "beyond_earth_diameter_arc": 4,
+        "valid": 49496
+      },
+      "retry_slots": [],
+      "terminal_invalid_observations": 4,
+      "terminal_invalid_records": [
+        {
+          "attempt": "1",
+          "finish_reason": "STOP",
+          "pair_id": "AR--VN",
+          "quality": "beyond_earth_diameter_arc",
+          "raw_response": "20054",
+          "response_id": "cf153eb4cc1e7c505c604ca244b6293b0e7440769cb59a62cfbc010fa69a95ca",
+          "sample_number": "3",
+          "timestamp": "2026-09-08T21:00:49.873043+00:00"
+        },
+        {
+          "attempt": "1",
+          "finish_reason": "STOP",
+          "pair_id": "AR--VN",
+          "quality": "beyond_earth_diameter_arc",
+          "raw_response": "20125",
+          "response_id": "6bce4b70a73e5b76d584884868c269607615bc5bab4c55ba46066d99dfcd81d8",
+          "sample_number": "9",
+          "timestamp": "2026-09-08T21:00:50.274252+00:00"
+        },
+        {
+          "attempt": "1",
+          "finish_reason": "STOP",
+          "pair_id": "AR--VN",
+          "quality": "beyond_earth_diameter_arc",
+          "raw_response": "20150",
+          "response_id": "51c1999b89a2883692e1f7c07ed8e8d1cd40739471e57f61bff51c7030c638fb",
+          "sample_number": "6",
+          "timestamp": "2026-09-08T21:00:50.074661+00:00"
+        },
+        {
+          "attempt": "1",
+          "finish_reason": "STOP",
+          "pair_id": "AR--VN",
+          "quality": "beyond_earth_diameter_arc",
+          "raw_response": "20173",
+          "response_id": "9b06e25c3eaa1e2fb5dd4752a169dbb7dc57c4cb652c393ce104ebb2bda4b952",
+          "sample_number": "4",
+          "timestamp": "2026-09-08T21:00:49.949730+00:00"
+        }
+      ],
+      "timing": {
+        "canonical_pair_order_adjacent_first_dispatch_gap_seconds": {
+          "count": 4949,
+          "maximum": 19.56624698638916,
+          "mean": 1.2751210438263347,
+          "median": 0.9825448989868164,
+          "minimum": 0.5759730339050293,
+          "percentiles_5_25_75_95": [
+            0.7111400604248047,
+            0.8028638362884521,
+            1.2842381000518799,
+            1.9529417514800942
+          ]
+        },
+        "canonical_pair_order_adjacent_first_dispatch_reversals": 0,
+        "dispatch_window_seconds": 6311.343634128571,
+        "first_attempt_timestamp": "2026-09-08T20:55:28.931067+00:00",
+        "first_attempt_within_pair_span_seconds": {
+          "count": 4950,
+          "maximum": 19.47681498527527,
+          "mean": 1.1505018627763999,
+          "median": 0.8688579797744751,
+          "minimum": 0.5146160125732422,
+          "percentiles_5_25_75_95": [
+            0.6334352374076844,
+            0.7179906368255615,
+            1.153120756149292,
+            1.7262304902076733
+          ]
+        },
+        "last_attempt_timestamp": "2026-09-08T22:40:40.274701+00:00",
+        "manifest_sampling_strategy": "independent_single_turn_unordered_pairs_fixed_id_order",
+        "terminal_attempt_within_pair_span_seconds": {
+          "count": 4950,
+          "maximum": 19.47681498527527,
+          "mean": 1.1505018627763999,
+          "median": 0.8688579797744751,
+          "minimum": 0.5146160125732422,
+          "percentiles_5_25_75_95": [
+            0.6334352374076844,
+            0.7179906368255615,
+            1.153120756149292,
+            1.7262304902076733
+          ]
+        }
+      },
+      "usage_estimated_cost_usd": 6.641217,
+      "valid_count_per_pair_frequency": {
+        "6": 1,
+        "10": 4949
+      },
+      "valid_observations": 49496
+    },
+    "zh": {
+      "accuracy": {
+        "all_pairs_accepted": {
+          "observations": 49496,
+          "pair_median_mae_km": 222.02246817386398,
+          "pair_median_rmse_km": 354.9229274768303,
+          "pair_median_signed_error_km": 21.019664170183745,
+          "pairs": 4950,
+          "single_response_mae_equal_pair_weight_km": 240.42396765967624,
+          "single_response_mae_pooled_observation_weight_km": 240.4432130057903
+        },
+        "all_pairs_numeric_range_retained": {
+          "observations": 49496,
+          "pair_median_mae_km": 222.02246817386398,
+          "pair_median_rmse_km": 354.9229274768303,
+          "pair_median_signed_error_km": 21.019664170183745,
+          "pairs": 4950,
+          "single_response_mae_equal_pair_weight_km": 240.42396765967624,
+          "single_response_mae_pooled_observation_weight_km": 240.4432130057903
+        },
+        "common_complete_case_accepted": {
+          "observations": 49480,
+          "pair_median_mae_km": 222.04659081639673,
+          "pair_median_rmse_km": 354.9650507200014,
+          "pair_median_signed_error_km": 21.092877856470697,
+          "pairs": 4948,
+          "single_response_mae_equal_pair_weight_km": 240.45186010798338,
+          "single_response_mae_pooled_observation_weight_km": 240.45186010798335
+        },
+        "common_complete_case_numeric_range_retained": {
+          "observations": 49490,
+          "pair_median_mae_km": 222.06687924950145,
+          "pair_median_rmse_km": 354.9587822924132,
+          "pair_median_signed_error_km": 21.023460413733158,
+          "pairs": 4949,
+          "single_response_mae_equal_pair_weight_km": 240.47208685806294,
+          "single_response_mae_pooled_observation_weight_km": 240.47208685806288
+        }
+      },
+      "additional_nonterminal_attempts": 0,
+      "attempts": 49500,
+      "completed_unique_sample_slots": 49500,
+      "dataset_sha256": "087c6e422985dddcaaf72b9c1f85ce8d08e43bb2e5fb26eff19f0759ad2dd4c4",
+      "dispersion": {
+        "all_valid_pairs_unique_value_count_frequency": {
+          "1": 64,
+          "2": 103,
+          "3": 100,
+          "4": 133,
+          "5": 147,
+          "6": 183,
+          "7": 237,
+          "8": 406,
+          "9": 987,
+          "10": 2590
+        },
+        "coefficient_of_variation": {
+          "count": 4950,
+          "maximum": 0.21148811731922365,
+          "mean": 0.01574970951451289,
+          "median": 0.013311628690964819,
+          "minimum": 0.0,
+          "percentiles_5_25_75_95": [
+            0.0003615621441157328,
+            0.0039014710745390495,
+            0.02244352351412757,
+            0.04110669423070707
+          ]
+        },
+        "sample_sd_km": {
+          "count": 4950,
+          "maximum": 2037.6770129886193,
+          "mean": 121.53025550290756,
+          "median": 100.04294162396984,
+          "minimum": 0.0,
+          "percentiles_5_25_75_95": [
+            0.9189365834726815,
+            23.10067211830539,
+            176.14927847358524,
+            337.27755974269513
+          ]
+        },
+        "ten_valid_pairs_all_ten_identical": 64,
+        "ten_valid_pairs_unique_value_count_frequency": {
+          "1": 64,
+          "2": 102,
+          "3": 100,
+          "4": 133,
+          "5": 147,
+          "6": 183,
+          "7": 237,
+          "8": 406,
+          "9": 987,
+          "10": 2590
+        },
+        "ten_valid_pairs_with_any_tie": 2359
+      },
+      "experiment_id": "2ee0bcb921b94263ac26e635",
+      "export_id": "2ee0bcb921b94263ac26e635-bae2d55a858255c4",
+      "model": "gemini-3.5-flash",
+      "pairs_with_invalid_observations": {
+        "BE--FR": {
+          "invalid": 4,
+          "quality": {
+            "invalid_numeric_format": 4
+          },
+          "true_distance_km": 261.76794515586585,
+          "valid": 6
+        }
+      },
+      "parameters": {
+        "max_tokens": 128,
+        "seed": null,
+        "system_prompt": "",
+        "temperature": 1.0,
+        "thinking_level": "minimal",
+        "top_p": 0.95
+      },
+      "parse_replay_mismatches": [],
+      "provider_model_versions": {
+        "gemini-3.5-flash": 49500
+      },
+      "published_median_mae_replay_absolute_difference_km": 0.0,
+      "quality_counts_all_attempts": {
+        "invalid_numeric_format": 4,
+        "valid": 49496
+      },
+      "retry_slots": [],
+      "terminal_invalid_observations": 4,
+      "terminal_invalid_records": [
+        {
+          "attempt": "1",
+          "finish_reason": "STOP",
+          "pair_id": "BE--FR",
+          "quality": "invalid_numeric_format",
+          "raw_response": "264`\n",
+          "response_id": "7b18a256682ef9dcd4d1aa5c644cbe01cae03e5bcca17b316643e684a93e8941",
+          "sample_number": "3",
+          "timestamp": "2026-09-08T21:06:50.450622+00:00"
+        },
+        {
+          "attempt": "1",
+          "finish_reason": "STOP",
+          "pair_id": "BE--FR",
+          "quality": "invalid_numeric_format",
+          "raw_response": "264`\n",
+          "response_id": "90ff243bde66fba112a8c24e0ad69f01694aaf746a88c716bfd4a650f2b46e1d",
+          "sample_number": "5",
+          "timestamp": "2026-09-08T21:06:50.590180+00:00"
+        },
+        {
+          "attempt": "1",
+          "finish_reason": "STOP",
+          "pair_id": "BE--FR",
+          "quality": "invalid_numeric_format",
+          "raw_response": "264_\n",
+          "response_id": "a81fd87f46a249024643bd72e6020b0d82eb1b72577b786b2bd22f7d784e96a5",
+          "sample_number": "8",
+          "timestamp": "2026-09-08T21:06:50.809648+00:00"
+        },
+        {
+          "attempt": "1",
+          "finish_reason": "STOP",
+          "pair_id": "BE--FR",
+          "quality": "invalid_numeric_format",
+          "raw_response": "264_\n",
+          "response_id": "8e66d547cef58136b1437af5875edcdbfec55106d3ccd2816ee23724c76a73cb",
+          "sample_number": "6",
+          "timestamp": "2026-09-08T21:06:50.643624+00:00"
+        }
+      ],
+      "timing": {
+        "canonical_pair_order_adjacent_first_dispatch_gap_seconds": {
+          "count": 4949,
+          "maximum": 19.761335134506226,
+          "mean": 1.2810054051319646,
+          "median": 0.9871370792388916,
+          "minimum": 0.5937349796295166,
+          "percentiles_5_25_75_95": [
+            0.7113669395446778,
+            0.8061699867248535,
+            1.285295009613037,
+            1.9309991836547824
+          ]
+        },
+        "canonical_pair_order_adjacent_first_dispatch_reversals": 0,
+        "dispatch_window_seconds": 6340.31125998497,
+        "first_attempt_timestamp": "2026-09-08T20:55:28.983835+00:00",
+        "first_attempt_within_pair_span_seconds": {
+          "count": 4950,
+          "maximum": 19.647014141082764,
+          "mean": 1.1543328135422986,
+          "median": 0.878089427947998,
+          "minimum": 0.5162920951843262,
+          "percentiles_5_25_75_95": [
+            0.6325987815856934,
+            0.7272447347640991,
+            1.1536172032356262,
+            1.744992780685425
+          ]
+        },
+        "last_attempt_timestamp": "2026-09-08T22:41:09.295095+00:00",
+        "manifest_sampling_strategy": "independent_single_turn_unordered_pairs_fixed_id_order",
+        "terminal_attempt_within_pair_span_seconds": {
+          "count": 4950,
+          "maximum": 19.647014141082764,
+          "mean": 1.1543328135422986,
+          "median": 0.878089427947998,
+          "minimum": 0.5162920951843262,
+          "percentiles_5_25_75_95": [
+            0.6325987815856934,
+            0.7272447347640991,
+            1.1536172032356262,
+            1.744992780685425
+          ]
+        }
+      },
+      "usage_estimated_cost_usd": 7.863687,
+      "valid_count_per_pair_frequency": {
+        "6": 1,
+        "10": 4949
+      },
+      "valid_observations": 49496
+    }
+  },
+  "methods": {
+    "accuracy": "Pair median MAE averages equally over pairs. Single-response MAE is reported both as the equal-pair average of each pair's sample mean absolute error and as the pooled-observation mean.",
+    "complete_case": "Keep only pairs with exactly ten accepted terminal observations in every language.",
+    "dispersion": "Sample SD uses ddof=1; CV is sample SD divided by sample mean. Tied/identical counts use exact saved numeric values; ten-valid-pair counts are reported separately.",
+    "numeric_range_retained": "Keep every finite positive terminal STOP response that meets the original v2 ASCII format, including >20040 km; malformed output is not repaired or coerced.",
+    "parser_replay": "Independent implementation: strip surrounding whitespace, whole-response ASCII decimal match, finite positive number, <=20040 km. Non-STOP completions are classified refusal_or_truncated after parsing, matching historical runner behavior.",
+    "timing": "Timestamps are recorded before provider dispatch. Within-pair first-to-last timestamps describe clustering; they do not establish response independence, caching, or any causal time effect."
+  },
+  "parser": "ascii_decimal_v2",
+  "protocol": "great-circle-formatted-number-v2",
+  "script_sha256": "54e60fd8c288ee3f5c6de80f08dafcddade5af7a7b48146d9f1bb808783a4086",
+  "sensitivity_language_contrasts": {
+    "all_pairs_accepted": {
+      "ar_minus_en": {
+        "interpretation": "Positive means the first-named language has larger error. Descriptive sensitivity only; no p-value or confidence interval computed here.",
+        "pair_median_mae_difference_km": 18.11292466701508,
+        "single_response_mae_equal_pair_weight_difference_km": 18.357000920233418
+      },
+      "zh_minus_ar": {
+        "interpretation": "Positive means the first-named language has larger error. Descriptive sensitivity only; no p-value or confidence interval computed here.",
+        "pair_median_mae_difference_km": -11.955288896545255,
+        "single_response_mae_equal_pair_weight_difference_km": -12.165358859907855
+      },
+      "zh_minus_en": {
+        "interpretation": "Positive means the first-named language has larger error. Descriptive sensitivity only; no p-value or confidence interval computed here.",
+        "pair_median_mae_difference_km": 6.157635770469824,
+        "single_response_mae_equal_pair_weight_difference_km": 6.191642060325563
+      }
+    },
+    "all_pairs_numeric_range_retained": {
+      "ar_minus_en": {
+        "interpretation": "Positive means the first-named language has larger error. Descriptive sensitivity only; no p-value or confidence interval computed here.",
+        "pair_median_mae_difference_km": 17.86999537408576,
+        "single_response_mae_equal_pair_weight_difference_km": 18.299711836720576
+      },
+      "zh_minus_ar": {
+        "interpretation": "Positive means the first-named language has larger error. Descriptive sensitivity only; no p-value or confidence interval computed here.",
+        "pair_median_mae_difference_km": -11.970440411696757,
+        "single_response_mae_equal_pair_weight_difference_km": -12.188033085788845
+      },
+      "zh_minus_en": {
+        "interpretation": "Positive means the first-named language has larger error. Descriptive sensitivity only; no p-value or confidence interval computed here.",
+        "pair_median_mae_difference_km": 5.899554962389004,
+        "single_response_mae_equal_pair_weight_difference_km": 6.1116787509317305
+      }
+    },
+    "common_complete_case_accepted": {
+      "ar_minus_en": {
+        "interpretation": "Positive means the first-named language has larger error. Descriptive sensitivity only; no p-value or confidence interval computed here.",
+        "pair_median_mae_difference_km": 18.068103698812564,
+        "single_response_mae_equal_pair_weight_difference_km": 18.386314224437484
+      },
+      "zh_minus_ar": {
+        "interpretation": "Positive means the first-named language has larger error. Descriptive sensitivity only; no p-value or confidence interval computed here.",
+        "pair_median_mae_difference_km": -11.795288627809697,
+        "single_response_mae_equal_pair_weight_difference_km": -12.003528421616153
+      },
+      "zh_minus_en": {
+        "interpretation": "Positive means the first-named language has larger error. Descriptive sensitivity only; no p-value or confidence interval computed here.",
+        "pair_median_mae_difference_km": 6.272815071002867,
+        "single_response_mae_equal_pair_weight_difference_km": 6.382785802821331
+      }
+    },
+    "common_complete_case_numeric_range_retained": {
+      "ar_minus_en": {
+        "interpretation": "Positive means the first-named language has larger error. Descriptive sensitivity only; no p-value or confidence interval computed here.",
+        "pair_median_mae_difference_km": 17.873606203621847,
+        "single_response_mae_equal_pair_weight_difference_km": 18.30340949520442
+      },
+      "zh_minus_ar": {
+        "interpretation": "Positive means the first-named language has larger error. Descriptive sensitivity only; no p-value or confidence interval computed here.",
+        "pair_median_mae_difference_km": -11.972859171125265,
+        "single_response_mae_equal_pair_weight_difference_km": -12.190505915266613
+      },
+      "zh_minus_en": {
+        "interpretation": "Positive means the first-named language has larger error. Descriptive sensitivity only; no p-value or confidence interval computed here.",
+        "pair_median_mae_difference_km": 5.900747032496582,
+        "single_response_mae_equal_pair_weight_difference_km": 6.112903579937807
+      }
+    }
+  },
+  "software": {
+    "numpy": "2.5.3",
+    "python": "3.12.14"
+  },
+  "source_sha256": {
+    "public/data/2ee0bcb921b94263ac26e635-bae2d55a858255c4/manifest.json": "4a04f01e5556fc641e8dc11a54ac6cd876f91176f3a82b2fad16e31e3742cb81",
+    "public/data/2ee0bcb921b94263ac26e635-bae2d55a858255c4/pairs.csv": "f448cb9533e02ee602e76de4502df17cfe39ce00530bb02f243090d25c1e4b2a",
+    "public/data/2ee0bcb921b94263ac26e635-bae2d55a858255c4/places.csv": "eae1289f55099654ffeb238660444595f752209d9d73fe6bbc5dad620d59f5d7",
+    "public/data/2ee0bcb921b94263ac26e635-bae2d55a858255c4/responses.csv": "11492880d036d75ac755417ba381006487e9c107bf6c4c3912dbf1890fdc03b5",
+    "public/data/2ee0bcb921b94263ac26e635-bae2d55a858255c4/result.json": "3dbbd0fcee5f5954a656e9d32c11e7c8738134fa8c015de32e4f276d403b0a8e",
+    "public/data/3b382690950b9511f5806ebc-114bbc2e2e5a9331/manifest.json": "4547bd3c3c13d9a2658b4ef19f6e75d7f47689dc0c0af482ffcdc9b363a8dc96",
+    "public/data/3b382690950b9511f5806ebc-114bbc2e2e5a9331/pairs.csv": "f448cb9533e02ee602e76de4502df17cfe39ce00530bb02f243090d25c1e4b2a",
+    "public/data/3b382690950b9511f5806ebc-114bbc2e2e5a9331/places.csv": "eae1289f55099654ffeb238660444595f752209d9d73fe6bbc5dad620d59f5d7",
+    "public/data/3b382690950b9511f5806ebc-114bbc2e2e5a9331/responses.csv": "2475f0a234877b7f758b7439a9805a007a8d953f8de4b055c489709111e39117",
+    "public/data/3b382690950b9511f5806ebc-114bbc2e2e5a9331/result.json": "aa364512aeb2ee3f5d4711de9294804305b45f4a4182dac50c5e5c139c17ae16",
+    "public/data/b2e583773ba8111b0607ae88-3ef8ee3db9b488b1/manifest.json": "1f1dbd5e3e717156fe3f8a0942c2e79d0d0230311834b8b3e568e8debce61ae8",
+    "public/data/b2e583773ba8111b0607ae88-3ef8ee3db9b488b1/pairs.csv": "f448cb9533e02ee602e76de4502df17cfe39ce00530bb02f243090d25c1e4b2a",
+    "public/data/b2e583773ba8111b0607ae88-3ef8ee3db9b488b1/places.csv": "eae1289f55099654ffeb238660444595f752209d9d73fe6bbc5dad620d59f5d7",
+    "public/data/b2e583773ba8111b0607ae88-3ef8ee3db9b488b1/responses.csv": "fffd8c65e5b225a87de00eb197807d2378356bde0f60511eff7c8fe7544d0b59",
+    "public/data/b2e583773ba8111b0607ae88-3ef8ee3db9b488b1/result.json": "35043bd00466784bfa1f11f13446691066613d80a14f8b2cee268e7dccf32997"
+  },
+  "title": "Independent 100-capital sampling, parser, and exclusion audit",
+  "totals": {
+    "additional_nonterminal_attempts": 4,
+    "attempts": 148504,
+    "completed_unique_sample_slots": 148500,
+    "terminal_invalid_observations": 9,
+    "usage_estimated_cost_usd": 23.570781,
+    "valid_observations": 148491
+  }
+}

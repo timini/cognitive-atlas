@@ -1,0 +1,362 @@
+{
+  "method": "Exploratory fixed-pair single-response error contrasts for the 100-capital study.\n\nEmpirical, variance-adjusted basic bootstrap; independent requests assumed.\nNo population-of-cities or causal language inference. Regional groups and analyses\nare post hoc. Four Holm-adjusted tests concern home gain and interaction for two\nspecified groups. Distance-balanced and leave-one-capital-out results are descriptive.\n",
+  "seed": 20260913,
+  "replicates": 9999,
+  "complete_pairs": 4948,
+  "excluded_pair_ids": [
+    "AR--VN",
+    "BE--FR"
+  ],
+  "groups": {
+    "ar": [
+      "AE",
+      "BH",
+      "DJ",
+      "DZ",
+      "EG",
+      "IQ",
+      "JO",
+      "KW",
+      "LB",
+      "MA",
+      "MR",
+      "OM",
+      "QA",
+      "SA",
+      "TN"
+    ],
+    "zh": [
+      "CN",
+      "SG"
+    ]
+  },
+  "holm_family_size": 4,
+  "results": [
+    {
+      "language": "ar",
+      "capital_ids": [
+        "AE",
+        "BH",
+        "DJ",
+        "DZ",
+        "EG",
+        "IQ",
+        "JO",
+        "KW",
+        "LB",
+        "MA",
+        "MR",
+        "OM",
+        "QA",
+        "SA",
+        "TN"
+      ],
+      "home_pairs": 1380,
+      "other_pairs": 3568,
+      "both_endpoints": 105,
+      "one_endpoint": 1275,
+      "home_truth_median_km": 5450.71629254294,
+      "other_truth_median_km": 8473.748122865083,
+      "home_english_MAE_km": 196.20921704611436,
+      "home_language_MAE_km": 205.13877676629707,
+      "other_english_MAE_km": 248.7121805320358,
+      "other_language_MAE_km": 270.7560959941055,
+      "home": {
+        "gain_km": -8.929559720182702,
+        "ci95_km": [
+          -11.671059126675353,
+          -6.147149104615336
+        ],
+        "p": 0.0001,
+        "exceedances": 0,
+        "replicates": 9999,
+        "p_holm_4": 0.0004
+      },
+      "other_gain_km": -22.04391546206962,
+      "interaction": {
+        "gain_km": 13.114355741886936,
+        "ci95_km": [
+          9.676056511314002,
+          16.697961537242364
+        ],
+        "p": 0.0001,
+        "exceedances": 0,
+        "replicates": 9999,
+        "p_holm_4": 0.0004
+      },
+      "analytic_se_km": [
+        1.391565966439764,
+        1.1200674658824068,
+        1.7863389843704558
+      ],
+      "bootstrap_se_km": [
+        1.409622108038821,
+        1.1296081134178932,
+        1.8012725560794827
+      ],
+      "distance_balance": {
+        "bins": [
+          {
+            "bin": 0,
+            "lower_km": 141.94170447503188,
+            "upper_km": 3696.6860315857975,
+            "home_pairs": 373,
+            "other_pairs": 617,
+            "weight": 0.20008084074373483,
+            "home_gain_km": -5.835182589771212,
+            "other_gain_km": -9.32591675740728
+          },
+          {
+            "bin": 1,
+            "lower_km": 3696.6860315857975,
+            "upper_km": 6283.468433623601,
+            "home_pairs": 457,
+            "other_pairs": 532,
+            "weight": 0.19987873888439775,
+            "home_gain_km": -5.205519566594247,
+            "other_gain_km": -27.557129363283895
+          },
+          {
+            "bin": 2,
+            "lower_km": 6283.468433623601,
+            "upper_km": 8942.029311148977,
+            "home_pairs": 193,
+            "other_pairs": 797,
+            "weight": 0.20008084074373483,
+            "home_gain_km": -11.91320988850935,
+            "other_gain_km": -26.365632424609117
+          },
+          {
+            "bin": 3,
+            "lower_km": 8942.029311148977,
+            "upper_km": 12360.843152728628,
+            "home_pairs": 146,
+            "other_pairs": 843,
+            "weight": 0.19987873888439775,
+            "home_gain_km": 19.17491325619719,
+            "other_gain_km": 0.9831466435661751
+          },
+          {
+            "bin": 4,
+            "lower_km": 12360.843152728628,
+            "upper_km": 19851.726976157825,
+            "home_pairs": 211,
+            "other_pairs": 779,
+            "weight": 0.20008084074373483,
+            "home_gain_km": -39.183102809745876,
+            "other_gain_km": -48.84928175377404
+          }
+        ],
+        "covered_pair_fraction": 1.0,
+        "standardized_home_gain_km": -8.598716648368807,
+        "standardized_other_gain_km": -22.22657468395985,
+        "standardized_interaction_km": 13.627858035591043,
+        "method": "Pooled truth-distance quintile weights applied to both groups within common-support bins; descriptive, not causal adjustment"
+      },
+      "leave_one_capital_out": {
+        "AE": {
+          "home_gain_km": -9.006147576328008,
+          "interaction_km": 13.037767885741626
+        },
+        "BH": {
+          "home_gain_km": -10.102438570003073,
+          "interaction_km": 11.941476892066548
+        },
+        "DJ": {
+          "home_gain_km": -9.45336196131818,
+          "interaction_km": 12.590553500751444
+        },
+        "DZ": {
+          "home_gain_km": -8.9481257487247,
+          "interaction_km": 13.095789713344924
+        },
+        "EG": {
+          "home_gain_km": -7.565409214720441,
+          "interaction_km": 14.478506247349191
+        },
+        "IQ": {
+          "home_gain_km": -9.700409783256735,
+          "interaction_km": 12.343505678812903
+        },
+        "JO": {
+          "home_gain_km": -8.963084390675741,
+          "interaction_km": 13.080831071393895
+        },
+        "KW": {
+          "home_gain_km": -8.659113235333276,
+          "interaction_km": 13.384802226736358
+        },
+        "LB": {
+          "home_gain_km": -9.013840541946399,
+          "interaction_km": 13.030074920123237
+        },
+        "MA": {
+          "home_gain_km": -7.2946163334699445,
+          "interaction_km": 14.749299128599699
+        },
+        "MR": {
+          "home_gain_km": -12.019981055863063,
+          "interaction_km": 10.023934406206587
+        },
+        "OM": {
+          "home_gain_km": -6.646343703973037,
+          "interaction_km": 15.39757175809661
+        },
+        "QA": {
+          "home_gain_km": -10.510423922971498,
+          "interaction_km": 11.533491539098147
+        },
+        "SA": {
+          "home_gain_km": -9.410427460264401,
+          "interaction_km": 12.633488001805224
+        },
+        "TN": {
+          "home_gain_km": -6.86556692831252,
+          "interaction_km": 15.178348533757113
+        }
+      },
+      "all_available_pairs": {
+        "home_gain_km": -8.929559720182702,
+        "interaction_km": 13.071662168137529,
+        "pairs": 4950
+      }
+    },
+    {
+      "language": "zh",
+      "capital_ids": [
+        "CN",
+        "SG"
+      ],
+      "home_pairs": 197,
+      "other_pairs": 4751,
+      "both_endpoints": 1,
+      "one_endpoint": 196,
+      "home_truth_median_km": 8659.391026274994,
+      "other_truth_median_km": 7561.8622427533055,
+      "home_english_MAE_km": 169.56069657400678,
+      "home_language_MAE_km": 180.23965293715747,
+      "other_english_MAE_km": 236.74391126854607,
+      "other_language_MAE_km": 242.94855655350068,
+      "home": {
+        "gain_km": -10.678956363150743,
+        "ci95_km": [
+          -17.64865846162322,
+          -3.764303906374809
+        ],
+        "p": 0.0024,
+        "exceedances": 23,
+        "replicates": 9999,
+        "p_holm_4": 0.0048
+      },
+      "other_gain_km": -6.20464528495459,
+      "interaction": {
+        "gain_km": -4.474311078196127,
+        "ci95_km": [
+          -11.648377302056627,
+          2.5720122763524946
+        ],
+        "p": 0.2147,
+        "exceedances": 2146,
+        "replicates": 9999,
+        "p_holm_4": 0.2147
+      },
+      "analytic_se_km": [
+        3.482901835061171,
+        0.8994777138410426,
+        3.597174634399778
+      ],
+      "bootstrap_se_km": [
+        3.510271939226372,
+        0.8845828105003061,
+        3.6189460982093045
+      ],
+      "distance_balance": {
+        "bins": [
+          {
+            "bin": 0,
+            "lower_km": 141.94170447503188,
+            "upper_km": 3696.6860315857975,
+            "home_pairs": 18,
+            "other_pairs": 972,
+            "weight": 0.20008084074373483,
+            "home_gain_km": 21.89908373789713,
+            "other_gain_km": -8.29281331099054
+          },
+          {
+            "bin": 1,
+            "lower_km": 3696.6860315857975,
+            "upper_km": 6283.468433623601,
+            "home_pairs": 23,
+            "other_pairs": 966,
+            "weight": 0.19987873888439775,
+            "home_gain_km": -0.5004271345912776,
+            "other_gain_km": -9.779914658619823
+          },
+          {
+            "bin": 2,
+            "lower_km": 6283.468433623601,
+            "upper_km": 8942.029311148977,
+            "home_pairs": 61,
+            "other_pairs": 929,
+            "weight": 0.20008084074373483,
+            "home_gain_km": -22.847899994725736,
+            "other_gain_km": -13.473125529941612
+          },
+          {
+            "bin": 3,
+            "lower_km": 8942.029311148977,
+            "upper_km": 12360.843152728628,
+            "home_pairs": 65,
+            "other_pairs": 924,
+            "weight": 0.19987873888439775,
+            "home_gain_km": 18.86680081958267,
+            "other_gain_km": 35.62624183002873
+          },
+          {
+            "bin": 4,
+            "lower_km": 12360.843152728628,
+            "upper_km": 19851.726976157825,
+            "home_pairs": 30,
+            "other_pairs": 960,
+            "weight": 0.20008084074373483,
+            "home_gain_km": -77.30160801072832,
+            "other_gain_km": -33.72122029577137
+          }
+        ],
+        "covered_pair_fraction": 1.0,
+        "standardized_home_gain_km": -11.98536306597107,
+        "standardized_other_gain_km": -5.935786170738292,
+        "standardized_interaction_km": -6.049576895232778,
+        "method": "Pooled truth-distance quintile weights applied to both groups within common-support bins; descriptive, not causal adjustment"
+      },
+      "leave_one_capital_out": {
+        "CN": {
+          "home_gain_km": -17.542066932178397,
+          "interaction_km": -11.337421647223833
+        },
+        "SG": {
+          "home_gain_km": -3.929916777420556,
+          "interaction_km": 2.2747285075340384
+        }
+      },
+      "all_available_pairs": {
+        "home_gain_km": -10.678956363150743,
+        "interaction_km": -4.6733022930748165,
+        "pairs": 4950
+      }
+    }
+  ],
+  "script_sha256": "46a37f526d0d0cca795e6f52cf00ab4de32394c3472a4ce63e28dbbdfe7d1dab",
+  "input_lock_sha256": "d45cab6e82d90d6e916296ee4c23463acfb1167592d55abcb887b4f4308bf411",
+  "environment": {
+    "python": "3.12.14",
+    "packages": {
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "scikit-learn": "1.7.2",
+      "geographiclib": "2.1",
+      "matplotlib": "3.11.1"
+    },
+    "uv_lock_sha256": "c8720672a5daf905277d801a7e4e27b817771fc6c75be6124d1ab294f31cab9e"
+  }
+}

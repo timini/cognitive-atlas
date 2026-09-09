@@ -1,0 +1,83 @@
+{
+  "status": "Exploratory post-collection operational groups; no preregistration or claim of monolingual populations",
+  "pair_rule": "At least one endpoint in the group",
+  "dataset_csv_sha256": "eae1289f55099654ffeb238660444595f752209d9d73fe6bbc5dad620d59f5d7",
+  "groups": {
+    "ar": {
+      "label": "Arab States regional proxy",
+      "source_year": 2021,
+      "source_url": "https://www.itu.int/dms_pub/itu-d/opb/hdb/D-HDB-E%20WASTE-2021-ARB-PDF-E.pdf",
+      "source_locator": "printed page22,sectionC",
+      "full_source_ids": [
+        "AE",
+        "BH",
+        "DJ",
+        "DZ",
+        "EG",
+        "IQ",
+        "JO",
+        "KM",
+        "KW",
+        "LB",
+        "LY",
+        "MA",
+        "MR",
+        "OM",
+        "PS",
+        "QA",
+        "SA",
+        "SD",
+        "SO",
+        "SY",
+        "TN",
+        "YE"
+      ],
+      "included_ids": [
+        "AE",
+        "BH",
+        "DJ",
+        "DZ",
+        "EG",
+        "IQ",
+        "JO",
+        "KW",
+        "LB",
+        "MA",
+        "MR",
+        "OM",
+        "QA",
+        "SA",
+        "TN"
+      ],
+      "absent_ids": [
+        "KM",
+        "LY",
+        "PS",
+        "SD",
+        "SO",
+        "SY",
+        "YE"
+      ]
+    },
+    "zh": {
+      "label": "Beijing-Singapore named case group",
+      "included_ids": [
+        "CN",
+        "SG"
+      ],
+      "rationale": "Institutional standard-language association forChina and substantialMandarin home-language use inSingapore; not exhaustive classification",
+      "sources": [
+        {
+          "url": "https://english.www.gov.cn/news/202512/27/content_WS694f530ac6d00ca5f9a084bb.html",
+          "date": "2025-12-27"
+        },
+        {
+          "url": "https://data.gov.sg/datasets/d_cc287e319cfc285408e26321e0c9cace/view",
+          "reference_year": 2020,
+          "table": "CT/17446"
+        }
+      ]
+    }
+  },
+  "source_verification_date": "2026-09-09"
+}

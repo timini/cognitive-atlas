@@ -65,8 +65,9 @@ def test_language_cohort_excludes_original_english_and_changed_settings():
     from atlas.data import digest
 
     entry = next(e for e in json.loads(Path('public/data/experiments.json').read_text())
-                 if e['model'] == 'gemini-3.5-flash' and not e.get('prompt_family'))
+                 if e['model'] == 'gemini-3.5-flash' and e['language'] == 'en')
     result = json.loads((Path('public') / entry['url'].lstrip('/')).read_text())
+    result['experiment'].pop('prompt_family')
     assert language_condition(result) is None
     result['experiment'].update(prompt_family=PROTOCOL_ID, response_parser=PARSER_ID,
                                 entity_name_policy=ENTITY_NAME_POLICY, language='en', prompt_template=PROMPTS['en'])

@@ -2,9 +2,7 @@
 
 Ten distinct review agents assessed the manuscript on 9 September 2026, with separate assignments covering empirical claims, methods, writing, and conclusions. The runtime allowed three reviewers alongside the coordinator, so the reviews ran in overlapping batches rather than ten simultaneously. These are AI-assisted critical reviews, not journal peer review or independent human certification.
 
-The reviewed manuscript is the original 50-capital study at commit `e987efabad1a2b9a53f737e6bc71a13684ae3f9f`. The later 100-capital study and direct map tests are separate extensions. The reports identify any checks that also concern the website or newer code. The manuscript was not changed during review.
-
-`paper/main.tex` SHA-256: `5f48fffc573f56005f8074bdb7e73514e3fc1671575de2be6b379b3622eb7fa4`.
+The reports refer to the source revision identified in each report. The current paper incorporates their feedback and uses only the 100-capital study. See the [finding-by-finding response](../paper/REVIEW-RESPONSE.md) for completed changes and explicit future-work limitations. Prior manuscript versions remain in Git history.
 
 | Review | Scope and report | Agent | GitHub issue |
 |---|---|---|---|
@@ -21,7 +19,7 @@ The reviewed manuscript is the original 50-capital study at commit `e987efabad1a
 
 ## Main revision priorities
 
-The publication-readiness reviewer recommends **major revision**. The numerical and provenance audits reproduced the checked historical results. The reports identify interpretation and reporting problems that still need revision before submission:
+The publication-readiness reviewer requested major revision; the current manuscript addresses those reporting and interpretation findings. The numerical and provenance audits reproduced the checked historical results. The reports identify interpretation and reporting problems that informed the revision:
 
 - Narrow significance claims to the response-distribution null actually tested. Different variability can produce rejection even when underlying median judgments agree.
 - Separate effects of the particular translated prompts from general effects of language. Report geographic imbalance and sensitivity in the exploratory local-language analysis.
@@ -29,4 +27,4 @@ The publication-readiness reviewer recommends **major revision**. The numerical 
 - Make the scientific contribution explicit relative to prior prompted-distance reconstruction work. Lead with effect sizes and the distinction between accuracy and consistency.
 - Strengthen source provenance, bootstrap justification, and reporting of geometric reference controls. Update the paper’s data-availability statement for the public atlas.
 
-The README and website explanations have already been narrowed where these findings apply. The review issues remain open; publishing a report does not mean its requested revisions have been completed. Each report records its own scope and verification limits, and overlapping findings are retained rather than suppressed.
+The current manuscript, README, and website explanations reflect the response document. Review records remain open where requested work requires new data or human assessment. Each report records its own scope and verification limits, and overlapping findings are retained rather than suppressed.

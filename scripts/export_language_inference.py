@@ -6,18 +6,8 @@ from pathlib import Path
 
 def export_inference(public='public/data'):
     public = Path(public)
-    original = Path('paper/results/language-difference-audit.json')
-    raw = original.read_bytes()
-    historical = json.loads(raw)
-    for source in historical['sources'].values():
-        assert hashlib.sha256(Path(source['path']).read_bytes()).hexdigest() == source['sha256']
     audit_root = public/'language-audits'
-    audit_root.mkdir(exist_ok=True)
-    archive = audit_root/f"paper-50-{hashlib.sha256(raw).hexdigest()[:24]}.json"
-    archive.write_bytes(raw)
-    reports = [(archive, historical)]
-    reports.extend((p, json.loads(p.read_text())) for p in sorted(audit_root.glob('*.json'))
-                   if not p.name.startswith('paper-50-'))
+    reports = [(p, json.loads(p.read_text())) for p in sorted(audit_root.glob('*.json'))]
     cohorts = []
     for path, report in reports:
         sources = report['sources']

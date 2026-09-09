@@ -17,241 +17,273 @@
 \widowpenalty=10000
 \clubpenalty=10000
 \renewcommand{\arraystretch}{1.15}
-\title{Cognitive Atlas: Reconstructing Geographic Geometry\\from Repeated Multilingual LLM Distance Judgments}
+\title{Cognitive Atlas: Geographic Geometry from Repeated\\Distance Judgments across 100 National Capitals}
 \author{}
-\date{8 September 2026\\\small Exploratory research draft; not peer reviewed}
+\date{9 September 2026\\\small Revised study of English, Arabic, and Chinese instructions}
 \begin{document}
 \maketitle
 \begin{abstract}
-A language model can answer individual geographic questions accurately without its answers defining a coherent world. We present a file-based experimental pipeline that preserves repeated capital-to-capital distance judgments, evaluates them against WGS84 geodesics, and reconstructs their implied geometry using Euclidean and spherical embeddings. An initial three-model comparison covers 50 capitals and 1,225 unordered pairs, with ten requested responses per pair. A matched five-language Gemini 3.5 Flash experiment collects a further 61,250 completed samples using English, French, Spanish, Arabic, and Mandarin Chinese instructions. Among 1,223 pairs with ten valid responses in every language, all ten language comparisons exhibit median-distance disagreement exceeding a within-pair label-permutation baseline (Holm-adjusted Monte Carlo $p=0.004$). Similar overall accuracy can nevertheless conceal substantial changes in individual estimates. An exploratory local-language analysis finds that Spanish instructions reduce mean single-response absolute error on pairs involving six Spanish-associated capitals by 17.4 km, or 7.0\%, relative to English. The corresponding advantage over other pairs is 24.5 km; both contrasts have adjusted bootstrap $p=0.0008$. No comparable positive local advantage is established for the other three languages. These findings are conditional on the selected capitals, one translation per language, one collection period, and independence of API samples. The reconstructed geometry is a description of observable judgments, not a direct measurement of hidden neural representations.
+Accurate geographic facts need not form a consistent geometry. We examine this distinction using 148,500 distance judgments from Gemini 3.5 Flash: ten answers for each of 4,950 capital pairs under English, Arabic, and written Chinese instructions. Pair-median mean absolute error against WGS84 geodesics is 215.9, 234.0, and 222.0 km, respectively. Spearman correlations exceed 0.998, yet 10.7--13.3\% of capital triples violate the triangle inequality. Fitting the judgments to a sphere produces globally recognizable maps with roughly 150--158 km mean capital displacement from reference geography, compared with 9.5 km for an ellipsoidal-distance reference fitted by the same spherical method. Between prompt conditions, observed pair medians differ by 141--165 km and globally aligned fitted capitals by 79--88 km. Within-pair randomization tests reject a common response-distribution baseline; they do not establish different population median maps or isolate language from wording. Exploratory regional comparisons show no observed accuracy gain for Arabic on pairs involving 15 Arab States capitals, or for Chinese on pairs involving Beijing or Singapore. Quality-control sensitivities preserve the main accuracy ordering. The results characterize elicited geographic behavior on fixed entities and prompts. They leave variation across translations, collection periods, model versions, and rare unobserved responses unresolved.
 \end{abstract}
 
-\section{Introduction and scope}
-What geographic world is implied by a model's answers when every pair of places is queried repeatedly? This question separates factual accuracy from the geometric compatibility of the answers. It also separates the stability of repeated responses from their correctness: an identical answer can be consistently wrong.
+\section{Introduction}
+What geographic configuration best reconciles a language model's answers about distances between places? Answering this question requires separating three properties: agreement with real distances, consistency of the answers as a metric, and variation across repeated responses. A model can recall many distances accurately while making mutually incompatible judgments; it can also repeat an incorrect answer with little variation.
 
-Geographic structure in language is an established research topic. Louwerse and Zwaan recovered geographic relationships from distributional text statistics \cite{louwerse}. Bhandari et al. used prompting and multidimensional scaling to study LLM geospatial knowledge \cite{bhandari}. Karimi and Janowicz examined distance-estimation challenges, including variation across English and Persian prompts \cite{karimi}. Our application of MDS to prompted geography is therefore not claimed as a first. The practical contribution here is an auditable repeated-sampling implementation, matched multilingual numeric-response protocols, spherical reconstruction, and explicit separation of global judgment differences from geographically localized accuracy gains.
+Geographic reconstruction from language has substantial precedent. Louwerse and Zwaan recovered geographic structure from distributional text statistics \cite{louwerse}. Bhandari et al. elicited numerical distances among 93 contiguous-US cities, reconstructed coordinates with two-dimensional multidimensional scaling (MDS), and evaluated aligned positions against geographic controls \cite{bhandari}. Their use of five-beam decoding differs from the repeated stochastic sampling studied here. Karimi and Janowicz supplied illustrative English--Persian distance comparisons using Google Maps routing distances as their reference \cite{karimi}. Those routing examples motivate multilingual investigation but use a different target from the geodesics in this study.
 
-Internal-representation studies answer a different question. Gurnee and Tegmark used model activations to investigate spatial and temporal representations \cite{gurnee}. We access only API responses. Memorized facts, numerical heuristics, language-conditioned associations, and internal computation can all produce the behavior studied here; this design cannot identify which mechanism is responsible.
+The present contribution is a global repeated-judgment benchmark that connects response variation, metric inconsistency, spherical reconstruction, and conditional comparisons between translated prompts. A spherical fit accommodates global arc distances; retaining ten observations per pair exposes differences hidden by a single aggregate. The core question is empirical: how do accurate pairwise judgments and imperfect global consistency coexist, and how much does the resulting configuration vary between these three prompt conditions?
 
-The report addresses three questions: (1) do the estimates track actual geography and admit a useful reconstruction; (2) do matched instruction languages produce differences larger than repeated-call variation; and (3) do prompts in a language particularly improve accuracy for capitals associated with that language? All analyses are exploratory. There was no preregistration, and the local-language question was formulated after the global language results had been inspected.
+Here, a cognitive map is an operational description of observable spatial judgments. Activation-based work investigates internal representations directly \cite{gurnee}; behavioral planning evaluations such as CogEval ask whether relational knowledge supports navigation and planning \cite{cogeval}. A geometry fitted to API outputs establishes neither of those mechanisms. Memorized facts, heuristics, and internal computation remain compatible explanations.
 
-\section{Data and experimental design}
-\subsection{Capital sample and reference distances}
-The main sample contains 50 purposively selected national capitals across six inhabited continents. It expands an initial 20-capital pilot; it is neither a random sample of countries nor the complete set of sovereign states. Appendix~\ref{app:capitals} lists every included city. Natural Earth populated-place coordinates supply documented reference points, with dataset-specific overrides and capital-selection decisions retained in the repository \cite{naturalearth}. Examples include Pretoria as South Africa's executive capital and Dodoma as Tanzania's capital. A city is represented by one point, so differences between city centers or administrative boundaries remain a source of reference uncertainty.
+The numerical results use the 100-capital English, Arabic, and Chinese collection. All analyses are exploratory, with no preregistration or independent replication across phrasings or dates.
 
-For each unordered pair $p=(i,j)$, the reference distance $t_p$ is the WGS84 inverse geodesic calculated with GeographicLib \cite{karney}. There are $50\times49/2=1{,}225$ pairs. These geodesics are stored separately from model outputs. They are the real-distance benchmark used throughout, rather than distances measured in a flat map projection.
+\section{Data and elicitation}
+\subsection{Entities and geographic reference}
+The purposive sample contains 100 national capitals across the six inhabited continents. It is neither a random sample of countries nor the complete set of national capitals. Appendix~\ref{app:capitals} lists the complete sample. Natural Earth populated-place coordinates provide the reference city points \cite{naturalearth,neterms}; the dataset supplement preserves source URLs, content hashes, overrides, and selection decisions. Examples include Pretoria as South Africa's executive capital, Sucre as Bolivia's constitutional capital, Bern as Switzerland's federal city, and Yamoussoukro as C\^ote d'Ivoire's political capital. One reference point per capital cannot capture all choices of city center or administrative extent.
 
-\subsection{Conditions and sampling}
-An English-language model comparison uses Gemini 2.5 Flash-Lite, Gemini 3 Flash Preview, and Gemini 3.5 Flash. Exact API identifiers are preserved in the manifests. Ten separate single-turn requests are scheduled for each pair. All three expanded conditions use temperature 1, top-$p$ 0.95, and a maximum of 128 output tokens. Thinking is disabled with a zero budget for 2.5 Flash-Lite; the other two use the provider's minimal thinking setting. These controls are not equivalent, so the comparison concerns these configurations, not isolated model architecture or scale. No tools, conversation history, or earlier sampled answers are supplied. No generation seed is specified.
+For each of $P=100\times99/2=4{,}950$ unordered pairs, reference distance $t_p$ is the WGS84 inverse geodesic computed with GeographicLib \cite{karney}. These are surface distances on an ellipsoid. Map projections are used only for display and planar alignment, never as the geographic distance benchmark.
 
-The language experiment holds the model at Gemini 3.5 Flash and uses English, French, Spanish, Arabic, and Mandarin Chinese instructions. The city and country strings remain in their canonical English forms. Only instructions are translated; this is not a test of localized place names. The translations are assistant-authored and have not received independent native-speaker validation. The Spanish and Chinese versions, for example, explicitly describe the great-circle distance as the shortest path along Earth's surface; instruction language and particular wording cannot be separated.
+\subsection{Three matched prompt conditions}
+The requested and returned model identifier is \texttt{gemini-3.5-flash}. All conditions use temperature 1.0, top-$p$ 0.95, a 128-token output ceiling, minimal thinking, no specified seed, and an empty system prompt. Minimal thinking is an API setting, not evidence of zero internal computation. Every pair receives ten separate single-turn requests. The three conditions change the complete instructions while retaining canonical English city and country names and the same pair ordering.
 
-Every language uses the same added numeric-format rule: ASCII digits, a period if a decimal separator is needed, and no thousands separators or units. A new English baseline was collected with this rule. The earlier English model-comparison run is not used as the baseline for language inference. Exact prompts are preserved in manifests, response rows, and the supplement \texttt{results/exact-language-prompts.json}.
+The English prompt asks for a great-circle distance and one numerical answer, followed by a numeric-format instruction; Appendix~\ref{app:protocol} gives its text. Arabic uses written standard Arabic. The Chinese condition uses written standard Chinese in simplified characters; the website's historical label ``Mandarin Chinese'' does not imply a speech experiment. The translations were assistant-authored and have not undergone independent native-speaker validation. They are naturally worded rather than literal substitutes: the Arabic and Chinese versions explicitly explain shortest surface distance. Consequently, language, phrasing, and explanatory wording are not separately identified.
 
-The five language conditions were collected concurrently during one period on 8 September 2026, starting at approximately 16:56 UTC and finishing at approximately 17:35 UTC. A shared dispatch limit of 2,400 requests per minute and per-condition caps of 900 were configured. Concurrent dispatch reduces simple sequential ordering differences, but it is not randomized assignment of language to time blocks. The API returned the same model-version alias across these conditions; the alias does not establish a frozen weight checkpoint.
+Collection occurred on 8 September 2026. The runner dispatched ten requests for a pair before advancing through canonical pair order; conditions ran concurrently with rate limiting. Median within-pair first-attempt dispatch spans were approximately 0.87--0.88 seconds. These are separate requests, not verified independent draws from a stationary provider. Temporal clustering, caching, routing, and unreported model changes remain possible sources of dependence. The response identifier supplied by Google is a model alias, not a frozen checkpoint guarantee.
 
-\subsection{Quality control and data retention}
-The language protocol accepts exactly one positive ASCII decimal number no larger than 20,040 km. Complete raw text and provider payloads are preserved even when parsing fails. Eleven language-study responses exceeded the range threshold and two violated numeric formatting. One transport timeout was retried, yielding 61,251 recorded attempts, 61,250 completed sample slots, and 61,237 valid estimates. Invalid content is terminal and is not replaced by repeated attempts until a plausible answer appears.
+\subsection{Response validation and retained evidence}
+The collection used unconstrained text generation, \emph{not provider-enforced output schemas}. The recorded parser accepts a whole response consisting of ASCII digits with an optional period-delimited fractional part. It does not extract a convenient number from prose, interpret decimal commas, or repair malformed text. Nonpositive, nonfinite, and greater-than-20,040 km values are flagged. This upper bound is a documented plausibility rule, not a value supplied to the model. New schema-constrained conditions introduced later in the software are outside this study.
 
-All descriptive full-matrix metrics use accepted observations. For matched inferential analyses, we exclude the two pairs lacking ten valid responses in any language: Buenos Aires--Hanoi and Seoul--Moscow. The common subset contains 1,223 pairs and 61,150 valid observations. This is a complete-case analysis, not an outlier filter based on estimated accuracy. Nevertheless, the range rule removes particularly implausible judgments and can make accepted-output accuracy optimistic. Invalid counts are therefore outcomes of the experiment, not disposable records.
+The 148,500 completed sample slots yielded 148,491 valid values. There were 148,504 attempts: four additional transport retries in Arabic, all followed by a terminal response. Invalid content was terminal rather than retried until valid. Five numerical estimates above the range threshold occurred for Buenos Aires--Hanoi: four in English and one in Arabic. Four Chinese responses for Brussels--Paris included a trailing backtick or underscore. All raw answers, classifications, retries, and provider payloads remain available. Replaying the recorded parser on saved responses produced zero mismatches.
 
-\section{Analysis and reconstruction}
-\subsection{Repeated observations and accuracy}
-For valid responses $x_{p\ell r}$ in pair $p$, language $\ell$, and replicate $r$, we retain all observations and calculate the mean, median, 10\% trimmed mean per tail, Huber location, sample variance and standard deviation, extrema, quartiles, interquartile range, median absolute deviation, and coefficient of variation. Huber fitting uses scale $\max(1.4826\,\mathrm{MAD},1\,\mathrm{km})$. Four aggregate distance matrices are exported; the median is the presentation baseline, not a demonstrated universally optimal estimator.
+Descriptive matrices use every pair's available valid observations. Tests of pair-median disagreement and accuracy use the same 4,948 complete pairs in all three conditions, excluding Buenos Aires--Hanoi and Brussels--Paris. This removes 51 otherwise valid observations in addition to the nine invalid values. Map randomization uses all 4,950 pairs and preserves each condition's valid-response count. These denominators are kept distinct throughout.
 
-Writing $m_{p\ell}$ for the median, median-matrix accuracy is
+\section{Analysis}
+\subsection{Accuracy, variability, and consistency}
+For pair $p$, condition $\ell$, and replicate $r$, let $x_{p\ell r}$ be an accepted distance and $m_{p\ell}$ its sample median. The principal global accuracy statistic is \emph{pair-median MAE},
 \begin{equation}
- A^{\rm med}_{\ell}=\frac{1}{P}\sum_p |m_{p\ell}-t_p|.
+ A_\ell=P^{-1}\sum_p |m_{p\ell}-t_p|.
 \end{equation}
-We also report RMSE, relative error, Pearson, Spearman and Kendall correlations, and three-nearest-neighbor preservation. A symmetric matrix is created from unordered pairs with zero diagonal. Symmetry is imposed by design, not empirically verified.
+RMSE, rank correlations, signed error, and relative error provide complementary summaries. Mean, median, 10\%-trimmed mean, and Huber aggregation remain available in the exports; the manuscript consistently uses medians for its primary reconstructions. Within-pair standard deviations, coefficients of variation, and repeated-value counts describe sampling stability without assuming Gaussian responses.
 
-\subsection{Geometry and alignment}
-All 19,600 triples in the 50-capital dataset are checked for triangle-inequality violations. Spectra of the double-centered squared-distance matrix and the cosine angular-distance matrix supply diagnostics of Euclidean and spherical compatibility. Negative eigenvalues are diagnostics, not a proof of a unique latent dimensionality.
+The symmetric matrix $D_\ell$ has zero diagonal and the pair medians off diagonal. Symmetry is imposed by the unordered design, not tested by opposite-direction queries. All $\binom{100}{3}=161{,}700$ triples are examined. A triple violates the triangle inequality when its longest side exceeds the sum of the other two by more than $10^{-7}$ km. We report the percentage of violated triples and their excess magnitudes. Three-nearest-neighbor preservation is measured both in the input distance matrix and after reconstruction, relative to the WGS84 matrix.
 
-Classical MDS forms $B=-\tfrac12 JD^{\circ2}J$, where $J=I-\mathbf{1}\mathbf{1}^{\mathsf T}/N$, and uses its leading nonnegative eigencomponents. Metric and non-metric MDS use four seeded starts, a maximum of 1,000 iterations, and scikit-learn's SMACOF implementation \cite{kruskal,sklearn}. Non-metric MDS fits monotone disparities, so its reported stress cannot be directly ranked against stress computed on kilometer distances. The pipeline fits metric embeddings in dimensions 1 through 10 and computes the same curve for WGS84 distances.
+\subsection{Recovering and aligning geometry}
+Classical MDS retains leading nonnegative eigencomponents of $-\tfrac12 JD^{\circ2}J$, where $J=I-\mathbf{1}\mathbf{1}^{\mathsf T}/N$. Metric and non-metric MDS use scikit-learn's four-start SMACOF implementation, seed 42, up to 1,000 iterations, and tolerance $10^{-7}$ \cite{kruskal,sklearn}. The non-metric fit optimizes monotone disparities and has a distinct stress definition. We also fit metric Euclidean embeddings in dimensions 1 through 10 to both judgments and reference geodesics. Comparisons on kilometer distances use a common target-normalized residual,
+\begin{equation}\label{eq:stress}
+ S(D,\widehat D)=\sqrt{\frac{\sum_{i<j}(\widehat D_{ij}-D_{ij})^2}{\sum_{i<j}D_{ij}^2}}.
+\end{equation}
+Non-metric disparity Stress-1 is reported separately, not ranked against this residual.
 
-Spherical reconstruction fits unit vectors $u_i\in S^2$ with fixed radius $R=6371.0088$ km, minimizing
+The spherical fit places unit vectors $u_i$ on a sphere of fixed radius $R=6371.0088$ km and minimizes
 \begin{equation}
- \sum_{i<j}\left[R\arccos(u_i^{\mathsf T}u_j)-D_{ij}\right]^2.
+ \sum_{i<j}\{R\arccos(u_i^{\mathsf T}u_j)-D_{ij}\}^2.
 \end{equation}
-Initialization comes from the eigendecomposition of $\cos(D/R)$, not from actual city coordinates. Four starts are optimized with sparse analytic derivatives. After fitting, a single orthogonal Procrustes transformation aligns the inferred vectors with reference Earth vectors \cite{schonemann}. Rotations and reflections are permitted; individual cities are never moved independently toward their true locations during fitting or alignment. The spherical radius is fixed. Planar fits instead permit translation, rotation/reflection, and one global scale relative to an explicitly equirectangular reference.
+Initialization comes from the three leading components of $\cos(D/R)$, with subsequent starts perturbed by seeded Gaussian angular noise of standard deviation 0.3 radians. Sparse analytic derivatives support least-squares optimization with at most 1,000 function evaluations and $10^{-9}$ convergence tolerances. The published fits use four starts. This revision independently checks twelve starts per judgment matrix and four for the WGS84 control, preserving every start's convergence, objective, and position diagnostics.
 
-Spherical residual stress is
+A single orthogonal Procrustes transform aligns fitted unit vectors with reference geography \cite{schonemann}. It permits global rotation or reflection at fixed radius. Reference coordinates enter after fitting; individual capitals are not pulled toward known positions. Planar display alignment additionally permits translation and one global scale. Mean aligned capital displacement is descriptive and includes reference-point uncertainty and mismatch between the fitted sphere and the WGS84 ellipsoid.
+
+An exact spherical distance matrix in the valid arc domain must yield a positive-semidefinite cosine Gram matrix of rank at most three. The supplement therefore records the complete spectrum, negative eigenmass, positive mass beyond rank three, numerical tolerance, and distance-domain checks. Negative eigenmass alone is insufficient. Ellipsoidal reference geodesics need not satisfy exact spherical compatibility, so they are analyzed as a control rather than assigned zero spherical residual.
+
+Coastlines are visualized by interpolating the fitted capital displacements through a Delaunay mesh in an equirectangular display, with frame controls and longitude-seam handling. Piecewise-affine interpolation is continuous within the mesh, but can fold triangles and alter topology. Coastline shape is not directly elicited or tested. The fitted capitals and their distance relationships are the measured geometric objects.
+
+\subsection{Conditional comparisons between prompt conditions}
+For each of the three condition pairs, mean absolute median disagreement is
 \begin{equation}
- S=\sqrt{\frac{\sum_{i<j}(\widehat D_{ij}-D_{ij})^2}{\sum_{i<j}D_{ij}^2}}.
+ T_{ab}=P^{-1}\sum_p|m_{pa}-m_{pb}|.
 \end{equation}
-Spherical fitting and ellipsoidal ground truth differ slightly even for perfect judgments. Euclidean embeddings also cannot reproduce global great-circle distances exactly merely by using three coordinates: chord distances and arc distances differ.
+We compare $T_{ab}$ and the absolute pair-median MAE difference with 4,999 random assignments obtained by pooling the twenty responses within each complete pair and splitting them into two groups of ten. Replicate numbers are not matched across conditions. The strong null is equality of response distributions within every pair, under independent requests. Upper-tail disagreement and absolute-value accuracy statistics use $(b+1)/(B+1)$ Monte Carlo probabilities \cite{scipyperm}; Holm adjustment covers these six tests \cite{holm}.
 
-\subsection{Map deformation}
-For display, a Delaunay triangulation connects reference capitals and fixed frame pins in equirectangular coordinates. Each triangle maps continuously to its inferred vertices by an affine transformation. Densified country boundaries are interpolated through the same field. Longitude branches minimize discontinuities near the map seam, and reversed triangles are counted as foldovers. This procedure interpolates a visual surface between inferred capital positions; it does not measure beliefs about coastlines. Continuity does not guarantee topology preservation. The website exposes capital-only reconstructions, actual locations, displacement vectors, uncertainty summaries, raw samples, and selectable experiment layers alongside the warped view.
+A separate exploratory map statistic is mean geodesic displacement between two independently fitted spherical configurations after global orthogonal alignment. For 999 within-pair label permutations per comparison, we rebuild both median matrices and refit both maps with the same four starts. Each permutation preserves the observed valid sample count in each condition, including incomplete pairs. All observed fits reproduce the published results within one metre and every randomized fit converges. Holm adjustment covers the three map comparisons. Saved null statistics permit direct verification of these probabilities.
 
-\subsection{Global language randomization tests}
-For each of the ten language comparisons, two statistics are evaluated on the common complete subset: mean absolute median disagreement,
-\begin{equation}
- T_{ab}=P^{-1}\sum_p |m_{pa}-m_{pb}|,
-\end{equation}
-and the absolute difference in median-matrix MAE. Under the strong null that response distributions are exchangeable between the two languages within each fixed pair, the twenty observations are pooled and independently reassigned to groups of ten. Replicate numbers are not treated as paired observations. We generate 4,999 random assignments for each comparison and use $(b+1)/(B+1)$ Monte Carlo tail probabilities \cite{scipyperm}. The disagreement statistic uses an upper tail; the MAE contrast uses its absolute value. Holm adjustment covers all twenty tests \cite{holm}.
+Both procedures test a common \emph{response-distribution} baseline. Different dispersions can cause rejection even when population median distances are identical. Map-displacement randomization inherits this limitation: its geometric statistic does not turn the null into equality of population median maps. Neither procedure isolates language from translation wording. The separate six-test and three-test corrections do not provide study-wide control over earlier exploratory choices.
 
-These tests quantify departures from a common response distribution conditional on the fixed cities and independence of requests. In particular, the MAE-contrast test is not a general weak-null test of equal expected accuracy under arbitrary unequal response distributions. The resulting $p$ values should not be read as probabilities that a language is superior in all future uses.
+\subsection{Exploratory regional comparisons}
+The global analysis evaluates a median of ten responses. The regional analysis instead evaluates \emph{mean single-response absolute error}. Two transparent, post hoc groups are used: the 15 sampled capitals in a frozen 22-member Arab States list \cite{arabstates}, and the two named cases Beijing and Singapore. The latter reflects institutional standard-language association for China and documented Mandarin use in Singapore \cite{chinastandard,sgcensus}; it is not an exhaustive classifier of Chinese-speaking places. Appendix~\ref{app:groups} lists the groups and their sources. These two definitions represent different regional and linguistic constructs, so their effect sizes are not a common scale of cultural affinity.
 
-\subsection{Exploratory local-language contrasts}
-A language-associated pair has at least one endpoint in the following operational groups:
-\begin{center}\small
-\begin{tabular}{lp{11cm}}\toprule
-French & Ottawa, Kinshasa, Paris, Dakar \\
-Spanish & Buenos Aires, Santiago, Bogot\'a, Madrid, Mexico City, Lima \\
-Arabic & Algiers, Cairo, Rabat, Riyadh \\
-Mandarin Chinese & Beijing, Singapore \\
-\bottomrule\end{tabular}
-\end{center}
-The groups use official/co-official national language status and majority Spanish-language use as a transparent proxy, not individual language proficiency. They include multilingual places and do not assert that any city has only one language. French excludes Algeria and Morocco under this operational definition. The distinction between legal status and actual use is substantive \cite{cervantes,oif,singapore}. These group definitions were fixed before examining the local contrasts, but after examining overall language results.
+A pair is associated with a group if \emph{at least one} endpoint belongs to it. With $e_{p\ell r}=|x_{p\ell r}-t_p|$, define pairwise gain $g_{p\ell}=\bar e_{p,\mathrm{en}}-\bar e_{p\ell}$. Associated-pair gain $G_H$ averages $g$ on associated pairs; $G_O$ averages it elsewhere; the interaction is $I=G_H-G_O$. Positive gain means lower error under the translated prompt. A positive interaction can mean a smaller disadvantage, rather than an absolute benefit.
 
-The local analysis evaluates \emph{single-response} accuracy, a different estimand from error of the median. Define $e_{p\ell r}=|x_{p\ell r}-t_p|$ and
-\begin{equation}
- g_{p\ell}=\overline e_{p,\mathrm{en}}-\overline e_{p\ell},\quad
- G_{H\ell}=\frac{1}{|H_\ell|}\sum_{p\in H_\ell}g_{p\ell},\quad
- I_\ell=G_{H\ell}-G_{O\ell},
-\end{equation}
-where $O_\ell$ contains pairs with neither endpoint in the group. Positive $G_H$ means lower error than English on associated pairs; positive $I$ means that benefit is greater than on other pairs. A positive interaction alone would not guarantee an absolute improvement.
-
-We independently resample ten observations within each pair and language for 9,999 bootstrap replicates. Using the mean of absolute errors avoids the nonregular behavior of bootstrap medians with many tied observations. Centered bootstrap deviations are multiplied by $\sqrt{10/9}$ to match the variance estimate from sample variances with nine degrees of freedom. Basic 95\% intervals invert the deviation quantiles; two-sided approximate $p$ values count centered deviations at least as large as the observed contrast. Holm correction covers eight tests: $G_H$ and $I$ for four languages. Intervals are pointwise, not multiplicity-adjusted. Analytic contrast standard errors independently check the bootstrap implementation. No normal distribution for numeric guesses is assumed.
-
-This bootstrap estimates repeated-call uncertainty on a fixed set of pairs. It does not turn shared-city dyads into independent country-level replications and does not estimate uncertainty across new cities, translated phrasings, or collection dates. As a descriptive sensitivity check, we remove each associated capital and all its pairs in turn. These leave-one-capital-out ranges are not confidence intervals or new significance tests.
+We report available-pair and capital-omission sensitivities and balance both groups descriptively to pooled WGS84 distance quintiles. This standardization addresses distance composition only, not unmeasured regional familiarity or a causal effect. Conditional uncertainty is summarized with 9,999 within-pair, within-condition empirical bootstrap draws. Basic intervals invert centered deviations scaled by $\sqrt{10/9}$ to match unbiased sample-variance estimates \cite{davison,scipyboot}. Appendix~\ref{app:bootstrap} derives the correction and reports finite-sample calibration. Four approximate two-sided bootstrap tests ($G_H$ and $I$ for two groups) form a separate Holm family; intervals remain pointwise. Given ten observations per cell and the diagnosed sensitivity to unseen tails, these intervals and probabilities are exploratory summaries rather than confirmatory evidence of population accuracy advantages.
 
 \section{Results}
-\subsection{Geographic signal and model comparison}
-The original English 50-capital runs show strong associations with reference geography (Table~\ref{tab:models}). Their Spearman correlations are approximately 0.967 for 2.5 Flash-Lite and 0.998 for both later configurations. A separate city-label permutation audit with 9,999 permutations gives one-sided Monte Carlo $p=0.0001$ for each, relative to random relabeling of a fixed distance matrix. This establishes geographic signal against that baseline; it does not establish normal sampling distributions, absence of systematic errors, or definitive model rankings.
+\subsection{High rank accuracy coexists with metric inconsistency}
+The three conditions track global geography closely (Figure~\ref{fig:accuracy}; Table~\ref{tab:languages}). English has the lowest observed pair-median MAE, 215.9 km; Arabic has 234.0 km and Chinese 222.0 km. All Spearman correlations exceed 0.998. These are condition-specific observations from one model configuration, not an inferential ranking of model families or a guarantee of future performance.
 
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{figures/distance-accuracy.pdf}
+\caption{All 4,950 pair medians per condition against WGS84 geodesics. The dashed diagonal is perfect accuracy. A wide global distance range makes the association visually strong even when errors reach hundreds of kilometers.}\label{fig:accuracy}
+\end{figure}
 \begin{table}[htbp]\centering\small
-\caption{Original English 50-capital conditions. MAE is error of pair medians, using all accepted observations. These prompts precede the matched language-format protocol.}\label{tab:models}
-\begin{tabular}{lrrrr}\toprule
-Gemini configuration & Valid samples & MAE (km) & Spearman & Sphere stress \\\midrule
-\tableinput{generated/model-table.tex}
-\bottomrule\end{tabular}
-\end{table}
-
-Repeated answers are often discrete and identical. In the original 3.5 Flash run, 154 of 1,225 pairs return the same value all ten times; London--Paris returns 344 km in all ten samples, against a 341.15 km reference. This is incompatible with treating all observations as unrounded continuous Gaussian draws. Ten samples do not establish the distribution's shape or the model's epistemic uncertainty.
-
-\subsection{Language differences without large changes in global geography}
-Full-matrix descriptive results appear in Table~\ref{tab:languages}. All five language conditions remain highly correlated with actual distances. Their spherical reconstructions remain recognizable (Figure~\ref{fig:maps}), while their residual errors and capital placements differ. Illustrative deformation should not be mistaken for an independent statistical result.
-
-\begin{table}[htbp]\centering\small
-\caption{Matched language conditions, all 1,225 pairs. Each has 12,250 completed sample slots. Triangles is the percentage violating the inequality; MAE uses pair medians.}\label{tab:languages}
+\caption{All-pair descriptive accuracy. Each condition has 49,500 completed sample slots. MAE and RMSE concern pair medians; triangles is the percentage of all 161,700 triples with a violation.}\label{tab:languages}
 \begin{tabular}{lrrrrr}\toprule
-Language & Valid & MAE (km) & Spearman & Triangles (\%) & Sphere stress \\\midrule
+Instructions & Valid values & MAE (km) & RMSE (km) & Spearman & Triangles (\%) \\\midrule
 \tableinput{generated/language-table.tex}
 \bottomrule\end{tabular}
 \end{table}
 
+High rank agreement does not imply a metric: 10.69\% of English, 13.30\% of Arabic, and 10.74\% of Chinese triples violate the triangle inequality. Among violated triples, the mean excess is 322.8, 421.3, and 350.4 km, respectively. The corresponding WGS84 reference has no violations. These counts describe the input judgments; the fitted spherical distances obey metric constraints by construction.
 
-\begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{figures/reconstructed-worlds.pdf}
-\caption{Median-based spherical reconstructions for English and Arabic. Gray outlines are reference geography; colored outlines are the stored piecewise-affine deformation. Filled points mark reference capitals and open points mark inferred capitals. Both use the same equirectangular display and actual, unamplified displacement.}\label{fig:maps}
-\end{figure}
+Repeated outputs contain both ties and variation (Table~\ref{tab:dispersion}). Among 4,949 pairs with ten valid responses in each individual condition, 139 English, 123 Arabic, and 64 Chinese pairs give ten identical values. Mean within-pair standard deviations are 116.4, 125.2, and 121.5 km. This discreteness argues against modeling the recorded outputs as unrounded continuous Gaussian draws, but does not exclude rounded latent distributions or identify their tails. Ten observations cannot establish modality or equate low response variance with epistemic certainty.
 
-
-On the 1,223 complete pairs, every language comparison exceeds its shuffled-label disagreement baseline, with Holm-adjusted $p=0.004$ (Table~\ref{tab:pairwise}). The common value reflects the Monte Carlo resolution and correction, not equality of effect sizes or a measured exact probability. Mandarin versus English shows 122.3 km average disagreement between pair medians, compared with a 55.0 km shuffled-label average, despite only a 0.7 km difference in aggregate median-based MAE. Languages can change the pattern of mistakes while leaving overall accuracy similar.
-
-
-\begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{figures/structure-and-language.pdf}
-\caption{Left: metric Euclidean MDS stress by dimension, with the WGS84 baseline. Higher-dimensional residuals should not be attributed wholly to semantic distortion: true Earth arc distances also retain residual Euclidean stress. Slight nonmonotonicity reflects numerical optimization. Right: observed median disagreements with English and the conditional shuffled-label means.}\label{fig:structure}
-\end{figure}
-
-
-\subsection{A Spanish-associated benefit, not a general local-language rule}
-Table~\ref{tab:local} and Figure~\ref{fig:local} report the exploratory local contrasts. Spanish has 278 associated complete pairs. Its mean single-response absolute error falls from 249.0 km under English to 231.6 km under Spanish: a 17.4 km reduction (7.0\%; pointwise 95\% interval 9.7--25.1 km). On the 945 other pairs, Spanish instead increases error by 7.2 km. The interaction is therefore $+24.5$ km (95\% interval 16.2--32.8 km). Both adjusted $p$ values are 0.0008.
-
-French does not significantly improve accuracy on its associated pairs: the estimated gain is $-5.0$ km. Its $-11.0$ km interaction is significant within the eight-test family, indicating less benefit there than elsewhere under this classification. Arabic increases error on associated pairs by 22.7 km, with essentially no local interaction. Mandarin increases associated-pair error by 10.5 km, but its local interaction is not significant. A general rule that a model knows a place better when asked in a locally associated language is therefore unsupported.
-
-
-\begin{table}[htbp]\centering\scriptsize
-\caption{Local-language analysis on 1,223 complete pairs. Errors average individual responses, not pair medians. $G_H$ and $I$ are gains in km; positive favors the translated prompt. Adjusted $p$ values use one family of eight tests.}\label{tab:local}
-\begin{tabular}{lrrrrrrrr}\toprule
-Language & Cities & Pairs & English error & Local error & $G_H$ & $p_H$ & $I$ & $p_I$ \\\midrule
-\tableinput{generated/local-table.tex}
+\begin{table}[htbp]\centering\small
+\caption{Repeated-response variation. SD and coefficient of variation (CV) are averaged equally across all 4,950 pairs using accepted values; identical counts use each condition's 4,949 ten-valid-response pairs.}\label{tab:dispersion}
+\begin{tabular}{lrrr}\toprule Instructions & Mean SD (km) & Mean CV (\%) & Ten identical \\\midrule
+\tableinput{generated/dispersion-table.tex}
 \bottomrule\end{tabular}
 \end{table}
 
+\subsection{A recognizable sphere with measurable residuals}
+The reconstructions retain recognizable global geography (Figure~\ref{fig:maps}), but their residual stress is much larger than the ellipsoidal reference's spherical fitting floor (Table~\ref{tab:geometry}). The twelve-start diagnostic fits place capitals about 150--158 km from their reference positions on average, versus 9.5 km for the WGS84 control. The reference displacement is not subtracted from model displacements: the vectors vary by capital and do not define a scalar correction.
 
-\begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{figures/local-language-effects.pdf}
-\caption{Local-language gains with pointwise 95\% bootstrap intervals, conditional on repeated-call variation. These intervals do not quantify population uncertainty across cities and are not multiplicity-adjusted.}\label{fig:local}
-\end{figure}
-
-
-The Spanish advantage remains positive when each associated capital is omitted: home-pair gains range from 13.1 to 25.1 km and interactions from 20.3 to 32.2 km (Appendix~\ref{app:sensitivity}). French and Mandarin gains change sign under such omissions. Mandarin is particularly limited by having only two associated capitals. For comparison of estimands, median-based associated-pair gains are $-4.1$, $+23.9$, $-27.5$, and $-9.7$ km for French, Spanish, Arabic, and Mandarin respectively; their directions agree with the single-response results, but no additional tests are performed on them.
-
-\section{Interpretation and limitations}
-The observations support geographically structured, language-sensitive behavior. They do not identify independent internal maps or causal effects of linguistic culture. One translation per language confounds language with wording; the unchanged English place names further limit the intervention. Numeric-format restrictions can influence generation and may interact with language. English is a comparison condition, not a neutral view of geography.
-
-The local-language result is conditional and exploratory. Country-language groups correlate with geography, distance range, multilingualism, and likely training-text exposure. The interaction removes a language's overall advantage on the remaining pairs; it does not adjust all these confounders. No training-corpus frequencies, city prominence measures, or population-weighted models are available in this analysis. In particular, the Spanish finding cannot be attributed causally to familiarity or cultural representation.
-
-Repeated API calls are the unit of sampling uncertainty. Shared capitals, one model alias, one run per condition, and concurrent scheduling restrict generalization. Ten responses per pair can miss rare modes and extreme tails. A small conditional $p$ value may coexist with uncertainty about new prompts or new countries. Provider-side dependence, routing, caching, or unreported model changes would violate assumptions not verifiable from saved outputs. Symmetry has not been tested directionally, and the reported geometry depends on the aggregation rule and fitting family. No bootstrap position clouds or inferential comparisons of whole reconstructed maps were performed.
-
-Euclidean stress must be compared with a reference-distance baseline, not interpreted as evidence that the true Earth requires extra semantic dimensions. Likewise, small spherical stress does not establish unique identification, and four numerical starts do not prove global optimality. We do not select a latent dimensionality from the scree curve. Warped country shapes depend on interpolation and fixed frame pins; only the sampled capital relationships are directly elicited.
-
-A confirmatory extension should fix its language-affinity definition and primary estimands before collection, balance regional and distance coverage, include several independently reviewed translations per language, randomize collection blocks, and repeat on separate dates and models. Localized city-name conditions should be factorially separated from instruction language. These extensions would test whether the present Spanish-associated benefit generalizes beyond this configuration.
-
-\section{Reproducibility and availability}
-The implementation uses Python for collection and analysis and a React/Vinext frontend for exploration. CSV files store places, pairs, and append-only response attempts; JSON manifests preserve conditions and analysis parameters. There is no database. A bounded job queue, rate limiting, retries, budget accounting, per-run locking, and per-attempt flushes support resumable collection. A crash between remote completion and checkpoint writing can still repeat a billed call; the runner does not claim exactly-once provider execution.
-
-Experiment identifiers and analysis exports are listed in the supplement. Raw responses and downstream numerical results are reproducible from saved files; future calls to a mutable provider alias need not reproduce historical behavior. The repository includes source hashes, exact prompts, analysis scripts, generated tables and figures, and this LaTeX source. The language study's recorded usage-based cost is approximately US\$9.86; this is a software estimate, not a billing invoice.
-
-The project repository is \url{https://github.com/timini/cognitive-atlas}. It is private at the time of writing; this report does not claim public data availability or a permanent archival DOI. The hosted atlas is an access-controlled exploration interface. Running the paper analysis and build requires no API key and makes no model calls. Author identities, affiliations, and submission metadata are intentionally not assigned in this research draft. Code, analysis, translations, and drafting were prepared with AI assistance; human scientific and language review remains necessary before submission.
-
-\section{Conclusion}
-Repeated pairwise judgments make it possible to reconstruct and audit the geography expressed by a language model while preserving response variation. In the matched Gemini 3.5 Flash runs, all instruction languages change the distance matrix detectably under a conditional permutation baseline, even when aggregate accuracy remains similar. A separate exploratory analysis finds an accuracy benefit for Spanish-associated capitals under Spanish instructions, but no general local-language advantage. The evidence concerns elicited geographic behavior on a fixed benchmark; broader claims require replication across prompts, places, dates, and models.
-
-\bibliographystyle{plain}
-\bibliography{references}
-
-\clearpage
-\appendix
-\section{All language comparisons}\label{app:comparisons}
+Input judgments preserve roughly 96\% of the reference three-nearest-neighbor sets; fitted spherical positions preserve about 92--93\%. Enforcing global geometry therefore trades some local neighborhood fidelity for a coherent metric. Fit and neighborhood statistics are in-sample. They do not establish unique identification, planning ability, or performance on unqueried cities.
 
 \begin{table}[htbp]\centering\small
-\caption{Complete-pair median statistics. Disagreement is $T_{ab}$. MAE change is second minus first language; positive means the second is worse. Both $p$ columns are Holm-adjusted across twenty tests under the strong exchangeability null.}\label{tab:pairwise}
-\begin{tabular}{lrrrr}\toprule
-First / second & Disagreement (km) & MAE change (km) & $p_T$ & $p_A$ \\\midrule
+\caption{Spherical geometry and reference control. Diagnostic fits use twelve starts per judgment matrix and four for WGS84. Stress follows Eq.~\ref{eq:stress}. Shift is mean displacement from actual capitals. NN columns give input and fitted three-neighbor preservation. Excess averages violated input triples only; a dash denotes no violated triples.}\label{tab:geometry}
+\begin{tabular}{lrrrrr}\toprule
+Input & Stress & Shift (km) & Input NN (\%) & Fitted NN (\%) & Excess (km) \\\midrule
+\tableinput{generated/geometry-table.tex}
+\bottomrule\end{tabular}
+\end{table}
+
+All 40 diagnostic starts converged. Increasing from four to twelve starts changes the aligned judgment maps by only approximately 1--3 metres per capital on average. This supports stability for the tested starts, not a proof of the global optimum. Full spectra show both negative cosine eigenmass and positive mass beyond rank three in the judgments. The WGS84 control has a small spectral residual too, as expected from the ellipsoid--sphere mismatch.
+
+\begin{figure}[p]\centering
+\includegraphics[width=\linewidth,height=.84\textheight,keepaspectratio]{figures/reconstructed-worlds.pdf}
+\caption{The three published four-start, median-based spherical reconstructions. Gray outlines and filled points show reference geography; colored coastlines and open points show the deformation and fitted capitals. Displacement is unamplified. All panels use the same equirectangular display; its projection distortion is distinct from the fitted capital shifts. Coastline interpolation is illustrative.}\label{fig:maps}
+\end{figure}
+
+The Euclidean stress curves follow a broadly similar decline for judgments and WGS84 distances (Figure~\ref{fig:structure}). Even correct global arc distances retain Euclidean residuals: three-dimensional chord distances are not surface arcs. Consequently, residual stress at higher dimensions is not direct evidence of additional semantic dimensions. No intrinsic dimensionality is selected. Appendix~\ref{app:algorithms} distinguishes common distance residuals from non-metric disparity stress.
+
+\subsection{Small map shifts, detectable distributional departures}
+On the common 4,948 complete pairs, English--Arabic median disagreement is 141.3 km and English--Chinese disagreement is 157.7 km. Arabic--Chinese disagreement is 165.2 km (Table~\ref{tab:pairwise}). Complete-case pair-median MAEs are 215.8, 233.8, and 222.0 km for English, Arabic, and Chinese. Thus Chinese and English differ by 157.7 km in their individual pair medians while their aggregate MAEs differ by only 6.3 km.
+
+All six distance-statistic tests reject the specified exchangeability baseline with adjusted Monte Carlo $p=0.0012$. No randomized statistic exceeded its corresponding observed magnitude among 4,999 draws. The repeated adjusted value reflects simulation resolution and multiplicity correction, not equal effect sizes or an exact underlying probability.
+
+\begin{table}[htbp]\centering\small
+\caption{Complete-pair comparisons. MAE change is second minus first condition; positive means larger pair-median error. Both $p$ columns are Holm-adjusted across six tests of the strong response-distribution null.}\label{tab:pairwise}
+\begin{tabular}{lrrrr}\toprule Conditions & Disagreement (km) & MAE change (km) & $p_T$ & $p_A$ \\\midrule
 \tableinput{generated/pairwise-table.tex}
 \bottomrule\end{tabular}
 \end{table}
 
-The complete-case median-based MAEs are 164.5 km (English), 156.9 km (French), 166.5 km (Spanish), 185.4 km (Arabic), and 165.2 km (Mandarin). These differ slightly from Table~\ref{tab:languages}, which includes all pairs with their available valid responses. The exclusion rule is identical for all comparisons; it is not chosen separately to maximize a result.
-
-\section{Capital omission sensitivity}\label{app:sensitivity}
+The observed mean aligned capital shifts are 81.0 km for English--Arabic, 88.4 km for English--Chinese, and 78.5 km for Arabic--Chinese (Table~\ref{tab:maps}). Their shuffled-label means range from 23.9 to 27.0 km. All three adjusted probabilities are 0.003, with zero exceedances among 999 permutations. Shifts of this size are subtle at world scale, explaining why the maps can look similar. The tests establish departures from the common response-distribution baseline, while allowing changes in dispersion to contribute. They do not establish distinct population median maps.
 
 \begin{table}[htbp]\centering\small
-\caption{Descriptive ranges after removing one language-associated capital and all its pairs. Positive values favor the translated prompt. These are sensitivity ranges, not confidence intervals.}
-\begin{tabular}{lrr}\toprule
-Language & Associated-pair gain range (km) & Interaction range (km) \\\midrule
-\tableinput{generated/leaveout-table.tex}
+\caption{Map-displacement randomization using all pairs and their observed valid sample counts. The interval describes the central 95\% of shuffled statistics; it is not a confidence interval for the observed map shift.}\label{tab:maps}
+\begin{tabular}{lrrrr}\toprule Conditions & Observed (km) & Null mean (km) & Null interval (km) & Adjusted $p$ \\\midrule
+\tableinput{generated/map-table.tex}
 \bottomrule\end{tabular}
 \end{table}
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{figures/structure-and-language.pdf}
+\caption{Left: metric Euclidean MDS residuals alongside the WGS84 baseline. Right: observed map shifts (bars) and shuffled-label means with central 95\% null intervals (black markers). Solver variation can produce slight nonmonotonicity in the dimensionality curve.}\label{fig:structure}
+\end{figure}
 
-The full supplement identifies the omitted capital for each estimate. Removing Dakar changes the French associated-pair gain from negative to positive. Removing Beijing leaves a positive Mandarin gain for Singapore-associated pairs; removing Singapore leaves a negative gain for Beijing-associated pairs. A single group summary therefore conceals meaningful city heterogeneity.
+\subsection{Regional estimates do not show an absolute local advantage}
+The Arab States group has 1,380 associated complete pairs, 1,275 with only one associated endpoint and 105 with both. Mean single-response absolute error rises from 196.2 km under English to 205.1 km under Arabic, a gain of $-8.9$ km. On other pairs the Arabic disadvantage is larger, so the interaction is $+13.1$ km. This positive interaction describes a smaller disadvantage, not an accuracy benefit.
 
+The Beijing--Singapore group has 197 pairs: 196 with one associated endpoint and only one linking the two cases. Mean single-response error rises from 169.6 to 180.2 km under Chinese, a gain of $-10.7$ km. The interaction is $-4.5$ km. These group-specific observations do not support a local accuracy advantage in this collection. They also do not rule out advantages in other places or prompt formulations.
+
+\begin{table}[htbp]\centering\scriptsize
+\caption{Exploratory regional contrasts on complete pairs. Error columns average individual responses on associated pairs, unlike the pair-median MAE in Table~\ref{tab:languages}. Gains and interactions are in km. Bootstrap probabilities are approximate and conditioned on the empirical response samples; see Appendix~\ref{app:bootstrap} for diagnosed calibration limits.}\label{tab:local}
+\begin{tabular}{lrrrrrrr}\toprule Prompt & Pairs & English error & Local error & $G_H$ & $p_H$ & $I$ & $p_I$ \\\midrule
+\tableinput{generated/local-table.tex}
+\bottomrule\end{tabular}
+\end{table}
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{figures/local-language-effects.pdf}
+\caption{Regional point estimates and pointwise empirical-bootstrap intervals. Positive gain favors the translated prompt; positive interaction alone need not do so. These intervals summarize observed repeated-call variation and do not cover uncertainty across capitals, prompts, or unseen response modes.}\label{fig:local}
+\end{figure}
+
+Distance composition differs markedly: median reference distances are 5,451 km on Arab States pairs versus 8,474 km elsewhere, and 8,659 km on Beijing--Singapore pairs versus 7,562 km elsewhere. Standardizing both groups to the pooled distance-quintile distribution gives gains of $-8.6$ and $-12.0$ km and interactions of $+13.6$ and $-6.0$ km, respectively. This limited adjustment preserves the absence of an observed absolute gain. Capital omissions leave the Arab States gain between $-12.0$ and $-6.6$ km. The Chinese gain is $-17.5$ km when Beijing is omitted and $-3.9$ km when Singapore is omitted, demonstrating heterogeneity concealed by the two-case average.
+
+\subsection{Sensitivity to exclusions}
+Retaining the five readable over-range numbers changes all-pair median MAEs to 216.12 km for English, 233.99 km for Arabic, and 222.02 km for Chinese (Appendix~\ref{app:sensitivity}). The ordering is unchanged. The malformed Chinese answers are not repaired or assigned values. Using all available pairs changes the regional interactions to $+13.07$ and $-4.67$ km while leaving associated-pair gains unchanged. Refitting after range retention shifts the English map by 0.90 km per capital on average (38.0 km maximum) and Arabic by 0.055 km (2.2 km maximum); Chinese is unchanged. The three between-condition map shifts change by at most 0.16 km on average. These checks quantify the recorded exclusions; they do not address unobserved tails, and no new significance claims are made from them.
+
+\section{Discussion}
+The main result is the coexistence of high geographic rank accuracy with imperfect metric consistency. Spherical reconstruction summarizes that inconsistency in a coherent configuration, making global structure visible while revealing a tradeoff in local neighborhood preservation. Reference controls matter: part of any spherical residual comes from fitting ellipsoidal surface distances, and Euclidean dimensionality curves also carry an Earth baseline.
+
+The three prompt conditions produce different observed answers and fitted configurations, with departures from a shared response-distribution baseline. The effect sizes explain the apparent visual similarity: average between-condition capital shifts are roughly half the approximately 150-km displacements from reference geography and small relative to a world map. Statistical detectability and visual prominence answer different questions. A common-distribution rejection does not distinguish changes in central judgments from changes in sampling variability.
+
+The regional analysis reinforces the distinction between an interaction and a benefit. Arabic has a smaller disadvantage on the chosen Arab States pairs than elsewhere, but still a larger observed error than English there. Chinese also shows larger error in its narrow two-case group. These findings are descriptive of the chosen operational sets. Regional geography, distance, prominence, multilingualism, and unknown training exposure remain intertwined. Coarse distance balancing does not identify a cultural or linguistic mechanism.
+
+Several limitations delimit the evidence. The capitals were selected purposively, and the grouped analyses were formulated after earlier results were known. Each written language has one unvalidated translation with English entity names, one model alias, and one collection period. Closely clustered requests may share provider-side disturbances. Ten observations per pair can omit rare modes. The bootstrap calibration demonstrates that this last problem can defeat nominal interval coverage; more precise Monte Carlo probabilities do not repair missing tail information. The analysis does not estimate uncertainty over new countries, translations, dates, or model versions.
+
+Future confirmatory work should prespecify the central estimands and comparison families, randomize languages and pairs within independently repeated time blocks, vary reviewed translations, and collect more repeats on a stratified subset. Localized entity names should form a separate factor. Stronger claims about population median maps need procedures justified for unequal response dispersions; behavioral navigation tasks would be needed to test use of the inferred geometry.
+
+\section{Reproducibility and availability}
+The public atlas at \url{https://timini.github.io/cognitive-atlas/} provides the observed responses, manifests, pair matrices, fitted coordinates, and statistical audits. The source repository is \url{https://github.com/timini/cognitive-atlas}; it remains private at this revision. The paper and its reproduction package are at \url{https://timini.github.io/cognitive-atlas/paper/}. No permanent archival DOI has been assigned.
+
+An explicit 100-capital input lock freezes all three exports, raw observations, reference geometry, the coordinate source record, and the dependency lock. Paper builds verify these expected hashes before generating tables or figures. A separate release lock records analysis scripts and computed evidence; updating it is an explicit revision operation. Numerical reproduction is checked with stated tolerances rather than assuming byte-identical numerical results across platforms.
+
+Historical collection records include prompts, settings, dates, provider payloads, and a source revision, but do not capture dirty-source state or a collector snapshot for each resumed session. Historical analysis identities also omitted coastline and analysis-runtime inputs. The new paper locks these available artifacts and records its current analysis environment; it cannot retroactively prove the historical execution state. Recorded usage implies US\$23.57 for the three collections, a token-based estimate rather than an invoice. Rebuilding this paper makes no model calls and requires no API key.
+
+Ten AI-assisted reviews informed this revision; a finding-by-finding response accompanies the source. These reviews are not independent human peer review. Author identities and affiliations remain unassigned. Human scientific assessment and independent language review are still required before journal submission.
+
+\section{Conclusion}
+Across 100 capitals, Gemini 3.5 Flash's repeated distance judgments preserve global geographic order while violating exact metric consistency. Their fitted spherical maps are recognizable, quantitatively displaced from Earth, and sensitive to the observed prompt condition. Conditional randomization identifies response-distribution differences, not independently established population median maps. The data show no observed absolute regional advantage for the two translated prompts under the stated groups. The benchmark provides a reproducible account of elicited geography whose broader interpretation awaits replicated prompts, sampling periods, and models.
+
+\bibliographystyle{plain}
+\bibliography{references}
 \clearpage
-\section{Protocol and experiment identifiers}
-The English numeric protocol is reproduced below; the machine-readable supplement contains the exact Unicode versions of all five prompts and the manifests contain the parameter values.
+\appendix
+\section{Protocol and experiment identifiers}\label{app:protocol}
+The exact prompts are stored in \path{results/exact-language-prompts.json}. The prompt-family identifier is \path{great-circle-formatted-number-v2}; the parser identifier is \path{ascii_decimal_v2}. The English instructions are:
 \begin{quote}\small
 Estimate the straight-line great-circle distance in kilometres between \{city\_a\}, \{country\_a\} and \{city\_b\}, \{country\_b\}. Return only your best numerical estimate in kilometres. Do not explain your reasoning. Use only digits 0--9, with a period if a decimal separator is needed. Do not include thousands separators or units.
 \end{quote}
-The rendered dash above is typographic; the JSON supplement preserves the exact prompt bytes. The language-family identifier is \texttt{great-circle-formatted-number-v2}; the parser is \texttt{ascii\_decimal\_v2}. The 50-capital dataset SHA-256 is
-\begin{center}\scriptsize\texttt{835b87cc327926b228c86d1e17cfe797c903497661a1603843d7f7662f62ef9e}\end{center}
-
+The dash above is typographic; the Unicode supplement preserves the prompt string. All three runs use ten samples per pair, temperature 1, top-$p$ 0.95, maximum output 128 tokens, and minimal thinking. Full parameter manifests, timing records, and source hashes accompany the exported data.
 \begin{table}[htbp]\centering\small
-\caption{Immutable experiment identifiers, including the earlier 20-capital pilot. Full export identifiers and result hashes are in \texttt{results/provenance.json}.}
-\begin{tabular}{llrl}\toprule
-Gemini configuration & Language & Capitals & Experiment ID \\\midrule
+\caption{The only experimental inputs to this revised manuscript.}
+\begin{tabular}{lll}\toprule Instructions & Experiment ID & Analysis ID \\\midrule
 \tableinput{generated/experiments-table.tex}
 \bottomrule\end{tabular}
 \end{table}
+\noindent\begin{minipage}{\linewidth}
+The normalized-record dataset digest is
+\begin{center}\scriptsize\texttt{087c6e422985dddcaaf72b9c1f85ce8d08e43bb2e5fb26eff19f0759ad2dd4c4}\end{center}
+The input lock separately records the CSV byte hash. These identifiers represent different serialized objects and need not match.
+\end{minipage}\par
 
+\section{Operational groups and distance balance}\label{app:groups}
+The Arab States regional definition uses the dated 22-country list in the 2021 ITU/UNU report \cite{arabstates}, intersected with the 100-capital dataset: Abu Dhabi, Manama, Djibouti, Algiers, Cairo, Baghdad, Amman, Kuwait City, Beirut, Rabat, Nouakchott, Muscat, Doha, Riyadh, and Tunis. The Chinese case set is explicitly Beijing and Singapore, supported by the institutional and census sources \cite{chinastandard,sgcensus}. It is not a claim that Mandarin is absent elsewhere or predominant in every included setting. The source supplement records included and absent IDs, URLs, dates, and limitations.
+
+\begin{table}[htbp]\centering\scriptsize
+\caption{Regional composition and descriptive distance standardization. Distances are median WGS84 distances in km. Standardized gain and interaction apply identical pooled quintile weights to associated and other pairs; all five bins have observations in both groups.}
+\begin{tabular}{lrrrrrr}\toprule Group & One endpoint & Both & Associated distance & Other distance & Std. gain & Std. interaction \\\midrule
+\tableinput{generated/balance-table.tex}
+\bottomrule\end{tabular}
+\end{table}
+The complete-case rule excludes neither group's associated pairs. Thus the omitted observations affect only the other-pair component of these regional sensitivities. Group choice and coarse distance adjustment are exploratory; they do not control all geographic or linguistic confounding.
+
+\section{Bootstrap derivation and calibration}\label{app:bootstrap}
+For $n$ observed errors with unbiased variance $s^2$, one draw from the empirical distribution has variance $(n-1)s^2/n$. The mean of $n$ such draws has conditional variance $(n-1)s^2/n^2$. Scaling centered bootstrap mean deviations by $\sqrt{n/(n-1)}$ matches the usual variance estimate $s^2/n$. For a linear contrast $\hat\theta=\sum_c a_c\bar e_c$ over independent pair--condition cells with common $n=10$, the corresponding variance is $\sum_c a_c^2s_c^2/n$. This is a second-moment identity, not a proof of coverage.
+
+For corrected deviations $\delta_b$, basic intervals are $[\hat\theta-q_{.975}(\delta),\hat\theta-q_{.025}(\delta)]$. Approximate two-sided probabilities count $|\delta_b|\geq|\hat\theta|$, using the plus-one convention. The regional audit saves exceedance counts: zero for both Arabic statistics, 23 for the Chinese associated gain, and 2,146 for its interaction among 9,999 draws. Holm-adjusted values are 0.0004, 0.0004, 0.0048, and 0.2147. The first two are at the current Monte Carlo resolution. Corrections are specific to this four-test family and do not account for the preceding exploratory selection process.
+
+We tested the same implementation on four explicitly synthetic, equal-mean scenarios, separate from all model observations: regular tied values, unequal variances, an unseen rare positive tail, and zero variance. Each used 240 independent outer datasets, 40 fixed pairs, ten observations per condition, and 499 inner bootstrap draws. Coverage ranged from 94.2--96.3\% in the regular tied case and 93.8--95.0\% with unequal variances; corresponding four-test familywise rejection rates were 4.6\% and 3.3\%. The deterministic case had full coverage and no rejection. In the deliberately rare-tail case, associated-gain coverage collapsed to 3.3--7.5\% and familywise rejection reached 100\%. These simulations diagnose possible failure; they neither identify the real response distribution nor validate universal nominal coverage. Monte Carlo standard errors, Wilson intervals, complete scenario definitions, and seeds accompany the report.
+
+Conditional empirical intervals for associated gains are $[-11.7,-6.1]$ km for Arabic and $[-17.6,-3.8]$ km for Chinese. The interaction intervals are $[9.7,16.7]$ and $[-11.6,2.6]$ km. They are presented alongside the tail limitation, not as evidence that unseen rare responses are absent. The analytic-versus-bootstrap standard-error agreement remains an implementation check only.
+
+\section{Exclusion and algorithm sensitivities}\label{app:sensitivity}
+\begin{table}[htbp]\centering\small
+\caption{Pair-median MAE (km) under recorded quality-control alternatives. Range-retained means include readable over-range numerical answers while continuing to exclude malformed text. No observations are invented or repaired.}
+\begin{tabular}{lrrr}\toprule Instructions & All pairs, accepted & Complete pairs & All pairs, range retained \\\midrule
+\tableinput{generated/sensitivity-table.tex}
+\bottomrule\end{tabular}
+\end{table}
+Complete accepted pairs number 4,948; retaining numerical range violations yields 4,949 complete pairs, still excluding Brussels--Paris. All raw observations remain fixed. These descriptive alternatives answer a different selection question and are not additional preregistered tests.
+
+\subsection{Embedding residuals}\label{app:algorithms}
+\begin{table}[htbp]\centering\small
+\caption{Distance-normalized stress for classical, metric planar, and spherical reconstructions; non-metric disparity Stress-1 is deliberately separated. Planar kilometer residuals use coordinates before display alignment. Lower values across the first three columns describe their stated in-sample distance objective, not model selection or equivalent dimensional constraints.}
+\begin{tabular}{lrrr|r}\toprule Instructions & Classical 2D & Metric 2D & Sphere & Non-metric disparities \\\midrule
+\tableinput{generated/algorithms-table.tex}
+\bottomrule\end{tabular}
+\end{table}
+The supplement retains all cosine eigenvalues and per-start diagnostics, including the rank-three positive-semidefinite checks on actual spherical arcs. Those controls separate implementation validity from whether judgment distances satisfy the spherical model.
 
 \clearpage
-\section{Complete capital sample}\label{app:capitals}
+\section{Complete 100-capital sample}\label{app:capitals}
 \small
 \begin{longtable}{llp{8cm}}
 \toprule ISO & Capital & Country \\\midrule\endfirsthead

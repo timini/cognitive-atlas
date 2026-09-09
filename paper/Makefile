@@ -2,7 +2,7 @@ PYTHON ?= ../.venv/bin/python
 PDFLATEX ?= pdflatex
 BIBTEX ?= bibtex
 
-.PHONY: all assets analyze clean
+.PHONY: all assets analyze verify clean
 all: assets
 	$(PDFLATEX) -interaction=nonstopmode -halt-on-error main.tex
 	$(BIBTEX) main
@@ -10,10 +10,14 @@ all: assets
 	$(PDFLATEX) -interaction=nonstopmode -halt-on-error main.tex
 	cp main.pdf cognitive-atlas-paper.pdf
 assets:
-	cd .. && $(PYTHON:../%=%) paper/scripts/build_assets.py
+	cd .. && $(PYTHON:../%=%) -m paper.revision100.build
+verify:
+	cd .. && $(PYTHON:../%=%) -m paper.revision100.verify
 analyze:
-	cd .. && $(PYTHON:../%=%) paper/scripts/check_distance_structure.py
-	cd .. && $(PYTHON:../%=%) paper/scripts/check_language_differences.py
-	cd .. && $(PYTHON:../%=%) paper/scripts/local_language.py
+	cd .. && $(PYTHON:../%=%) -m paper.revision100.local
+	cd .. && $(PYTHON:../%=%) paper/revision100/qc.py
+	cd .. && $(PYTHON:../%=%) paper/revision100/geometry.py
+	cd .. && $(PYTHON:../%=%) paper/revision100/calibration.py
+	cd .. && $(PYTHON:../%=%) paper/revision100/range_geometry.py
 clean:
 	rm -f main.aux main.bbl main.blg main.log main.out main.pdf

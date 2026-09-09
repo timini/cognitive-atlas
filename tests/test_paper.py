@@ -1,66 +1,72 @@
-"""Scientific audit invariants; no paid API calls and no expensive resampling."""
-
-import hashlib
-import importlib.util
+"""Scientific contracts for the current 100-capital manuscript; no paid calls."""
 import json
 from pathlib import Path
 
 import numpy as np
 import pytest
 
-ROOT = Path(__file__).resolve().parents[1]
-SPEC = importlib.util.spec_from_file_location("local_language", ROOT / "paper/scripts/local_language.py")
-LOCAL = importlib.util.module_from_spec(SPEC)
-SPEC.loader.exec_module(LOCAL)
+from paper.revision100 import common
+from paper.revision100.build import verify_release
+from paper.revision100.local import bootstrap_deviations, contrast_weights, distance_balance, summary
+from paper.revision100.verify import main as verify_paper
 
 
-def test_local_contrast_removes_uniform_language_advantage():
-    weights = LOCAL.contrast_weights([True, False, True, False, False])
-    assert np.allclose(np.ones(5) * 20 @ weights, [20, 20, 0])
-    assert np.allclose(np.array([30, 10, 30, 10, 10]) @ weights, [30, 10, 20])
-    assert np.allclose(weights.sum(axis=0), [1, 1, 0])
-    with pytest.raises(ValueError):
-        LOCAL.contrast_weights([True, True])
+def test_current_paper_and_publication_have_only_the_three_100_capital_conditions():
+    verify_paper()
+    entries=json.loads(Path('public/data/experiments.json').read_text())
+    assert len(entries)==3 and {e['language'] for e in entries}=={'en','ar','zh'}
+    assert all(e['capital_count']==100 for e in entries)
+    assert entries==json.loads(Path('paper/experiment-index.json').read_text())
 
 
-def test_null_and_multiple_test_correction():
-    assert LOCAL.interval_and_p(0, np.zeros(100))["p"] == 1
-    assert np.allclose(LOCAL.holm([0.01, 0.04, 0.03]), [0.03, 0.06, 0.06])
-    p = np.array([0.0001, 0.3, 1, 0.02])
-    assert np.all(LOCAL.holm(p) >= p)
+def test_frozen_inputs_reject_changed_content(tmp_path,monkeypatch):
+    path=tmp_path/'input.txt';path.write_text('original')
+    (tmp_path/'input-lock.json').write_text(json.dumps({'files':{'input.txt':common.sha(path)}}))
+    monkeypatch.setattr(common,'ROOT',tmp_path);monkeypatch.setattr(common,'PAPER',tmp_path)
+    common.verify_inputs()
+    path.write_text('changed')
+    with pytest.raises(ValueError,match='Frozen manuscript input changed'):common.verify_inputs()
 
 
-def test_paper_results_match_sources_and_analysis_code():
-    for name, script in [
-        ("language-difference-audit", "check_language_differences"),
-        ("local-language-audit", "local_language"),
-    ]:
-        report = json.loads((ROOT / f"paper/results/{name}.json").read_text())
-        assert (
-            hashlib.sha256((ROOT / f"paper/scripts/{script}.py").read_bytes()).hexdigest()
-            == report["script_sha256"]
-        )
-        for source in report["sources"].values():
-            assert hashlib.sha256((ROOT / source["path"]).read_bytes()).hexdigest() == source["sha256"]
-        assert report["complete_pairs"] == 1223
-        assert report["excluded_pair_ids"] == ["AR--VN", "KR--RU"]
+def test_release_build_contract_is_complete():
+    verify_release()
+    lock=json.loads(Path('paper/release-lock.json').read_text())['files']
+    assert all(str(p) in lock for p in Path('paper/revision100').glob('*.py'))
+    assert all(str(p) in lock for p in Path('paper/revision100').glob('*.json'))
+    inputs=json.loads(Path('paper/input-lock.json').read_text())['files']
+    assert 'public/data/world.json' in inputs and 'uv.lock' in inputs
+    assert sum(p.endswith('/responses.csv') for p in inputs)==3
 
 
-def test_local_effects_are_computed_from_individual_errors():
-    report = json.loads((ROOT / "paper/results/local-language-audit.json").read_text())
-    for result in report["results"]:
-        assert result["home_pairs"] + result["other_pairs"] == report["complete_pairs"]
-        home = result["home_english_MAE_km"] - result["home_language_MAE_km"]
-        other = result["other_english_MAE_km"] - result["other_language_MAE_km"]
-        assert np.isclose(home, result["home"]["gain_km"])
-        assert np.isclose(home - other, result["interaction"]["gain_km"])
-        assert np.allclose(result["analytic_se_km"], result["bootstrap_se_km"], rtol=0.06)
-        for key in ["home", "interaction"]:
-            assert result[key]["p_holm_8"] >= result[key]["p"]
+def test_region_interaction_and_distance_standardization():
+    home=np.array([True,False,True,False,False])
+    weights=contrast_weights(home)
+    assert np.allclose(np.ones(5)*20@weights,[20,20,0])
+    assert np.allclose(np.array([30,10,30,10,10])@weights,[30,10,20])
+    with pytest.raises(ValueError):contrast_weights([True,True])
+    truth=np.arange(1,101);selected=np.arange(100)%2==0
+    balanced=distance_balance(np.ones(100)*5,truth,selected)
+    assert balanced['covered_pair_fraction']==1
+    assert balanced['standardized_home_gain_km']==5
+    assert balanced['standardized_interaction_km']==0
 
 
-def test_manuscript_totals_and_spanish_percentage():
-    checks = json.loads((ROOT / "paper/results/manuscript-checks.json").read_text())
-    assert checks["total_language_valid"] == 61237
-    assert checks["total_language_attempts"] == 61251
-    assert np.isclose(checks["spanish_home_gain_percent"], 6.9717407)
+def test_bootstrap_identity_null_and_variance_not_coverage():
+    a=np.ones((40,10))*100;w=contrast_weights(np.arange(40)<10)
+    deviations=bootstrap_deviations(a,a,w,99,1)
+    assert np.array_equal(deviations,np.zeros((99,3)))
+    assert summary(0,deviations[:,0])['p']==1
+    rng=np.random.default_rng(22);a=rng.normal(100,10,(40,10));b=rng.normal(100,20,(40,10))
+    d=bootstrap_deviations(a,b,w,1999,2)
+    se=np.sqrt(((a.var(axis=1,ddof=1)+b.var(axis=1,ddof=1))/10)@(w*w))
+    assert np.allclose(d.std(axis=0,ddof=1),se,rtol=.06)
+
+
+def test_manuscript_is_not_about_superseded_studies():
+    text=Path('paper/main.tex').read_text()
+    assert '50-capital' not in text and '20-capital' not in text
+    assert 'Spanish' not in text and 'French' not in text
+    assert '148,500' in text and '4,948' in text
+    assert 'not provider-enforced output schemas' in text
+    assert 'population median maps' in text
+    assert 'coverage collapsed' in text

@@ -1,0 +1,557 @@
+{
+  "algorithm_function_sha256": {
+    "bootstrap_deviations": "78602b85d519ccc7649878cdc859dee5285d94a79af4feb72e73dbeb00bb2f52",
+    "contrast_weights": "145aaf3f6e2708b3b302f7e3a3e58dc9cceff9a18fa515106de8f3d92c28a5c4",
+    "summary": "c708e1dd32af93597906a3d3a9004e81581d5a60e19acebc32d8520e5ccce97a"
+  },
+  "algorithm_source": "paper/revision100/local.py",
+  "algorithm_source_sha256": "46a37f526d0d0cca795e6f52cf00ab4de32394c3472a4ce63e28dbbdfe7d1dab",
+  "alpha": 0.05,
+  "associated_pair_counts": [
+    10,
+    4
+  ],
+  "associated_pair_indices_zero_based": [
+    [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    [
+      20,
+      21,
+      22,
+      23
+    ]
+  ],
+  "bootstrap": "Calls local.bootstrap_deviations, local.summary and local.contrast_weights directly. Each resample draws exactly ten observed values with replacement independently in each condition and stratum; deviations receive sqrt(10/9) correction. No Gaussian replacement for empirical resampling.",
+  "conditions": 3,
+  "holm_family_size": 4,
+  "holm_source_sha256": "add48d0ee67ac27b57588a5a3c0e5244a02113332e24d59f5db8e1cb7dec3422",
+  "inner_empirical_bootstrap_replicates": 499,
+  "interpretation": [
+    "These finite simulation scenarios test actual interval coverage and Type I rejection, extending an analytic-SE agreement check, but cannot prove universal bootstrap validity.",
+    "Regular tied and unequal-variance scenarios should be assessed against nominal coverage/rejection with their reported Monte Carlo uncertainty. No automatic pass/fail rule or selection of seeds based on results was used.",
+    "The rare-tail stress condition demonstrates a fundamental limitation: empirical n=10 samples may omit a tail that materially contributes to the population mean, causing invalid uncertainty even when variances are algebraically corrected. Its failure is not evidence that real outputs have this tail distribution.",
+    "The deterministic zero-variance condition is a boundary case with exact zero contrasts, expected coverage one and rejection zero; nominal95% coverage is not the target for this degenerate case.",
+    "Forty fixed synthetic strata and home groups10/4 are diagnostic choices, not replicas of the full4948-pair empirical design. Results do not establish independence of real API samples or population generalization across cities.",
+    "Basic intervals and centered-bootstrap two-sided p-values are not exact inversions under skewness. Four-test Holm correction controls a family only insofar as its marginal p-values are valid; it cannot repair an invalid bootstrap null distribution."
+  ],
+  "outer_independent_datasets_per_scenario": 240,
+  "pairs": 40,
+  "pointwise_ci_level": 0.95,
+  "samples_per_pair_per_condition": 10,
+  "scenario_definitions": {
+    "rare_extreme_skew": "English100+offset+10000*Bernoulli(.001); comparator1=110+offset+2*Rademacher; comparator2=110+offset+4*Rademacher. All means110+offset. Deliberate unseen-tail stress case, not a fitted model of real responses.",
+    "rounded_tied_regular": "All conditions:100+5*pair_index+5*(Binomial(8,.5)-4); many tied values, equal variances, within-pair mean100+offset.",
+    "unequal_variances": "100+5*pair_index+scale*(Binomial(8,.5)-4), condition scales2,7,12; equal means, unequal variances.",
+    "zero_variance": "Every observation is100+5*pair_index in every condition; exact zero contrasts and degenerate intervals."
+  },
+  "scenarios": {
+    "rare_extreme_skew": {
+      "english_rare_tail_observations_per_outer_dataset_frequency": {
+        "0": 161,
+        "1": 62,
+        "2": 16,
+        "3": 1
+      },
+      "holm_familywise_type1_rejection": {
+        "binomial_mcse": 0.0,
+        "count": 240,
+        "denominator": 240,
+        "interval_note": "Monte Carlo uncertainty across independent outer datasets, not a research-effect confidence interval. Plug-in MCSE is zero at boundaries; the Wilson interval still has positive width.",
+        "rate": 1.0,
+        "wilson_95_monte_carlo_interval": [
+          0.9842460800584412,
+          1.0
+        ]
+      },
+      "outer_datasets_with_no_english_tail_observation": 161,
+      "pointwise": {
+        "comparator_1_home": {
+          "coverage_95": {
+            "binomial_mcse": 0.017001838135919305,
+            "count": 18,
+            "denominator": 240,
+            "interval_note": "Monte Carlo uncertainty across independent outer datasets, not a research-effect confidence interval. Plug-in MCSE is zero at boundaries; the Wilson interval still has positive width.",
+            "rate": 0.075,
+            "wilson_95_monte_carlo_interval": [
+              0.04796476535845924,
+              0.11542606659186576
+            ]
+          },
+          "mean_estimated_contrast": -2.088,
+          "mean_interval_width": 25.341887065371203,
+          "unadjusted_type1_rejection": {
+            "binomial_mcse": 0.017001838135919302,
+            "count": 222,
+            "denominator": 240,
+            "interval_note": "Monte Carlo uncertainty across independent outer datasets, not a research-effect confidence interval. Plug-in MCSE is zero at boundaries; the Wilson interval still has positive width.",
+            "rate": 0.925,
+            "wilson_95_monte_carlo_interval": [
+              0.8845739334081344,
+              0.9520352346415408
+            ]
+          }
+        },
+        "comparator_1_interaction": {
+          "coverage_95": {
+            "binomial_mcse": 0.014610589608352698,
+            "count": 227,
+            "denominator": 240,
+            "interval_note": "Monte Carlo uncertainty across independent outer datasets, not a research-effect confidence interval. Plug-in MCSE is zero at boundaries; the Wilson interval still has positive width.",
+            "rate": 0.9458333333333333,
+            "wilson_95_monte_carlo_interval": [
+              0.9095446091817401,
+              0.9680748122037033
+            ]
+          },
+          "mean_estimated_contrast": -2.9316111111111125,
+          "mean_interval_width": 57.413792007810144,
+          "unadjusted_type1_rejection": {
+            "binomial_mcse": 0.012263385543967865,
+            "count": 9,
+            "denominator": 240,
+            "interval_note": "Monte Carlo uncertainty across independent outer datasets, not a research-effect confidence interval. Plug-in MCSE is zero at boundaries; the Wilson interval still has positive width.",
+            "rate": 0.0375,
+            "wilson_95_monte_carlo_interval": [
+              0.019852143313748394,
+              0.06972023263219351
+            ]
+          }
+        },
+        "comparator_2_home": {
+          "coverage_95": {
+            "binomial_mcse": 0.011587029785896784,
+            "count": 8,
+            "denominator": 240,
+            "interval_note": "Monte Carlo uncertainty across independent outer datasets, not a research-effect confidence interval. Plug-in MCSE is zero at boundaries; the Wilson interval still has positive width.",
+            "rate": 0.03333333333333333,
+            "wilson_95_monte_carlo_interval": [
+              0.01698546425790705,
+              0.06438486102088117
+            ]
+          },
+          "mean_estimated_contrast": -1.704166666666666,
+          "mean_interval_width": 28.75538133332612,
+          "unadjusted_type1_rejection": {
+            "binomial_mcse": 0.011587029785896782,
+            "count": 232,
+            "denominator": 240,
+            "interval_note": "Monte Carlo uncertainty across independent outer datasets, not a research-effect confidence interval. Plug-in MCSE is zero at boundaries; the Wilson interval still has positive width.",
+            "rate": 0.9666666666666667,
+            "wilson_95_monte_carlo_interval": [
+              0.9356151389791189,
+              0.9830145357420931
+            ]
+          }
+        },
+        "comparator_2_interaction": {
+          "coverage_95": {
+            "binomial_mcse": 0.012263385543967862,
+            "count": 231,
+            "denominator": 240,
+            "interval_note": "Monte Carlo uncertainty across independent outer datasets, not a research-effect confidence interval. Plug-in MCSE is zero at boundaries; the Wilson interval still has positive width.",
+            "rate": 0.9625,
+            "wilson_95_monte_carlo_interval": [
+              0.9302797673678065,
+              0.9801478566862516
+            ]
+          },
+          "mean_estimated_contrast": -2.0128703703703694,
+          "mean_interval_width": 58.83881680270248,
+          "unadjusted_type1_rejection": {
+            "binomial_mcse": 0.012263385543967865,
+            "count": 9,
+            "denominator": 240,
+            "interval_note": "Monte Carlo uncertainty across independent outer datasets, not a research-effect confidence interval. Plug-in MCSE is zero at boundaries; the Wilson interval still has positive width.",
+            "rate": 0.0375,
+            "wilson_95_monte_carlo_interval": [
+              0.019852143313748394,
+              0.06972023263219351
+            ]
+          }
+        }
+      }
+    },
+    "rounded_tied_regular": {
+      "holm_familywise_type1_rejection": {
+        "binomial_mcse": 0.013498863978265123,
+        "count": 11,
+        "denominator": 240,
+        "interval_note": "Monte Carlo uncertainty across independent outer datasets, not a research-effect confidence interval. Plug-in MCSE is zero at boundaries; the Wilson interval still has positive width.",
+        "rate": 0.04583333333333333,
+        "wilson_95_monte_carlo_interval": [
+          0.0257824825977389,
+          0.08019399468251036
+        ]
+      },
+      "pointwise": {
+        "comparator_1_home": {
+          "coverage_95": {
+            "binomial_mcse": 0.015128691774731048,
+            "count": 226,
+            "denominator": 240,
+            "interval_note": "Monte Carlo uncertainty across independent outer datasets, not a research-effect confidence interval. Plug-in MCSE is zero at boundaries; the Wilson interval still has positive width.",
+            "rate": 0.9416666666666667,
+            "wilson_95_monte_carlo_interval": [
+              0.9044798071390819,
+              0.9649375635792078
+            ]
+          },
+          "mean_estimated_contrast": -0.04916666666666666,
+          "mean_interval_width": 3.8924783162673995,
+          "unadjusted_type1_rejection": {
+            "binomial_mcse": 0.014068285846778444,
+            "count": 12,
+            "denominator": 240,
+            "interval_note": "Monte Carlo uncertainty across independent outer datasets, not a research-effect confidence interval. Plug-in MCSE is zero at boundaries; the Wilson interval still has positive width.",
+            "rate": 0.05,
+            "wilson_95_monte_carlo_interval": [
+              0.028830303254792054,
+              0.08534822469261089
+            ]
+          }
+        },
+        "comparator_1_interaction": {
+          "coverage_95": {
+            "binomial_mcse": 0.012263385543967862,
+            "count": 231,
+            "denominator": 240,
+            "interval_note": "Monte Carlo uncertainty across independent outer datasets, not a research-effect confidence interval. Plug-in MCSE is zero at boundaries; the Wilson interval still has positive width.",
+            "rate": 0.9625,
+            "wilson_95_monte_carlo_interval": [
+              0.9302797673678065,
+              0.9801478566862516
+            ]
+          },
+          "mean_estimated_contrast": -0.08805555555555553,
+          "mean_interval_width": 4.500462796870652,
+          "unadjusted_type1_rejection": {
+            "binomial_mcse": 0.011587029785896784,
+            "count": 8,
+            "denominator": 240,
+            "interval_note": "Monte Carlo uncertainty across independent outer datasets, not a research-effect confidence interval. Plug-in MCSE is zero at boundaries; the Wilson interval still has positive width.",
+            "rate": 0.03333333333333333,
+            "wilson_95_monte_carlo_interval": [
+              0.01698546425790705,
+              0.06438486102088117
+            ]
+          }
+        },
+        "comparator_2_home": {
+          "coverage_95": {
+            "binomial_mcse": 0.015128691774731048,
+            "count": 226,
+            "denominator": 240,
+            "interval_note": "Monte Carlo uncertainty across independent outer datasets, not a research-effect confidence interval. Plug-in MCSE is zero at boundaries; the Wilson interval still has positive width.",
+            "rate": 0.9416666666666667,
+            "wilson_95_monte_carlo_interval": [
+              0.9044798071390819,
+              0.9649375635792078
+            ]
+          },
+          "mean_estimated_contrast": -0.08541666666666667,
+          "mean_interval_width": 6.108136942968986,
+          "unadjusted_type1_rejection": {
+            "binomial_mcse": 0.014068285846778444,
+            "count": 12,
+            "denominator": 240,
+            "interval_note": "Monte Carlo uncertainty across independent outer datasets, not a research-effect confidence interval. Plug-in MCSE is zero at boundaries; the Wilson interval still has positive width.",
+            "rate": 0.05,
+            "wilson_95_monte_carlo_interval": [
+              0.028830303254792054,
+              0.08534822469261089
+            ]
+          }
+        },
+        "comparator_2_interaction": {
+          "coverage_95": {
+            "binomial_mcse": 0.014610589608352698,
+            "count": 227,
+            "denominator": 240,
+            "interval_note": "Monte Carlo uncertainty across independent outer datasets, not a research-effect confidence interval. Plug-in MCSE is zero at boundaries; the Wilson interval still has positive width.",
+            "rate": 0.9458333333333333,
+            "wilson_95_monte_carlo_interval": [
+              0.9095446091817401,
+              0.9680748122037033
+            ]
+          },
+          "mean_estimated_contrast": -0.08929398148148152,
+          "mean_interval_width": 6.477825745663517,
+          "unadjusted_type1_rejection": {
+            "binomial_mcse": 0.015128691774731046,
+            "count": 14,
+            "denominator": 240,
+            "interval_note": "Monte Carlo uncertainty across independent outer datasets, not a research-effect confidence interval. Plug-in MCSE is zero at boundaries; the Wilson interval still has positive width.",
+            "rate": 0.058333333333333334,
+            "wilson_95_monte_carlo_interval": [
+              0.03506243642079224,
+              0.09552019286091806
+            ]
+          }
+        }
+      }
+    },
+    "unequal_variances": {
+      "holm_familywise_type1_rejection": {
+        "binomial_mcse": 0.011587029785896784,
+        "count": 8,
+        "denominator": 240,
+        "interval_note": "Monte Carlo uncertainty across independent outer datasets, not a research-effect confidence interval. Plug-in MCSE is zero at boundaries; the Wilson interval still has positive width.",
+        "rate": 0.03333333333333333,
+        "wilson_95_monte_carlo_interval": [
+          0.01698546425790705,
+          0.06438486102088117
+        ]
+      },
+      "pointwise": {
+        "comparator_1_home": {
+          "coverage_95": {
+            "binomial_mcse": 0.015625,
+            "count": 225,
+            "denominator": 240,
+            "interval_note": "Monte Carlo uncertainty across independent outer datasets, not a research-effect confidence interval. Plug-in MCSE is zero at boundaries; the Wilson interval still has positive width.",
+            "rate": 0.9375,
+            "wilson_95_monte_carlo_interval": [
+              0.8994534372476064,
+              0.9617618828035297
+            ]
+          },
+          "mean_estimated_contrast": -0.031291666666667044,
+          "mean_interval_width": 3.972288494742052,
+          "unadjusted_type1_rejection": {
+            "binomial_mcse": 0.014610589608352693,
+            "count": 13,
+            "denominator": 240,
+            "interval_note": "Monte Carlo uncertainty across independent outer datasets, not a research-effect confidence interval. Plug-in MCSE is zero at boundaries; the Wilson interval still has positive width.",
+            "rate": 0.05416666666666667,
+            "wilson_95_monte_carlo_interval": [
+              0.031925187796296654,
+              0.09045539081825996
+            ]
+          }
+        },
+        "comparator_1_interaction": {
+          "coverage_95": {
+            "binomial_mcse": 0.01406828584677845,
+            "count": 228,
+            "denominator": 240,
+            "interval_note": "Monte Carlo uncertainty across independent outer datasets, not a research-effect confidence interval. Plug-in MCSE is zero at boundaries; the Wilson interval still has positive width.",
+            "rate": 0.95,
+            "wilson_95_monte_carlo_interval": [
+              0.9146517753073891,
+              0.9711696967452079
+            ]
+          },
+          "mean_estimated_contrast": 0.009124999999999361,
+          "mean_interval_width": 4.589222513927068,
+          "unadjusted_type1_rejection": {
+            "binomial_mcse": 0.014068285846778444,
+            "count": 12,
+            "denominator": 240,
+            "interval_note": "Monte Carlo uncertainty across independent outer datasets, not a research-effect confidence interval. Plug-in MCSE is zero at boundaries; the Wilson interval still has positive width.",
+            "rate": 0.05,
+            "wilson_95_monte_carlo_interval": [
+              0.028830303254792054,
+              0.08534822469261089
+            ]
+          }
+        },
+        "comparator_2_home": {
+          "coverage_95": {
+            "binomial_mcse": 0.014610589608352698,
+            "count": 227,
+            "denominator": 240,
+            "interval_note": "Monte Carlo uncertainty across independent outer datasets, not a research-effect confidence interval. Plug-in MCSE is zero at boundaries; the Wilson interval still has positive width.",
+            "rate": 0.9458333333333333,
+            "wilson_95_monte_carlo_interval": [
+              0.9095446091817401,
+              0.9680748122037033
+            ]
+          },
+          "mean_estimated_contrast": -0.17875000000000024,
+          "mean_interval_width": 10.575567846456513,
+          "unadjusted_type1_rejection": {
+            "binomial_mcse": 0.013498863978265123,
+            "count": 11,
+            "denominator": 240,
+            "interval_note": "Monte Carlo uncertainty across independent outer datasets, not a research-effect confidence interval. Plug-in MCSE is zero at boundaries; the Wilson interval still has positive width.",
+            "rate": 0.04583333333333333,
+            "wilson_95_monte_carlo_interval": [
+              0.0257824825977389,
+              0.08019399468251036
+            ]
+          }
+        },
+        "comparator_2_interaction": {
+          "coverage_95": {
+            "binomial_mcse": 0.01406828584677845,
+            "count": 228,
+            "denominator": 240,
+            "interval_note": "Monte Carlo uncertainty across independent outer datasets, not a research-effect confidence interval. Plug-in MCSE is zero at boundaries; the Wilson interval still has positive width.",
+            "rate": 0.95,
+            "wilson_95_monte_carlo_interval": [
+              0.9146517753073891,
+              0.9711696967452079
+            ]
+          },
+          "mean_estimated_contrast": -0.14085648148148197,
+          "mean_interval_width": 11.154195117439151,
+          "unadjusted_type1_rejection": {
+            "binomial_mcse": 0.013498863978265123,
+            "count": 11,
+            "denominator": 240,
+            "interval_note": "Monte Carlo uncertainty across independent outer datasets, not a research-effect confidence interval. Plug-in MCSE is zero at boundaries; the Wilson interval still has positive width.",
+            "rate": 0.04583333333333333,
+            "wilson_95_monte_carlo_interval": [
+              0.0257824825977389,
+              0.08019399468251036
+            ]
+          }
+        }
+      }
+    },
+    "zero_variance": {
+      "holm_familywise_type1_rejection": {
+        "binomial_mcse": 0.0,
+        "count": 0,
+        "denominator": 240,
+        "interval_note": "Monte Carlo uncertainty across independent outer datasets, not a research-effect confidence interval. Plug-in MCSE is zero at boundaries; the Wilson interval still has positive width.",
+        "rate": 0.0,
+        "wilson_95_monte_carlo_interval": [
+          0.0,
+          0.015753919941558815
+        ]
+      },
+      "pointwise": {
+        "comparator_1_home": {
+          "coverage_95": {
+            "binomial_mcse": 0.0,
+            "count": 240,
+            "denominator": 240,
+            "interval_note": "Monte Carlo uncertainty across independent outer datasets, not a research-effect confidence interval. Plug-in MCSE is zero at boundaries; the Wilson interval still has positive width.",
+            "rate": 1.0,
+            "wilson_95_monte_carlo_interval": [
+              0.9842460800584412,
+              1.0
+            ]
+          },
+          "mean_estimated_contrast": 0.0,
+          "mean_interval_width": 0.0,
+          "unadjusted_type1_rejection": {
+            "binomial_mcse": 0.0,
+            "count": 0,
+            "denominator": 240,
+            "interval_note": "Monte Carlo uncertainty across independent outer datasets, not a research-effect confidence interval. Plug-in MCSE is zero at boundaries; the Wilson interval still has positive width.",
+            "rate": 0.0,
+            "wilson_95_monte_carlo_interval": [
+              0.0,
+              0.015753919941558815
+            ]
+          }
+        },
+        "comparator_1_interaction": {
+          "coverage_95": {
+            "binomial_mcse": 0.0,
+            "count": 240,
+            "denominator": 240,
+            "interval_note": "Monte Carlo uncertainty across independent outer datasets, not a research-effect confidence interval. Plug-in MCSE is zero at boundaries; the Wilson interval still has positive width.",
+            "rate": 1.0,
+            "wilson_95_monte_carlo_interval": [
+              0.9842460800584412,
+              1.0
+            ]
+          },
+          "mean_estimated_contrast": 0.0,
+          "mean_interval_width": 0.0,
+          "unadjusted_type1_rejection": {
+            "binomial_mcse": 0.0,
+            "count": 0,
+            "denominator": 240,
+            "interval_note": "Monte Carlo uncertainty across independent outer datasets, not a research-effect confidence interval. Plug-in MCSE is zero at boundaries; the Wilson interval still has positive width.",
+            "rate": 0.0,
+            "wilson_95_monte_carlo_interval": [
+              0.0,
+              0.015753919941558815
+            ]
+          }
+        },
+        "comparator_2_home": {
+          "coverage_95": {
+            "binomial_mcse": 0.0,
+            "count": 240,
+            "denominator": 240,
+            "interval_note": "Monte Carlo uncertainty across independent outer datasets, not a research-effect confidence interval. Plug-in MCSE is zero at boundaries; the Wilson interval still has positive width.",
+            "rate": 1.0,
+            "wilson_95_monte_carlo_interval": [
+              0.9842460800584412,
+              1.0
+            ]
+          },
+          "mean_estimated_contrast": 0.0,
+          "mean_interval_width": 0.0,
+          "unadjusted_type1_rejection": {
+            "binomial_mcse": 0.0,
+            "count": 0,
+            "denominator": 240,
+            "interval_note": "Monte Carlo uncertainty across independent outer datasets, not a research-effect confidence interval. Plug-in MCSE is zero at boundaries; the Wilson interval still has positive width.",
+            "rate": 0.0,
+            "wilson_95_monte_carlo_interval": [
+              0.0,
+              0.015753919941558815
+            ]
+          }
+        },
+        "comparator_2_interaction": {
+          "coverage_95": {
+            "binomial_mcse": 0.0,
+            "count": 240,
+            "denominator": 240,
+            "interval_note": "Monte Carlo uncertainty across independent outer datasets, not a research-effect confidence interval. Plug-in MCSE is zero at boundaries; the Wilson interval still has positive width.",
+            "rate": 1.0,
+            "wilson_95_monte_carlo_interval": [
+              0.9842460800584412,
+              1.0
+            ]
+          },
+          "mean_estimated_contrast": 0.0,
+          "mean_interval_width": 0.0,
+          "unadjusted_type1_rejection": {
+            "binomial_mcse": 0.0,
+            "count": 0,
+            "denominator": 240,
+            "interval_note": "Monte Carlo uncertainty across independent outer datasets, not a research-effect confidence interval. Plug-in MCSE is zero at boundaries; the Wilson interval still has positive width.",
+            "rate": 0.0,
+            "wilson_95_monte_carlo_interval": [
+              0.0,
+              0.015753919941558815
+            ]
+          }
+        }
+      }
+    }
+  },
+  "script_sha256": "0a7e4b5e56fa7a67cef7c11baac93725f3a376af9380376c9791581e93d32594",
+  "seed": 20260914,
+  "software": {
+    "numpy": "2.5.3",
+    "python": "3.12.14"
+  },
+  "status": "Synthetic method validation only; none of these values are LLM observations or empirical geographic findings.",
+  "tests": [
+    "comparator_1_home",
+    "comparator_1_interaction",
+    "comparator_2_home",
+    "comparator_2_interaction"
+  ],
+  "title": "Synthetic calibration diagnostics of the local-contrast bootstrap",
+  "true_contrasts": "All four home/interaction contrasts are exactly zero: each condition has the same population mean within every pair."
+}

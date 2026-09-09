@@ -16,6 +16,7 @@ export interface Layer {
 }
 export interface Research {
   experiment: {id: string; model: string; model_label?: string; provider: string; created_at: string; language: string; language_label?: string; prompt_family?: string; sampling_count: number; prompt_template: string; parameters: {temperature: number; top_p: number; max_tokens: number; thinking_budget?: number; thinking_level?: string}; dataset_sha256: string; code_revision: string; sampling_strategy: string};
+  true_earth_dimensionality?: {dimensions:number;stress:number}[];
   analysis_id: string; places: Place[]; pairs: Pair[]; layers: Record<Aggregation, Layer>;
   quality: {attempts: number; valid: number; invalid_attempts: number; estimated_cost_usd: number};
   limitations: string[];

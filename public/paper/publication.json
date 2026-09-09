@@ -1,0 +1,10 @@
+{
+  "study": "100 capitals; English, Arabic, written Chinese; Gemini 3.5 Flash",
+  "completed_answers": 148500,
+  "valid_answers": 148491,
+  "pdf_sha256": "70032fc564431a245928d4f54bc464593164c639ad6e62a6699440f3cf825ceb",
+  "reproduction_zip_sha256": "bdbba8fd68facc1a8a45b47183d220ab97ddb0c0ea00397dc86bddc1762aedb7",
+  "files": 121,
+  "input_lock_sha256": "d45cab6e82d90d6e916296ee4c23463acfb1167592d55abcb887b4f4308bf411",
+  "release_lock_sha256": "38058c1f4bb4f321624629f881bd3f3ab93e45f4e4b6521f970bc6fa29ff1d71"
+}

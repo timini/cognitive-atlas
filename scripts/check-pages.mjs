@@ -51,9 +51,13 @@ try {
   const index = await (await fetch(origin + base + 'data/experiments.json')).json();
   const sourceIndex = JSON.parse(await readFile('public/data/experiments.json', 'utf8'));
   assert.deepEqual(index, sourceIndex);
-  const historicalIndex = JSON.parse(await readFile('paper/experiment-index.json', 'utf8'));
+  const paperIndex = JSON.parse(await readFile('paper/experiment-index.json', 'utf8'));
   const publishedIds = new Set(index.map(e => e.id));
-  assert(historicalIndex.every(e => publishedIds.has(e.id)), 'Historical experiments must remain selectable');
+  assert(paperIndex.every(e => publishedIds.has(e.id)), 'Current paper experiments must remain selectable');
+  assert(index.length === 3 && index.every(e => e.capital_count === 100));
+  const publication = await (await fetch(origin + base + 'paper/publication.json')).json();
+  assert.equal(publication.completed_answers, 148500);
+  for (const file of ['paper/cognitive-atlas-paper.pdf','paper/reproduction.zip']) assert.equal((await fetch(origin + base + file, {method:'HEAD'})).status, 200);
   const languages = new Set();
   for (const entry of index) {
     const response = await fetch(origin + base + entry.url.replace(/^\//, ''));
@@ -65,7 +69,7 @@ try {
     assert.equal(csvResponse.status, 200);
     assert.equal(Number(csvResponse.headers.get('content-length')), (await stat(path.join(root, folder.replace(/^\//, ''), 'responses.csv'))).size);
   }
-  assert.deepEqual([...languages].sort(), ['ar','en','es','fr','zh']);
+  assert.deepEqual([...languages].sort(), ['ar','en','zh']);
   const comparison = await (await fetch(origin + base + 'data/comparisons.json')).json();
   const sourceComparison = JSON.parse(await readFile('public/data/comparisons.json', 'utf8'));
   assert.deepEqual(comparison, sourceComparison);

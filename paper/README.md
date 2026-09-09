@@ -1,95 +1,55 @@
-# Cognitive Atlas research paper
+# The 100-capital paper
 
-`cognitive-atlas-paper.pdf` is the compiled research draft. `main.tex` and
-`references.bib` are the editable LaTeX source and bibliography. No author identity
-or affiliation has been assigned; this is not a journal submission or a peer-reviewed paper.
+The revised [paper](cognitive-atlas-paper.pdf) examines **Gemini 3.5 Flash across 100 capitals**, with ten distance estimates per pair under English, Arabic, and written Chinese instructions. It contains 148,500 completed answers. The main conclusions distinguish observed geometry, metric consistency, and response-distribution differences.
 
-The paper covers the 50-capital model comparison, the matched five-language
-Gemini 3.5 Flash study, and exploratory tests of a local-language advantage.
-Its input exports are frozen in `experiment-index.json`; later 100-capital cohorts do not alter this historical study.
-It does not claim a literal measurement of hidden model representations.
+The [response to reviews](REVIEW-RESPONSE.md) tracks all 45 numbered findings and four publication-readiness requirements. The revised paper incorporates new quality-control sensitivities, geometric reference fits, optimizer diagnostics, regional distance balancing, and bootstrap calibration. Independent human scientific and language review remain outstanding; this is a completed manuscript revision, not a peer-reviewed publication. No author identity or affiliation has been assigned.
 
-## Build the paper
+## Read and explore
 
-From the repository root, install the locked research and plotting environment:
+- [Public atlas](https://timini.github.io/cognitive-atlas/)
+- [Public PDF](https://timini.github.io/cognitive-atlas/paper/cognitive-atlas-paper.pdf)
+- [Complete public reproduction package](https://timini.github.io/cognitive-atlas/paper/reproduction.zip)
+- [LaTeX source](main.tex) and [bibliography](references.bib)
+
+The source GitHub repository is private. The public website serves the paper, supporting reports, and downloadable experiment data. No archival DOI is assigned. The paper concerns this single model and its three instruction conditions; schema-constrained integration checks are not research observations in this study.
+
+## Build and verify
+
+From the repository root:
 
 ```sh
 uv sync --frozen --group paper
 make -C paper
+make -C paper verify
+uv run pytest -q
 ```
 
-A TeX installation providing `pdflatex` and `bibtex` is required, along with
-standard packages including `lmodern`, `geometry`, `booktabs`, `amsmath`,
-`microtype`, `graphicx`, and `hyperref`. With BasicTeX on macOS:
+A TeX installation with `pdflatex`, `bibtex`, and the packages named in `main.tex` is required. On macOS with BasicTeX:
 
 ```sh
 make -C paper PDFLATEX=/Library/TeX/texbin/pdflatex BIBTEX=/Library/TeX/texbin/bibtex
 ```
 
-The default build regenerates all figures and numeric table rows from the saved
-measurements and inferential results. It performs no LLM calls, needs no API key,
-and does not change published experiment files.
+The normal build checks **expected** input and release hashes before generating figures or tables. It never refreshes those expectations automatically. `input-lock.json` freezes the three exports, raw responses, geographic inputs, and dependency lock. `release-lock.json` additionally freezes the revised analysis code, computed evidence, manuscript, and relevant source dependencies. A mismatch stops the build.
 
-## Recompute every inferential analysis
+Recompute the new QC, local contrasts, geometry, calibration, and range-retained geometry with `make -C paper analyze`. This explicitly regenerates reports. On the recorded runtime, deterministic results should agree; platform or dependency differences may change optimizer details or environment metadata. Compare against the committed reports, including numerical tolerances, before considering a new release. An intentional release update uses `uv run python -m paper.revision100.freeze`; this is an authoring operation, not part of reproduction. The two expensive global audits are frozen published inputs: their reproducible entry points are `scripts/audit_language_group.py` and `scripts/audit_map_group.py`, supplied with the three exact `result.json` paths in `experiment-index.json`.
 
-Run from the repository root:
+No paper build or analysis makes model calls or requires an API key. Synthetic values appear only in the explicitly separate bootstrap method-calibration report and never enter experiment results.
 
-```sh
-uv run --frozen --group paper python paper/scripts/check_distance_structure.py
-uv run --frozen --group paper python paper/scripts/check_language_differences.py
-uv run --frozen --group paper python paper/scripts/local_language.py
-make -C paper
-uv run --frozen --group paper pytest -q tests/test_paper.py
-```
+## Evidence and interpretation
 
-The numerical audit scripts require the repository root as their working directory.
-`make -C paper analyze` runs those three scripts in order. Reanalysis takes several
-minutes and writes only under `paper/results/`. All randomization seeds are fixed.
-Matplotlib creates vector PDF figures; no model-generated graphics or synthetic
-scientific observations are used. Figures are not screenshots of the website.
+| Evidence | Location |
+|---|---|
+| Raw source contract and selected three exports | `input-lock.json`, `experiment-index.json` |
+| Global 4,999-permutation distance audit | `results/language-difference-audit.json` |
+| 999-permutation map audit, including all null statistics | `results/map-difference-audit.json` |
+| Parser replay, exclusions, variability and scheduling | `revision100/qc.py`, `revision100/qc.json` |
+| WGS84 control, 12-start fits, spectra and neighbors | `revision100/geometry.py`, `revision100/geometry.json` |
+| Regional contrasts, distance balance, capital omissions | `revision100/local.py`, `revision100/local.json` |
+| Range-retained geometry sensitivity | `revision100/range_geometry.py`, `revision100/range_geometry.json` |
+| Bootstrap coverage and failure diagnostics | `revision100/calibration.py`, `revision100/calibration.json` |
+| Primary references and operational group definitions | `revision100/reference-notes.md`, `revision100/groups.json` |
+| Exact prompt strings and release provenance | `results/` |
+| Tables and vector figures | `generated/`, `figures/` |
 
-## What is measured
-
-- Global language tests use the median of ten estimates per pair. Each comparison
-  shuffles language labels independently within each fixed pair. The null is
-  exchangeability of the entire response distributions, not merely equal MAE.
-  Holm adjustment covers 20 tests: ten matrix-disagreement and ten MAE-contrast
-  statistics. These tests are conditional on independent API responses.
-- Local-language tests use **mean single-response absolute error**, not error of
-  the ten-response median. Positive gain means lower error than English. A pair
-  belongs to the language group when at least one endpoint is included. The
-  interaction subtracts the gain on the remaining pairs.
-- The local bootstrap independently resamples observations within each pair and
-  language. Centered deviations have a sqrt(10/9) correction to match unbiased
-  sample-variance estimates. Basic 95% intervals are pointwise; only p-values are
-  Holm-adjusted (eight tests). The analytic standard error cross-check is recorded.
-- The 1,223 common complete pairs exclude Buenos Aires–Hanoi and Seoul–Moscow,
-  which have invalid responses in at least one language. Invalid observations
-  remain in the raw research exports. All-pair descriptive metrics are separately
-  reported; they must not be mixed with complete-case inference.
-- Small conditional p-values concern sampling calls on the fixed city set. They
-  do not estimate uncertainty over new countries, translations, dates, or models.
-  Country-language affiliation is a documented coarse proxy. This analysis is
-  exploratory, not preregistered and not causally identified.
-
-## Supplement files
-
-- `results/provenance.json`: every experiment/export ID, raw result SHA-256,
-  collection source revision, date, and model condition.
-- `results/exact-language-prompts.json`: byte-preserving Unicode prompt strings
-  from the five manifests, including the shared numeric-format instruction.
-- `results/language-difference-audit.json`: 4,999 within-pair permutations per
-  language comparison, all effect sizes and adjusted p-values.
-- `results/local-language-audit.json`: country groups, 9,999 bootstrap replicates,
-  intervals, corrected p-values, analytical variance validation, and each
-  leave-one-associated-capital-out result.
-- `results/distance-structure-audit.json`: the original three-model geographic
-  signal audit using 9,999 city-label permutations and repeated-response counts.
-- `results/manuscript-checks.json`: cross-checks for totals and the Spanish effect.
-- `generated/*.tex`: data-generated table bodies; edit data or scripts, not rows.
-- `figures/*.pdf`: reproducible vector figures.
-
-All original responses, manifests, distances and reconstructions remain under
-`public/data/<export-id>/`. The repository is private; the manuscript does not
-claim publicly archived data or a DOI. References identify related earlier work,
-including prior MDS reconstructions and multilingual distance-estimation studies.
+Distance and map randomization use a strong response-distribution exchangeability null. Rejection does not establish unequal population medians or isolate a language effect. Regional summaries evaluate individual-response error, rather than error of pair medians. Associated pairs usually have only one endpoint in the operational group. The regional bootstrap is an empirical approximation: calibration works reasonably in regular scenarios but fails severely for unseen rare tails. Its intervals do not quantify uncertainty over new capitals, prompts, dates, or model releases.

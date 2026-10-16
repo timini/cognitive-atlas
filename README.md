@@ -4,6 +4,8 @@
 
 Cognitive Atlas asks a model to estimate distances between national capitals, then reconstructs the configuration of cities that best fits its answers. Repeated estimates distinguish geographic accuracy from internal consistency: a model can know many individual distances without describing a coherent world.
 
+[![The Cognitive Atlas explorer: capitals placed where the model's distance estimates put them](docs/images/atlas.jpg)](https://timini.github.io/cognitive-atlas/)
+
 [Explore the atlas](https://timini.github.io/cognitive-atlas/) · [Read the paper](paper/cognitive-atlas-paper.pdf) · [Methods and reproduction](paper/README.md) · [Response to reviews](paper/REVIEW-RESPONSE.md)
 
 ## The study
